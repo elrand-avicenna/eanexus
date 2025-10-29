@@ -2622,3 +2622,1335 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
   transform-origin: 50% 50%;
   pointer-events: none;
 }
+
+
+/* ========================================
+   CLOCK STYLES - Menu Bas
+   ======================================== */
+
+.menu-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: 'Courier New', monospace;
+  color: var(--text-color);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#clockDate {
+  font-size: 11px;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+#clockTime {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .menu-clock {
+    gap: 0;
+  }
+  #clockDate {
+    font-size: 9px;
+  }
+  #clockTime {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   PINNED ICONS STYLES (Header Right Icons)
+   ======================================== */
+
+.pinned-item {
+  background: rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(102, 126, 234, 0.4);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.pinned-item:hover {
+  background: rgba(102, 126, 234, 0.4);
+  border-color: rgba(102, 126, 234, 0.8);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+.pinned-item:active {
+  transform: scale(0.95);
+}
+
+/* Mobile adjustments for pinned icons */
+@media (max-width: 768px) {
+  .pinned-item {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pinned-item {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+  /* Adjust positions for mobile */
+  .pinned-item[style*="right: 240px"] { right: 160px !important; }
+  .pinned-item[style*="right: 180px"] { right: 110px !important; }
+  .pinned-item[style*="right: 120px"] { right: 60px !important; }
+}
+
+/* ========================================
+   STADIUM STYLES
+   ======================================== */
+
+.stadium-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: 40px 20px;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+.stadium-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-align: center;
+  background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stadium Events Grid */
+.stadium-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stadium-event-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stadium-event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+  border-color: var(--accent-color);
+}
+
+.event-card-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.event-card-content {
+  padding: 20px;
+}
+
+.event-card-date {
+  font-size: 0.875rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.event-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.event-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.event-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.event-type {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.event-type.tournament { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+.event-type.exposition { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
+.event-type.workshop { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+.event-type.conference { background: rgba(26, 188, 156, 0.2); color: #1abc9c; }
+.event-type.jam { background: rgba(243, 156, 18, 0.2); color: #f39c12; }
+.event-type.social { background: rgba(233, 30, 99, 0.2); color: #e91e63; }
+.event-type.hackathon { background: rgba(0, 188, 212, 0.2); color: #00bcd4; }
+.event-type.festival { background: rgba(255, 87, 34, 0.2); color: #ff5722; }
+
+.event-time {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* Stadium CTA Button */
+.stadium-cta-btn {
+  display: block;
+  margin: 40px auto 0;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.stadium-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+}
+
+/* Calendar Styles */
+.calendar-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.calendar-view-btn {
+  padding: 12px 24px;
+  background: var(--card-bg);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.calendar-view-btn:hover {
+  border-color: var(--accent-color);
+  background: rgba(102, 126, 234, 0.2);
+}
+
+.calendar-view-btn.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.calendar-container {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calendar-date-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.calendar-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.calendar-event-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  border-left: 4px solid var(--accent-color);
+}
+
+.calendar-event-item:hover {
+  background: var(--card-hover);
+  transform: translateX(8px);
+}
+
+.calendar-event-time {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  min-width: 60px;
+}
+
+.calendar-event-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.calendar-event-info p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.calendar-no-events {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Calendar Week View */
+.calendar-week-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.calendar-day-column {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-sm);
+  padding: 12px;
+  min-height: 200px;
+}
+
+.calendar-day-column.today {
+  background: rgba(102, 126, 234, 0.1);
+  border: 2px solid var(--accent-color);
+}
+
+.calendar-day-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calendar-day-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.calendar-day-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.calendar-week-event {
+  padding: 8px;
+  background: var(--card-bg);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.calendar-week-event:hover {
+  background: var(--card-hover);
+}
+
+.calendar-week-event-time {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.calendar-week-event-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Calendar Month View */
+.calendar-month-view {
+  width: 100%;
+}
+
+.calendar-month-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.calendar-month-grid {
+  width: 100%;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 8px;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius-sm);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.calendar-day:hover {
+  background: var(--card-hover);
+}
+
+.calendar-day.today {
+  background: var(--accent-color);
+  font-weight: 700;
+}
+
+.calendar-day.has-events .calendar-day-num {
+  font-weight: 700;
+}
+
+.calendar-day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.calendar-day-num {
+  font-size: 1rem;
+}
+
+.calendar-day-dots {
+  position: absolute;
+  bottom: 4px;
+  font-size: 0.6rem;
+  color: var(--accent-color);
+}
+
+/* Stadium News */
+.stadium-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.news-card {
+  display: flex;
+  gap: 20px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.news-card-image {
+  width: 200px;
+  min-width: 200px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.news-card-content {
+  padding: 20px;
+  flex: 1;
+}
+
+.news-card-date {
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.news-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.news-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.news-card-category {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(102, 126, 234, 0.2);
+  color: var(--accent-color);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   LABO STYLES
+   ======================================== */
+
+.labo-floor-number {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+.labo-floors-preview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.labo-floor-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-sm);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: var(--transition-fast);
+}
+
+.labo-floor-badge:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.floor-badge-icon {
+  font-size: 2rem;
+}
+
+.floor-badge-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.labo-overview-content {
+  text-align: center;
+}
+
+.labo-overview-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.labo-overview-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.labo-floors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.labo-floor-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.labo-floor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+  border-color: white;
+}
+
+.labo-floor-card-header {
+  padding: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.floor-card-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.floor-card-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.labo-floor-card-body {
+  padding: 24px;
+  background: var(--bg-secondary);
+}
+
+.floor-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.floor-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ========================================
+   HUB PAGE STYLES
+   ======================================== */
+
+.hub-page {
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+.hub-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hub-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hub-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+  z-index: 1;
+}
+
+.hub-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hub-hero-logo {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.hub-hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hub-hero-description {
+  font-size: 1.2rem;
+  max-width: 700px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hub-concept-section,
+.hub-navigation-section,
+.hub-quicklinks-section {
+  max-width: 1400px;
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+.hub-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 50px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hub-concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.concept-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 40px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+}
+
+.concept-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+  border-color: var(--accent-color);
+}
+
+.concept-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.concept-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--accent-color);
+}
+
+.concept-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.hub-zones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.hub-zone-card {
+  position: relative;
+  padding: 50px 30px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.hub-zone-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: brightness(0.8);
+  z-index: 0;
+}
+
+.hub-zone-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hub-zone-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 4rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.hub-zone-title {
+  position: relative;
+  z-index: 1;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hub-zone-description {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.hub-zone-cta {
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hub-quicklinks-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quicklink-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--card-bg);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quicklink-btn:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
+
+.quicklink-icon {
+  font-size: 1.5rem;
+}
+
+.hub-footer-info {
+  max-width: 800px;
+  margin: 60px auto 0;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.hub-footer-text {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ========================================
+   FULL PAGE LAYOUTS (Event Detail, All Events, etc.)
+   ======================================== */
+
+.stadium-full-page,
+.event-detail-page,
+.news-detail-page {
+  min-height: 100vh;
+  padding-bottom: 80px;
+  overflow-y: auto;
+}
+
+.stadium-full-header {
+  padding: 80px 40px 40px;
+  background: var(--bg-secondary);
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  backdrop-filter: blur(10px);
+  margin-bottom: 20px;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-4px);
+}
+
+.stadium-full-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.stadium-full-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.event-full-card {
+  display: flex;
+  gap: 30px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-full-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.event-full-image {
+  width: 300px;
+  min-width: 300px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.event-full-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.event-full-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.event-full-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.event-full-desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.event-full-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.event-meta-item {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.event-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.event-tag {
+  padding: 6px 14px;
+  background: rgba(102, 126, 234, 0.2);
+  color: var(--accent-color);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Event Detail Page */
+.event-detail-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.event-detail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 0;
+}
+
+.event-detail-hero .back-btn {
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+}
+
+.event-detail-hero-content {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+}
+
+.event-detail-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-top: 12px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.event-detail-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.event-detail-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.event-info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-info-icon {
+  font-size: 2rem;
+}
+
+.event-info-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.event-info-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.event-detail-description {
+  margin-bottom: 40px;
+}
+
+.event-detail-description h3 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.event-detail-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.event-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.event-action-btn {
+  padding: 16px 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.event-action-btn.primary {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+  color: white;
+  box-shadow: var(--shadow);
+}
+
+.event-action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover), var(--shadow-glow);
+}
+
+.event-action-btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.event-action-btn.secondary:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* News Detail Page */
+.news-detail-hero {
+  position: relative;
+  height: 40vh;
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+}
+
+.news-detail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 0;
+}
+
+.news-detail-hero .back-btn {
+  position: relative;
+  z-index: 2;
+}
+
+.news-detail-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.news-category-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.news-detail-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.news-detail-date {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+}
+
+.news-detail-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (max-width: 768px) {
+  .stadium-events-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .calendar-week-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .news-card {
+    flex-direction: column;
+  }
+  
+  .news-card-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .labo-floors-preview {
+    grid-template-columns: 1fr;
+  }
+  
+  .hub-hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hub-hero-description {
+    font-size: 1rem;
+  }
+  
+  .hub-concept-grid,
+  .hub-zones-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .event-full-card {
+    flex-direction: column;
+  }
+  
+  .event-full-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .event-detail-title {
+    font-size: 2rem;
+  }
+  
+  .event-actions {
+    flex-direction: column;
+  }
+  
+  .event-action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stadium-section-title {
+    font-size: 1.8rem;
+  }
+  
+  .calendar-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .calendar-view-btn {
+    width: 100%;
+  }
+  
+  .calendar-week-view {
+    grid-template-columns: 1fr;
+  }
+  
+  .labo-overview-title {
+    font-size: 1.8rem;
+  }
+  
+  .hub-hero-logo {
+    font-size: 3rem;
+  }
+  
+  .hub-hero-title {
+    font-size: 2rem;
+  }
+  
+  .hub-section-title {
+    font-size: 1.8rem;
+  }
+  
+  .quicklink-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
