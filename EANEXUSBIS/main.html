@@ -7,6 +7,11 @@
   <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
+  <!-- Back Button (visible on non-home pages) -->
+  <button class="back-nav-btn" id="backNavBtn" onclick="window.goBack()" aria-label="Page précédente" style="display: none;">
+    ← Retour
+  </button>
+
   <div class="menu" id="menu">
     <button class="burger" id="burger" aria-label="Ouvrir le menu"
             aria-controls="drawer" aria-expanded="false">
