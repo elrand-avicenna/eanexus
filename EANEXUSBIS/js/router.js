@@ -33,6 +33,15 @@ export function navigateTo(route) {
         app.state.history = [];
         renderHomePage();
         break;
+      case 'hub':
+        renderHubPage();
+        break;
+      case 'stadium':
+        renderStadiumPage();
+        break;
+      case 'labo':
+        renderLaboPage();
+        break;
       case 'projet':
         app.state.history.push({ page: 'home' });
         renderSliderPage(p1);
