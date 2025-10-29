@@ -16,46 +16,30 @@ export function renderHomePage() {
     const hasCategories = ['atelier-ludique', 'atelier-exposition', 'atelier-creatif', 'atelier-pedagogique'].includes(projet.id);
     
     if (isHub) {
-      // NEXUS HUB with premium design
+      // NEXUS HUB - Design Simple et Propre
       projectsHTML += `
-        <div class="projet-fullscreen hub-fullscreen" 
+        <div class="projet-fullscreen" 
              data-projet-id="${projet.id}" 
              data-index="${index}" 
              style="${projet.background ? `background:${projet.background};` : ''}">
           <img src="${projet.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200'}"
                alt="${projet.titre}" class="projet-background" />
-          <div class="projet-overlay hub-overlay"></div>
+          <div class="projet-overlay"></div>
           <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
           
-          <!-- Hub Header -->
-          <div class="hub-header">
-            <div class="hub-icon-wrapper">
-              <div class="hub-icon-glow"></div>
-              <div class="hub-icon">${projet.logo || '🔷'}</div>
-            </div>
-            <h1 class="hub-titre">${projet.titre}</h1>
-            <p class="hub-subtitle">${projet.description || ''}</p>
-            <div class="hub-divider"></div>
-          </div>
-          
-          <!-- Hub Cards Grid -->
-          <div class="hub-grid">
-            ${projet.subSections.map((sub, idx) => `
-              <div class="hub-card-premium" 
-                   onclick="window.navigateTo('${sub.route}')" 
-                   data-testid="hub-${sub.id}"
-                   style="animation-delay: ${idx * 0.1}s">
-                <div class="hub-card-border"></div>
-                <div class="hub-card-glow" style="background: ${sub.couleur}33"></div>
-                <div class="hub-card-number">${String(idx + 1).padStart(2, '0')}</div>
-                <div class="hub-card-icon-premium">${sub.logo}</div>
-                <h3 class="hub-card-titre-premium">${sub.titre}</h3>
-                <p class="hub-card-desc-premium">${sub.description}</p>
-                <div class="hub-card-arrow">
-                  <span>→</span>
+          <div class="projet-content">
+            <div class="projet-logo">${projet.logo || ''}</div>
+            <div class="projet-titre">${projet.titre}</div>
+            <div class="projet-description">${projet.description || ''}</div>
+            
+            <div class="hub-cards-simple">
+              ${projet.subSections.map(sub => `
+                <div class="hub-card-simple" onclick="window.navigateTo('${sub.route}')" data-testid="hub-${sub.id}">
+                  <div class="hub-card-icon">${sub.logo}</div>
+                  <div class="hub-card-title">${sub.titre}</div>
                 </div>
-              </div>
-            `).join('')}
+              `).join('')}
+            </div>
           </div>
         </div>`;
     } else {
