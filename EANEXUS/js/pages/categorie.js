@@ -43,6 +43,11 @@ export function renderCategoriePage(projetId, categorieId) {
 
   renderTravauxList(travaux, projetId, categorieId);
 
+  // Update filter drawer with new themes
+  if (window.renderFilterDrawer) {
+    window.renderFilterDrawer();
+  }
+
   // Listen for filter changes
   document.addEventListener('filtersChanged', handleFiltersChanged);
 }
