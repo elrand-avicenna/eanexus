@@ -79,6 +79,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Serve static files from EAWEB directory
+EAWEB_DIR = Path(__file__).parent.parent / "EAWEB"
+app.mount("/eaweb", StaticFiles(directory=str(EAWEB_DIR), html=True), name="eaweb")
+
+# Root route to serve the EAWEB index.html
+@app.get("/")
+async def serve_eaweb_root():
+    return FileResponse(str(EAWEB_DIR / "index.html"))
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
