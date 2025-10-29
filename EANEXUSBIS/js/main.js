@@ -41,7 +41,6 @@ function initClock() {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-  initAccordionMenu();       // Initialize accordion menu
   initFilterMenu();          // Initialize filter menu
   ensureMiniAudio();         // crée le casque
   initClock();               // Initialize real-time clock
