@@ -12,30 +12,61 @@ export function renderHomePage() {
   let projectsHTML = '';
   app.data.projetsRacine.forEach((projet, index) => {
     const isAccueil = projet.id === 'accueil';
+    const isHub = projet.id === 'nexus-hub';
     const hasCategories = ['atelier-ludique', 'atelier-exposition', 'atelier-creatif', 'atelier-pedagogique'].includes(projet.id);
     
-    projectsHTML += `
-      <div class="projet-fullscreen" 
-           data-projet-id="${projet.id}" 
-           data-index="${index}" 
-           style="${projet.background ? `background:${projet.background};` : ''}"
-           ${hasCategories ? `onclick="window.navigateTo('projet:${projet.id}')"` : ''}>
-        <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
-             alt="${projet.titre}" class="projet-background" />
-        <div class="projet-overlay"></div>
-        <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
-        <div class="projet-content">
-          <div class="projet-logo">${projet.logo || ''}</div>
-          <div class="projet-titre">${projet.titre}</div>
-          <div class="projet-description">${projet.description || ''}</div>
-          ${hasCategories ? `<div class="projet-cta">Explorer →</div>` : ''}
-        </div>
-        ${index === 0 ? `
-          <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
-            <span class="scroll-hint-icon">↓</span>
-            <span class="scroll-hint-text">Scroll</span>
-          </div>` : ''}
-      </div>`;
+    if (isHub) {
+      // NEXUS HUB with 3 sub-sections
+      projectsHTML += `
+        <div class="projet-fullscreen" 
+             data-projet-id="${projet.id}" 
+             data-index="${index}" 
+             style="${projet.background ? `background:${projet.background};` : ''}">
+          <img src="${projet.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200'}"
+               alt="${projet.titre}" class="projet-background" />
+          <div class="projet-overlay"></div>
+          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
+          <div class="projet-content hub-content">
+            <div class="projet-logo">${projet.logo || ''}</div>
+            <div class="projet-titre">${projet.titre}</div>
+            <div class="projet-description">${projet.description || ''}</div>
+            
+            <div class="hub-subsections">
+              ${projet.subSections.map(sub => `
+                <div class="hub-card" onclick="window.navigateTo('${sub.route}')" data-testid="hub-${sub.id}">
+                  <div class="hub-card-icon">${sub.logo}</div>
+                  <div class="hub-card-titre">${sub.titre}</div>
+                  <div class="hub-card-description">${sub.description}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>`;
+    } else {
+      // Regular projet
+      projectsHTML += `
+        <div class="projet-fullscreen" 
+             data-projet-id="${projet.id}" 
+             data-index="${index}" 
+             style="${projet.background ? `background:${projet.background};` : ''}"
+             ${hasCategories ? `onclick="window.navigateTo('projet:${projet.id}')"` : ''}>
+          <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
+               alt="${projet.titre}" class="projet-background" />
+          <div class="projet-overlay"></div>
+          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
+          <div class="projet-content">
+            <div class="projet-logo">${projet.logo || ''}</div>
+            <div class="projet-titre">${projet.titre}</div>
+            <div class="projet-description">${projet.description || ''}</div>
+            ${hasCategories ? `<div class="projet-cta">Explorer →</div>` : ''}
+          </div>
+          ${index === 0 ? `
+            <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
+              <span class="scroll-hint-icon">↓</span>
+              <span class="scroll-hint-text">Scroll</span>
+            </div>` : ''}
+        </div>`;
+    }
   });
 
   container.innerHTML = `<div class="home-page" id="homePage">${projectsHTML}</div>`;
