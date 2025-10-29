@@ -5,139 +5,113 @@ import { app } from '../core/state.js';
 export function renderHomePage() {
   app.state.currentPage = 'home';
   app.state.currentProjet = app.state.currentCategorie = app.state.currentTravail = null;
+  app.state.history = []; // Clear history on home
+  
   const indicator = document.getElementById('scrollIndicator');
   if (indicator) indicator.innerHTML = '';
 
+  // Hide back button on home
+  const backBtn = document.getElementById('backNavBtn');
+  if (backBtn) backBtn.style.display = 'none';
+
   const container = document.getElementById('app');
-  let projectsHTML = '';
   
-  // Render projects in order: Accueil → Hub → Stadium → Labo → Center
-  app.data.projetsRacine.forEach((projet, index) => {
-    const isAccueil = projet.id === 'accueil';
-    const isHub = projet.id === 'nexus-hub';
-    const isStadium = projet.id === 'nexus-stadium';
-    const isLabo = projet.id === 'nexus-labo';
-    const isCenter = projet.id === 'nexus-center';
-    
-    if (isHub) {
-      // NEXUS HUB - Central navigation hub
-      projectsHTML += `
-        <div class="projet-fullscreen" 
-             data-projet-id="${projet.id}" 
-             data-index="${index}" 
-             style="${projet.background ? `background:${projet.background};` : ''}">
-          <img src="${projet.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200'}"
-               alt="${projet.titre}" class="projet-background" />
-          <div class="projet-overlay"></div>
-          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
-          
-          <div class="projet-content">
-            <div class="projet-logo">${projet.logo || ''}</div>
-            <div class="projet-titre">${projet.titre}</div>
-            <div class="projet-description">${projet.description || ''}</div>
-            
-            <div class="hub-cards-simple">
-              ${projet.subSections.map(sub => `
-                <div class="hub-card-simple" onclick="window.navigateTo('${sub.route}')" data-testid="hub-${sub.id}">
-                  <div class="hub-card-icon">${sub.logo}</div>
-                  <div class="hub-card-title">${sub.titre}</div>
-                </div>
-              `).join('')}
-            </div>
-            <div class="projet-cta" onclick="window.navigateTo('hub')" data-testid="hub-detail-cta">Voir le plan du site →</div>
-          </div>
-        </div>`;
-    } else if (isLabo) {
-      // NEXUS LABO - Show floors preview
-      projectsHTML += `
-        <div class="projet-fullscreen" 
-             data-projet-id="${projet.id}" 
-             data-index="${index}" 
-             onclick="window.navigateTo('labo')"
-             style="${projet.background ? `background:${projet.background};` : ''}">
-          <img src="${projet.image || 'https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=1200'}"
-               alt="${projet.titre}" class="projet-background" />
-          <div class="projet-overlay"></div>
-          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
-          <div class="projet-content">
-            <div class="projet-logo">${projet.logo || ''}</div>
-            <div class="projet-titre">${projet.titre}</div>
-            <div class="projet-description">${projet.description || ''}</div>
-            <div class="labo-floors-preview">
-              ${projet.subSections.slice(0, 4).map((floor, i) => `
-                <div class="labo-floor-badge" data-testid="labo-floor-${i + 1}">
-                  <span class="floor-badge-icon">${floor.logo}</span>
-                  <span class="floor-badge-text">Étage ${i + 1}</span>
-                </div>
-              `).join('')}
-            </div>
-            <div class="projet-cta">Explorer le Labo →</div>
-          </div>
-        </div>`;
-    } else if (isStadium || isCenter) {
-      // STADIUM & CENTER - Clickable cards
-      projectsHTML += `
-        <div class="projet-fullscreen" 
-             data-projet-id="${projet.id}" 
-             data-index="${index}" 
-             onclick="window.navigateTo('${projet.id.replace('nexus-', '')}')"
-             style="${projet.background ? `background:${projet.background};` : ''}">
-          <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
-               alt="${projet.titre}" class="projet-background" />
-          <div class="projet-overlay"></div>
-          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
-          <div class="projet-content">
-            <div class="projet-logo">${projet.logo || ''}</div>
-            <div class="projet-titre">${projet.titre}</div>
-            <div class="projet-description">${projet.description || ''}</div>
-            <div class="projet-cta">Explorer →</div>
-          </div>
-        </div>`;
-    } else {
-      // ACCUEIL or other projects
-      projectsHTML += `
-        <div class="projet-fullscreen" 
-             data-projet-id="${projet.id}" 
-             data-index="${index}" 
-             style="${projet.background ? `background:${projet.background};` : ''}">
-          <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
-               alt="${projet.titre}" class="projet-background" />
-          <div class="projet-overlay"></div>
-          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
-          <div class="projet-content">
-            <div class="projet-logo">${projet.logo || ''}</div>
-            <div class="projet-titre">${projet.titre}</div>
-            <div class="projet-description">${projet.description || ''}</div>
-          </div>
-          ${index === 0 ? `
-            <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
-              <span class="scroll-hint-icon">↓</span>
-              <span class="scroll-hint-text">Scroll</span>
-            </div>` : ''}
-        </div>`;
+  // Slider vertical: Hub → Stadium → Labo → Center
+  const slides = [
+    {
+      id: 'nexus-hub',
+      logo: '🔷',
+      titre: 'NEXUS HUB',
+      description: 'Centre d\'information et de navigation. Découvrez les trois zones principales du NEXUS.',
+      image: 'https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=1200',
+      subCards: [
+        { logo: '🏟️', titre: 'STADIUM', desc: 'Événements & Actualités', route: 'stadium' },
+        { logo: '🔬', titre: 'LABO', desc: 'Laboratoire de Projets', route: 'labo' },
+        { logo: '🏛️', titre: 'CENTER', desc: 'Communauté NPCs', route: 'center' }
+      ]
+    },
+    {
+      id: 'nexus-stadium',
+      logo: '🏟️',
+      titre: 'NEXUS STADIUM',
+      description: 'Événements ludiques, tournois, expositions et actualités communautaires. Restez à jour avec le calendrier dynamique.',
+      image: 'https://images.unsplash.com/photo-1761002278041-509b63db5c58?w=1200',
+      route: 'stadium'
+    },
+    {
+      id: 'nexus-labo',
+      logo: '🔬',
+      titre: 'NEXUS LABO',
+      description: 'Laboratoire d\'expériences créatives organisé comme une tour à 4 étages : Gaming, Theater, Atelier et Academy.',
+      image: 'https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=1200',
+      route: 'labo'
+    },
+    {
+      id: 'nexus-center',
+      logo: '🏛️',
+      titre: 'NEXUS CENTER',
+      description: 'Le cœur de la communauté. Rencontrez les habitants du NEXUS, discutez et relevez des défis.',
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200',
+      route: 'center'
     }
-  });
+  ];
 
-  container.innerHTML = `<div class="home-page" id="homePage">${projectsHTML}</div>`;
+  const slidesHTML = slides.map((slide, index) => `
+    <div class="home-slide" data-slide-index="${index}">
+      <img src="${slide.image}" alt="${slide.titre}" class="home-slide-bg" />
+      <div class="home-slide-overlay"></div>
+      
+      <div class="home-slide-content">
+        <div class="home-slide-logo">${slide.logo}</div>
+        <h2 class="home-slide-titre">${slide.titre}</h2>
+        <p class="home-slide-description">${slide.description}</p>
+        
+        ${slide.subCards ? `
+          <div class="home-sub-cards">
+            ${slide.subCards.map(card => `
+              <div class="home-sub-card" onclick="window.navigateTo('${card.route}')" data-testid="home-card-${card.route}">
+                <div class="home-sub-card-logo">${card.logo}</div>
+                <div class="home-sub-card-titre">${card.titre}</div>
+                <div class="home-sub-card-desc">${card.desc}</div>
+              </div>
+            `).join('')}
+          </div>
+        ` : `
+          <button class="home-slide-cta" onclick="window.navigateTo('${slide.route}')" data-testid="home-cta-${slide.id}">
+            Explorer →
+          </button>
+        `}
+      </div>
+      
+      ${index === 0 ? `
+        <div class="home-scroll-hint">
+          <span class="scroll-hint-icon">↓</span>
+          <span class="scroll-hint-text">Scroll</span>
+        </div>
+      ` : ''}
+    </div>
+  `).join('');
 
+  container.innerHTML = `<div class="home-container" id="homeContainer">${slidesHTML}</div>`;
+
+  // Scroll indicator dots
   const dotsWrap = document.getElementById('scrollIndicator');
   if (dotsWrap) {
-    dotsWrap.innerHTML = app.data.projetsRacine.map((_, i) =>
+    dotsWrap.innerHTML = slides.map((_, i) =>
       `<div class="scroll-dot ${i===0?'active':''}" data-index="${i}"></div>`).join('');
-  }
+    
+    const dots = dotsWrap.querySelectorAll('.scroll-dot');
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index, 10);
+      document.querySelectorAll('.home-slide')[idx].scrollIntoView({ behavior: 'smooth' });
+    }));
 
-  const homePage = document.getElementById('homePage');
-  const dots = dotsWrap ? dotsWrap.querySelectorAll('.scroll-dot') : [];
-  
-  dots.forEach(dot => dot.addEventListener('click', () => {
-    const idx = parseInt(dot.dataset.index, 10);
-    document.querySelectorAll('.projet-fullscreen')[idx].scrollIntoView({ behavior: 'smooth' });
-  }));
-  
-  if (homePage && dotsWrap) {
-    homePage.addEventListener('scroll', () => {
-      const currentIndex = Math.round(homePage.scrollTop / window.innerHeight);
-      dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
-    });
+    const homeContainer = document.getElementById('homeContainer');
+    if (homeContainer) {
+      homeContainer.addEventListener('scroll', () => {
+        const currentIndex = Math.round(homeContainer.scrollTop / window.innerHeight);
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+      });
+    }
   }
 }
