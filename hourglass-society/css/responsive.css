@@ -4,10 +4,8 @@
 
 @media screen and (orientation: portrait) {
 
-  /* Le body ne doit plus afficher le décor */
+  /* Le body en mode mobile */
   body {
-    background: #000 !important;       /* fond neutre derrière l'écran */
-    background-image: none !important;  /* supprime l'image décor définie dans main.css */
     height: 100vh;
     width: 100vw;
     overflow: hidden;
