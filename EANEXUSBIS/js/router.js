@@ -80,6 +80,22 @@ export function goBack() {
       if (previousState.page === 'home') renderHomePage();
       else if (previousState.page === 'slider') renderSliderPage(previousState.projetId);
       else if (previousState.page === 'categorie') renderCategoriePage(previousState.projetId, previousState.categorieId);
+      else if (previousState.page === 'stadium') renderStadiumPage();
+      else if (previousState.page === 'labo') renderLaboPage();
+      else if (previousState.page === 'center') renderCenterPage();
     });
+  } else {
+    // No history, go to home
+    navigateTo('home');
   }
 }
+
+// Handle browser back button
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page) {
+    // Navigate based on saved state
+    navigateTo(event.state.page);
+  } else {
+    goBack();
+  }
+});
