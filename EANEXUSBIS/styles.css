@@ -4023,6 +4023,71 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
     padding: 8px 16px;
 
 /* ========================================
+
+/* ========================================
+   AUDIO BANNER (Étendard sous menu haut)
+   ======================================== */
+
+.audio-banner {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(102, 126, 234, 0.4);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  transition: var(--transition);
+  clip-path: polygon(
+    10% 0%, 
+    90% 0%, 
+    100% 30%, 
+    95% 100%, 
+    5% 100%, 
+    0% 30%
+  );
+}
+
+.audio-banner:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 30px rgba(102, 126, 234, 0.6);
+  transform: translateX(-50%) translateY(2px);
+}
+
+.audio-banner::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid rgba(102, 126, 234, 0.95);
+}
+
+@media (max-width: 768px) {
+  .audio-banner {
+    top: 45px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-banner {
+    top: 40px;
+    padding: 5px 10px;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
    ACCORDION MENU (replaces drawer)
    ======================================== */
 
