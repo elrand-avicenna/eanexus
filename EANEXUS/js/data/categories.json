@@ -1,0 +1,190 @@
+{
+  "atelier-ludique": [
+    {
+      "id": "jeux-video",
+      "titre": "Jeux Vidéo",
+      "logo": "🎮",
+      "description": "Création de jeux vidéo innovants et expérimentaux",
+      "couleur": "#FF6B6B",
+      "background": "linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)",
+      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800"
+    },
+    {
+      "id": "realite-augmentee",
+      "titre": "Réalité Augmentée",
+      "logo": "📱",
+      "description": "Expériences immersives en réalité augmentée",
+      "couleur": "#FF8E53",
+      "background": "linear-gradient(135deg, #FF8E53 0%, #FE6B8B 100%)",
+      "image": "https://images.unsplash.com/photo-1617802690658-1173a812650d?w=800"
+    },
+    {
+      "id": "installations-interactives",
+      "titre": "Installations Interactives",
+      "logo": "🎯",
+      "description": "Installations physiques et digitales interactives",
+      "couleur": "#FE6B8B",
+      "background": "linear-gradient(135deg, #FE6B8B 0%, #FF3D67 100%)",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
+    },
+    {
+      "id": "jeux-physiques",
+      "titre": "Jeux Physiques",
+      "logo": "🎲",
+      "description": "Jeux de société et expériences tangibles",
+      "couleur": "#FF3D67",
+      "background": "linear-gradient(135deg, #FF3D67 0%, #C44569 100%)",
+      "image": "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800"
+    },
+    {
+      "id": "gamification",
+      "titre": "Gamification",
+      "logo": "🏆",
+      "description": "Solutions ludiques pour l'apprentissage et l'engagement",
+      "couleur": "#C44569",
+      "background": "linear-gradient(135deg, #C44569 0%, #A8385D 100%)",
+      "image": "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800"
+    }
+  ],
+  "atelier-exposition": [
+    {
+      "id": "installations-artistiques",
+      "titre": "Installations Artistiques",
+      "logo": "🎨",
+      "description": "Créations artistiques numériques et physiques",
+      "couleur": "#4ECDC4",
+      "background": "linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)",
+      "image": "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800"
+    },
+    {
+      "id": "scenographie",
+      "titre": "Scénographie",
+      "logo": "🎭",
+      "description": "Design d'espaces et mise en scène",
+      "couleur": "#44A08D",
+      "background": "linear-gradient(135deg, #44A08D 0%, #38E4AE 100%)",
+      "image": "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800"
+    },
+    {
+      "id": "art-generatif",
+      "titre": "Art Génératif",
+      "logo": "🌀",
+      "description": "Créations algorithmiques et art computationnel",
+      "couleur": "#38E4AE",
+      "background": "linear-gradient(135deg, #38E4AE 0%, #00D2FF 100%)",
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800"
+    },
+    {
+      "id": "projections-mapping",
+      "titre": "Projections & Mapping",
+      "logo": "📽️",
+      "description": "Projections vidéo et mapping architectural",
+      "couleur": "#00D2FF",
+      "background": "linear-gradient(135deg, #00D2FF 0%, #3A7BD5 100%)",
+      "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800"
+    },
+    {
+      "id": "expositions-virtuelles",
+      "titre": "Expositions Virtuelles",
+      "logo": "🖼️",
+      "description": "Galeries et expositions en ligne",
+      "couleur": "#3A7BD5",
+      "background": "linear-gradient(135deg, #3A7BD5 0%, #2C6FB8 100%)",
+      "image": "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800"
+    }
+  ],
+  "atelier-creatif": [
+    {
+      "id": "design-graphique",
+      "titre": "Design Graphique",
+      "logo": "✏️",
+      "description": "Identités visuelles et design d'interface",
+      "couleur": "#95E1D3",
+      "background": "linear-gradient(135deg, #95E1D3 0%, #AAF683 100%)",
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800"
+    },
+    {
+      "id": "motion-design",
+      "titre": "Motion Design",
+      "logo": "🎬",
+      "description": "Animations et vidéos créatives",
+      "couleur": "#AAF683",
+      "background": "linear-gradient(135deg, #AAF683 0%, #38F9D7 100%)",
+      "image": "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800"
+    },
+    {
+      "id": "web-design",
+      "titre": "Web Design",
+      "logo": "🌐",
+      "description": "Sites web et expériences digitales",
+      "couleur": "#38F9D7",
+      "background": "linear-gradient(135deg, #38F9D7 0%, #4FACFE 100%)",
+      "image": "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800"
+    },
+    {
+      "id": "experimentation",
+      "titre": "Expérimentation",
+      "logo": "🔬",
+      "description": "Recherche et développement créatif",
+      "couleur": "#4FACFE",
+      "background": "linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%)",
+      "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800"
+    },
+    {
+      "id": "prototypage",
+      "titre": "Prototypage",
+      "logo": "🛠️",
+      "description": "Développement de prototypes innovants",
+      "couleur": "#00F2FE",
+      "background": "linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%)",
+      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800"
+    }
+  ],
+    "atelier-pedagogique": [
+    {
+      "id": "installations-artistiques2",
+      "titre": "Installations Artistiques",
+      "logo": "🎨",
+      "description": "Créations artistiques numériques et physiques",
+      "couleur": "#4ECDC4",
+      "background": "linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)",
+      "image": "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800"
+    },
+    {
+      "id": "scenographie2",
+      "titre": "Scénographie",
+      "logo": "🎭",
+      "description": "Design d'espaces et mise en scène",
+      "couleur": "#44A08D",
+      "background": "linear-gradient(135deg, #44A08D 0%, #38E4AE 100%)",
+      "image": "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800"
+    },
+    {
+      "id": "art-generatif2",
+      "titre": "Art Génératif",
+      "logo": "🌀",
+      "description": "Créations algorithmiques et art computationnel",
+      "couleur": "#38E4AE",
+      "background": "linear-gradient(135deg, #38E4AE 0%, #00D2FF 100%)",
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800"
+    },
+    {
+      "id": "projections-mapping2",
+      "titre": "Projections & Mapping",
+      "logo": "📽️",
+      "description": "Projections vidéo et mapping architectural",
+      "couleur": "#00D2FF",
+      "background": "linear-gradient(135deg, #00D2FF 0%, #3A7BD5 100%)",
+      "image": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800"
+    },
+    {
+      "id": "expositions-virtuelles2",
+      "titre": "Expositions Virtuelles",
+      "logo": "🖼️",
+      "description": "Galeries et expositions en ligne",
+      "couleur": "#3A7BD5",
+      "background": "linear-gradient(135deg, #3A7BD5 0%, #2C6FB8 100%)",
+      "image": "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "jeux-video": [
+    {
+      "id": "jv-1",
+      "titre": "Jeu Vidéo Alpha",
+      "logo": "🎮",
+      "image": "https://images.unsplash.com/photo-1501000000?w=800",
+      "description": "Projet Alpha de jeu vidéo",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu vidéo.",
+      "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "theme": "Arcade Neon"
+    },
+    {
+      "id": "jv-2",
+      "titre": "Jeu Vidéo Beta",
+      "logo": "🎮",
+      "image": "https://images.unsplash.com/photo-1501000001?w=800",
+      "description": "Projet Beta de jeu vidéo",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu vidéo.",
+      "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "theme": "Arcade Neon"
+    },
+    {
+      "id": "jv-3",
+      "titre": "Jeu Vidéo Gamma",
+      "logo": "🎮",
+      "image": "https://images.unsplash.com/photo-1501000002?w=800",
+      "description": "Projet Gamma de jeu vidéo",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu vidéo.",
+      "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "theme": "Retro Pixel"
+    },
+    {
+      "id": "jv-4",
+      "titre": "Jeu Vidéo Delta",
+      "logo": "🎮",
+      "image": "https://images.unsplash.com/photo-1501000003?w=800",
+      "description": "Projet Delta de jeu vidéo",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu vidéo.",
+      "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "theme": "Sci‑Fi Hologram"
+    }
+  ],
+  "realite-augmentee": [
+    {
+      "id": "ra-1",
+      "titre": "Réalité Augmentée Alpha",
+      "logo": "📱",
+      "image": "https://images.unsplash.com/photo-1501000000?w=800",
+      "description": "Projet Alpha de réalité augmentée",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de réalité augmentée.",
+      "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "theme": "Urbain AR"
+    },
+    {
+      "id": "ra-2",
+      "titre": "Réalité Augmentée Beta",
+      "logo": "📱",
+      "image": "https://images.unsplash.com/photo-1501000001?w=800",
+      "description": "Projet Beta de réalité augmentée",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de réalité augmentée.",
+      "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "theme": "Urbain AR"
+    },
+    {
+      "id": "ra-3",
+      "titre": "Réalité Augmentée Gamma",
+      "logo": "📱",
+      "image": "https://images.unsplash.com/photo-1501000002?w=800",
+      "description": "Projet Gamma de réalité augmentée",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de réalité augmentée.",
+      "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "theme": "Musée vivant"
+    },
+    {
+      "id": "ra-4",
+      "titre": "Réalité Augmentée Delta",
+      "logo": "📱",
+      "image": "https://images.unsplash.com/photo-1501000003?w=800",
+      "description": "Projet Delta de réalité augmentée",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de réalité augmentée.",
+      "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "theme": "EduTech"
+    }
+  ],
+  "installations-interactives": [
+    {
+      "id": "ii-1",
+      "titre": "Installation Interactive Alpha",
+      "logo": "🎯",
+      "image": "https://images.unsplash.com/photo-1501000000?w=800",
+      "description": "Projet Alpha de installation interactive",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de installation interactive.",
+      "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "theme": "Sensoriel"
+    },
+    {
+      "id": "ii-2",
+      "titre": "Installation Interactive Beta",
+      "logo": "🎯",
+      "image": "https://images.unsplash.com/photo-1501000001?w=800",
+      "description": "Projet Beta de installation interactive",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de installation interactive.",
+      "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "theme": "Sensoriel"
+    },
+    {
+      "id": "ii-3",
+      "titre": "Installation Interactive Gamma",
+      "logo": "🎯",
+      "image": "https://images.unsplash.com/photo-1501000002?w=800",
+      "description": "Projet Gamma de installation interactive",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de installation interactive.",
+      "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "theme": "Jeu de lumière"
+    },
+    {
+      "id": "ii-4",
+      "titre": "Installation Interactive Delta",
+      "logo": "🎯",
+      "image": "https://images.unsplash.com/photo-1501000003?w=800",
+      "description": "Projet Delta de installation interactive",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de installation interactive.",
+      "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "theme": "Tactile"
+    }
+  ],
+  "jeux-physiques": [
+    {
+      "id": "jp-1",
+      "titre": "Jeu Physique Alpha",
+      "logo": "🎲",
+      "image": "https://images.unsplash.com/photo-1501000000?w=800",
+      "description": "Projet Alpha de jeu physique",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu physique.",
+      "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "theme": "Tabletop Classic"
+    },
+    {
+      "id": "jp-2",
+      "titre": "Jeu Physique Beta",
+      "logo": "🎲",
+      "image": "https://images.unsplash.com/photo-1501000001?w=800",
+      "description": "Projet Beta de jeu physique",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu physique.",
+      "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "theme": "Tabletop Classic"
+    },
+    {
+      "id": "jp-3",
+      "titre": "Jeu Physique Gamma",
+      "logo": "🎲",
+      "image": "https://images.unsplash.com/photo-1501000002?w=800",
+      "description": "Projet Gamma de jeu physique",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu physique.",
+      "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "theme": "Escape‑Game"
+    },
+    {
+      "id": "jp-4",
+      "titre": "Jeu Physique Delta",
+      "logo": "🎲",
+      "image": "https://images.unsplash.com/photo-1501000003?w=800",
+      "description": "Projet Delta de jeu physique",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de jeu physique.",
+      "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "theme": "Plein air"
+    }
+  ],
+  "gamification": [
+    {
+      "id": "gam-1",
+      "titre": "Gamification Alpha",
+      "logo": "🏆",
+      "image": "https://images.unsplash.com/photo-1501000000?w=800",
+      "description": "Projet Alpha de gamification",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de gamification.",
+      "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "theme": "Apprentissage"
+    },
+    {
+      "id": "gam-2",
+      "titre": "Gamification Beta",
+      "logo": "🏆",
+      "image": "https://images.unsplash.com/photo-1501000001?w=800",
+      "description": "Projet Beta de gamification",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de gamification.",
+      "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "theme": "Apprentissage"
+    },
+    {
+      "id": "gam-3",
+      "titre": "Gamification Gamma",
+      "logo": "🏆",
+      "image": "https://images.unsplash.com/photo-1501000002?w=800",
+      "description": "Projet Gamma de gamification",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de gamification.",
+      "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "theme": "Fidélisation"
+    },
+    {
+      "id": "gam-4",
+      "titre": "Gamification Delta",
+      "logo": "🏆",
+      "image": "https://images.unsplash.com/photo-1501000003?w=800",
+      "description": "Projet Delta de gamification",
+      "infos": "Client: Divers • Durée: 3-6 mois • Technologies: Variées",
+      "details": "Un projet innovant dans le domaine de gamification.",
+      "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "theme": "Bien‑être"
+    }
+  ]
+}
