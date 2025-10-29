@@ -14,27 +14,11 @@
 
   <div class="menu" id="menu">
     <!-- Le casque sera créé ici par mini-audio.js -->
-    <!-- Icône horloge sous le casque -->
-    <button class="clock-icon-btn" id="clockIconBtn" onclick="openClockModal()" aria-label="Voir l'horloge">
-      🕐
-    </button>
   </div>
 
-  <!-- Modale horloge plein écran -->
-  <div class="clock-modal" id="clockModal" onclick="closeClockModal()">
-    <div class="clock-modal-content">
-      <button class="clock-modal-close" onclick="closeClockModal()" aria-label="Fermer">×</button>
-      <div class="clock-display">
-        <div class="clock-date-big" id="clockDateBig"></div>
-        <div class="clock-time-big">
-          <span class="time-part" id="hoursBig">00</span>
-          <span class="time-separator">:</span>
-          <span class="time-part" id="minutesBig">00</span>
-          <span class="time-separator">:</span>
-          <span class="time-part" id="secondsBig">00</span>
-        </div>
-      </div>
-    </div>
+  <!-- Icône horloge en haut du contenu -->
+  <div class="clock-icon-top">
+    🕐
   </div>
 
   <div class="container" id="app"></div>
