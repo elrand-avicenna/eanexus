@@ -6,6 +6,7 @@ import { renderSliderPage } from './pages/projet.js';
 import { renderCategoriePage } from './pages/categorie.js';
 import { renderTravailPage } from './pages/travail.js';
 import { renderProfilPage, renderCalendrierPage, renderContactPage } from './pages/static.js';
+import { renderCenterPage } from './pages/center.js';
 
 export function animatePageChange(renderFn) {
   const appEl = document.getElementById('app');
