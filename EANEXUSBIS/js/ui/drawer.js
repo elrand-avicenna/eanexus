@@ -72,7 +72,7 @@ export function updateMenuDrawer() {
   });
 
   // >>> AJOUT (2/2) : rendre les icônes “pinned”
-  renderPinnedIcons();
+  // renderPinnedIcons();
 }
 
 // Calque "background" (l'image) qui sert de conteneur aux pinned en absolute
