@@ -11,8 +11,15 @@ export function renderHomePage() {
   const container = document.getElementById('app');
   let projectsHTML = '';
   app.data.projetsRacine.forEach((projet, index) => {
+    const isAccueil = projet.id === 'accueil';
+    const hasCategories = ['atelier-ludique', 'atelier-exposition', 'atelier-creatif', 'atelier-pedagogique'].includes(projet.id);
+    
     projectsHTML += `
-      <div class="projet-fullscreen" data-projet-id="${projet.id}" data-index="${index}" style="${projet.background ? `background:${projet.background};` : ''}">
+      <div class="projet-fullscreen" 
+           data-projet-id="${projet.id}" 
+           data-index="${index}" 
+           style="${projet.background ? `background:${projet.background};` : ''}"
+           ${hasCategories ? `onclick="window.navigateTo('projet:${projet.id}')"` : ''}>
         <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
              alt="${projet.titre}" class="projet-background" />
         <div class="projet-overlay"></div>
@@ -21,10 +28,10 @@ export function renderHomePage() {
           <div class="projet-logo">${projet.logo || ''}</div>
           <div class="projet-titre">${projet.titre}</div>
           <div class="projet-description">${projet.description || ''}</div>
-          <div class="projet-cta">${projet.id === 'bienvenue' ? 'Scroll ↓' : 'Explorer →'}</div>
+          ${hasCategories ? `<div class="projet-cta">Explorer →</div>` : ''}
         </div>
         ${index === 0 ? `
-          <div class="scroll-hint" style="position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
+          <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
             <span class="scroll-hint-icon">↓</span>
             <span class="scroll-hint-text">Scroll</span>
           </div>` : ''}
@@ -41,20 +48,12 @@ export function renderHomePage() {
 
   const homePage = document.getElementById('homePage');
   const dots = dotsWrap ? dotsWrap.querySelectorAll('.scroll-dot') : [];
-  document.querySelectorAll('.projet-fullscreen').forEach(projet => {
-    projet.addEventListener('click', () => {
-      const id = projet.dataset.projetId;
-      if (id === 'bienvenue') return;
-      if (id === 'profil') return window.navigateTo('profil');
-      if (id === 'calendrier') return window.navigateTo('calendrier');
-      if (id === 'contact') return window.navigateTo('contact');
-      return window.navigateTo(`projet:${id}`);
-    });
-  });
+  
   dots.forEach(dot => dot.addEventListener('click', () => {
     const idx = parseInt(dot.dataset.index, 10);
     document.querySelectorAll('.projet-fullscreen')[idx].scrollIntoView({ behavior: 'smooth' });
   }));
+  
   if (homePage && dotsWrap) {
     homePage.addEventListener('scroll', () => {
       const currentIndex = Math.round(homePage.scrollTop / window.innerHeight);
