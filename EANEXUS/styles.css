@@ -2084,74 +2084,201 @@ html {
 }
 
 /* ========================================
-   Premium CTA Button (Other Blocs)
+   NEXUS CTA Button - Original Design
    ======================================== */
 
 .projet-cta-premium {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 36px;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
   margin-top: 30px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(102, 126, 234, 0.5);
-  border-radius: 50px;
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  font-family: 'Courier New', monospace;
 }
 
-.projet-cta-premium::before {
+.cta-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Hexagon Container */
+.cta-hexagon {
+  position: relative;
+  width: 180px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  backdrop-filter: blur(10px);
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(102, 126, 234, 0.4);
+}
+
+.projet-cta-premium:hover .cta-hexagon {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%);
+  border-color: rgba(102, 126, 234, 0.8);
+  box-shadow: 
+    0 0 30px rgba(102, 126, 234, 0.5),
+    inset 0 0 20px rgba(102, 126, 234, 0.2);
+  transform: translateX(-8px);
+}
+
+/* Scan Lines Effect */
+.cta-hexagon::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(102, 126, 234, 0.05) 0px,
+    transparent 2px,
+    transparent 4px
+  );
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  animation: scanlines 3s linear infinite;
   opacity: 0;
   transition: opacity 0.4s ease;
-  z-index: 0;
 }
 
-.projet-cta-premium:hover::before {
+.projet-cta-premium:hover .cta-hexagon::before {
   opacity: 1;
 }
 
-.projet-cta-premium:hover {
-  transform: translateY(-4px) scale(1.05);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5), 0 0 40px rgba(102, 126, 234, 0.3);
+@keyframes scanlines {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
-.projet-cta-premium:active {
-  transform: translateY(-2px) scale(1.02);
-}
-
+/* Text */
 .cta-text {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(102, 126, 234, 0.8);
+  transition: var(--transition);
 }
 
-.cta-icon {
-  position: relative;
-  z-index: 1;
+.projet-cta-premium:hover .cta-text {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(102, 126, 234, 1), 0 0 30px rgba(102, 126, 234, 0.6);
+  letter-spacing: 4px;
+}
+
+/* Arrow Circle */
+.cta-arrow-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(102, 126, 234, 0.6);
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease;
+  justify-content: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.projet-cta-premium:hover .cta-icon {
-  transform: translateX(5px);
+.projet-cta-premium:hover .cta-arrow-circle {
+  background: rgba(102, 126, 234, 0.6);
+  border-color: #667eea;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+  transform: translateX(10px) rotate(360deg);
 }
 
-.cta-icon svg {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+/* Spinning border */
+.cta-arrow-circle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: rgba(102, 126, 234, 0.8);
+  border-right-color: rgba(102, 126, 234, 0.8);
+  animation: spin 2s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.projet-cta-premium:hover .cta-arrow-circle::before {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.cta-arrow-icon {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+  transition: var(--transition);
+  filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.8));
+}
+
+.projet-cta-premium:hover .cta-arrow-icon {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+}
+
+/* Corner brackets */
+.cta-brackets {
+  position: absolute;
+  inset: -10px;
+  pointer-events: none;
+}
+
+.cta-bracket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(102, 126, 234, 0.4);
+  transition: all 0.4s ease;
+}
+
+.cta-bracket.tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cta-bracket.tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cta-bracket.bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.cta-bracket.br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+.projet-cta-premium:hover .cta-bracket {
+  border-color: rgba(102, 126, 234, 1);
+  width: 30px;
+  height: 30px;
 }
 
 @keyframes pulse {
