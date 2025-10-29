@@ -6,9 +6,9 @@ import { renderSliderPage } from './pages/projet.js';
 import { renderCategoriePage } from './pages/categorie.js';
 import { renderTravailPage } from './pages/travail.js';
 import { renderProfilPage, renderCalendrierPage, renderContactPage } from './pages/static.js';
-import { renderCenterPage } from './pages/center.js';
-import { renderStadiumPage } from './pages/stadium.js';
-import { renderLaboPage } from './pages/labo.js';
+import { renderStadiumPage } from './pages/stadium-new.js';
+import { renderLaboPage } from './pages/labo-new.js';
+import { renderCenterPage } from './pages/center-new.js';
 import { renderHubPage } from './pages/hub.js';
 
 export function animatePageChange(renderFn) {
