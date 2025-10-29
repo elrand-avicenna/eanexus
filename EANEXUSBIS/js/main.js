@@ -44,7 +44,7 @@ function initClock() {
 
 window.addEventListener('DOMContentLoaded', async () => {
   hydrateUI();
-  ensureDrawerCloseButton();
+  initAccordionMenu();       // Initialize accordion menu instead of drawer
   initFilterMenu();          // Initialize filter menu
   ensureMiniAudio();         // crée le casque
   initClock();               // Initialize real-time clock
