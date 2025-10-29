@@ -71,18 +71,20 @@ class VideoTriggerSystem {
             // 2. Afficher le container vidéo au premier plan
             this.containerVideo.classList.add('active');
             
-            // 3. Lancer l'animation de descente du portable
+            // 3. Supprimer les animations qui pourraient interférer
             this.handMobile.classList.remove('idle');
+            
+            // 4. Lancer l'animation de descente du portable
             this.handMobile.classList.add('descending');
             
-            // 4. Lancer la vidéo
+            // 5. Lancer la vidéo
             this.video.play().then(() => {
                 console.log('✅ Vidéo lancée avec son');
             }).catch(err => {
                 console.error('Erreur lecture vidéo:', err);
             });
 
-        }, 500);
+        }, 100);
     }
 
     reset() {
