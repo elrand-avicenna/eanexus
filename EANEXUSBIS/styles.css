@@ -3954,3 +3954,34 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(-10px); }
 }
+
+/* ========================================
+   CENTER PAGE WITH SLIDER
+   ======================================== */
+
+.center-full-content {
+  width: 100%;
+  max-width: 1400px;
+  padding: 40px 20px;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+.center-section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.center-section-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
