@@ -45,6 +45,7 @@ export function navigateTo(route) {
       case 'profil': renderProfilPage(); break;
       case 'calendrier': renderCalendrierPage(); break;
       case 'contact': renderContactPage(); break;
+      case 'center': renderCenterPage(); break;
       default:
         console.warn('Route inconnue:', route); renderHomePage();
     }
