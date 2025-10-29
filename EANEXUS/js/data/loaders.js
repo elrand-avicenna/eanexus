@@ -25,21 +25,24 @@ export async function loadData() {
 
     app.data.categories = await categoriesRes.json();
 
-    const [lud, expo, crea] = await Promise.all([
-      travauxLudRes.json(), travauxExpoRes.json(), travauxCreaRes.json()
+    const [lud, expo, crea, pedag] = await Promise.all([
+      travauxLudRes.json(), travauxExpoRes.json(), travauxCreaRes.json(), travauxPedagRes.json()
     ]);
-    app.data.travaux = { ...lud, ...expo, ...crea };
+    app.data.travaux = { ...lud, ...expo, ...crea, ...pedag };
+    
+    // Load NPCs
+    const npcsJson = await npcsRes.json();
+    app.data.npcs = npcsJson.npcs || [];
 
-    // Menu : plus de menu.json -> on prend la config locale, sinon fallback projets
+    // Menu : configuration avec NEXUS CENTER
     if (Array.isArray(MENU_ITEMS) && MENU_ITEMS.length) {
       app.data.menuGlobal = MENU_ITEMS.slice();
     } else {
       app.data.menuGlobal = [
         { icone: '🏠', titre: 'Accueil', route: 'home', zone: 'header' },
-        ...app.data.projetsRacine.map(p => ({ icone: p.logo || '✨', titre: p.titre, route: `projet:${p.id}`, zone: 'list' })),
-        { icone: '👤', titre: 'Profil', route: 'profil', zone: 'list' },
-        { icone: '🗓️', titre: 'Calendrier', route: 'calendrier', zone: 'footer' },
-        { icone: '✉️', titre: 'Contact', route: 'contact', zone: 'footer' }
+        { icone: '👤', titre: 'COIN DE L\'AUTEUR', route: 'profil', zone: 'list' },
+        { icone: '🗓️', titre: 'NEXUS CALENDAR', route: 'calendrier', zone: 'list' },
+        { icone: '🏛️', titre: 'NEXUS CENTER', route: 'center', zone: 'list' }
       ];
     }
 
