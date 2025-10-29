@@ -121,14 +121,34 @@ function renderFilterDrawer() {
 function renderThematicFilters(projetId) {
   if (!projetId) return '';
 
-  const themes = getThemesForProject(projetId);
-  if (!themes.length) return '';
+  // Get all categories for this project
+  const categories = app.data.categories[projetId] || [];
+  const currentCategorieId = app.state.currentCategorie;
+  
+  // Get travaux for current category
+  const travaux = app.data.travaux[currentCategorieId] || [];
+  
+  // Extract unique themes from travaux
+  const themes = new Set();
+  travaux.forEach(travail => {
+    if (travail.theme) {
+      // Split by comma in case there are multiple themes
+      const themesList = travail.theme.split(',').map(t => t.trim());
+      themesList.forEach(theme => {
+        if (theme) themes.add(theme);
+      });
+    }
+  });
+
+  const themesArray = Array.from(themes).sort();
+  
+  if (themesArray.length === 0) return '';
 
   return `
     <div class="filter-section">
       <label class="filter-label">Thématiques</label>
       <div class="filter-themes">
-        ${themes.map(theme => `
+        ${themesArray.map(theme => `
           <button 
             class="filter-theme-btn ${(app.state.filters?.theme || []).includes(theme) ? 'active' : ''}" 
             onclick="toggleTheme('${theme}')"
