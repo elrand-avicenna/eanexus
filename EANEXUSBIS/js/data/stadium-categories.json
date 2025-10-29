@@ -1,0 +1,78 @@
+{
+  "stadium-evenements": [
+    {
+      "id": "evt-card-1",
+      "titre": "Tournois Gaming",
+      "description": "Participez aux tournois de jeux vidéo",
+      "image": "https://images.unsplash.com/photo-1760900954419-89f057caf7f2?w=800",
+      "couleur": "#e74c3c"
+    },
+    {
+      "id": "evt-card-2",
+      "titre": "Expositions Art",
+      "description": "Découvrez les expositions d'art numérique",
+      "image": "https://images.unsplash.com/photo-1759078634183-7b7ecc68ccc9?w=800",
+      "couleur": "#9b59b6"
+    },
+    {
+      "id": "evt-card-3",
+      "titre": "Workshops",
+      "description": "Ateliers créatifs et techniques",
+      "image": "https://images.unsplash.com/photo-1758611973926-23368a0b2034?w=800",
+      "couleur": "#3498db"
+    },
+    {
+      "id": "evt-card-4",
+      "titre": "Conférences",
+      "description": "Talks et conférences tech",
+      "image": "https://images.unsplash.com/photo-1758874384073-fe289ced95af?w=800",
+      "couleur": "#1abc9c"
+    }
+  ],
+  "stadium-calendar": [
+    {
+      "id": "cal-card-1",
+      "titre": "Vue Jour",
+      "description": "Événements du jour",
+      "image": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=800",
+      "couleur": "#f39c12"
+    },
+    {
+      "id": "cal-card-2",
+      "titre": "Vue Semaine",
+      "description": "Planning hebdomadaire",
+      "image": "https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=800",
+      "couleur": "#e91e63"
+    },
+    {
+      "id": "cal-card-3",
+      "titre": "Vue Mois",
+      "description": "Calendrier mensuel complet",
+      "image": "https://images.unsplash.com/photo-1761002278041-509b63db5c58?w=800",
+      "couleur": "#00bcd4"
+    }
+  ],
+  "stadium-actualites": [
+    {
+      "id": "news-card-1",
+      "titre": "Partenariats",
+      "description": "Nouveaux partenaires du NEXUS",
+      "image": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=800",
+      "couleur": "#667eea"
+    },
+    {
+      "id": "news-card-2",
+      "titre": "Équipements",
+      "description": "Mises à jour d'équipements",
+      "image": "https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=800",
+      "couleur": "#764ba2"
+    },
+    {
+      "id": "news-card-3",
+      "titre": "Programmes",
+      "description": "Nouveaux programmes et formations",
+      "image": "https://images.unsplash.com/photo-1758611973926-23368a0b2034?w=800",
+      "couleur": "#f093fb"
+    }
+  ]
+}
