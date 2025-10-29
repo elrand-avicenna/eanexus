@@ -4447,3 +4447,60 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
   margin-bottom: 40px;
 }
 
+
+/* ========================================
+   LABO FLOORS COMPACT GRID
+   ======================================== */
+
+.labo-floors-grid-compact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+  max-width: 600px;
+}
+
+.labo-floor-card-compact {
+  background: rgba(26, 26, 36, 0.8);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.labo-floor-card-compact:hover {
+  background: rgba(102, 126, 234, 0.3);
+  border-color: var(--accent-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+}
+
+.floor-compact-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.floor-compact-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.floor-compact-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .labo-floors-grid-compact {
+    grid-template-columns: 1fr;
+  }
+}
+
