@@ -1,0 +1,52 @@
+{
+  "center-habitants": [
+    {
+      "id": "npc-card-1",
+      "titre": "Cipher",
+      "description": "Maître des énigmes",
+      "image": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=800",
+      "couleur": "#667eea",
+      "npcId": "cipher"
+    },
+    {
+      "id": "npc-card-2",
+      "titre": "Nova",
+      "description": "Innovateur tech",
+      "image": "https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=800",
+      "couleur": "#f093fb",
+      "npcId": "nova"
+    },
+    {
+      "id": "npc-card-3",
+      "titre": "Sage",
+      "description": "Gardien des archives",
+      "image": "https://images.unsplash.com/photo-1758611973926-23368a0b2034?w=800",
+      "couleur": "#4facfe",
+      "npcId": "sage"
+    },
+    {
+      "id": "npc-card-4",
+      "titre": "Pixel",
+      "description": "Champion gaming",
+      "image": "https://images.unsplash.com/photo-1760900954419-89f057caf7f2?w=800",
+      "couleur": "#fa709a",
+      "npcId": "pixel"
+    }
+  ],
+  "center-lounge": [
+    {
+      "id": "lounge-card-1",
+      "titre": "Salle de Discussion",
+      "description": "Dialoguez avec les NPCs",
+      "image": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=800",
+      "couleur": "#667eea"
+    },
+    {
+      "id": "lounge-card-2",
+      "titre": "Arène de Duel",
+      "description": "Défiez les NPCs en combat",
+      "image": "https://images.unsplash.com/photo-1761002278041-509b63db5c58?w=800",
+      "couleur": "#e74c3c"
+    }
+  ]
+}
