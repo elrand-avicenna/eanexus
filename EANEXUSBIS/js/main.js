@@ -49,7 +49,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   ensureMiniAudio();         // crée le casque
   initClock();               // Initialize real-time clock
   await loadData();          // charge JSON (dont playlist + NPCs + Stadium)
-  updateMenuDrawer();        // ARM le menu une fois data récupérées
   renderHomePage();
 
   // Si l’utilisateur a cliqué avant que la playlist n’arrive
