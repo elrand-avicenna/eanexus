@@ -1,0 +1,128 @@
+/* ===== Écran d'accès autorisé ===== */
+.access-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url("../img/acces-wallpaper.jpg") no-repeat;
+    background-size: cover;
+    background-position: center; */
+    height: 100%;
+    width: 100%;
+    /* border-radius: 15px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.5s ease;
+    z-index: 99999999999;
+    border: 2px solid orange;
+}
+
+.access-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.access-screen-content {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+        display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* .access-screen-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    background: linear-gradient(45deg, var(--access-color, #4ecdc4), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 25px var(--access-color, #4ecdc4);
+    animation: accessTitleGlow 2s ease-in-out infinite alternate;
+} */
+
+/* .access-screen-subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.8);
+} */
+
+.access-screen-icon1 {
+    /* font-size: 72px; */
+    height: 100px;
+    width: 100px;
+    /* margin-bottom: 25px; */
+    /* animation: accessIconFloat 3s ease-in-out infinite; */
+    /* filter: drop-shadow(0 0 15px var(--access-color, #4ecdc4)); */
+    background: url("../img/anim.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+}
+
+.access-screen-icon2 {
+    /* font-size: 72px; */
+    height: 100px;
+    width: 100px;
+    /* margin-bottom: 25px; */
+    /* animation: accessIconFloat 3s ease-in-out infinite; */
+    /* filter: drop-shadow(0 0 15px var(--access-color, #4ecdc4)); */
+    background: url("../img/accueil.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+}
+
+.access-screen-icon3 {
+    /* font-size: 72px; */
+    height: 100px;
+    width: 100px;
+    /* margin-bottom: 25px; */
+    /* animation: accessIconFloat 3s ease-in-out infinite; */
+    /* filter: drop-shadow(0 0 15px var(--access-color, #4ecdc4)); */
+    background: url("../img/hourglass.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+}
+
+.access-screen-status {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid var(--access-color, #4ecdc4);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes accessTitleGlow {
+    0% {
+        text-shadow: 0 0 25px var(--access-color, #4ecdc4);
+    }
+    100% {
+        text-shadow: 
+            0 0 35px var(--access-color, #4ecdc4),
+            0 0 45px var(--access-color, #4ecdc4);
+    }
+}
+
+@keyframes accessIconFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
