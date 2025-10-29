@@ -1,0 +1,32 @@
+{
+  "audios": [
+    {
+      "id": "hg-theme",
+      "titre": "Hourglass Theme",
+      "artiste": "EA LAB",
+      "album": "Nexus OST",
+      "cover": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=200&auto=format&fit=crop",
+      "src": "medias/sounds/test.mp3",
+      "duree": 126
+    },
+    {
+      "id": "exploration",
+      "titre": "Exploration",
+      "artiste": "EA LAB",
+      "album": "Nexus OST",
+      "cover": "https://images.unsplash.com/photo-1520975916090-3105956dac38?w=200&auto=format&fit=crop",
+      "src": "medias/sounds/test2.wav",
+      "duree": 184
+    },
+        {
+      "id": "expo",
+      "titre": "Expo",
+      "artiste": "EA LAB",
+      "album": "Nexus OST",
+      "cover": "https://images.unsplash.com/photo-1520975916090-3105956dac38?w=200&auto=format&fit=crop",
+      "src": "medias/sounds/test3.wav",
+      "duree": 450
+    }
+  ],
+  "options": { "lectureAuto": false, "loop": false }
+}

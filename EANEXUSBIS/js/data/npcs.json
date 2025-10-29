@@ -1,0 +1,124 @@
+{
+  "npcs": [
+    {
+      "id": "cipher",
+      "nom": "Cipher",
+      "avatar": "🎭",
+      "titre": "L'Énigmatique",
+      "bio": "Maître des mystères et gardien des secrets. Cipher parle en énigmes et adore défier les visiteurs avec des puzzles complexes.",
+      "specialite": "Énigmes & Puzzles",
+      "niveau": 8,
+      "couleur": "#9b59b6",
+      "personality": "mystérieux",
+      "greeting": "Ah, un nouveau visiteur... Saurez-vous déchiffrer mes énigmes?"
+    },
+    {
+      "id": "nova",
+      "nom": "Nova",
+      "avatar": "⚡",
+      "titre": "L'Innovatrice",
+      "bio": "Créatrice de technologies futuristes et pionnière du design. Nova ne dort jamais et a toujours une nouvelle idée en tête.",
+      "specialite": "Tech & Innovation",
+      "niveau": 9,
+      "couleur": "#3498db",
+      "personality": "énergique",
+      "greeting": "Hey! J'ai justement fini un nouveau proto. Tu veux voir?"
+    },
+    {
+      "id": "sage",
+      "nom": "Sage",
+      "avatar": "📚",
+      "titre": "Le Bibliothécaire",
+      "bio": "Gardien de la connaissance et historien du NEXUS. Sage connaît toutes les histoires et légendes de ce monde.",
+      "specialite": "Histoire & Sagesse",
+      "niveau": 10,
+      "couleur": "#2ecc71",
+      "personality": "sage",
+      "greeting": "Bienvenue, jeune explorateur. Que puis-je vous enseigner aujourd'hui?"
+    },
+    {
+      "id": "pixel",
+      "nom": "Pixel",
+      "avatar": "🎮",
+      "titre": "Le Gamer",
+      "bio": "Champion incontesté des jeux vidéo. Pixel vit pour la compétition et les défis impossibles.",
+      "specialite": "Gaming & Compétition",
+      "niveau": 7,
+      "couleur": "#e74c3c",
+      "personality": "compétitif",
+      "greeting": "GG! Tu veux faire un duel? Je te préviens, je suis imbattable!"
+    },
+    {
+      "id": "melody",
+      "nom": "Melody",
+      "avatar": "🎵",
+      "titre": "La Musicienne",
+      "bio": "Compositrice de bandes-son épiques. Melody crée l'ambiance parfaite pour chaque moment.",
+      "specialite": "Musique & Ambiance",
+      "niveau": 8,
+      "couleur": "#e67e22",
+      "personality": "artistique",
+      "greeting": "Salut! Tu veux que je te compose quelque chose de spécial?"
+    },
+    {
+      "id": "glitch",
+      "nom": "Glitch",
+      "avatar": "👾",
+      "titre": "Le Hacker",
+      "bio": "Expert en sécurité et maître des systèmes. Glitch peut accéder à n'importe quel réseau... ou presque.",
+      "specialite": "Cybersécurité",
+      "niveau": 9,
+      "couleur": "#1abc9c",
+      "personality": "mystérieux",
+      "greeting": "01001000 01101001... Ah pardon! Salut, je testais un nouveau protocole."
+    },
+    {
+      "id": "aurora",
+      "nom": "Aurora",
+      "avatar": "🌸",
+      "titre": "La Jardinière",
+      "bio": "Créatrice de mondes naturels et d'écosystèmes numériques. Aurora apporte la vie partout où elle passe.",
+      "specialite": "Nature & Écologie",
+      "niveau": 7,
+      "couleur": "#f39c12",
+      "personality": "calme",
+      "greeting": "Bienvenue dans mon jardin. Prends ton temps, il n'y a pas d'urgence ici."
+    },
+    {
+      "id": "volt",
+      "nom": "Volt",
+      "avatar": "⚙️",
+      "titre": "L'Ingénieur",
+      "bio": "Mécanicien et architecte du NEXUS. Volt peut réparer n'importe quoi et construire l'impossible.",
+      "specialite": "Ingénierie & Construction",
+      "niveau": 8,
+      "couleur": "#95a5a6",
+      "personality": "pragmatique",
+      "greeting": "Tu as cassé quelque chose? Ou tu veux construire un truc ensemble?"
+    },
+    {
+      "id": "echo",
+      "nom": "Echo",
+      "avatar": "🔮",
+      "titre": "La Voyante",
+      "bio": "Médium qui perçoit les possibilités futures. Echo peut entrevoir ce qui pourrait arriver... si vous osez demander.",
+      "specialite": "Divination & Intuition",
+      "niveau": 10,
+      "couleur": "#8e44ad",
+      "personality": "énigmatique",
+      "greeting": "Je vous attendais... Les étoiles m'ont parlé de votre venue."
+    },
+    {
+      "id": "blaze",
+      "nom": "Blaze",
+      "avatar": "🔥",
+      "titre": "Le Guerrier",
+      "bio": "Protecteur du NEXUS et champion des duels. Blaze ne recule jamais devant un défi.",
+      "specialite": "Combat & Stratégie",
+      "niveau": 9,
+      "couleur": "#c0392b",
+      "personality": "courageux",
+      "greeting": "Un adversaire! Enfin! Prêt pour un combat épique?"
+    }
+  ]
+}
