@@ -50,6 +50,9 @@
   /* Permettre l'animation de descente même en mobile */
   .hand-mobile.descending {
     animation: handDescendMobile 3s ease-in-out forwards !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    overflow: visible !important;
   }
 
   /* Animation de descente spécifique pour mobile */
@@ -59,7 +62,7 @@
       opacity: 1;
     }
     100% {
-      transform: translateY(150vh);
+      transform: translateY(200vh);
       opacity: 0;
     }
   }
