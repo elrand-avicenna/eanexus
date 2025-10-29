@@ -16,34 +16,50 @@ export function renderHomePage() {
     const hasCategories = ['atelier-ludique', 'atelier-exposition', 'atelier-creatif', 'atelier-pedagogique'].includes(projet.id);
     
     if (isHub) {
-      // NEXUS HUB with 3 sub-sections
+      // NEXUS HUB with premium design
       projectsHTML += `
-        <div class="projet-fullscreen" 
+        <div class="projet-fullscreen hub-fullscreen" 
              data-projet-id="${projet.id}" 
              data-index="${index}" 
              style="${projet.background ? `background:${projet.background};` : ''}">
           <img src="${projet.image || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200'}"
                alt="${projet.titre}" class="projet-background" />
-          <div class="projet-overlay"></div>
+          <div class="projet-overlay hub-overlay"></div>
           <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
-          <div class="projet-content hub-content">
-            <div class="projet-logo">${projet.logo || ''}</div>
-            <div class="projet-titre">${projet.titre}</div>
-            <div class="projet-description">${projet.description || ''}</div>
-            
-            <div class="hub-subsections">
-              ${projet.subSections.map(sub => `
-                <div class="hub-card" onclick="window.navigateTo('${sub.route}')" data-testid="hub-${sub.id}">
-                  <div class="hub-card-icon">${sub.logo}</div>
-                  <div class="hub-card-titre">${sub.titre}</div>
-                  <div class="hub-card-description">${sub.description}</div>
-                </div>
-              `).join('')}
+          
+          <!-- Hub Header -->
+          <div class="hub-header">
+            <div class="hub-icon-wrapper">
+              <div class="hub-icon-glow"></div>
+              <div class="hub-icon">${projet.logo || '🔷'}</div>
             </div>
+            <h1 class="hub-titre">${projet.titre}</h1>
+            <p class="hub-subtitle">${projet.description || ''}</p>
+            <div class="hub-divider"></div>
+          </div>
+          
+          <!-- Hub Cards Grid -->
+          <div class="hub-grid">
+            ${projet.subSections.map((sub, idx) => `
+              <div class="hub-card-premium" 
+                   onclick="window.navigateTo('${sub.route}')" 
+                   data-testid="hub-${sub.id}"
+                   style="animation-delay: ${idx * 0.1}s">
+                <div class="hub-card-border"></div>
+                <div class="hub-card-glow" style="background: ${sub.couleur}33"></div>
+                <div class="hub-card-number">${String(idx + 1).padStart(2, '0')}</div>
+                <div class="hub-card-icon-premium">${sub.logo}</div>
+                <h3 class="hub-card-titre-premium">${sub.titre}</h3>
+                <p class="hub-card-desc-premium">${sub.description}</p>
+                <div class="hub-card-arrow">
+                  <span>→</span>
+                </div>
+              </div>
+            `).join('')}
           </div>
         </div>`;
     } else {
-      // Regular projet
+      // Regular projet with improved CTA
       projectsHTML += `
         <div class="projet-fullscreen" 
              data-projet-id="${projet.id}" 
@@ -58,7 +74,16 @@ export function renderHomePage() {
             <div class="projet-logo">${projet.logo || ''}</div>
             <div class="projet-titre">${projet.titre}</div>
             <div class="projet-description">${projet.description || ''}</div>
-            ${hasCategories ? `<div class="projet-cta">Explorer →</div>` : ''}
+            ${hasCategories ? `
+              <button class="projet-cta-premium">
+                <span class="cta-text">Accéder</span>
+                <span class="cta-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+            ` : ''}
           </div>
           ${index === 0 ? `
             <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
