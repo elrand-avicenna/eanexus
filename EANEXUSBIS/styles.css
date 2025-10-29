@@ -99,6 +99,9 @@ html {
             font-size: 16px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .filter-burger {
