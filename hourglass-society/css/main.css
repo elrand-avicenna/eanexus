@@ -16,8 +16,8 @@ body {
     align-items: center;
     color: #fff;
     overflow: hidden;
-}
     position: relative;
+}
 
 /* Container vidéo */
 .container-video {
