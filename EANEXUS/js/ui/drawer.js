@@ -59,6 +59,7 @@ export function updateMenuDrawer() {
     const el = document.createElement('button');
     el.className = 'menu-item';
     el.type = 'button';
+    el.setAttribute('data-zone', item.zone);
     el.innerHTML = `
       <div class="menu-item-icone" aria-hidden="true">${iconHTML(item)}</div>
       <div class="menu-item-titre">${item.titre}</div>
