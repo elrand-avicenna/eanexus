@@ -367,6 +367,24 @@ class DualHolesSystem {
         }, 500);
     }
 
+    keepCircleInRightHole() {
+        // Positionner le cercle au centre du trou droite
+        const screenRect = document.querySelector('.screen').getBoundingClientRect();
+        const holeRect = this.rightHole.getBoundingClientRect();
+        
+        const holeCenterX = holeRect.left + holeRect.width / 2 - screenRect.left;
+        const holeCenterY = holeRect.top + holeRect.height / 2 - screenRect.top;
+        
+        this.dragCircle.style.transition = 'all 0.3s ease';
+        this.dragCircle.style.left = `${holeCenterX - 75}px`;
+        this.dragCircle.style.top = `${holeCenterY - 75}px`;
+        this.dragCircle.style.transform = 'scale(1)';
+        
+        setTimeout(() => {
+            this.dragCircle.style.transition = '';
+        }, 300);
+    }
+
     // Gestion de la vidéo
     playVideo() {
         if (this.videoBackground) {
