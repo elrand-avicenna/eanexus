@@ -71,6 +71,36 @@ class DualHolesSystem {
         parent.appendChild(this.dragCircle);
     }
 
+    createVideoBackground() {
+        // Créer l'élément vidéo pour le background
+        this.videoBackground = document.createElement('video');
+        this.videoBackground.id = 'video-background';
+        this.videoBackground.style.position = 'fixed';
+        this.videoBackground.style.top = '0';
+        this.videoBackground.style.left = '0';
+        this.videoBackground.style.width = '100vw';
+        this.videoBackground.style.height = '100vh';
+        this.videoBackground.style.objectFit = 'cover';
+        this.videoBackground.style.zIndex = '-1';
+        this.videoBackground.style.opacity = '0.7';
+        this.videoBackground.style.transition = 'opacity 0.5s ease';
+        this.videoBackground.muted = false;
+        this.videoBackground.loop = true;
+        
+        // Ajouter la source vidéo
+        const source = document.createElement('source');
+        source.src = 'img/Perso-Siteweb.mp4';
+        source.type = 'video/mp4';
+        this.videoBackground.appendChild(source);
+        
+        // Insérer la vidéo au début du body
+        document.body.insertBefore(this.videoBackground, document.body.firstChild);
+        
+        // Vidéo en pause par défaut
+        this.videoBackground.pause();
+        console.log('🎬 Vidéo background créée (en pause)');
+    }
+
     createLeftHole(parent) {
         this.leftHole = document.createElement('div');
         this.leftHole.className = 'target-hole-left';
