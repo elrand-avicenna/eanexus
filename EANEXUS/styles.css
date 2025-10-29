@@ -1861,10 +1861,14 @@ html {
   z-index: 1;
 }
 
-.hub-overlay {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.7) 100%);
-  pointer-events: none;
+.hub-fullscreen .projet-overlay {
   z-index: 2;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%);
+  pointer-events: none;
+}
+
+.hub-fullscreen .projet-number {
+  z-index: 5;
 }
 
 /* Hub Header */
