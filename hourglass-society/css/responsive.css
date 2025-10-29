@@ -12,6 +12,17 @@
     width: 100vw;
     overflow: hidden;
   }
+  /* Container vidéo doit toujours fonctionner en mobile */
+  .container-video {
+    position: fixed !important;
+    z-index: -1;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  .container-video.active {
+    z-index: 99999999999999 !important;
+  }
 
   /* On neutralise l'image de la main et les animations associées */
   .hand-mobile {
