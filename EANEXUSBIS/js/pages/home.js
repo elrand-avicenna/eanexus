@@ -10,13 +10,17 @@ export function renderHomePage() {
 
   const container = document.getElementById('app');
   let projectsHTML = '';
+  
+  // Render projects in order: Accueil → Hub → Stadium → Labo → Center
   app.data.projetsRacine.forEach((projet, index) => {
     const isAccueil = projet.id === 'accueil';
     const isHub = projet.id === 'nexus-hub';
-    const hasCategories = ['atelier-ludique', 'atelier-exposition', 'atelier-creatif', 'atelier-pedagogique'].includes(projet.id);
+    const isStadium = projet.id === 'nexus-stadium';
+    const isLabo = projet.id === 'nexus-labo';
+    const isCenter = projet.id === 'nexus-center';
     
     if (isHub) {
-      // NEXUS HUB - Design Simple et Propre
+      // NEXUS HUB - Central navigation hub
       projectsHTML += `
         <div class="projet-fullscreen" 
              data-projet-id="${projet.id}" 
@@ -40,16 +44,44 @@ export function renderHomePage() {
                 </div>
               `).join('')}
             </div>
+            <div class="projet-cta" onclick="window.navigateTo('hub')" data-testid="hub-detail-cta">Voir le plan du site →</div>
           </div>
         </div>`;
-    } else {
-      // Regular projet with improved CTA
+    } else if (isLabo) {
+      // NEXUS LABO - Show floors preview
       projectsHTML += `
         <div class="projet-fullscreen" 
              data-projet-id="${projet.id}" 
              data-index="${index}" 
-             style="${projet.background ? `background:${projet.background};` : ''}"
-             ${hasCategories ? `onclick="window.navigateTo('projet:${projet.id}')"` : ''}>
+             onclick="window.navigateTo('labo')"
+             style="${projet.background ? `background:${projet.background};` : ''}">
+          <img src="${projet.image || 'https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=1200'}"
+               alt="${projet.titre}" class="projet-background" />
+          <div class="projet-overlay"></div>
+          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
+          <div class="projet-content">
+            <div class="projet-logo">${projet.logo || ''}</div>
+            <div class="projet-titre">${projet.titre}</div>
+            <div class="projet-description">${projet.description || ''}</div>
+            <div class="labo-floors-preview">
+              ${projet.subSections.slice(0, 4).map((floor, i) => `
+                <div class="labo-floor-badge" data-testid="labo-floor-${i + 1}">
+                  <span class="floor-badge-icon">${floor.logo}</span>
+                  <span class="floor-badge-text">Étage ${i + 1}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div class="projet-cta">Explorer le Labo →</div>
+          </div>
+        </div>`;
+    } else if (isStadium || isCenter) {
+      // STADIUM & CENTER - Clickable cards
+      projectsHTML += `
+        <div class="projet-fullscreen" 
+             data-projet-id="${projet.id}" 
+             data-index="${index}" 
+             onclick="window.navigateTo('${projet.id.replace('nexus-', '')}')"
+             style="${projet.background ? `background:${projet.background};` : ''}">
           <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
                alt="${projet.titre}" class="projet-background" />
           <div class="projet-overlay"></div>
@@ -58,7 +90,24 @@ export function renderHomePage() {
             <div class="projet-logo">${projet.logo || ''}</div>
             <div class="projet-titre">${projet.titre}</div>
             <div class="projet-description">${projet.description || ''}</div>
-            ${hasCategories ? `<div class="projet-cta">Explorer →</div>` : ''}
+            <div class="projet-cta">Explorer →</div>
+          </div>
+        </div>`;
+    } else {
+      // ACCUEIL or other projects
+      projectsHTML += `
+        <div class="projet-fullscreen" 
+             data-projet-id="${projet.id}" 
+             data-index="${index}" 
+             style="${projet.background ? `background:${projet.background};` : ''}">
+          <img src="${projet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'}"
+               alt="${projet.titre}" class="projet-background" />
+          <div class="projet-overlay"></div>
+          <div class="projet-number">${String(index + 1).padStart(2, '0')}</div>
+          <div class="projet-content">
+            <div class="projet-logo">${projet.logo || ''}</div>
+            <div class="projet-titre">${projet.titre}</div>
+            <div class="projet-description">${projet.description || ''}</div>
           </div>
           ${index === 0 ? `
             <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
