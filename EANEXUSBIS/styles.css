@@ -4025,22 +4025,16 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
 
 .accordion-menu {
   position: fixed;
-  top: 60px;
+  top: 70px;
   left: 20px;
   z-index: 998;
-  display: flex;
+  display: none;
   flex-direction: column;
-  gap: 0;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  gap: 8px;
 }
 
 .accordion-menu.open {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
+  display: flex;
 }
 
 .accordion-menu-item {
@@ -4055,7 +4049,25 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: slideInDown 0.3s ease forwards;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(4) {
+  animation-delay: 0.2s;
 }
 
 .accordion-menu-item:hover {
@@ -4074,23 +4086,6 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* Animation stagger for menu items */
-.accordion-menu.open .accordion-menu-item:nth-child(1) {
-  animation: slideInDown 0.3s ease 0.05s both;
-}
-
-.accordion-menu.open .accordion-menu-item:nth-child(2) {
-  animation: slideInDown 0.3s ease 0.1s both;
-}
-
-.accordion-menu.open .accordion-menu-item:nth-child(3) {
-  animation: slideInDown 0.3s ease 0.15s both;
-}
-
-.accordion-menu.open .accordion-menu-item:nth-child(4) {
-  animation: slideInDown 0.3s ease 0.2s both;
-}
-
 @keyframes slideInDown {
   from {
     opacity: 0;
@@ -4105,7 +4100,7 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .accordion-menu {
-    top: 55px;
+    top: 60px;
     left: 10px;
   }
   
@@ -4120,6 +4115,10 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
 }
 
 @media (max-width: 480px) {
+  .accordion-menu {
+    top: 55px;
+  }
+  
   .accordion-menu-item {
     width: 42px;
     height: 42px;
