@@ -1,7 +1,6 @@
 // menu.config.js
 export const MENU_ITEMS = [
-  // Menu principal dans le drawer
-  { icone:'🏠', titre:'HOME', route:'home', zone:'header' },
+  // Menu principal dans le drawer (sans HOME)
   { icone:'👤', titre:'COIN DE L\'AUTEUR', route:'profil', zone:'header' },
   { icone:'🗓️', titre:'NEXUS CALENDAR', route:'calendrier', zone:'header' },
   { icone:'🏛️', titre:'NEXUS CENTER', route:'center', zone:'header' },
