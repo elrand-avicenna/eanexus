@@ -3982,3 +3982,43 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
   font-size: 1.2rem;
   text-align: center;
   color: var(--text-secondary);
+
+/* ========================================
+   BACK NAVIGATION BUTTON (Simple & Clean)
+   ======================================== */
+
+.back-nav-btn {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  z-index: 999;
+  padding: 10px 20px;
+  background: rgba(26, 26, 36, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-nav-btn:hover {
+  background: rgba(102, 126, 234, 0.8);
+  border-color: var(--accent-color);
+  transform: translateX(-4px);
+}
+
+@media (max-width: 768px) {
+  .back-nav-btn {
+    top: 60px;
+    left: 10px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
