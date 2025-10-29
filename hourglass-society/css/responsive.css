@@ -24,16 +24,37 @@
     z-index: 99999999999999 !important;
   }
 
-  /* On neutralise l'image de la main et les animations associées */
+  /* On neutralise l'image de la main et les animations SAUF descending */
   .hand-mobile {
     background: none !important;   /* retire ../img/hand-mobile.png */
     height: 100vh !important;
     width: 100vw !important;
-    animation: none !important;     /* stoppe handLift / handIdle */
-    transform: none !important;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  /* Empêcher les animations par défaut SAUF descending */
+  .hand-mobile:not(.descending) {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Permettre l'animation de descente même en mobile */
+  .hand-mobile.descending {
+    animation: handDescendMobile 3s ease-in-out forwards !important;
+  }
+
+  /* Animation de descente spécifique pour mobile */
+  @keyframes handDescendMobile {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(150vh);
+      opacity: 0;
+    }
   }
 
   /* Le smartphone occupe tout l'écran */
