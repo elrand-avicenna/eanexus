@@ -14,18 +14,33 @@
 
   <div class="menu" id="menu">
     <!-- Le casque sera créé ici par mini-audio.js -->
+    <!-- Icône horloge sous le casque -->
+    <button class="clock-icon-btn" id="clockIconBtn" onclick="openClockModal()" aria-label="Voir l'horloge">
+      🕐
+    </button>
   </div>
 
-  <!-- Bloc horloge sous le menu haut -->
-  <div class="clock-banner" id="clockBanner">
-    <span id="clockDate"></span> • <span id="clockTime"></span>
+  <!-- Modale horloge plein écran -->
+  <div class="clock-modal" id="clockModal" onclick="closeClockModal()">
+    <div class="clock-modal-content">
+      <button class="clock-modal-close" onclick="closeClockModal()" aria-label="Fermer">×</button>
+      <div class="clock-display">
+        <div class="clock-date-big" id="clockDateBig"></div>
+        <div class="clock-time-big">
+          <span class="time-part" id="hoursBig">00</span>
+          <span class="time-separator">:</span>
+          <span class="time-part" id="minutesBig">00</span>
+          <span class="time-separator">:</span>
+          <span class="time-part" id="secondsBig">00</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container" id="app"></div>
   <div class="scroll-indicator" id="scrollIndicator"></div>
 
   <div class="menu-bas" id="menuBas">
-    <!-- Titre au centre -->
     <div class="menu-title-bas">EA NEXUS</div>
     <button class="burger filter-burger" id="filterBurger" aria-label="Ouvrir les filtres">
       <span></span><span></span><span></span>
