@@ -248,5 +248,6 @@ window.closeFilterDrawer = closeFilterDrawer;
 window.applyFilter = applyFilter;
 window.toggleTheme = toggleTheme;
 window.resetFilters = resetFilters;
+window.renderFilterDrawer = renderFilterDrawer;
 
 export { toggleFilterDrawer, closeFilterDrawer, applyFilter, toggleTheme, resetFilters };
