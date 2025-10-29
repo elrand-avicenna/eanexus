@@ -11,7 +11,7 @@ export function renderCategoriePage(projetId, categorieId) {
 
   const categories = app.data.categories[projetId] || [];
   const categorie = categories.find(c => c.id === categorieId);
-  const travaux = app.data.travaux[categorieId] || [];
+  let travaux = app.data.travaux[categorieId] || [];
 
   if (!categorie) {
     document.getElementById('app').innerHTML = `
@@ -21,6 +21,9 @@ export function renderCategoriePage(projetId, categorieId) {
       </section>`;
     return;
   }
+
+  // Store original travaux for filtering
+  app.state.originalTravaux = [...travaux];
 
   const container = document.getElementById('app');
   const headerStyle = categorie.background
@@ -38,10 +41,32 @@ export function renderCategoriePage(projetId, categorieId) {
     </section>
   `;
 
+  renderTravauxList(travaux, projetId, categorieId);
+
+  // Listen for filter changes
+  document.addEventListener('filtersChanged', handleFiltersChanged);
+}
+
+function renderTravauxList(travaux, projetId, categorieId) {
   const travauxList = document.getElementById('travauxList');
+  if (!travauxList) return;
+  
+  travauxList.innerHTML = '';
+
+  if (travaux.length === 0) {
+    travauxList.innerHTML = `
+      <div style="padding:40px; text-align:center; color:var(--text-secondary);">
+        <p>Aucun résultat trouvé avec ces filtres.</p>
+      </div>
+    `;
+    return;
+  }
+
   travaux.forEach(travail => {
     const item = document.createElement('div');
     item.className = 'travail-item';
+    item.setAttribute('data-titre', travail.titre.toLowerCase());
+    item.setAttribute('data-theme', (travail.theme || '').toLowerCase());
     if (travail.background) item.style.background = travail.background;
 
     item.innerHTML = `
@@ -70,3 +95,53 @@ export function renderCategoriePage(projetId, categorieId) {
     travauxList.appendChild(item);
   });
 }
+
+function handleFiltersChanged(event) {
+  const filters = event.detail || {};
+  const projetId = app.state.currentProjet;
+  const categorieId = app.state.currentCategorie;
+  
+  if (app.state.currentPage !== 'categorie') return;
+
+  let travaux = [...(app.state.originalTravaux || [])];
+
+  // Apply search filter
+  if (filters.search && filters.search.trim()) {
+    const searchTerm = filters.search.toLowerCase();
+    travaux = travaux.filter(t => 
+      t.titre.toLowerCase().includes(searchTerm) ||
+      (t.description || '').toLowerCase().includes(searchTerm) ||
+      (t.theme || '').toLowerCase().includes(searchTerm)
+    );
+  }
+
+  // Apply theme filter
+  if (filters.theme && filters.theme.length > 0) {
+    travaux = travaux.filter(t => 
+      filters.theme.some(theme => 
+        (t.theme || '').toLowerCase().includes(theme.toLowerCase())
+      )
+    );
+  }
+
+  // Apply alphabetical sorting
+  if (filters.alpha === 'asc') {
+    travaux.sort((a, b) => a.titre.localeCompare(b.titre));
+  } else if (filters.alpha === 'desc') {
+    travaux.sort((a, b) => b.titre.localeCompare(a.titre));
+  }
+
+  // Apply date sorting (if date field exists)
+  if (filters.date === 'old') {
+    travaux.sort((a, b) => (a.date || 0) - (b.date || 0));
+  } else if (filters.date === 'new') {
+    travaux.sort((a, b) => (b.date || 0) - (a.date || 0));
+  }
+
+  renderTravauxList(travaux, projetId, categorieId);
+}
+
+// Cleanup
+window.addEventListener('beforeunload', () => {
+  document.removeEventListener('filtersChanged', handleFiltersChanged);
+});
