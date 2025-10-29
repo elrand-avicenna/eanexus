@@ -71,6 +71,19 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# Serve static files from EAWEB directory
+EAWEB_DIR = Path(__file__).parent.parent / "EAWEB"
+
+# Root route to serve the EAWEB index.html
+@app.get("/")
+async def serve_eaweb_root():
+    return FileResponse(str(EAWEB_DIR / "index.html"))
+
+# Mount static files - must be after routes to avoid conflicts
+app.mount("/css", StaticFiles(directory=str(EAWEB_DIR / "css")), name="css")
+app.mount("/js", StaticFiles(directory=str(EAWEB_DIR / "js")), name="js")
+app.mount("/img", StaticFiles(directory=str(EAWEB_DIR / "img")), name="img")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
@@ -78,15 +91,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Serve static files from EAWEB directory
-EAWEB_DIR = Path(__file__).parent.parent / "EAWEB"
-app.mount("/eaweb", StaticFiles(directory=str(EAWEB_DIR), html=True), name="eaweb")
-
-# Root route to serve the EAWEB index.html
-@app.get("/")
-async def serve_eaweb_root():
-    return FileResponse(str(EAWEB_DIR / "index.html"))
 
 # Configure logging
 logging.basicConfig(
