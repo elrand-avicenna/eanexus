@@ -9,46 +9,82 @@ export function renderCenterPage() {
   
   const npcs = app.data.npcs || [];
   
-  document.getElementById('app').innerHTML = `
-    <div class="center-page fade-in" data-testid="center-page">
-      <!-- Hero Header -->
-      <div class="center-hero">
-        <div class="center-hero-overlay">
-          <div class="center-hero-content">
-            <div class="center-hero-logo">🏛️</div>
-            <h1 class="center-hero-titre">NEXUS CENTER</h1>
-            <p class="center-hero-description">Rencontrez les habitants du NEXUS</p>
-          </div>
+  const container = document.getElementById('app');
+  
+  // Build vertical slider with Hub intro + content
+  const slidesHTML = `
+    <!-- Slide 1: Hub Intro for Center -->
+    <div class="projet-fullscreen center-intro" data-index="0">
+      <img src="https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=1200"
+           alt="Nexus Hub" class="projet-background" />
+      <div class="projet-overlay"></div>
+      <div class="projet-content">
+        <div class="projet-logo">🔷</div>
+        <div class="projet-titre">NEXUS HUB</div>
+        <div class="projet-description">
+          Bienvenue au <strong>NEXUS CENTER</strong> — Le cœur de la communauté. Rencontrez les habitants du NEXUS, discutez avec eux, relevez des défis et construisez des relations uniques.
         </div>
       </div>
-
-      <!-- NPCs Grid -->
-      <div class="center-npcs-grid" data-testid="npcs-grid">
-        ${npcs.map(npc => `
-          <div class="npc-card" data-npc-id="${npc.id}" onclick="showNpcProfile('${npc.id}')" data-testid="npc-card-${npc.id}">
-            <div class="npc-card-header" style="background: linear-gradient(135deg, ${npc.couleur} 0%, ${npc.couleur}dd 100%)">
-              <div class="npc-avatar">${npc.avatar}</div>
-              <div class="npc-niveau">Niv. ${npc.niveau}</div>
-            </div>
-            <div class="npc-card-body">
-              <h3 class="npc-nom">${npc.nom}</h3>
-              <p class="npc-titre">${npc.titre}</p>
-              <p class="npc-specialite">🎯 ${npc.specialite}</p>
-            </div>
-          </div>
-        `).join('')}
+      <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
+        <span class="scroll-hint-icon">↓</span>
+        <span class="scroll-hint-text">Scroll</span>
       </div>
+    </div>
 
-      <!-- Salle de Repos Button -->
-      <div class="center-lounge-cta">
-        <button class="lounge-btn" onclick="showLounge()" data-testid="lounge-btn">
-          <span class="lounge-icon">🛋️</span>
-          <span class="lounge-text">Salle de Repos</span>
-          <span class="lounge-subtitle">Discutez avec les NPCs</span>
-        </button>
+    <!-- Slide 2: NPCs Grid -->
+    <div class="projet-fullscreen center-npcs" data-index="1">
+      <div class="projet-overlay" style="background: rgba(0,0,0,0.85)"></div>
+      <div class="projet-content center-full-content">
+        <h2 class="center-section-title">🏛️ NEXUS CENTER</h2>
+        <p class="center-section-subtitle">Rencontrez les habitants du NEXUS</p>
+        <div class="center-npcs-grid" data-testid="npcs-grid">
+          ${npcs.map(npc => `
+            <div class="npc-card" data-npc-id="${npc.id}" onclick="showNpcProfile('${npc.id}')" data-testid="npc-card-${npc.id}">
+              <div class="npc-card-header" style="background: linear-gradient(135deg, ${npc.couleur} 0%, ${npc.couleur}dd 100%)">
+                <div class="npc-avatar">${npc.avatar}</div>
+                <div class="npc-niveau">Niv. ${npc.niveau}</div>
+              </div>
+              <div class="npc-card-body">
+                <h3 class="npc-nom">${npc.nom}</h3>
+                <p class="npc-titre">${npc.titre}</p>
+                <p class="npc-specialite">🎯 ${npc.specialite}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div class="center-lounge-cta">
+          <button class="lounge-btn" onclick="showLounge()" data-testid="lounge-btn">
+            <span class="lounge-icon">🛋️</span>
+            <span class="lounge-text">Salle de Repos</span>
+            <span class="lounge-subtitle">Discutez avec les NPCs</span>
+          </button>
+        </div>
       </div>
     </div>
   `;
+
+  container.innerHTML = `<div class="home-page" id="centerPage">${slidesHTML}</div>`;
+
+  // Scroll indicator
+  const dotsWrap = document.getElementById('scrollIndicator');
+  if (dotsWrap) {
+    dotsWrap.innerHTML = [0,1].map((i) =>
+      `<div class="scroll-dot ${i===0?'active':''}" data-index="${i}"></div>`).join('');
+    
+    const dots = dotsWrap.querySelectorAll('.scroll-dot');
+    dots.forEach(dot => dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index, 10);
+      document.querySelectorAll('.projet-fullscreen')[idx].scrollIntoView({ behavior: 'smooth' });
+    }));
+
+    const centerPage = document.getElementById('centerPage');
+    if (centerPage) {
+      centerPage.addEventListener('scroll', () => {
+        const currentIndex = Math.round(centerPage.scrollTop / window.innerHeight);
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+      });
+    }
+  }
 }
 
 export function showNpcProfile(npcId) {
