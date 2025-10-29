@@ -4025,6 +4025,223 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
 /* ========================================
 
 /* ========================================
+   CLOCK ICON BUTTON (sous le casque)
+   ======================================== */
+
+.clock-icon-btn {
+  position: absolute;
+  top: calc(50% + 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(102, 126, 234, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 20px;
+  z-index: 1001;
+  backdrop-filter: blur(10px);
+}
+
+.clock-icon-btn:hover {
+  background: rgba(102, 126, 234, 0.4);
+  border-color: rgba(102, 126, 234, 0.8);
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+.clock-icon-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .clock-icon-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
+
+/* ========================================
+   CLOCK MODAL - Plein écran
+   ======================================== */
+
+.clock-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.clock-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.clock-modal-content {
+  position: relative;
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.clock-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  transform: scale(1.1) rotate(90deg);
+}
+
+.clock-display {
+  color: white;
+  user-select: none;
+}
+
+.clock-date-big {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.clock-time-big {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+.time-part {
+  font-size: 8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 180px;
+  display: inline-block;
+  text-align: center;
+  text-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.time-separator {
+  font-size: 6rem;
+  font-weight: 300;
+  opacity: 0.7;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes blink {
+  0%, 49%, 100% { opacity: 0.7; }
+  50%, 99% { opacity: 0.2; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .clock-date-big {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .time-part {
+    font-size: 6rem;
+    min-width: 140px;
+  }
+  
+  .time-separator {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .clock-date-big {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .time-part {
+    font-size: 4rem;
+    min-width: 100px;
+  }
+  
+  .time-separator {
+    font-size: 3rem;
+  }
+  
+  .clock-modal-close {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clock-date-big {
+    font-size: 1.2rem;
+  }
+  
+  .time-part {
+    font-size: 3rem;
+    min-width: 80px;
+  }
+  
+  .time-separator {
+    font-size: 2.5rem;
+  }
+  
+  .clock-time-big {
+    gap: 5px;
+  }
+  
+  .clock-modal-content {
+    padding: 40px 20px;
+  }
+}
+
+
+/* ========================================
    CLOCK BANNER - Bloc sous menu haut
    ======================================== */
 
