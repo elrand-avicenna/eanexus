@@ -780,23 +780,33 @@ html {
 .drawer {
   position: fixed; width: 50%; height: 100%;
   transform: translateX(-100%); transition: transform .26s ease;
-  background: transparent; color: #fff; z-index: 3000 !important; overflow: hidden;
-  /* box-shadow: 4px 0 24px rgba(0,0,0,.35); */
-  display: flex; flex-direction: column; justify-content: space-around; align-items: center;
+  background: var(--card-bg); color: #fff; z-index: 3000 !important; overflow: hidden;
+  box-shadow: 4px 0 24px rgba(0,0,0,.35);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
-.drawer.open { transform: translateX(50%);}
-.drawer-nav { height: 90%; width: 75%; position: relative; display: flex; flex-direction: column; justify-content: space-around; align-items: center; background: url("medias/img/carte-nexus.png");background-repeat: no-repeat; background-size: 100%; background-position: center;}
+.drawer.open { transform: translateX(0);}
+.drawer-nav { 
+  height: 90%; width: 85%; position: relative; 
+  display: flex; flex-direction: column; justify-content: center; align-items: stretch;
+  gap: 16px;
+  padding: 20px;
+}
 .drawer .menu-section-title {
   font-size: 12px; text-transform: uppercase; opacity: .6; margin: 8px 8px 4px;
 }
 .drawer .menu-item {
-  display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 8px;
-  padding: 10px 12px; border-radius: 12px; background: #1a1a1a; cursor: pointer;
+  display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 12px;
+  padding: 16px 16px; border-radius: 12px; background: rgba(26,26,36,0.9); cursor: pointer;
   transition: transform .15s ease, background .2s ease;
+  border: 1px solid rgba(255,255,255,0.1);
 }
-.drawer .menu-item:hover { transform: translateX(2px); background: #202020; }
-.drawer .menu-item-icone { font-size: 20px; opacity: .95; }
-.drawer .menu-item-titre { font-weight: 600; }
+.drawer .menu-item:hover { 
+  transform: translateX(4px); 
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.drawer .menu-item-icone { font-size: 24px; opacity: .95; }
+.drawer .menu-item-titre { font-weight: 600; font-size: 16px; }
 .drawer .menu-item-chevron { opacity: .5; }
 
 .backdrop {
