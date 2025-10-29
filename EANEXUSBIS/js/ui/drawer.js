@@ -38,7 +38,7 @@ export function updateMenuDrawer() {
   if (!app.ui.drawerNav) return;
 
   const titleEl = document.getElementById('menuTitle');
-  if (titleEl) titleEl.textContent = 'EA LAB';
+  if (titleEl) titleEl.textContent = 'EA NEXUS';
 
   app.ui.drawerNav.innerHTML = `
     <div class="menu-list" id="drawerHeader"></div>
