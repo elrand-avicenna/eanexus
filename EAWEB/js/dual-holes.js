@@ -220,15 +220,21 @@ class DualHolesSystem {
             // Trou gauche : Afficher la nouvelle page
             this.showOverlayPage();
             this.resetCirclePosition();
+            this.pauseVideo();
         } else if (inRightHole) {
-            // Trou droite : Maintenir dans le trou et lancer la vidéo
+            // Trou droite : Garder le cercle dans le trou et lancer la vidéo
             this.isInRightHole = true;
+            this.keepCircleInRightHole();
             this.playVideo();
-            // Le cercle reste dans le trou
+            console.log('⏳ Icône dans le trou droite - Vidéo en lecture');
         } else {
             // Pas dans un trou : retourner à la position initiale
-            this.isInRightHole = false;
-            this.pauseVideo();
+            if (this.isInRightHole) {
+                // Si on était dans le trou droite, arrêter la vidéo
+                this.isInRightHole = false;
+                this.pauseVideo();
+                console.log('🛑 Icône sortie du trou droite - Vidéo en pause');
+            }
             this.landCircle();
         }
         
