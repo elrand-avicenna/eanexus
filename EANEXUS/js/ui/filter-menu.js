@@ -4,17 +4,9 @@ import { app } from '../core/state.js';
 
 export function initFilterMenu() {
   const menuBas = document.getElementById('menuBas');
-  if (!menuBas) return;
-
-  // Create filter burger button
-  const filterBurger = document.createElement('button');
-  filterBurger.className = 'burger filter-burger';
-  filterBurger.id = 'filterBurger';
-  filterBurger.setAttribute('aria-label', 'Ouvrir les filtres');
-  filterBurger.innerHTML = '<span></span><span></span><span></span>';
+  const filterBurger = document.getElementById('filterBurger');
   
-  menuBas.innerHTML = '';
-  menuBas.appendChild(filterBurger);
+  if (!menuBas || !filterBurger) return;
 
   // Create filter drawer
   const filterDrawer = document.createElement('aside');
