@@ -15,9 +15,10 @@ window.goBack = goBack;
 window.addEventListener('DOMContentLoaded', async () => {
   hydrateUI();
   ensureDrawerCloseButton();
-  ensureMiniAudio();          // crée le casque
-  await loadData();           // charge JSON (dont playlist)
-  updateMenuDrawer();         // ARM le menu une fois data récupérées
+  initFilterMenu();          // Initialize filter menu
+  ensureMiniAudio();         // crée le casque
+  await loadData();          // charge JSON (dont playlist + NPCs)
+  updateMenuDrawer();        // ARM le menu une fois data récupérées
   renderHomePage();
 
   // Si l’utilisateur a cliqué avant que la playlist n’arrive
