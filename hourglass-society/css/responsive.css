@@ -12,53 +12,17 @@
     width: 100vw;
     overflow: hidden;
   }
-  /* Container vidéo doit toujours fonctionner en mobile */
-  .container-video {
-    position: fixed !important;
-    z-index: -1;
-    width: 100vw !important;
-    height: 100vh !important;
-  }
 
-  .container-video.active {
-    z-index: 99999999999999 !important;
-  }
-
-  /* On neutralise l'image de la main et les animations SAUF descending */
+  /* On neutralise l'image de la main et les animations associées */
   .hand-mobile {
     background: none !important;   /* retire ../img/hand-mobile.png */
     height: 100vh !important;
     width: 100vw !important;
+    animation: none !important;     /* stoppe handLift / handIdle */
+    transform: none !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-  }
-
-  /* Empêcher les animations par défaut SAUF descending */
-  .hand-mobile:not(.descending) {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  /* Permettre l'animation de descente même en mobile */
-  .hand-mobile.descending {
-    animation: handDescendMobile 3s ease-in-out forwards !important;
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    overflow: visible !important;
-  }
-
-  /* Animation de descente spécifique pour mobile */
-  @keyframes handDescendMobile {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(200vh);
-      opacity: 0;
-    }
   }
 
   /* Le smartphone occupe tout l'écran */
@@ -71,22 +35,12 @@
     overflow: hidden;
   }
 
-  /* Quand descending, le smartphone doit rester attaché au parent */
-  .hand-mobile.descending .smartphone {
-    position: relative !important;
-  }
-
   /* L'écran interne prend 100% sans bordure ni arrondi */
   .screen {
     width: 100vw !important;
     height: 100vh !important;
     border-radius: 0 !important;
     border: none !important;
-  }
-
-  /* S'assurer que l'écran suit aussi la descente */
-  .hand-mobile.descending .screen {
-    position: relative !important;
   }
 
   /* Le canvas suit en plein écran (il est déjà en position: absolute) */
