@@ -9,7 +9,7 @@ export async function loadData() {
     const [
       projetsRes, categoriesRes,
       travauxLudRes, travauxExpoRes, travauxCreaRes, travauxPedagRes,
-      npcsRes
+      npcsRes, stadiumRes
     ] = await Promise.all([
       fetch('js/data/projets-racine-new.json'),
       fetch('js/data/categories.json'),
@@ -17,7 +17,8 @@ export async function loadData() {
       fetch('js/data/travauxexpo.json'),
       fetch('js/data/travauxcrea.json'),
       fetch('js/data/travauxpedag.json'),
-      fetch('js/data/npcs.json')
+      fetch('js/data/npcs.json'),
+      fetch('js/data/stadium-events.json')
     ]);
 
     const projetsJson = await projetsRes.json();
@@ -34,7 +35,12 @@ export async function loadData() {
     const npcsJson = await npcsRes.json();
     app.data.npcs = npcsJson.npcs || [];
 
-    // Menu : configuration avec NEXUS CENTER
+    // Load Stadium Events & Actualités
+    const stadiumJson = await stadiumRes.json();
+    app.data.stadiumEvents = stadiumJson.events || [];
+    app.data.stadiumActualites = stadiumJson.actualites || [];
+
+    // Menu : configuration
     if (Array.isArray(MENU_ITEMS) && MENU_ITEMS.length) {
       app.data.menuGlobal = MENU_ITEMS.slice();
     } else {
