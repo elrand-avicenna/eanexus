@@ -112,13 +112,6 @@ html {
             letter-spacing: 2px;
         }
 
-        .menu-title-bas {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            letter-spacing: 2px;
-        }
-
         .menu-items {
             display: flex;
             gap: 20px;
