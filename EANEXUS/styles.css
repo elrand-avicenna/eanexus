@@ -1878,22 +1878,21 @@ html {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  z-index: 20;
+  z-index: 100;
   width: 90%;
   max-width: 800px;
-  pointer-events: none;
 }
 
 .hub-icon-wrapper {
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .hub-icon-glow {
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
   animation: pulse 2s ease-in-out infinite;
   border-radius: 50%;
 }
@@ -1903,27 +1902,25 @@ html {
   position: relative;
   z-index: 2;
   animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
 }
 
 .hub-titre {
   font-size: clamp(32px, 7vw, 48px);
   font-weight: 900;
   letter-spacing: 4px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(102, 126, 234, 0.6);
 }
 
 .hub-subtitle {
   font-size: clamp(13px, 2.5vw, 16px);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
   letter-spacing: 1.5px;
   margin-bottom: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .hub-divider {
@@ -1942,8 +1939,7 @@ html {
   width: 90%;
   max-width: 1100px;
   padding: 0 20px;
-  z-index: 20;
-  pointer-events: auto;
+  z-index: 100;
 }
 
 @media (max-width: 768px) {
