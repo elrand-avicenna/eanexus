@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EA NEXUS - Portail d'Entrée</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portal-container {
+      text-align: center;
+      color: white;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .portal-logo {
+      font-size: 8rem;
+      margin-bottom: 30px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .portal-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #667eea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 4px;
+    }
+
+    .portal-subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 60px;
+      letter-spacing: 2px;
+    }
+
+    .portal-enter-btn {
+      position: relative;
+      padding: 20px 60px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      overflow: hidden;
+    }
+
+    .portal-enter-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .portal-enter-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .portal-enter-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+      border-color: white;
+    }
+
+    .portal-enter-btn:active {
+      transform: scale(0.95);
+    }
+
+    .portal-enter-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Stars background */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Transition animation */
+    .portal-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #667eea 0%, #0f0c29 100%);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease-out;
+    }
+
+    .portal-transition.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    @media (max-width: 768px) {
+      .portal-logo { font-size: 5rem; }
+      .portal-title { font-size: 2.5rem; }
+      .portal-subtitle { font-size: 1.1rem; }
+      .portal-enter-btn { 
+        padding: 16px 40px;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars background -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Portal content -->
+  <div class="portal-container">
+    <div class="portal-logo">🌟</div>
+    <h1 class="portal-title">EA NEXUS</h1>
+    <p class="portal-subtitle">Laboratoire d'Expériences Artistiques</p>
+    <button class="portal-enter-btn" id="enterBtn" onclick="enterNexus()">
+      <span>Entrer dans le NEXUS</span>
+    </button>
+  </div>
+
+  <!-- Transition overlay -->
+  <div class="portal-transition" id="transition"></div>
+
+  <script>
+    // Generate random stars
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      starsContainer.appendChild(star);
+    }
+
+    // Enter NEXUS with animation
+    function enterNexus() {
+      const transition = document.getElementById('transition');
+      transition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = 'main.html';
+      }, 800);
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        enterNexus();
+      }
+    });
+  </script>
+</body>
+</html>
