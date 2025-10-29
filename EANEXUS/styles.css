@@ -787,27 +787,46 @@ html {
 .drawer.open { transform: translateX(0);}
 .drawer-nav { 
   height: 90%; width: 85%; position: relative; 
-  display: flex; flex-direction: column; justify-content: center; align-items: stretch;
-  gap: 16px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 24px;
   padding: 20px;
 }
 .drawer .menu-section-title {
   font-size: 12px; text-transform: uppercase; opacity: .6; margin: 8px 8px 4px;
 }
 .drawer .menu-item {
-  display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: 12px;
-  padding: 16px 16px; border-radius: 12px; background: rgba(26,26,36,0.9); cursor: pointer;
-  transition: transform .15s ease, background .2s ease;
-  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .2s ease;
+  background: transparent;
+  border: none;
+  min-width: 100px;
 }
 .drawer .menu-item:hover { 
-  transform: translateX(4px); 
-  background: var(--accent-color);
-  border-color: var(--accent-color);
+  transform: scale(1.05);
+  opacity: 0.8;
 }
-.drawer .menu-item-icone { font-size: 24px; opacity: .95; }
-.drawer .menu-item-titre { font-weight: 600; font-size: 16px; }
-.drawer .menu-item-chevron { opacity: .5; }
+.drawer .menu-item-icone { 
+  font-size: 48px;
+  opacity: 1;
+  line-height: 1;
+}
+.drawer .menu-item-titre { 
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  opacity: 0.9;
+}
+.drawer .menu-item-chevron { 
+  display: none;
+}
 
 .backdrop {
   position: fixed; inset: 0; background: transparent;
