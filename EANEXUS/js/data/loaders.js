@@ -8,14 +8,16 @@ export async function loadData() {
   try {
     const [
       projetsRes, categoriesRes,
-      travauxLudRes, travauxExpoRes, travauxCreaRes
+      travauxLudRes, travauxExpoRes, travauxCreaRes, travauxPedagRes,
+      npcsRes
     ] = await Promise.all([
-      fetch('js/data/projets-racine.json'),
+      fetch('js/data/projets-racine-new.json'),
       fetch('js/data/categories.json'),
       fetch('js/data/travauxlud.json'),
       fetch('js/data/travauxexpo.json'),
       fetch('js/data/travauxcrea.json'),
-      fetch('js/data/travauxpedag.json')
+      fetch('js/data/travauxpedag.json'),
+      fetch('js/data/npcs.json')
     ]);
 
     const projetsJson = await projetsRes.json();
