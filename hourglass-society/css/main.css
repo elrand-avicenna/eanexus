@@ -83,6 +83,11 @@ transform-style: preserve-3d;
   animation: fadeOutHand 2s ease-out forwards;
 }
 
+/* Animation de fondu pour .smartphone aussi */
+.smartphone.fade-out {
+  animation: fadeOutHand 2s ease-out forwards;
+}
+
 @keyframes fadeOutHand {
   0% {
     opacity: 1;
