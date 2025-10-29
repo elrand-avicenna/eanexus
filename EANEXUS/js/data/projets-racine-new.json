@@ -12,6 +12,43 @@
       "clic": false
     },
     {
+      "id": "nexus-hub",
+      "titre": "NEXUS HUB",
+      "logo": "🔷",
+      "description": "Centre d'information — Auteur, Actualités, Communauté",
+      "couleur": "#2c3e50",
+      "background": "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
+      "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
+      "theme": "Hub",
+      "clic": true,
+      "subSections": [
+        {
+          "id": "profil",
+          "titre": "NEXUS AUTHOR",
+          "logo": "👤",
+          "description": "Coin de l'Auteur",
+          "route": "profil",
+          "couleur": "#8E2DE2"
+        },
+        {
+          "id": "calendrier",
+          "titre": "NEXUS CALENDAR",
+          "logo": "🗓️",
+          "description": "Actualités & Événements",
+          "route": "calendrier",
+          "couleur": "#06BEB6"
+        },
+        {
+          "id": "center",
+          "titre": "NEXUS CENTER",
+          "logo": "🏛️",
+          "description": "Communauté & NPCs",
+          "route": "center",
+          "couleur": "#667eea"
+        }
+      ]
+    },
+    {
       "id": "atelier-ludique",
       "titre": "NEXUS GAMING",
       "logo": "🎮",
