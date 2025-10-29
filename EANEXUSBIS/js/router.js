@@ -7,6 +7,9 @@ import { renderCategoriePage } from './pages/categorie.js';
 import { renderTravailPage } from './pages/travail.js';
 import { renderProfilPage, renderCalendrierPage, renderContactPage } from './pages/static.js';
 import { renderCenterPage } from './pages/center.js';
+import { renderStadiumPage } from './pages/stadium.js';
+import { renderLaboPage } from './pages/labo.js';
+import { renderHubPage } from './pages/hub.js';
 
 export function animatePageChange(renderFn) {
   const appEl = document.getElementById('app');
