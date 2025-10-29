@@ -61,30 +61,25 @@ class VideoTriggerSystem {
         if (this.videoTriggered) return;
         this.videoTriggered = true;
 
-        console.log('🎬 Déclenchement de la séquence vidéo !');
+        console.log('🎬 Déclenchement fondu et vidéo !');
 
-        // Petit délai pour laisser finir l'interaction en cours
-        setTimeout(() => {
-            // 1. Activer le son de la vidéo
-            this.video.muted = false;
-            
-            // 2. Afficher le container vidéo au premier plan
-            this.containerVideo.classList.add('active');
-            
-            // 3. Supprimer les animations qui pourraient interférer
-            this.handMobile.classList.remove('idle');
-            
-            // 4. Lancer l'animation de descente du portable
-            this.handMobile.classList.add('descending');
-            
-            // 5. Lancer la vidéo
-            this.video.play().then(() => {
-                console.log('✅ Vidéo lancée avec son');
-            }).catch(err => {
-                console.error('Erreur lecture vidéo:', err);
-            });
-
-        }, 100);
+        // Immédiat
+        // 1. Supprimer idle animation
+        this.handMobile.classList.remove('idle');
+        
+        // 2. Ajouter classe fade-out pour disparition en fondu
+        this.handMobile.classList.add('fade-out');
+        
+        // 3. Afficher la vidéo au premier plan
+        this.containerVideo.classList.add('active');
+        
+        // 4. Activer le son et lancer la vidéo
+        this.video.muted = false;
+        this.video.play().then(() => {
+            console.log('✅ Vidéo lancée avec son');
+        }).catch(err => {
+            console.error('❌ Erreur lecture vidéo:', err);
+        });
     }
 
     reset() {
