@@ -51,15 +51,10 @@ class VideoTriggerSystem {
     onIconInteracted(iconIndex) {
         if (this.videoTriggered) return;
 
-        // Marquer l'icône comme cliquée
-        this.iconsClicked.add(iconIndex);
-        
-        console.log(`Icône ${iconIndex + 1} interagie (${this.iconsClicked.size}/${this.totalIcons})`);
+        console.log(`🖱️ Icône ${iconIndex + 1} cliquée - Déclenchement immédiat!`);
 
-        // Vérifier si toutes les icônes ont été interagies
-        if (this.iconsClicked.size >= this.totalIcons) {
-            this.triggerVideoAndDescend();
-        }
+        // Déclencher IMMÉDIATEMENT dès la première icône
+        this.triggerVideoAndDescend();
     }
 
     triggerVideoAndDescend() {
