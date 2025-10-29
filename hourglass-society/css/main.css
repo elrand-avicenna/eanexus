@@ -106,6 +106,20 @@ transform-style: preserve-3d;
   }
 }
 
+/* Animation inverse de handLift - fait descendre le portable */
+.hand-mobile.descending {
+  animation: handDescend 3s ease-in-out forwards;
+}
+
+@keyframes handDescend {
+  0% {
+    transform: perspective(var(--persp)) rotateX(0deg) translateY(0px);
+  }
+  100% {
+    transform: perspective(var(--persp)) rotateX(18deg) translateY(150vh);
+  }
+}
+
 .smartphone {
     width: 340px;
     height: 700px;
