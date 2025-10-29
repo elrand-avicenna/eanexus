@@ -17,6 +17,7 @@ body {
     color: #fff;
     overflow: hidden;
 }
+    position: relative;
 
 .hand-mobile {
     background: url("../img/hand-mobile.png") no-repeat;
