@@ -1,0 +1,200 @@
+/* ===== Système de cercle draggable avec deux trous ===== */
+
+.drag-circle-dual {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: grab;
+    z-index: 9999999999999999999;
+    transition: box-shadow 0.3s ease, border 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.drag-circle-dual:active {
+    cursor: grabbing;
+}
+
+.drag-circle-dual.lifting {
+    transform: translateX(-50%) translateY(-8px) scale(1.1);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.drag-circle-dual.dragging {
+    z-index: 20;
+    transition: none;
+    will-change: transform;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.drag-circle-dual.landing {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-50%) translateY(2px) scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.drag-circle-dual.landed {
+    transition: all 0.3s ease;
+    transform: translateX(-50%) translateY(0px) scale(1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Trou gauche ===== */
+.target-hole-left {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    bottom: 30px;
+    left: 15%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, #1a0a2e 30%, #2d1b4e 70%, #3d2b5e 100%);
+    border: 3px solid #333;
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+/* ===== Trou droite (sablier) ===== */
+.target-hole-right {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    bottom: 30px;
+    right: 15%;
+    transform: translateX(50%);
+    background: radial-gradient(circle, #0a1a2e 30%, #1b2d4e 70%, #2b3d5e 100%);
+    border: 3px solid #333;
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+/* Icône sablier dans le trou droite */
+.target-hole-right::before {
+    content: '⏳';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    opacity: 0.5;
+}
+
+/* Icône page dans le trou gauche */
+.target-hole-left::before {
+    content: '📄';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    opacity: 0.5;
+}
+
+/* ===== Page Overlay (Nouvelle page dynamique) ===== */
+.overlay-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: 999999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.overlay-page.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+}
+
+.overlay-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.close-overlay {
+    padding: 15px 40px;
+    font-size: 18px;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-overlay:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: #f0f0f0;
+}
+
+.close-overlay:active {
+    transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media screen and (orientation: portrait) {
+    .target-hole-left,
+    .target-hole-right {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .target-hole-left {
+        left: 20%;
+    }
+    
+    .target-hole-right {
+        right: 20%;
+    }
+    
+    .drag-circle-dual {
+        width: 120px;
+        height: 120px;
+    }
+}
