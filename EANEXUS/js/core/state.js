@@ -6,13 +6,17 @@ export const app = {
     currentProjet: null,
     currentCategorie: null,
     currentTravail: null,
-    history: []
+    history: [],
+    filters: {},
+    chats: {},
+    currentDuel: null
   },
   data: {
     projetsRacine: [],
     categories: {},
     travaux: {},
     menuGlobal: [],
+    npcs: [],
     // AUDIO
     playlistAudio: [],
     audioOptions: { lectureAuto: false, loop: false }
