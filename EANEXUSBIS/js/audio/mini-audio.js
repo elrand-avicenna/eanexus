@@ -18,17 +18,16 @@ export const miniAudio = {
 export function ensureMiniAudio() {
   injectMiniAudioCSSOnce();
 
-  const topMenu = document.querySelector('.menu');
-  if (!topMenu) return;
-
-  let center = topMenu.querySelector('.menu-center');
-  if (!center) {
-    center = document.createElement('div');
-    center.className = 'menu-center';
-    topMenu.appendChild(center);
+  // Créer l'étendard sous le menu haut
+  let banner = document.getElementById('audioBanner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'audioBanner';
+    banner.className = 'audio-banner';
+    document.body.appendChild(banner);
   }
 
-  let wrapper = center.querySelector('#miniAudioBar');
+  let wrapper = banner.querySelector('#miniAudioBar');
   if (!wrapper) {
     wrapper = document.createElement('div');
     wrapper.id = 'miniAudioBar';
@@ -46,7 +45,7 @@ export function ensureMiniAudio() {
       </button>
       <button type="button" class="icon-btn audio-next icon-right" aria-label="Piste suivante">&gt;</button>
     `;
-    center.appendChild(wrapper);
+    banner.appendChild(wrapper);
   }
 
   if (!miniAudio.el) {
