@@ -1,0 +1,308 @@
+/* ===== Empreinte futuriste avec couches superposées ===== */
+.fingerprint {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999999999999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.fingerprint.active {
+    opacity: 1;
+    visibility: visible;
+    animation: fingerprintScan 3s ease-in-out infinite;
+}
+
+.fingerprint-pattern {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: none;
+    border: none;
+}
+
+/* Couches de l'empreinte futuriste - style lignes lumineuses */
+.fingerprint-layer {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid var(--fingerprint-color, #4ecdc4);
+    background: none;
+    transition: all 0.3s ease;
+}
+
+/* Couche 1 - La plus grande (100%) */
+.fingerprint-layer:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    box-shadow: 
+        0 0 15px var(--fingerprint-color, #4ecdc4),
+        inset 0 0 15px var(--fingerprint-color, #4ecdc4);
+    opacity: 0.95;
+    border-width: 2px;
+}
+
+/* Couche 2 - 85% */
+.fingerprint-layer:nth-child(2) {
+    width: 85%;
+    height: 85%;
+    top: 7.5%;
+    left: 7.5%;
+    box-shadow: 
+        0 0 12px var(--fingerprint-color, #4ecdc4),
+        inset 0 0 12px var(--fingerprint-color, #4ecdc4);
+    opacity: 0.85;
+    border-width: 2px;
+}
+
+/* Couche 3 - 70% */
+.fingerprint-layer:nth-child(3) {
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    box-shadow: 
+        0 0 10px var(--fingerprint-color, #4ecdc4),
+        inset 0 0 10px var(--fingerprint-color, #4ecdc4);
+    opacity: 0.75;
+    border-width: 2px;
+}
+
+/* Couche 4 - 55% */
+.fingerprint-layer:nth-child(4) {
+    width: 55%;
+    height: 55%;
+    top: 22.5%;
+    left: 22.5%;
+    box-shadow: 
+        0 0 8px var(--fingerprint-color, #4ecdc4),
+        inset 0 0 8px var(--fingerprint-color, #4ecdc4);
+    opacity: 0.65;
+    border-width: 2px;
+}
+
+/* Couche 5 - 40% */
+.fingerprint-layer:nth-child(5) {
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+    box-shadow: 
+        0 0 6px var(--fingerprint-color, #4ecdc4),
+        inset 0 0 6px var(--fingerprint-color, #4ecdc4);
+    opacity: 0.55;
+    border-width: 2px;
+}
+
+/* Couche 6 - 25% (centre) */
+.fingerprint-layer:nth-child(6) {
+    width: 25%;
+    height: 25%;
+    top: 37.5%;
+    left: 37.5%;
+    box-shadow: 
+        0 0 4px var(--fingerprint-color, #4ecdc4),
+        inset 0 0 4px var(--fingerprint-color, #4ecdc4);
+    opacity: 0.45;
+    border-width: 2px;
+    background: radial-gradient(circle, var(--fingerprint-color, #4ecdc4) 0%, transparent 70%);
+}
+
+/* Détails futuristes sur les couches */
+.fingerprint-detail {
+    position: absolute;
+    background: var(--fingerprint-color, #4ecdc4);
+    box-shadow: 0 0 5px var(--fingerprint-color, #4ecdc4);
+    border-radius: 1px;
+    opacity: 0.8;
+}
+
+/* Détails sur couche extérieure */
+.fingerprint-detail:nth-child(7) {
+    width: 2px;
+    height: 18px;
+    top: 8%;
+    left: 18%;
+    transform: rotate(45deg);
+}
+
+.fingerprint-detail:nth-child(8) {
+    width: 2px;
+    height: 15px;
+    top: 12%;
+    right: 12%;
+    transform: rotate(-35deg);
+}
+
+.fingerprint-detail:nth-child(9) {
+    width: 2px;
+    height: 20px;
+    bottom: 15%;
+    left: 20%;
+    transform: rotate(75deg);
+}
+
+/* Détails sur couches moyennes */
+.fingerprint-detail:nth-child(10) {
+    width: 2px;
+    height: 12px;
+    top: 30%;
+    left: 25%;
+    transform: rotate(60deg);
+}
+
+.fingerprint-detail:nth-child(11) {
+    width: 2px;
+    height: 10px;
+    bottom: 28%;
+    right: 22%;
+    transform: rotate(-50deg);
+}
+
+.fingerprint-detail:nth-child(12) {
+    width: 2px;
+    height: 8px;
+    top: 25%;
+    right: 30%;
+    transform: rotate(-25deg);
+}
+
+/* Détails sur couches intérieures */
+.fingerprint-detail:nth-child(13) {
+    width: 2px;
+    height: 6px;
+    bottom: 38%;
+    left: 42%;
+    transform: rotate(30deg);
+}
+
+.fingerprint-detail:nth-child(14) {
+    width: 2px;
+    height: 5px;
+    top: 48%;
+    right: 45%;
+    transform: rotate(-70deg);
+}
+
+/* Points lumineux spéciaux */
+.fingerprint-detail:nth-child(15) {
+    width: 3px;
+    height: 3px;
+    top: 20%;
+    left: 50%;
+    border-radius: 50%;
+    transform: none;
+    box-shadow: 0 0 8px var(--fingerprint-color, #4ecdc4);
+}
+
+.fingerprint-detail:nth-child(16) {
+    width: 2px;
+    height: 2px;
+    bottom: 35%;
+    left: 40%;
+    border-radius: 50%;
+    transform: none;
+    box-shadow: 0 0 6px var(--fingerprint-color, #4ecdc4);
+}
+
+/* Animation de disparition des couches - spectaculaire */
+.fingerprint-layer.disappearing {
+    animation: layerDisappear 1.2s ease-out forwards;
+    z-index: 30;
+}
+
+@keyframes layerDisappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 
+            0 0 15px var(--fingerprint-color, #4ecdc4),
+            inset 0 0 15px var(--fingerprint-color, #4ecdc4);
+        border-width: 2px;
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.08);
+        box-shadow: 
+            0 0 30px var(--fingerprint-color, #4ecdc4),
+            inset 0 0 30px var(--fingerprint-color, #4ecdc4),
+            0 0 50px var(--fingerprint-color, #4ecdc4);
+        border-width: 3px;
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.15);
+        box-shadow: 
+            0 0 45px var(--fingerprint-color, #4ecdc4),
+            0 0 65px var(--fingerprint-color, #4ecdc4),
+            0 0 85px var(--fingerprint-color, #4ecdc4);
+        border-width: 4px;
+    }
+    75% {
+        opacity: 0.4;
+        transform: scale(1.25);
+        box-shadow: 
+            0 0 25px var(--fingerprint-color, #4ecdc4),
+            0 0 40px var(--fingerprint-color, #4ecdc4);
+        border-width: 2px;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.1);
+        box-shadow: none;
+        border-width: 0px;
+        visibility: hidden;
+    }
+}
+
+/* Marquer visuellement la couche qui va disparaître */
+.fingerprint-layer.next-to-disappear {
+    animation: nextLayerToDisappear 2s ease-in-out infinite;
+    z-index: 25;
+}
+
+@keyframes nextLayerToDisappear {
+    0% {
+        border-width: 2px;
+        box-shadow: 
+            0 0 15px var(--fingerprint-color, #4ecdc4),
+            inset 0 0 15px var(--fingerprint-color, #4ecdc4);
+    }
+    50% {
+        border-width: 3px;
+        box-shadow: 
+            0 0 25px var(--fingerprint-color, #4ecdc4),
+            inset 0 0 25px var(--fingerprint-color, #4ecdc4),
+            0 0 40px var(--fingerprint-color, #4ecdc4);
+        transform: scale(1.03);
+    }
+    100% {
+        border-width: 2px;
+        box-shadow: 
+            0 0 15px var(--fingerprint-color, #4ecdc4),
+            inset 0 0 15px var(--fingerprint-color, #4ecdc4);
+    }
+}
+
+/* Animation de scan général */
+@keyframes fingerprintScan {
+    0% {
+        transform: translateX(-50%) scale(0.98);
+        filter: brightness(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.02);
+        filter: brightness(1.15);
+    }
+    100% {
+        transform: translateX(-50%) scale(0.98);
+        filter: brightness(1);
+    }
+}

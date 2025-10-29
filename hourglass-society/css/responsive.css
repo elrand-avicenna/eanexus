@@ -1,0 +1,59 @@
+/* css/responsive.css */
+/* Objectif : en mode mobile/tablette portrait uniquement,
+   n'afficher que l'écran du smartphone fictif en plein écran. */
+
+@media screen and (orientation: portrait) {
+
+  /* Le body ne doit plus afficher le décor */
+  body {
+    background: #000 !important;       /* fond neutre derrière l'écran */
+    background-image: none !important;  /* supprime l'image décor définie dans main.css */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  /* On neutralise l'image de la main et les animations associées */
+  .hand-mobile {
+    background: none !important;   /* retire ../img/hand-mobile.png */
+    height: 100vh !important;
+    width: 100vw !important;
+    animation: none !important;     /* stoppe handLift / handIdle */
+    transform: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Le smartphone occupe tout l'écran */
+  .smartphone {
+    position: relative;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* L'écran interne prend 100% sans bordure ni arrondi */
+  .screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  /* Le canvas suit en plein écran (il est déjà en position: absolute) */
+  #world {
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0;
+    left: 0;
+  }
+
+  /* On masque les zones "erase" qui n'ont plus lieu d'être en plein écran */
+  .erase,
+  .erase2 {
+    display: none !important;
+  }
+}
