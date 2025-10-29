@@ -1,0 +1,85 @@
+{
+  "projets": [
+    {
+      "id": "bienvenue",
+      "titre": "Bienvenue",
+      "logo": "👋",
+      "description": "Bienvenue dans EA LAB — faites défiler vers le bas pour explorer.",
+      "couleur": "#222222",
+      "background": "linear-gradient(135deg, #1f1c2c 0%, #928DAB 100%)",
+      "image": "medias/img/welcome-bg.jpeg",
+      "theme": "Intro",
+      "clic": false
+    },
+    {
+      "id": "profil",
+      "titre": "Profil",
+      "logo": "👤",
+      "description": "Auteur, parcours, compétences.",
+      "couleur": "#8E2DE2",
+      "background": "linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%)",
+      "image": "medias/img/profil-bg.jpg",
+      "theme": "À propos"
+    },
+    {
+      "id": "atelier-ludique",
+      "titre": "Projets Ludiques",
+      "logo": "🎮",
+      "description": "Jeux, expériences interactives et installations ludiques",
+      "couleur": "#FF6B6B",
+      "background": "linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)",
+      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200",
+      "theme": "Gaming"
+    },
+    {
+      "id": "atelier-exposition",
+      "titre": "Projets Expositions",
+      "logo": "🎨",
+      "description": "Expositions, installations artistiques et scénographies",
+      "couleur": "#4ECDC4",
+      "background": "linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)",
+      "image": "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1200",
+      "theme": "Art"
+    },
+    {
+      "id": "atelier-creatif",
+      "titre": "Projets Créatifs",
+      "logo": "✨",
+      "description": "Création numérique, design et expérimentation",
+      "couleur": "#95E1D3",
+      "background": "linear-gradient(135deg, #95E1D3 0%, #38E4AE 100%)",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200",
+      "theme": "Design"
+    },
+    {
+      "id": "atelier-pedagogique",
+      "titre": "Projets Pédagogiques",
+      "logo": "✨",
+      "description": "Création numérique, design et expérimentation",
+      "couleur": "#95E1D3",
+      "background": "linear-gradient(135deg, #95E1D3 0%, #38E4AE 100%)",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200",
+      "theme": "Design"
+    },
+    {
+      "id": "calendrier",
+      "titre": "Calendrier",
+      "logo": "🗓️",
+      "description": "Événements & actus.",
+      "couleur": "#06BEB6",
+      "background": "linear-gradient(135deg, #06BEB6 0%, #48B1BF 100%)",
+      "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200",
+      "theme": "Agenda"
+    },
+    {
+      "id": "contact",
+      "titre": "Contact",
+      "logo": "✉️",
+      "description": "Écrivez-moi pour une collab.",
+      "couleur": "#f12711",
+      "background": "linear-gradient(135deg, #f12711 0%, #f5af19 100%)",
+      "image": "https://images.unsplash.com/photo-1520975963869-6453be3f7070?w=1200",
+      "theme": "Contact"
+    }
+  ]
+}
