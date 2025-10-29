@@ -161,17 +161,6 @@ function renderThematicFilters(projetId) {
   `;
 }
 
-function getThemesForProject(projetId) {
-  const themeMap = {
-    'atelier-ludique': ['Action', 'Aventure', 'Puzzle', 'Stratégie', 'Simulation', 'Multijoueur'],
-    'atelier-exposition': ['Art Numérique', 'Installation', 'Sculpture', 'Peinture', 'Performance', 'Vidéo'],
-    'atelier-creatif': ['Design UI/UX', 'Motion', 'Illustration', 'Branding', 'Web', '3D'],
-    'atelier-pedagogique': ['Formation', 'Atelier', 'Tutoriel', 'Workshop', 'Conférence', 'Masterclass']
-  };
-  
-  return themeMap[projetId] || [];
-}
-
 function toggleFilterDrawer() {
   const drawer = document.getElementById('filterDrawer');
   const backdrop = document.getElementById('filterBackdrop');
