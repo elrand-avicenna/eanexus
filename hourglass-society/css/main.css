@@ -78,21 +78,6 @@ transform-style: preserve-3d;
   }
 }
 
-/* Fondu de disparition du bloc hand-mobile */
-.hand-mobile.fade-out {
-  animation: fadeOutHand 2s ease-out forwards;
-}
-
-@keyframes fadeOutHand {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 .smartphone {
     width: 340px;
     height: 700px;
