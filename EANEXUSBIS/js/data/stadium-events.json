@@ -1,0 +1,126 @@
+{
+  "events": [
+    {
+      "id": "evt-001",
+      "titre": "Lancement Nexus Gaming Tournament",
+      "description": "Grand tournoi de jeux vidéo inter-studios. Participez et gagnez des prix exclusifs !",
+      "date": "2025-11-15",
+      "heure": "18:00",
+      "lieu": "NEXUS STADIUM - Arène principale",
+      "type": "tournament",
+      "image": "https://images.unsplash.com/photo-1760900954419-89f057caf7f2?w=800",
+      "tags": ["gaming", "compétition", "live"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-002",
+      "titre": "Exposition: Digital Dreams",
+      "description": "Exposition d'art numérique et installations interactives par les artistes du NEXUS Theater.",
+      "date": "2025-11-20",
+      "heure": "14:00",
+      "lieu": "NEXUS THEATER - Galerie principale",
+      "type": "exposition",
+      "image": "https://images.unsplash.com/photo-1759078634183-7b7ecc68ccc9?w=800",
+      "tags": ["art", "exposition", "VR"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-003",
+      "titre": "Workshop: Introduction au Game Design",
+      "description": "Atelier pratique pour découvrir les bases du game design moderne avec Unity et Unreal.",
+      "date": "2025-11-25",
+      "heure": "10:00",
+      "lieu": "NEXUS ACADEMY - Salle 3",
+      "type": "workshop",
+      "image": "https://images.unsplash.com/photo-1758611973926-23368a0b2034?w=800",
+      "tags": ["formation", "game-design", "workshop"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-004",
+      "titre": "Nexus Talks: L'avenir de la création numérique",
+      "description": "Conférence avec des experts de l'industrie sur les tendances et innovations en création digitale.",
+      "date": "2025-12-01",
+      "heure": "16:00",
+      "lieu": "NEXUS HUB - Auditorium",
+      "type": "conference",
+      "image": "https://images.unsplash.com/photo-1758874384073-fe289ced95af?w=800",
+      "tags": ["conférence", "tech", "innovation"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-005",
+      "titre": "Jam Session Creative",
+      "description": "48h de création intensive ! Formez une équipe et créez un projet complet en un weekend.",
+      "date": "2025-12-10",
+      "heure": "09:00",
+      "lieu": "NEXUS ATELIER - Tout l'espace",
+      "type": "jam",
+      "image": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=800",
+      "tags": ["gamejam", "création", "équipe"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-006",
+      "titre": "Soirée communautaire NEXUS",
+      "description": "Rencontrez les autres membres du NEXUS, échangez autour de vos projets et passez une soirée conviviale.",
+      "date": "2025-12-15",
+      "heure": "19:00",
+      "lieu": "NEXUS CENTER - Lounge",
+      "type": "social",
+      "image": "https://images.unsplash.com/photo-1761002278041-509b63db5c58?w=800",
+      "tags": ["communauté", "networking", "soirée"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-007",
+      "titre": "Hackathon IA & Créativité",
+      "description": "24h pour créer des outils créatifs utilisant l'intelligence artificielle. Défi technique et artistique !",
+      "date": "2025-12-20",
+      "heure": "10:00",
+      "lieu": "NEXUS LABO - Zone expérimentale",
+      "type": "hackathon",
+      "image": "https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=800",
+      "tags": ["IA", "hackathon", "tech"],
+      "statut": "upcoming"
+    },
+    {
+      "id": "evt-008",
+      "titre": "Festival des Projets NEXUS",
+      "description": "Présentation publique de tous les projets créés au NEXUS. Exposition, démos, et célébration !",
+      "date": "2026-01-10",
+      "heure": "14:00",
+      "lieu": "Tous les espaces NEXUS",
+      "type": "festival",
+      "image": "https://images.unsplash.com/photo-1761002278041-509b63db5c58?w=800",
+      "tags": ["festival", "démonstration", "communauté"],
+      "statut": "upcoming"
+    }
+  ],
+  "actualites": [
+    {
+      "id": "news-001",
+      "titre": "Nouveau partenariat avec Studio Créatif",
+      "description": "Le NEXUS s'associe avec Studio Créatif pour offrir plus d'opportunités aux membres.",
+      "date": "2025-10-28",
+      "image": "https://images.unsplash.com/photo-1726601057260-e8095dad345a?w=600",
+      "categorie": "partenariat"
+    },
+    {
+      "id": "news-002",
+      "titre": "Mise à jour du NEXUS LABO",
+      "description": "Nouveaux équipements VR et stations de travail haute performance disponibles !",
+      "date": "2025-10-25",
+      "image": "https://images.unsplash.com/photo-1748261347902-451fb437e8fb?w=600",
+      "categorie": "equipement"
+    },
+    {
+      "id": "news-003",
+      "titre": "Lancement du programme de mentorat",
+      "description": "Connectez-vous avec des mentors expérimentés pour développer vos compétences.",
+      "date": "2025-10-20",
+      "image": "https://images.unsplash.com/photo-1758611973926-23368a0b2034?w=600",
+      "categorie": "programme"
+    }
+  ]
+}
