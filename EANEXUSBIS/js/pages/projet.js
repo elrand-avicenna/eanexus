@@ -2,19 +2,46 @@
 // pages/projet.js
 import { app } from '../core/state.js';
 
+// Helper function to find a project by ID (including in subSections)
+function findProjetById(projetId) {
+  // First, check in root projects
+  let projet = app.data.projetsRacine.find(p => p.id === projetId);
+  if (projet) return projet;
+  
+  // If not found, check in subSections of all root projects
+  for (const rootProjet of app.data.projetsRacine) {
+    if (rootProjet.subSections) {
+      const subProjet = rootProjet.subSections.find(sub => sub.id === projetId);
+      if (subProjet) {
+        // Create a full project object from the subsection
+        return {
+          id: subProjet.id,
+          titre: subProjet.titre,
+          logo: subProjet.logo,
+          description: subProjet.description,
+          couleur: subProjet.couleur,
+          image: subProjet.image || 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200'
+        };
+      }
+    }
+  }
+  return null;
+}
+
 export function renderSliderPage(projetId) {
   app.state.currentPage = 'grid';
   app.state.currentProjet = projetId;
   const indicator = document.getElementById('scrollIndicator');
   if (indicator) indicator.innerHTML = '';
 
-  const projet = app.data.projetsRacine.find(p => p.id === projetId);
+  const projet = findProjetById(projetId);
   let categories = app.data.categories[projetId];
   if (!categories || !projet) {
     document.getElementById('app').innerHTML = `
       <section class="grid-page active fade-in" style="padding:40px; color:white;">
         <h2>Projet introuvable</h2>
         <p>Vérifiez l'ID de projet ou vos fichiers JSON.</p>
+        <p style="font-size:14px; opacity:0.7; margin-top:10px;">ID recherché: ${projetId}</p>
       </section>`;
     return;
   }
