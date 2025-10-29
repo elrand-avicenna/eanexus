@@ -1963,6 +1963,8 @@ html {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.6s ease forwards;
+  pointer-events: auto;
+  z-index: 10;
 }
 
 @keyframes fadeInUp {
