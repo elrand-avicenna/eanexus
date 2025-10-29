@@ -1941,7 +1941,7 @@ html {
   width: 90%;
   max-width: 1200px;
   padding: 0 20px;
-  z-index: 10;
+  z-index: 20;
   pointer-events: auto;
 }
 
