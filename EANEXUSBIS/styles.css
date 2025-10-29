@@ -4018,6 +4018,118 @@ body.drawer-open #pinnedMenu { opacity: .15; pointer-events: none; filter: blur(
     top: 60px;
     left: 10px;
     padding: 8px 16px;
+
+/* ========================================
+   ACCORDION MENU (replaces drawer)
+   ======================================== */
+
+.accordion-menu {
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.accordion-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.accordion-menu-item {
+  width: 50px;
+  height: 50px;
+  background: rgba(26, 26, 36, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.accordion-menu-item:hover {
+  background: rgba(102, 126, 234, 0.9);
+  border-color: var(--accent-color);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.accordion-menu-item:active {
+  transform: scale(0.95);
+}
+
+.accordion-menu-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Animation stagger for menu items */
+.accordion-menu.open .accordion-menu-item:nth-child(1) {
+  animation: slideInDown 0.3s ease 0.05s both;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(2) {
+  animation: slideInDown 0.3s ease 0.1s both;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(3) {
+  animation: slideInDown 0.3s ease 0.15s both;
+}
+
+.accordion-menu.open .accordion-menu-item:nth-child(4) {
+  animation: slideInDown 0.3s ease 0.2s both;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .accordion-menu {
+    top: 55px;
+    left: 10px;
+  }
+  
+  .accordion-menu-item {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .accordion-menu-icon {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accordion-menu-item {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .accordion-menu-icon {
+    font-size: 20px;
+  }
+}
+
     font-size: 0.85rem;
   }
 }
