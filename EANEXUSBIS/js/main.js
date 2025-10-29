@@ -46,7 +46,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   ensureDrawerCloseButton();
   initFilterMenu();          // Initialize filter menu
   ensureMiniAudio();         // crée le casque
-  await loadData();          // charge JSON (dont playlist + NPCs)
+  initClock();               // Initialize real-time clock
+  await loadData();          // charge JSON (dont playlist + NPCs + Stadium)
   updateMenuDrawer();        // ARM le menu une fois data récupérées
   renderHomePage();
 
