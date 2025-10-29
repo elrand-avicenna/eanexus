@@ -74,26 +74,7 @@ export function renderHomePage() {
             <div class="projet-logo">${projet.logo || ''}</div>
             <div class="projet-titre">${projet.titre}</div>
             <div class="projet-description">${projet.description || ''}</div>
-            ${hasCategories ? `
-              <div class="projet-cta-premium">
-                <div class="cta-wrapper">
-                  <div class="cta-hexagon">
-                    <span class="cta-text">Accéder</span>
-                  </div>
-                  <div class="cta-arrow-circle">
-                    <svg class="cta-arrow-icon" viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
-                <div class="cta-brackets">
-                  <div class="cta-bracket tl"></div>
-                  <div class="cta-bracket tr"></div>
-                  <div class="cta-bracket bl"></div>
-                  <div class="cta-bracket br"></div>
-                </div>
-              </div>
-            ` : ''}
+            ${hasCategories ? `<div class="projet-cta">Explorer →</div>` : ''}
           </div>
           ${index === 0 ? `
             <div class="scroll-hint" style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;animation:bounce 1.8s infinite;">
