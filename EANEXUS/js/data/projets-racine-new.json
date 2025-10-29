@@ -1,0 +1,55 @@
+{
+  "projets": [
+    {
+      "id": "accueil",
+      "titre": "NEXUS",
+      "logo": "🌟",
+      "description": "Bienvenue au NEXUS — Centre créatif multimédia. Explorez les différents étages.",
+      "couleur": "#1a1a2e",
+      "background": "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+      "image": "medias/img/welcome-bg.jpeg",
+      "theme": "Accueil",
+      "clic": false
+    },
+    {
+      "id": "atelier-ludique",
+      "titre": "NEXUS GAMING",
+      "logo": "🎮",
+      "description": "Jeux, expériences interactives et installations ludiques",
+      "couleur": "#FF6B6B",
+      "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200",
+      "theme": "Gaming"
+    },
+    {
+      "id": "atelier-exposition",
+      "titre": "NEXUS THEATER",
+      "logo": "🎨",
+      "description": "Expositions, installations artistiques et scénographies",
+      "couleur": "#4ECDC4",
+      "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      "image": "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=1200",
+      "theme": "Art"
+    },
+    {
+      "id": "atelier-creatif",
+      "titre": "NEXUS ATELIER",
+      "logo": "✨",
+      "description": "Création numérique, design et expérimentation",
+      "couleur": "#95E1D3",
+      "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200",
+      "theme": "Design"
+    },
+    {
+      "id": "atelier-pedagogique",
+      "titre": "NEXUS ACADEMY",
+      "logo": "📚",
+      "description": "Projets pédagogiques, formations et ateliers",
+      "couleur": "#FFD93D",
+      "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200",
+      "theme": "Éducation"
+    }
+  ]
+}
