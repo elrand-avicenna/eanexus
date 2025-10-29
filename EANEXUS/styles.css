@@ -825,15 +825,37 @@ html {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
 }
 .drawer.open { transform: translateX(0);}
+
+/* Vertical path line */
+.drawer::after {
+  content: '';
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 80%;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(102, 126, 234, 0.3) 10%, 
+    rgba(102, 126, 234, 0.5) 50%, 
+    rgba(102, 126, 234, 0.3) 90%, 
+    transparent 100%);
+  z-index: 0;
+}
+
 .drawer-nav { 
   height: 90%; width: 90%; position: relative; 
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   gap: 2px;
-  padding: 20px;
+  padding: 20px 20px 20px 50px;
+  z-index: 1;
 }
+
 .drawer .menu-section-title {
   font-size: 12px; text-transform: uppercase; opacity: .6; margin: 8px 8px 4px;
 }
+
 .drawer .menu-item {
   display: flex;
   flex-direction: column;
@@ -846,11 +868,37 @@ html {
   background: rgba(102, 126, 234, 0.05);
   border: 1px solid rgba(255,255,255,0.05);
   border-radius: 10px;
-  min-width: 90px;
+  width: 90px;
+  height: 70px;
   position: relative;
   overflow: hidden;
 }
 
+/* Path indicator dot */
+.drawer .menu-item::after {
+  content: '';
+  position: absolute;
+  left: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: rgba(102, 126, 234, 0.6);
+  border: 2px solid rgba(102, 126, 234, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.6);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.drawer .menu-item:hover::after {
+  background: rgba(102, 126, 234, 1);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 12px rgba(102, 126, 234, 1);
+  transform: translateY(-50%) scale(1.3);
+}
+
+/* Shimmer effect */
 .drawer .menu-item::before {
   content: '';
   position: absolute;
@@ -860,6 +908,7 @@ html {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
   transition: left 0.5s ease;
+  z-index: 1;
 }
 
 .drawer .menu-item:hover::before {
@@ -882,6 +931,8 @@ html {
   opacity: 1;
   line-height: 1;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  z-index: 2;
+  position: relative;
 }
 
 .drawer .menu-item:hover .menu-item-icone {
@@ -898,7 +949,14 @@ html {
   opacity: 0.95;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   line-height: 1.2;
+  max-width: 85px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 2;
+  position: relative;
 }
+
 .drawer .menu-item-chevron { 
   display: none;
 }
@@ -908,15 +966,17 @@ html {
   margin-top: 12px;
 }
 
-.drawer .menu-item[data-zone="list"]:first-of-type::after {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+/* Special glow for first and last items (entrance/exit points) */
+.drawer .menu-item:first-child::after {
+  background: rgba(46, 204, 113, 0.6);
+  border-color: rgba(46, 204, 113, 0.8);
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.6);
+}
+
+.drawer .menu-item:last-child::after {
+  background: rgba(231, 76, 60, 0.6);
+  border-color: rgba(231, 76, 60, 0.8);
+  box-shadow: 0 0 8px rgba(231, 76, 60, 0.6);
 }
 
 .backdrop {
