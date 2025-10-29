@@ -1850,239 +1850,64 @@ html {
   margin: 0 auto 30px;
 
 /* ========================================
-   NEXUS HUB - Premium Design (Bloc 2)
+   NEXUS HUB - Design Simple (Bloc 2)
    ======================================== */
 
-.hub-fullscreen {
-  position: relative;
-}
-
-.hub-fullscreen .projet-background {
-  z-index: 1;
-}
-
-.hub-fullscreen .projet-overlay {
-  z-index: 2;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%);
-  pointer-events: none;
-}
-
-.hub-fullscreen .projet-number {
-  z-index: 5;
-}
-
-/* Hub Header */
-.hub-header {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  z-index: 100;
-  width: 90%;
-  max-width: 800px;
-}
-
-.hub-icon-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 16px;
-}
-
-.hub-icon-glow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
-  animation: pulse 2s ease-in-out infinite;
-  border-radius: 50%;
-}
-
-.hub-icon {
-  font-size: 60px;
-  position: relative;
-  z-index: 2;
-  animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
-}
-
-.hub-titre {
-  font-size: clamp(32px, 7vw, 48px);
-  font-weight: 900;
-  letter-spacing: 4px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(102, 126, 234, 0.6);
-}
-
-.hub-subtitle {
-  font-size: clamp(13px, 2.5vw, 16px);
-  color: rgba(255, 255, 255, 0.95);
-  letter-spacing: 1.5px;
-  margin-bottom: 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.hub-divider {
-  display: none;
-}
-
-/* Hub Premium Cards Grid - CENTERED */
-.hub-grid {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  width: 90%;
-  max-width: 1100px;
-  padding: 0 20px;
-  z-index: 100;
+.hub-cards-simple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 50px;
 }
 
 @media (max-width: 768px) {
-  .hub-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    bottom: 15%;
-  }
-  
-  .hub-header {
-    top: 10%;
+  .hub-cards-simple {
+    flex-direction: column;
+    gap: 24px;
   }
 }
 
-.hub-card-premium {
-  position: relative;
-  background: rgba(15, 15, 25, 0.85);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
+.hub-card-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.6s ease forwards;
-  pointer-events: auto;
-  z-index: 10;
+  transition: var(--transition);
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(26, 26, 36, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 180px;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hub-card-simple:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(26, 26, 36, 0.8);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(102, 126, 234, 0.4);
 }
 
-/* Border Animation */
-.hub-card-border {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(135deg, transparent, rgba(102, 126, 234, 0.5), transparent);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.hub-card-premium:hover .hub-card-border {
-  opacity: 1;
-  animation: borderRotate 3s linear infinite;
-}
-
-@keyframes borderRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Glow Effect */
-.hub-card-glow {
-  position: absolute;
-  inset: -50%;
-  opacity: 0;
-  filter: blur(40px);
-  transition: opacity 0.4s ease;
-}
-
-.hub-card-premium:hover .hub-card-glow {
-  opacity: 0.3;
-}
-
-.hub-card-premium:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(102, 126, 234, 0.4);
-  background: rgba(15, 15, 25, 0.95);
-}
-
-.hub-card-number {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 32px;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.1);
-  font-family: 'Courier New', monospace;
-  z-index: 1;
-}
-
-.hub-card-icon-premium {
-  font-size: 72px;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.4s ease;
+.hub-card-icon {
+  font-size: 64px;
+  animation: float 4s ease-in-out infinite;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
-.hub-card-premium:hover .hub-card-icon-premium {
-  transform: scale(1.15) translateY(-8px);
+.hub-card-simple:hover .hub-card-icon {
+  transform: scale(1.1);
 }
 
-.hub-card-titre-premium {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  margin-bottom: 12px;
-  color: #ffffff;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 2;
-}
-
-.hub-card-desc-premium {
+.hub-card-title {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.hub-card-arrow {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(102, 126, 234, 0.2);
-  color: #667eea;
-  font-size: 20px;
-  transition: all 0.3s ease;
-}
-
-.hub-card-premium:hover .hub-card-arrow {
-  background: #667eea;
-  color: white;
-  transform: translateX(5px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 /* ========================================
