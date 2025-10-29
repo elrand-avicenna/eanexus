@@ -1872,6 +1872,7 @@ html {
   z-index: 10;
   width: 90%;
   max-width: 800px;
+  pointer-events: none;
 }
 
 .hub-icon-wrapper {
