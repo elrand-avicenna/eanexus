@@ -13,7 +13,6 @@ window.goBack = goBack;
 
 window.addEventListener('DOMContentLoaded', async () => {
   initFilterMenu();          // Initialize filter menu
-  initClockModal();          // Initialize clock modal
   ensureMiniAudio();         // crée le casque
   await loadData();          // charge JSON (dont playlist + NPCs + Stadium)
   renderHomePage();
