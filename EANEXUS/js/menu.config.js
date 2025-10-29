@@ -1,10 +1,7 @@
 // menu.config.js
 export const MENU_ITEMS = [
-  // Icône Home flottante
-  { iconeUrl: './medias/img/icone-home2.png', iconeRotate: 8, titre:'Home', route:'home',
-    zone:'pinned', pin:{ position:'absolute', top:18, left:45 } },
-
   // Menu principal dans le drawer
+  { icone:'🏠', titre:'HOME', route:'home', zone:'header' },
   { icone:'👤', titre:'COIN DE L\'AUTEUR', route:'profil', zone:'header' },
   { icone:'🗓️', titre:'NEXUS CALENDAR', route:'calendrier', zone:'header' },
   { icone:'🏛️', titre:'NEXUS CENTER', route:'center', zone:'header' },
