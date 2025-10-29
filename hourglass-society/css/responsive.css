@@ -35,12 +35,6 @@
     position: relative;
   }
 
-  /* Pendant la descente, retirer le centrage pour que tout descende */
-  .hand-mobile.descending {
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-  }
-
   /* Empêcher les animations par défaut SAUF descending */
   .hand-mobile:not(.descending) {
     animation: none !important;
