@@ -16,36 +16,8 @@ body {
     align-items: center;
     color: #fff;
     overflow: hidden;
-    position: relative;
 }
 
-/* Container vidéo */
-.container-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000;
-    transition: opacity 0.5s ease, z-index 0s 0.5s;
-}
-
-.container-video.active {
-    z-index: 99999999999999;
-    opacity: 1;
-    transition: opacity 0.5s ease, z-index 0s 0s;
-}
-
-.container-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 .hand-mobile {
     background: url("../img/hand-mobile.png") no-repeat;
     background-position: center top 10px;
