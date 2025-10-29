@@ -67,12 +67,22 @@
     overflow: hidden;
   }
 
+  /* Quand descending, le smartphone doit rester attaché au parent */
+  .hand-mobile.descending .smartphone {
+    position: relative !important;
+  }
+
   /* L'écran interne prend 100% sans bordure ni arrondi */
   .screen {
     width: 100vw !important;
     height: 100vh !important;
     border-radius: 0 !important;
     border: none !important;
+  }
+
+  /* S'assurer que l'écran suit aussi la descente */
+  .hand-mobile.descending .screen {
+    position: relative !important;
   }
 
   /* Le canvas suit en plein écran (il est déjà en position: absolute) */
