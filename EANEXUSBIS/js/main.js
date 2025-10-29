@@ -1,7 +1,6 @@
 
 // main.js
 import { app } from './core/state.js';
-import { hydrateUI, ensureDrawerCloseButton, updateMenuDrawer } from './ui/drawer.js';
 import { initAccordionMenu } from './ui/accordion-menu.js';
 import { initFilterMenu } from './ui/filter-menu.js';
 import { loadData } from './data/loaders.js';
