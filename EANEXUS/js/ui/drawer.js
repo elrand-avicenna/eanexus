@@ -62,7 +62,6 @@ export function updateMenuDrawer() {
     el.innerHTML = `
       <div class="menu-item-icone" aria-hidden="true">${iconHTML(item)}</div>
       <div class="menu-item-titre">${item.titre}</div>
-      <div class="menu-item-chevron">›</div>
     `;
     el.title = item.titre;
     el.onclick = () => { closeDrawer(); navigateTo(item.route); };
