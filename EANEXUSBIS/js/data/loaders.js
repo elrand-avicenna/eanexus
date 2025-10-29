@@ -9,7 +9,7 @@ export async function loadData() {
     const [
       projetsRes, categoriesRes,
       travauxLudRes, travauxExpoRes, travauxCreaRes, travauxPedagRes,
-      npcsRes, stadiumRes
+      npcsRes, stadiumRes, stadiumCatRes, centerCatRes
     ] = await Promise.all([
       fetch('js/data/projets-racine-new.json'),
       fetch('js/data/categories.json'),
@@ -18,18 +18,45 @@ export async function loadData() {
       fetch('js/data/travauxcrea.json'),
       fetch('js/data/travauxpedag.json'),
       fetch('js/data/npcs.json'),
-      fetch('js/data/stadium-events.json')
+      fetch('js/data/stadium-events.json'),
+      fetch('js/data/stadium-categories.json'),
+      fetch('js/data/center-categories.json')
     ]);
 
     const projetsJson = await projetsRes.json();
     app.data.projetsRacine = reorderProjetsPreferred(projetsJson.projets || []);
 
-    app.data.categories = await categoriesRes.json();
+    const categoriesJson = await categoriesRes.json();
+    
+    // Add Stadium and Center categories
+    const stadiumCatJson = await stadiumCatRes.json();
+    const centerCatJson = await centerCatRes.json();
+    
+    app.data.categories = {
+      ...categoriesJson,
+      'stadium': [
+        { id: 'evenements', titre: 'Événements', logo: '📅', couleur: '#e74c3c', description: 'Tous les événements du NEXUS' },
+        { id: 'calendar', titre: 'Calendrier', logo: '🗓️', couleur: '#f39c12', description: 'Calendrier complet' },
+        { id: 'actualites', titre: 'Actualités', logo: '📰', couleur: '#667eea', description: 'Dernières nouvelles' }
+      ],
+      'center': [
+        { id: 'habitants', titre: 'Habitants', logo: '👥', couleur: '#667eea', description: 'Personnages du NEXUS' },
+        { id: 'lounge', titre: 'Lounge', logo: '🛋️', couleur: '#764ba2', description: 'Salle de repos' }
+      ]
+    };
 
     const [lud, expo, crea, pedag] = await Promise.all([
       travauxLudRes.json(), travauxExpoRes.json(), travauxCreaRes.json(), travauxPedagRes.json()
     ]);
-    app.data.travaux = { ...lud, ...expo, ...crea, ...pedag };
+    
+    app.data.travaux = {
+      ...lud, ...expo, ...crea, ...pedag,
+      'evenements': stadiumCatJson['stadium-evenements'] || [],
+      'calendar': stadiumCatJson['stadium-calendar'] || [],
+      'actualites': stadiumCatJson['stadium-actualites'] || [],
+      'habitants': centerCatJson['center-habitants'] || [],
+      'lounge': centerCatJson['center-lounge'] || []
+    };
     
     // Load NPCs
     const npcsJson = await npcsRes.json();
