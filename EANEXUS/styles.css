@@ -828,7 +828,7 @@ html {
 .drawer-nav { 
   height: 90%; width: 90%; position: relative; 
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: 4px;
+  gap: 2px;
   padding: 20px;
 }
 .drawer .menu-section-title {
@@ -839,14 +839,14 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 16px 20px;
+  gap: 4px;
+  padding: 10px 16px;
   cursor: pointer;
   transition: var(--transition);
   background: rgba(102, 126, 234, 0.05);
   border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 12px;
-  min-width: 120px;
+  border-radius: 10px;
+  min-width: 90px;
   position: relative;
   overflow: hidden;
 }
@@ -867,18 +867,18 @@ html {
 }
 
 .drawer .menu-item:hover { 
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-3px) scale(1.02);
   background: rgba(102, 126, 234, 0.15);
   border-color: rgba(102, 126, 234, 0.3);
-  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.2);
 }
 
 .drawer .menu-item:active {
-  transform: translateY(-2px) scale(0.98);
+  transform: translateY(-1px) scale(0.98);
 }
 
 .drawer .menu-item-icone { 
-  font-size: 32px;
+  font-size: 24px;
   opacity: 1;
   line-height: 1;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
@@ -891,12 +891,13 @@ html {
 
 .drawer .menu-item-titre { 
   font-weight: 600;
-  font-size: 9px;
+  font-size: 8px;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-align: center;
   opacity: 0.95;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  line-height: 1.2;
 }
 .drawer .menu-item-chevron { 
   display: none;
@@ -904,16 +905,16 @@ html {
 
 /* Separator between sections */
 .drawer .menu-item[data-zone="list"]:first-of-type {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .drawer .menu-item[data-zone="list"]:first-of-type::after {
   content: '';
   position: absolute;
-  top: -12px;
+  top: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
+  width: 50%;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
 }
