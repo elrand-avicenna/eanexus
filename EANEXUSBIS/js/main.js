@@ -2,6 +2,7 @@
 // main.js
 import { app } from './core/state.js';
 import { initFilterMenu } from './ui/filter-menu.js';
+import { initClockModal } from './ui/clock-modal.js';
 import { loadData } from './data/loaders.js';
 import { ensureMiniAudio, playAtIndex, miniAudio } from './audio/mini-audio.js';
 import { navigateTo, goBack } from './router.js';
