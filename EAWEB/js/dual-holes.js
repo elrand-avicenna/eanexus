@@ -35,6 +35,9 @@ class DualHolesSystem {
             return;
         }
 
+        // Créer la vidéo background d'abord
+        this.createVideoBackground();
+        
         // Créer le cercle draggable
         this.createDragCircle(screen);
         
@@ -44,12 +47,6 @@ class DualHolesSystem {
         
         // Créer la page overlay (cachée par défaut)
         this.createOverlayPage();
-        
-        // Récupérer la vidéo background
-        this.videoBackground = document.getElementById('video-background');
-        if (this.videoBackground) {
-            this.videoBackground.pause(); // Vidéo en pause par défaut
-        }
         
         // Ajouter les événements
         this.addEventListeners();
