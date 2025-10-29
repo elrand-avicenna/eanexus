@@ -1,7 +1,7 @@
 
 // core/utils.js
 export function reorderProjetsPreferred(list) {
-  const pref = ['accueil','atelier-ludique','atelier-exposition','atelier-creatif','atelier-pedagogique'];
+  const pref = ['accueil','nexus-hub','atelier-ludique','atelier-exposition','atelier-creatif','atelier-pedagogique'];
   const rank = id => {
     const i = pref.indexOf(id);
     return i === -1 ? 999 : i;
