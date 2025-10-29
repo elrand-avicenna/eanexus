@@ -75,14 +75,24 @@ export function renderHomePage() {
             <div class="projet-titre">${projet.titre}</div>
             <div class="projet-description">${projet.description || ''}</div>
             ${hasCategories ? `
-              <button class="projet-cta-premium">
-                <span class="cta-text">Accéder</span>
-                <span class="cta-icon">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
+              <div class="projet-cta-premium">
+                <div class="cta-wrapper">
+                  <div class="cta-hexagon">
+                    <span class="cta-text">Accéder</span>
+                  </div>
+                  <div class="cta-arrow-circle">
+                    <svg class="cta-arrow-icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="cta-brackets">
+                  <div class="cta-bracket tl"></div>
+                  <div class="cta-bracket tr"></div>
+                  <div class="cta-bracket bl"></div>
+                  <div class="cta-bracket br"></div>
+                </div>
+              </div>
             ` : ''}
           </div>
           ${index === 0 ? `
