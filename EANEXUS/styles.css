@@ -1870,7 +1870,7 @@ html {
 /* Hub Header */
 .hub-header {
   position: absolute;
-  top: 15%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -1895,7 +1895,7 @@ html {
 }
 
 .hub-icon {
-  font-size: 80px;
+  font-size: 60px;
   position: relative;
   z-index: 2;
   animation: float 4s ease-in-out infinite;
@@ -1903,10 +1903,10 @@ html {
 }
 
 .hub-titre {
-  font-size: clamp(36px, 8vw, 56px);
+  font-size: clamp(32px, 7vw, 48px);
   font-weight: 900;
   letter-spacing: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   text-transform: uppercase;
   background: linear-gradient(135deg, #ffffff 0%, #667eea 100%);
   -webkit-background-clip: text;
@@ -1916,30 +1916,27 @@ html {
 }
 
 .hub-subtitle {
-  font-size: clamp(14px, 3vw, 18px);
+  font-size: clamp(13px, 2.5vw, 16px);
   color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 2px;
-  margin-bottom: 30px;
+  letter-spacing: 1.5px;
+  margin-bottom: 0;
 }
 
 .hub-divider {
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.8), transparent);
-  margin: 0 auto;
+  display: none;
 }
 
-/* Hub Premium Cards Grid */
+/* Hub Premium Cards Grid - CENTERED */
 .hub-grid {
   position: absolute;
-  bottom: 10%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   width: 90%;
-  max-width: 1200px;
+  max-width: 1100px;
   padding: 0 20px;
   z-index: 20;
   pointer-events: auto;
