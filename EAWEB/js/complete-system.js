@@ -26,6 +26,7 @@ class TwoHolesSystem {
         
         // États
         this.isHolding = false;
+        this.wasHolding = false;
         this.holdPointerId = null;
         this.isInRightHole = false;
         this.lastT = null;
