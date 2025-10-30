@@ -76,9 +76,16 @@
                         handMobile.style.display = 'none';
                         smartphone.style.display = 'none';
                         
+                        console.log('📞 Tentative d\'appel à CompleteSystem...');
+                        console.log('window.CompleteSystem existe ?', !!window.CompleteSystem);
+                        console.log('window.CompleteSystem.startAfterIconPick existe ?', !!(window.CompleteSystem && window.CompleteSystem.startAfterIconPick));
+                        
                         // Déclencher le système de 2 trous + vidéo
                         if (window.CompleteSystem && window.CompleteSystem.startAfterIconPick) {
+                            console.log('✅ Appel de CompleteSystem.startAfterIconPick');
                             window.CompleteSystem.startAfterIconPick(icon, videoBackground);
+                        } else {
+                            console.error('❌ CompleteSystem non disponible !');
                         }
                     }, 1000); // Attendre la fin du fondu
                 }
