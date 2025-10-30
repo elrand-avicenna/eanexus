@@ -398,13 +398,14 @@ class TwoHolesSystem {
         const holeCenterX = holeRect.left + holeRect.width / 2;
         const holeCenterY = holeRect.top + holeRect.height / 2;
         
-        this.selectedIcon.style.transition = 'all 0.3s ease';
-        this.selectedIcon.style.left = `${holeCenterX - iconWidth / 2}px`;
-        this.selectedIcon.style.top = `${holeCenterY - iconHeight / 2}px`;
+        // Utiliser le système de ressort pour un mouvement fluide
+        const targetLeft = holeCenterX - iconWidth / 2;
+        const targetTop = holeCenterY - iconHeight / 2;
         
-        setTimeout(() => {
-            this.selectedIcon.style.transition = 'none';
-        }, 300);
+        this.tx = targetLeft - this.baseLeft;
+        this.ty = targetTop - this.baseTop;
+        
+        console.log('📍 Icône positionnée dans le trou');
     }
 
     playVideo() {
