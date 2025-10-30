@@ -41,7 +41,7 @@
         
         // Écouter le clic sur chaque icône
         icons.forEach(icon => {
-            icon.addEventListener('click', (e) => {
+            icon.addEventListener('pointerdown', (e) => {
                 if (!fadeTriggered) {
                     fadeTriggered = true;
                     
@@ -86,7 +86,7 @@
                         }
                     }, 1000); // Attendre la fin du fondu
                 }
-            }, false); // Bubble phase, après icon-follow
+            });
         });
     });
 })();
