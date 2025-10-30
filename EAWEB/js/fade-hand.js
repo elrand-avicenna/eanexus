@@ -41,12 +41,9 @@
         
         // Écouter le clic sur chaque icône
         icons.forEach(icon => {
-            icon.addEventListener('pointerdown', (e) => {
+            icon.addEventListener('click', (e) => {
                 if (!fadeTriggered) {
                     fadeTriggered = true;
-                    
-                    // Empêcher icon-follow.js de capturer l'événement
-                    e.stopImmediatePropagation();
                     
                     console.log('🎭 Une icône a été choisie - Extraction immédiate');
                     
@@ -89,7 +86,7 @@
                         }
                     }, 1000); // Attendre la fin du fondu
                 }
-            }, true); // Utiliser capture phase pour être appelé en premier
+            }, false); // Bubble phase, après icon-follow
         });
     });
 })();
