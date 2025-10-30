@@ -38,12 +38,31 @@ class TwoHolesSystem {
         
         this.selectedIcon = icon;
         
+        // IMPORTANT : Extraire l'icône du smartphone AVANT tout
+        if (icon && icon.parentNode) {
+            const iconRect = icon.getBoundingClientRect();
+            
+            // Créer une copie en position fixed
+            icon.style.position = 'fixed';
+            icon.style.left = `${iconRect.left}px`;
+            icon.style.top = `${iconRect.top}px`;
+            icon.style.width = `${iconRect.width}px`;
+            icon.style.height = `${iconRect.height}px`;
+            icon.style.margin = '0';
+            icon.style.zIndex = '10000';
+            
+            // Déplacer dans le body
+            document.body.appendChild(icon);
+            console.log('✅ Icône extraite du smartphone');
+        }
+        
         // Créer ou réutiliser la vidéo
         if (video) {
             this.videoBackground = video;
             this.videoBackground.style.zIndex = '1';
             this.videoBackground.style.opacity = '1';
             this.videoBackground.pause(); // En pause au départ
+            console.log('⏸️ Vidéo en pause');
         } else {
             this.createVideoBackground();
         }
