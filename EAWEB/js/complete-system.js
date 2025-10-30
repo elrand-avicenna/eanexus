@@ -228,12 +228,13 @@ class TwoHolesSystem {
             document.addEventListener('mouseup', (e) => this.onDesktopRelease(e));
             
         } else {
-            // MODE MOBILE : Clic sur l'écran = déplacement vers ce point
-            console.log('📱 Mode Mobile : Déplacement au clic');
+            // MODE MOBILE : Clic sur l'écran = déplacement vers ce point + suivi au doigt
+            console.log('📱 Mode Mobile : Déplacement au clic + Suivi tactile');
             document.addEventListener('click', (e) => this.onMobileClick(e));
             
-            // Touch hold pour les trous
+            // Touch hold pour suivre le doigt ET détecter les trous
             this.selectedIcon.addEventListener('touchstart', (e) => this.onMobileTouchStart(e));
+            document.addEventListener('touchmove', (e) => this.onMobileTouchMove(e));
             document.addEventListener('touchend', (e) => this.onMobileTouchEnd(e));
         }
         
@@ -273,6 +274,22 @@ class TwoHolesSystem {
 
     onMobileTouchStart(e) {
         this.isHolding = true;
+        // Démarrer le suivi
+        const touch = e.touches[0];
+        if (touch) {
+            this.setTargetCentered(touch.clientX, touch.clientY);
+        }
+    }
+
+    onMobileTouchMove(e) {
+        if (!this.isHolding || !this.selectedIcon) return;
+        
+        // Suivre le doigt
+        const touch = e.touches[0];
+        if (touch) {
+            this.setTargetCentered(touch.clientX, touch.clientY);
+            this.checkHoleProximity();
+        }
     }
 
     onMobileTouchEnd(e) {
