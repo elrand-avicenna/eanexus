@@ -410,7 +410,7 @@ class TwoHolesSystem {
         }
     }
 
-    isIconInHole(hole, threshold = 80) {
+    isIconInHole(hole, threshold = 120) {
         if (!this.selectedIcon || !hole) return false;
         
         const iconRect = this.selectedIcon.getBoundingClientRect();
@@ -429,9 +429,11 @@ class TwoHolesSystem {
         const isIn = distance < threshold;
         
         // Debug
+        const holeName = hole.classList.contains('left-hole') ? 'GAUCHE' : 'DROITE';
+        console.log(`Trou ${holeName}: distance=${Math.round(distance)}px, seuil=${threshold}px, dedans=${isIn}`);
+        
         if (isIn) {
-            const holeName = hole.classList.contains('left-hole') ? 'GAUCHE' : 'DROITE';
-            console.log(`✅ Icône dans trou ${holeName} (distance: ${Math.round(distance)}px)`);
+            console.log(`✅ Icône dans trou ${holeName} !`);
         }
         
         return isIn;
