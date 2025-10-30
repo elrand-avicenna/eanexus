@@ -45,24 +45,23 @@
                 if (!fadeTriggered) {
                     fadeTriggered = true;
                     
-                    console.log('🎭 Une icône a été choisie - Fondu + Vidéo background');
+                    console.log('🎭 Une icône a été choisie - Démarrage du système complet');
                     
                     // 1. Ajouter la classe pour le fondu sur les deux éléments
                     handMobile.classList.add('fade-out');
                     smartphone.classList.add('fade-out');
                     
-                    // 2. Lancer la vidéo avec un petit délai
+                    // 2. Attendre le fondu puis déclencher le système complet
                     setTimeout(() => {
-                        // Rendre la vidéo visible
-                        videoBackground.style.opacity = '1';
+                        // Masquer complètement
+                        handMobile.style.display = 'none';
+                        smartphone.style.display = 'none';
                         
-                        // Lancer la vidéo
-                        videoBackground.play().then(() => {
-                            console.log('✅ Vidéo background lancée avec son');
-                        }).catch(err => {
-                            console.error('❌ Erreur lecture vidéo:', err);
-                        });
-                    }, 500); // 500ms pour laisser le fondu commencer
+                        // Déclencher le système de 2 trous + vidéo
+                        if (window.CompleteSystem && window.CompleteSystem.startAfterIconPick) {
+                            window.CompleteSystem.startAfterIconPick(icon, videoBackground);
+                        }
+                    }, 1000); // Attendre la fin du fondu
                 }
             });
         });
