@@ -7,8 +7,29 @@ class TwoHolesSystem {
         this.leftHole = null;
         this.rightHole = null;
         this.overlayPage = null;
-        this.isDragging = false;
+        
+        // Spring system pour mouvement fluide
+        this.x = 0;
+        this.y = 0;
+        this.vx = 0;
+        this.vy = 0;
+        this.tx = 0;
+        this.ty = 0;
+        this.baseLeft = 0;
+        this.baseTop = 0;
+        
+        // Configuration du ressort
+        this.freqHz = 2.2;
+        this.dampingRatio = 1.05;
+        this.omega = 2 * Math.PI * this.freqHz;
+        this.z = this.dampingRatio;
+        
+        // États
+        this.isHolding = false;
+        this.holdPointerId = null;
         this.isInRightHole = false;
+        this.lastT = null;
+        this.rafId = null;
     }
 
     // Démarrer le système après le choix d'icône
