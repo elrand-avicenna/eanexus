@@ -220,12 +220,11 @@ class TwoHolesSystem {
         
         if (this.isDesktop) {
             // MODE DESKTOP : L'icône suit continuellement le curseur
-            console.log('🖱️ Mode Desktop : Suivi continu du curseur');
+            console.log('🖱️ Mode Desktop : Suivi automatique du curseur');
             document.addEventListener('mousemove', (e) => this.onDesktopMove(e));
             
-            // Événements pour détecter quand on relâche (pour les trous)
-            this.selectedIcon.addEventListener('mousedown', (e) => this.onDesktopClick(e));
-            document.addEventListener('mouseup', (e) => this.onDesktopRelease(e));
+            // Clic n'importe où pour déclencher l'action d'un trou
+            document.addEventListener('click', (e) => this.onDesktopClick(e));
             
         } else {
             // MODE MOBILE : Clic sur l'écran = déplacement vers ce point + suivi au doigt
@@ -244,7 +243,7 @@ class TwoHolesSystem {
         console.log('✋ Icône draggable avec ressort fluide');
     }
 
-    // DESKTOP : Suit continuellement le curseur
+    // DESKTOP : Suit automatiquement le curseur
     onDesktopMove(e) {
         if (!this.selectedIcon) return;
         this.setTargetCentered(e.clientX, e.clientY);
@@ -252,12 +251,11 @@ class TwoHolesSystem {
     }
 
     onDesktopClick(e) {
-        this.isHolding = true;
-    }
-
-    onDesktopRelease(e) {
-        if (!this.isHolding) return;
-        this.isHolding = false;
+        // Ne pas traiter si c'est un clic sur un bouton
+        if (e.target.classList.contains('close-overlay-btn')) return;
+        
+        // Clic = vérifier si l'icône est dans un trou
+        console.log('🖱️ Desktop: Clic détecté, vérification des trous...');
         this.checkHoleInteraction();
     }
 
