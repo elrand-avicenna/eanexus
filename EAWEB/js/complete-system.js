@@ -30,6 +30,12 @@ class TwoHolesSystem {
         this.isInRightHole = false;
         this.lastT = null;
         this.rafId = null;
+        
+        // Détection mobile/desktop
+        this.isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        this.isDesktop = !this.isMobile;
+        
+        console.log(`📱 Mode: ${this.isMobile ? 'MOBILE' : 'DESKTOP'}`);
     }
 
     // Démarrer le système après le choix d'icône
