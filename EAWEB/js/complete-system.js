@@ -166,7 +166,7 @@ class TwoHolesSystem {
             width: 100vw;
             height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 999999;
+            z-index: 999999998;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -188,7 +188,7 @@ class TwoHolesSystem {
         const closeBtn = this.overlayPage.querySelector('.close-overlay-btn');
         closeBtn.addEventListener('click', () => this.hideOverlay());
         
-        console.log('📄 Overlay créée');
+        console.log('📄 Overlay créée (z-index inférieur à l\'icône)');
     }
 
     makeIconDraggable() {
