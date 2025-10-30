@@ -338,57 +338,6 @@ class TwoHolesSystem {
         }
     }
 
-    startHold(e) {
-        if (!this.selectedIcon) return;
-        e.preventDefault();
-        
-        this.isHolding = true;
-        this.holdPointerId = e.pointerId ?? null;
-        this.setTargetCentered(e.clientX, e.clientY);
-    }
-
-    onHoldMove(e) {
-        if (!this.isHolding || !this.selectedIcon) return;
-        if (e.pointerId != null && this.holdPointerId != null && e.pointerId !== this.holdPointerId) return;
-        
-        this.setTargetCentered(e.clientX, e.clientY);
-        
-        // Vérifier proximité en temps réel
-        this.checkHoleProximity();
-    }
-
-    stopHold(e) {
-        if (e && this.holdPointerId != null && e.pointerId != null && e.pointerId !== this.holdPointerId) return;
-        if (!this.isHolding) return;
-        
-        this.isHolding = false;
-        this.holdPointerId = null;
-        
-        // Vérifier si dans un trou
-        const inLeftHole = this.isIconInHole(this.leftHole);
-        const inRightHole = this.isIconInHole(this.rightHole);
-        
-        console.log(`🔍 Check trous: gauche=${inLeftHole}, droite=${inRightHole}`);
-        
-        if (inLeftHole) {
-            console.log('📄 Trou gauche → Overlay');
-            this.showOverlay();
-        } else if (inRightHole) {
-            console.log('⏳ Trou droite → Vidéo PLAY');
-            this.isInRightHole = true;
-            this.playVideo();
-            this.keepIconInHole(this.rightHole);
-        } else {
-            if (this.isInRightHole) {
-                console.log('🛑 Sorti du trou droite → Vidéo PAUSE');
-                this.isInRightHole = false;
-                this.pauseVideo();
-            }
-        }
-        
-        this.resetHoleStyles();
-    }
-
     setTargetCentered(cx, cy) {
         if (!this.selectedIcon) return;
         
