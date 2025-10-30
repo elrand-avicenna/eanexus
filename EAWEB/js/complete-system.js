@@ -201,20 +201,20 @@ class TwoHolesSystem {
     makeIconDraggable() {
         if (!this.selectedIcon) return;
         
+        // L'icône est déjà en position fixed et dans le body
+        // On récupère juste sa position actuelle
         const iconRect = this.selectedIcon.getBoundingClientRect();
         
-        this.selectedIcon.style.position = 'fixed';
-        this.selectedIcon.style.left = `${iconRect.left}px`;
-        this.selectedIcon.style.top = `${iconRect.top}px`;
-        this.selectedIcon.style.width = `${iconRect.width}px`;
-        this.selectedIcon.style.height = `${iconRect.height}px`;
-        this.selectedIcon.style.zIndex = '10000';
+        // S'assurer des styles nécessaires
         this.selectedIcon.style.cursor = 'pointer';
         this.selectedIcon.style.transition = 'none';
         this.selectedIcon.style.transformOrigin = 'top left';
         this.selectedIcon.style.transform = 'translate3d(0,0,0)';
+        this.selectedIcon.style.userSelect = 'none';
+        this.selectedIcon.style.webkitUserDrag = 'none';
+        this.selectedIcon.style.touchAction = 'none';
         
-        // Initialiser les positions
+        // Initialiser les positions pour le ressort
         this.baseLeft = iconRect.left;
         this.baseTop = iconRect.top;
         this.x = 0;
@@ -223,16 +223,6 @@ class TwoHolesSystem {
         this.vy = 0;
         this.tx = 0;
         this.ty = 0;
-        
-        // S'assurer que l'icône est dans le body
-        if (this.selectedIcon.parentNode !== document.body) {
-            document.body.appendChild(this.selectedIcon);
-        }
-        
-        // Empêcher la sélection et le drag natif
-        this.selectedIcon.style.userSelect = 'none';
-        this.selectedIcon.style.webkitUserDrag = 'none';
-        this.selectedIcon.style.touchAction = 'none';
         
         // Events avec pointerevent pour unifier souris et tactile
         this.selectedIcon.addEventListener('pointerdown', (e) => this.startHold(e));
