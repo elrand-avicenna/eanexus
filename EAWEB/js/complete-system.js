@@ -439,7 +439,12 @@ class TwoHolesSystem {
 // Instance unique
 const twoHolesSystemInstance = new TwoHolesSystem();
 
-// Exposer globalement
+// Exposer globalement IMMÉDIATEMENT
 window.CompleteSystem = {
-    startAfterIconPick: (icon, video) => twoHolesSystemInstance.startAfterIconPick(icon, video)
+    startAfterIconPick: (icon, video) => {
+        console.log('🚀 CompleteSystem.startAfterIconPick appelé !');
+        return twoHolesSystemInstance.startAfterIconPick(icon, video);
+    }
 };
+
+console.log('✅ CompleteSystem prêt et exposé globalement');
