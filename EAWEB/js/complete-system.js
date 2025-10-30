@@ -61,16 +61,16 @@ class TwoHolesSystem {
     }
 
     createHoles() {
-        // Trou gauche (page)
+        // Trou gauche (page) - Position plus à gauche
         this.leftHole = document.createElement('div');
         this.leftHole.className = 'interaction-hole left-hole';
         this.leftHole.innerHTML = '<span class="hole-icon">📄</span>';
         this.leftHole.style.cssText = `
             position: fixed;
-            left: 20%;
-            bottom: 15%;
-            width: 120px;
-            height: 120px;
+            left: 10%;
+            bottom: 20%;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             background: radial-gradient(circle, #1a0a2e 30%, #2d1b4e 70%, #3d2b5e 100%);
             border: 3px solid #555;
@@ -82,16 +82,16 @@ class TwoHolesSystem {
             transition: all 0.3s ease;
         `;
         
-        // Trou droite (sablier/vidéo)
+        // Trou droite (sablier/vidéo) - Position plus à droite
         this.rightHole = document.createElement('div');
         this.rightHole.className = 'interaction-hole right-hole';
         this.rightHole.innerHTML = '<span class="hole-icon">⏳</span>';
         this.rightHole.style.cssText = `
             position: fixed;
-            right: 20%;
-            bottom: 15%;
-            width: 120px;
-            height: 120px;
+            right: 10%;
+            bottom: 20%;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             background: radial-gradient(circle, #0a1a2e 30%, #1b2d4e 70%, #2b3d5e 100%);
             border: 3px solid #555;
@@ -120,7 +120,7 @@ class TwoHolesSystem {
         document.body.appendChild(this.leftHole);
         document.body.appendChild(this.rightHole);
         
-        console.log('🕳️ Trous créés');
+        console.log('🕳️ Trous créés (écartés)');
     }
 
     createOverlayPage() {
