@@ -38,22 +38,9 @@ class TwoHolesSystem {
         
         this.selectedIcon = icon;
         
-        // IMPORTANT : Extraire l'icône du smartphone AVANT tout
-        if (icon && icon.parentNode) {
-            const iconRect = icon.getBoundingClientRect();
-            
-            // Créer une copie en position fixed
-            icon.style.position = 'fixed';
-            icon.style.left = `${iconRect.left}px`;
-            icon.style.top = `${iconRect.top}px`;
-            icon.style.width = `${iconRect.width}px`;
-            icon.style.height = `${iconRect.height}px`;
-            icon.style.margin = '0';
-            icon.style.zIndex = '10000';
-            
-            // Déplacer dans le body
-            document.body.appendChild(icon);
-            console.log('✅ Icône extraite du smartphone');
+        // L'icône est déjà extraite par fade-hand.js, on vérifie juste
+        if (icon) {
+            console.log('✅ Icône reçue, déjà en position fixed');
         }
         
         // Créer ou réutiliser la vidéo
