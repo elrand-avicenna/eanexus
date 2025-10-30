@@ -198,7 +198,7 @@ class TwoHolesSystem {
         // On récupère juste sa position actuelle
         const iconRect = this.selectedIcon.getBoundingClientRect();
         
-        // S'assurer des styles nécessaires
+        // S'assurer des styles nécessaires avec z-index MAX
         this.selectedIcon.style.cursor = 'pointer';
         this.selectedIcon.style.transition = 'none';
         this.selectedIcon.style.transformOrigin = 'top left';
@@ -206,6 +206,7 @@ class TwoHolesSystem {
         this.selectedIcon.style.userSelect = 'none';
         this.selectedIcon.style.webkitUserDrag = 'none';
         this.selectedIcon.style.touchAction = 'none';
+        this.selectedIcon.style.zIndex = '9999999999'; // z-index MAX
         
         // Initialiser les positions pour le ressort
         this.baseLeft = iconRect.left;
@@ -217,16 +218,92 @@ class TwoHolesSystem {
         this.tx = 0;
         this.ty = 0;
         
-        // Events avec pointerevent pour unifier souris et tactile
-        this.selectedIcon.addEventListener('pointerdown', (e) => this.startHold(e));
-        document.addEventListener('pointermove', (e) => this.onHoldMove(e));
-        document.addEventListener('pointerup', (e) => this.stopHold(e));
-        document.addEventListener('pointercancel', (e) => this.stopHold(e));
+        if (this.isDesktop) {
+            // MODE DESKTOP : L'icône suit continuellement le curseur
+            console.log('🖱️ Mode Desktop : Suivi continu du curseur');
+            document.addEventListener('mousemove', (e) => this.onDesktopMove(e));
+            
+            // Événements pour détecter quand on relâche (pour les trous)
+            this.selectedIcon.addEventListener('mousedown', (e) => this.onDesktopClick(e));
+            document.addEventListener('mouseup', (e) => this.onDesktopRelease(e));
+            
+        } else {
+            // MODE MOBILE : Clic sur l'écran = déplacement vers ce point
+            console.log('📱 Mode Mobile : Déplacement au clic');
+            document.addEventListener('click', (e) => this.onMobileClick(e));
+            
+            // Touch hold pour les trous
+            this.selectedIcon.addEventListener('touchstart', (e) => this.onMobileTouchStart(e));
+            document.addEventListener('touchend', (e) => this.onMobileTouchEnd(e));
+        }
         
         // Démarrer la boucle d'animation
         this.startAnimationLoop();
         
         console.log('✋ Icône draggable avec ressort fluide');
+    }
+
+    // DESKTOP : Suit continuellement le curseur
+    onDesktopMove(e) {
+        if (!this.selectedIcon) return;
+        this.setTargetCentered(e.clientX, e.clientY);
+        this.checkHoleProximity();
+    }
+
+    onDesktopClick(e) {
+        this.isHolding = true;
+    }
+
+    onDesktopRelease(e) {
+        if (!this.isHolding) return;
+        this.isHolding = false;
+        this.checkHoleInteraction();
+    }
+
+    // MOBILE : Déplacement au clic
+    onMobileClick(e) {
+        if (!this.selectedIcon) return;
+        
+        // Ne pas traiter si c'est un clic sur un bouton/trou
+        if (e.target.classList.contains('close-overlay-btn')) return;
+        
+        this.setTargetCentered(e.clientX, e.clientY);
+        console.log(`📍 Mobile: Déplacement vers (${e.clientX}, ${e.clientY})`);
+    }
+
+    onMobileTouchStart(e) {
+        this.isHolding = true;
+    }
+
+    onMobileTouchEnd(e) {
+        if (!this.isHolding) return;
+        this.isHolding = false;
+        this.checkHoleInteraction();
+    }
+
+    checkHoleInteraction() {
+        const inLeftHole = this.isIconInHole(this.leftHole);
+        const inRightHole = this.isIconInHole(this.rightHole);
+        
+        console.log(`🔍 Check trous: gauche=${inLeftHole}, droite=${inRightHole}`);
+        
+        if (inLeftHole) {
+            console.log('📄 Trou gauche → Overlay');
+            this.showOverlay();
+        } else if (inRightHole) {
+            console.log('⏳ Trou droite → Vidéo PLAY');
+            this.isInRightHole = true;
+            this.playVideo();
+            this.keepIconInHole(this.rightHole);
+        } else {
+            if (this.isInRightHole) {
+                console.log('🛑 Sorti du trou droite → Vidéo PAUSE');
+                this.isInRightHole = false;
+                this.pauseVideo();
+            }
+        }
+        
+        this.resetHoleStyles();
     }
 
     startAnimationLoop() {
