@@ -256,6 +256,27 @@ class TwoHolesSystem {
         
         // Clic = vérifier si l'icône est dans un trou
         console.log('🖱️ Desktop: Clic détecté, vérification des trous...');
+        
+        // Debug : afficher les positions
+        if (this.selectedIcon && this.leftHole && this.rightHole) {
+            const iconRect = this.selectedIcon.getBoundingClientRect();
+            const leftRect = this.leftHole.getBoundingClientRect();
+            const rightRect = this.rightHole.getBoundingClientRect();
+            
+            console.log('Position icône:', {
+                centerX: iconRect.left + iconRect.width / 2,
+                centerY: iconRect.top + iconRect.height / 2
+            });
+            console.log('Position trou gauche:', {
+                centerX: leftRect.left + leftRect.width / 2,
+                centerY: leftRect.top + leftRect.height / 2
+            });
+            console.log('Position trou droite:', {
+                centerX: rightRect.left + rightRect.width / 2,
+                centerY: rightRect.top + rightRect.height / 2
+            });
+        }
+        
         this.checkHoleInteraction();
     }
 
