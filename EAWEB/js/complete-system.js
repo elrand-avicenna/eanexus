@@ -195,7 +195,6 @@ class TwoHolesSystem {
         if (!this.selectedIcon) return;
         
         // L'icône est déjà en position fixed et dans le body
-        // On récupère juste sa position actuelle
         const iconRect = this.selectedIcon.getBoundingClientRect();
         
         // S'assurer des styles nécessaires avec z-index MAX
@@ -218,103 +217,103 @@ class TwoHolesSystem {
         this.tx = 0;
         this.ty = 0;
         
-        if (this.isDesktop) {
-            // MODE DESKTOP : L'icône suit continuellement le curseur
-            console.log('🖱️ Mode Desktop : Suivi automatique du curseur');
-            document.addEventListener('mousemove', (e) => this.onDesktopMove(e));
-            
-            // Clic n'importe où pour déclencher l'action d'un trou
-            document.addEventListener('click', (e) => this.onDesktopClick(e));
-            
-        } else {
-            // MODE MOBILE : Clic sur l'écran = déplacement vers ce point + suivi au doigt
-            console.log('📱 Mode Mobile : Déplacement au clic + Suivi tactile');
-            document.addEventListener('click', (e) => this.onMobileClick(e));
-            
-            // Touch hold pour suivre le doigt ET détecter les trous
-            this.selectedIcon.addEventListener('touchstart', (e) => this.onMobileTouchStart(e));
-            document.addEventListener('touchmove', (e) => this.onMobileTouchMove(e));
-            document.addEventListener('touchend', (e) => this.onMobileTouchEnd(e));
-        }
+        // Comportement unifié : CLIC sur l'écran = déplacement de l'icône
+        document.addEventListener('click', (e) => this.onScreenClick(e));
+        document.addEventListener('touchend', (e) => {
+            // Pour mobile, touchend sans touchmove = clic
+            if (!this.isHolding) {
+                const touch = e.changedTouches[0];
+                if (touch) {
+                    this.onScreenClick({ clientX: touch.clientX, clientY: touch.clientY, target: e.target });
+                }
+            }
+        });
+        
+        // APPUYER ET MAINTENIR sur l'icône = attachement
+        this.selectedIcon.addEventListener('mousedown', (e) => this.startHold(e));
+        this.selectedIcon.addEventListener('touchstart', (e) => this.startHold(e), { passive: false });
+        
+        // BOUGER pendant qu'on maintient = suivi
+        document.addEventListener('mousemove', (e) => this.onMove(e));
+        document.addEventListener('touchmove', (e) => this.onMove(e), { passive: false });
+        
+        // RELACHER = vérifier les trous
+        document.addEventListener('mouseup', (e) => this.stopHold(e));
+        document.addEventListener('touchend', (e) => this.stopHoldTouch(e));
         
         // Démarrer la boucle d'animation
         this.startAnimationLoop();
         
-        console.log('✋ Icône draggable avec ressort fluide');
+        console.log('✋ Icône draggable - Comportement unifié tactile/curseur');
     }
 
-    // DESKTOP : Suit automatiquement le curseur
-    onDesktopMove(e) {
-        if (!this.selectedIcon) return;
+    // CLIC sur l'écran (n'importe où) = déplacement de l'icône
+    onScreenClick(e) {
+        // Ne pas traiter si on relâche un drag ou si c'est un bouton
+        if (this.wasHolding) {
+            this.wasHolding = false;
+            return;
+        }
+        if (e.target.classList.contains('close-overlay-btn')) return;
+        if (e.target === this.selectedIcon) return; // Clic sur l'icône = pas de déplacement
+        
+        console.log('📍 Clic écran: Déplacement de l\'icône');
         this.setTargetCentered(e.clientX, e.clientY);
+    }
+
+    // APPUYER sur l'icône = commencer à la tenir
+    startHold(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        this.isHolding = true;
+        this.wasHolding = false;
+        
+        const pos = this.getEventPosition(e);
+        this.setTargetCentered(pos.x, pos.y);
+        
+        console.log('✊ Tenir l\'icône');
+    }
+
+    // BOUGER pendant qu'on tient = suivre
+    onMove(e) {
+        if (!this.isHolding) return;
+        
+        const pos = this.getEventPosition(e);
+        this.setTargetCentered(pos.x, pos.y);
         this.checkHoleProximity();
     }
 
-    onDesktopClick(e) {
-        // Ne pas traiter si c'est un clic sur un bouton
-        if (e.target.classList.contains('close-overlay-btn')) return;
-        
-        // Clic = vérifier si l'icône est dans un trou
-        console.log('🖱️ Desktop: Clic détecté, vérification des trous...');
-        
-        // Debug : afficher les positions
-        if (this.selectedIcon && this.leftHole && this.rightHole) {
-            const iconRect = this.selectedIcon.getBoundingClientRect();
-            const leftRect = this.leftHole.getBoundingClientRect();
-            const rightRect = this.rightHole.getBoundingClientRect();
-            
-            console.log('Position icône:', {
-                centerX: iconRect.left + iconRect.width / 2,
-                centerY: iconRect.top + iconRect.height / 2
-            });
-            console.log('Position trou gauche:', {
-                centerX: leftRect.left + leftRect.width / 2,
-                centerY: leftRect.top + leftRect.height / 2
-            });
-            console.log('Position trou droite:', {
-                centerX: rightRect.left + rightRect.width / 2,
-                centerY: rightRect.top + rightRect.height / 2
-            });
-        }
-        
-        this.checkHoleInteraction();
-    }
-
-    // MOBILE : Déplacement au clic
-    onMobileClick(e) {
-        if (!this.selectedIcon) return;
-        
-        // Ne pas traiter si c'est un clic sur un bouton/trou
-        if (e.target.classList.contains('close-overlay-btn')) return;
-        
-        this.setTargetCentered(e.clientX, e.clientY);
-        console.log(`📍 Mobile: Déplacement vers (${e.clientX}, ${e.clientY})`);
-    }
-
-    onMobileTouchStart(e) {
-        this.isHolding = true;
-        // Démarrer le suivi
-        const touch = e.touches[0];
-        if (touch) {
-            this.setTargetCentered(touch.clientX, touch.clientY);
-        }
-    }
-
-    onMobileTouchMove(e) {
-        if (!this.isHolding || !this.selectedIcon) return;
-        
-        // Suivre le doigt
-        const touch = e.touches[0];
-        if (touch) {
-            this.setTargetCentered(touch.clientX, touch.clientY);
-            this.checkHoleProximity();
-        }
-    }
-
-    onMobileTouchEnd(e) {
+    // RELACHER (souris)
+    stopHold(e) {
         if (!this.isHolding) return;
+        
         this.isHolding = false;
+        this.wasHolding = true;
+        
+        console.log('✋ Relâcher - Vérification trous');
         this.checkHoleInteraction();
+        
+        // Reset wasHolding après un délai pour permettre au click de se déclencher
+        setTimeout(() => { this.wasHolding = false; }, 100);
+    }
+
+    // RELACHER (tactile)
+    stopHoldTouch(e) {
+        if (!this.isHolding) return;
+        
+        this.isHolding = false;
+        this.wasHolding = true;
+        
+        console.log('✋ Relâcher tactile - Vérification trous');
+        this.checkHoleInteraction();
+    }
+
+    getEventPosition(e) {
+        if (e.touches && e.touches.length > 0) {
+            return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }
+        return { x: e.clientX, y: e.clientY };
     }
 
     checkHoleInteraction() {
