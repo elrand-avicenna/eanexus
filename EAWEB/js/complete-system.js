@@ -190,55 +190,106 @@ class TwoHolesSystem {
         this.selectedIcon.style.width = `${iconRect.width}px`;
         this.selectedIcon.style.height = `${iconRect.height}px`;
         this.selectedIcon.style.zIndex = '10000';
-        this.selectedIcon.style.cursor = 'grab';
+        this.selectedIcon.style.cursor = 'pointer';
         this.selectedIcon.style.transition = 'none';
+        this.selectedIcon.style.transformOrigin = 'top left';
+        this.selectedIcon.style.transform = 'translate3d(0,0,0)';
+        
+        // Initialiser les positions
+        this.baseLeft = iconRect.left;
+        this.baseTop = iconRect.top;
+        this.x = 0;
+        this.y = 0;
+        this.vx = 0;
+        this.vy = 0;
+        this.tx = 0;
+        this.ty = 0;
         
         // S'assurer que l'icône est dans le body
         if (this.selectedIcon.parentNode !== document.body) {
             document.body.appendChild(this.selectedIcon);
         }
         
-        // Events
-        this.selectedIcon.addEventListener('mousedown', (e) => this.startDrag(e));
-        this.selectedIcon.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
+        // Empêcher la sélection et le drag natif
+        this.selectedIcon.style.userSelect = 'none';
+        this.selectedIcon.style.webkitUserDrag = 'none';
+        this.selectedIcon.style.touchAction = 'none';
         
-        document.addEventListener('mousemove', (e) => this.onDrag(e));
-        document.addEventListener('touchmove', (e) => this.onDrag(e), { passive: false });
+        // Events avec pointerevent pour unifier souris et tactile
+        this.selectedIcon.addEventListener('pointerdown', (e) => this.startHold(e));
+        document.addEventListener('pointermove', (e) => this.onHoldMove(e));
+        document.addEventListener('pointerup', (e) => this.stopHold(e));
+        document.addEventListener('pointercancel', (e) => this.stopHold(e));
         
-        document.addEventListener('mouseup', (e) => this.stopDrag(e));
-        document.addEventListener('touchend', (e) => this.stopDrag(e));
+        // Démarrer la boucle d'animation
+        this.startAnimationLoop();
         
-        console.log('✋ Icône draggable');
+        console.log('✋ Icône draggable avec ressort fluide');
     }
 
-    startDrag(e) {
-        e.preventDefault();
-        this.isDragging = true;
-        this.selectedIcon.style.cursor = 'grabbing';
+    startAnimationLoop() {
+        const animate = (t) => {
+            if (!this.selectedIcon) {
+                this.lastT = null;
+                this.rafId = null;
+                return;
+            }
+            
+            if (this.lastT == null) this.lastT = t;
+            const dt = Math.max(0.001, Math.min(0.032, (t - this.lastT) / 1000));
+            this.lastT = t;
+            
+            this.stepSpring(dt);
+            this.rafId = requestAnimationFrame(animate);
+        };
+        
+        this.rafId = requestAnimationFrame(animate);
     }
 
-    onDrag(e) {
-        if (!this.isDragging) return;
+    stepSpring(dt) {
+        const ax = -2 * this.z * this.omega * this.vx - (this.omega * this.omega) * (this.x - this.tx);
+        const ay = -2 * this.z * this.omega * this.vy - (this.omega * this.omega) * (this.y - this.ty);
+        this.vx += ax * dt;
+        this.vy += ay * dt;
+        this.x += this.vx * dt;
+        this.y += this.vy * dt;
+        
+        if (this.selectedIcon) {
+            this.selectedIcon.style.transform = `translate3d(${Math.round(this.x)}px, ${Math.round(this.y)}px, 0)`;
+        }
+    }
+
+    startHold(e) {
+        if (!this.selectedIcon) return;
         e.preventDefault();
         
-        const pos = this.getEventPosition(e);
-        const iconWidth = this.selectedIcon.offsetWidth;
-        const iconHeight = this.selectedIcon.offsetHeight;
+        this.isHolding = true;
+        this.holdPointerId = e.pointerId ?? null;
+        this.setTargetCentered(e.clientX, e.clientY);
+    }
+
+    onHoldMove(e) {
+        if (!this.isHolding || !this.selectedIcon) return;
+        if (e.pointerId != null && this.holdPointerId != null && e.pointerId !== this.holdPointerId) return;
         
-        this.selectedIcon.style.left = `${pos.x - iconWidth / 2}px`;
-        this.selectedIcon.style.top = `${pos.y - iconHeight / 2}px`;
+        this.setTargetCentered(e.clientX, e.clientY);
         
+        // Vérifier proximité en temps réel
         this.checkHoleProximity();
     }
 
-    stopDrag(e) {
-        if (!this.isDragging) return;
+    stopHold(e) {
+        if (e && this.holdPointerId != null && e.pointerId != null && e.pointerId !== this.holdPointerId) return;
+        if (!this.isHolding) return;
         
-        this.isDragging = false;
-        this.selectedIcon.style.cursor = 'grab';
+        this.isHolding = false;
+        this.holdPointerId = null;
         
+        // Vérifier si dans un trou
         const inLeftHole = this.isIconInHole(this.leftHole);
         const inRightHole = this.isIconInHole(this.rightHole);
+        
+        console.log(`🔍 Check trous: gauche=${inLeftHole}, droite=${inRightHole}`);
         
         if (inLeftHole) {
             console.log('📄 Trou gauche → Overlay');
@@ -259,11 +310,25 @@ class TwoHolesSystem {
         this.resetHoleStyles();
     }
 
-    getEventPosition(e) {
-        if (e.touches && e.touches.length > 0) {
-            return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }
-        return { x: e.clientX, y: e.clientY };
+    setTargetCentered(cx, cy) {
+        if (!this.selectedIcon) return;
+        
+        const halfW = this.selectedIcon.offsetWidth / 2;
+        const halfH = this.selectedIcon.offsetHeight / 2;
+        
+        let desiredLeft = cx - halfW;
+        let desiredTop = cy - halfH;
+        
+        // Clamp au viewport
+        const maxLeft = window.innerWidth - this.selectedIcon.offsetWidth;
+        const maxTop = window.innerHeight - this.selectedIcon.offsetHeight;
+        if (desiredLeft < 0) desiredLeft = 0;
+        else if (desiredLeft > maxLeft) desiredLeft = maxLeft;
+        if (desiredTop < 0) desiredTop = 0;
+        else if (desiredTop > maxTop) desiredTop = maxTop;
+        
+        this.tx = desiredLeft - this.baseLeft;
+        this.ty = desiredTop - this.baseTop;
     }
 
     checkHoleProximity() {
