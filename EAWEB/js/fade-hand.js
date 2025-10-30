@@ -48,7 +48,23 @@
                     // Empêcher icon-follow.js de capturer l'événement
                     e.stopImmediatePropagation();
                     
-                    console.log('🎭 Une icône a été choisie - Démarrage du système complet');
+                    console.log('🎭 Une icône a été choisie - Extraction immédiate');
+                    
+                    // IMPORTANT : Extraire l'icône IMMÉDIATEMENT avant le fade
+                    const iconRect = icon.getBoundingClientRect();
+                    icon.style.position = 'fixed';
+                    icon.style.left = `${iconRect.left}px`;
+                    icon.style.top = `${iconRect.top}px`;
+                    icon.style.width = `${iconRect.width}px`;
+                    icon.style.height = `${iconRect.height}px`;
+                    icon.style.margin = '0';
+                    icon.style.zIndex = '10000';
+                    icon.style.opacity = '1';
+                    icon.style.pointerEvents = 'auto';
+                    
+                    // Déplacer dans le body MAINTENANT
+                    document.body.appendChild(icon);
+                    console.log('✅ Icône extraite et visible');
                     
                     // 1. Ajouter la classe pour le fondu sur les deux éléments
                     handMobile.classList.add('fade-out');
