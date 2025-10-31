@@ -649,6 +649,24 @@ function proceedToResolution() {
       gameState[loser].defense = gameState[loser].defense.filter(c => c.id !== defender.id);
       gameState[loser].discard.push(defender);
       // Card stays in hand (already there)
+    } else if (gameState.combat.loserChoice === 'replace') {
+      // NEW: Loser replaces defender with losing card, loses 1 HP
+      const defender = gameState.combat.targetDefender;
+      
+      // Remove losing card from hand
+      gameState[loser].hand = gameState[loser].hand.filter(c => c.id !== gameState[loser].selectedCard.id);
+      
+      // Remove old defender from defense
+      gameState[loser].defense = gameState[loser].defense.filter(c => c.id !== defender.id);
+      
+      // Add losing card to defense
+      gameState[loser].defense.push(gameState[loser].selectedCard);
+      
+      // Discard old defender
+      gameState[loser].discard.push(defender);
+      
+      // Lose 1 HP
+      gameState[loser].hp -= 1;
     }
   } else if (gameState.combat.winnerChoice === 'defender') {
     // Attack defender
