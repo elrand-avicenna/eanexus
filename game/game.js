@@ -379,6 +379,35 @@ function render() {
   renderOpponentZone();
   renderCombatZone();
   updatePhaseLabel();
+  updateCardCounters();
+}
+
+function updateCardCounters() {
+  // Update player card count
+  const playerCardCount = gameState.player.hand.length;
+  document.querySelector('#player-cards .card-count').textContent = playerCardCount;
+  
+  // Update opponent card count
+  const opponentCardCount = gameState.opponent.hand.length;
+  document.querySelector('#opponent-cards .card-count').textContent = opponentCardCount;
+}
+
+function showCardPreview(card) {
+  const panel = document.getElementById('card-preview-panel');
+  const container = document.getElementById('preview-card-display');
+  
+  // Render card
+  container.innerHTML = '';
+  const cardEl = renderCard(card);
+  container.appendChild(cardEl);
+  
+  // Show panel
+  panel.classList.remove('hidden');
+}
+
+function hideCardPreview() {
+  const panel = document.getElementById('card-preview-panel');
+  panel.classList.add('hidden');
 }
 
 // ===============================================
