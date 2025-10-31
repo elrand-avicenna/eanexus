@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ImageBackground, Pressable, StyleSheet, Dimensions, Linking, Alert, Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
