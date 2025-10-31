@@ -77,7 +77,7 @@ export default function Index() {
           ref={videoRef}
           source={require('../assets/contact-bg.mp4')}
           style={styles.videoBackground}
-          resizeMode={ResizeMode.COVER}
+          resizeMode={ResizeMode.CONTAIN}
           shouldPlay
           isLooping
           isMuted
