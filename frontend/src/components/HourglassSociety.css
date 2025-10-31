@@ -196,12 +196,13 @@ body {
     }
   }
 
+  /* Smartphone sized to fit inside the hand image on mobile */
   .smartphone {
     position: relative;
-    width: 340px !important;
-    height: 700px !important;
-    max-width: 85vw;
-    max-height: 80vh;
+    width: 34vw !important;
+    height: 70vh !important;
+    max-width: 340px;
+    max-height: 700px;
     overflow: hidden;
   }
 
