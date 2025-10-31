@@ -73,9 +73,14 @@
                 <span class="phase-label" id="phase-label">Phase de Sélection</span>
             </div>
             
-            <button class="btn-icon" data-testid="rules-toggle-game-button" id="rules-toggle-game-btn" aria-label="Toggle rules panel">
-                <i class="fa-solid fa-circle-info"></i>
-            </button>
+            <div class="top-bar-actions">
+                <button class="btn-icon" data-testid="powers-legend-button" id="powers-legend-btn" aria-label="Afficher légende des pouvoirs">
+                    <i class="fa-solid fa-book"></i>
+                </button>
+                <button class="btn-icon" data-testid="rules-toggle-game-button" id="rules-toggle-game-btn" aria-label="Toggle rules panel">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            </div>
         </div>
         
         <!-- Opponent Zone -->
@@ -140,110 +145,68 @@
         </div>
     </div>
     
-    <!-- Rules Panel -->
-    <div id="rules-panel" class="rules-panel" data-testid="rules-panel" aria-label="Game rules">
-        <div class="rules-header">
-            <h2 class="rules-title">Règles du Jeu</h2>
-            <button class="btn-icon" id="close-rules-btn" data-testid="close-rules-button" aria-label="Close rules panel">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-        
-        <div class="rules-content">
-            <div class="rules-section">
-                <h3 class="rules-section-title">🎯 Objectif</h3>
-                <p>Réduire les Points de Vie (PV) de l'adversaire à 0 OU vider sa main de cartes.</p>
+    <!-- Powers Legend Panel -->
+    <div id="powers-legend" class="powers-legend hidden" data-testid="powers-legend">
+        <div class="legend-content">
+            <div class="legend-header">
+                <h3 class="legend-title">Légende des Pouvoirs</h3>
+                <button class="btn-icon" id="close-legend-btn" aria-label="Fermer légende">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
             
-            <div class="rules-section">
-                <h3 class="rules-section-title">🎲 Configuration</h3>
-                <ul class="rules-list">
-                    <li>Chaque joueur commence avec 12 PV</li>
-                    <li>15 cartes: 8 Pions (1-8), 2 Cavaliers, 2 Tours, 2 Fous, 1 Reine</li>
-                    <li>Le premier joueur est déterminé aléatoirement</li>
-                </ul>
+            <div class="legend-section">
+                <h4 class="legend-subtitle">Attaque (depuis la main)</h4>
+                <div class="power-row">
+                    <i class="fa-solid fa-crown power-icon crown"></i>
+                    <span class="power-name">Couronne</span>
+                    <span class="power-desc">Bat tout (Reine)</span>
+                </div>
+                <div class="power-row">
+                    <i class="fa-solid fa-file power-icon paper"></i>
+                    <span class="power-name">Papier</span>
+                    <span class="power-desc">Bat Pierre (Tour)</span>
+                </div>
+                <div class="power-row">
+                    <i class="fa-solid fa-hand-fist power-icon rock"></i>
+                    <span class="power-name">Pierre</span>
+                    <span class="power-desc">Bat Ciseaux (Cavalier)</span>
+                </div>
+                <div class="power-row">
+                    <i class="fa-solid fa-scissors power-icon scissors"></i>
+                    <span class="power-name">Ciseaux</span>
+                    <span class="power-desc">Bat Papier (Fou)</span>
+                </div>
             </div>
             
-            <div class="rules-section">
-                <h3 class="rules-section-title">⚔️ Système Pierre-Feuille-Ciseaux</h3>
-                <h4 style="color: var(--text-primary); margin-top: 1rem;">Attaque (depuis la main):</h4>
-                <ul class="rules-list">
-                    <li><i class="fa-solid fa-crown" style="color: var(--power-crown);"></i> Reine = Couronne (bat tout)</li>
-                    <li><i class="fa-solid fa-file" style="color: var(--power-paper);"></i> Tour = Papier</li>
-                    <li><i class="fa-solid fa-scissors" style="color: var(--power-scissors);"></i> Fou = Ciseaux</li>
-                    <li><i class="fa-solid fa-hand-fist" style="color: var(--power-rock);"></i> Cavalier = Pierre</li>
-                    <li>Pions = Perdent contre toutes les pièces (entre pions, le plus haut gagne)</li>
-                </ul>
-                
-                <h4 style="color: var(--text-primary); margin-top: 1rem;">Défense (transformation):</h4>
-                <ul class="rules-list">
-                    <li><i class="fa-solid fa-crown" style="color: var(--power-crown);"></i> Reine = Couronne</li>
-                    <li><i class="fa-solid fa-hand-fist" style="color: var(--power-rock);"></i> Tour = Pierre (changement!)</li>
-                    <li><i class="fa-solid fa-scissors" style="color: var(--power-scissors);"></i> Fou = Ciseaux</li>
-                    <li><i class="fa-solid fa-file" style="color: var(--power-paper);"></i> Cavalier = Papier (changement!)</li>
-                    <li>Pions 8 & 3 = Pierre, Pions 7 & 4 = Ciseaux, Pions 6 & 5 = Papier, Pions 2 & 1 = Couronne</li>
-                </ul>
-                
-                <h4 style="color: var(--text-primary); margin-top: 1rem;">Hiérarchie:</h4>
-                <ul class="rules-list">
-                    <li>Couronne > Tout</li>
-                    <li>Papier > Pierre</li>
-                    <li>Pierre > Ciseaux</li>
-                    <li>Ciseaux > Papier</li>
-                </ul>
-            </div>
-            
-            <div class="rules-section">
-                <h3 class="rules-section-title">🎮 Déroulement d'un Tour</h3>
-                <ol class="rules-list" style="list-style: decimal; padding-left: 2rem;">
-                    <li><strong>Phase Combat:</strong> Chaque joueur sélectionne 1 carte. Révélation simultanée. Le gagnant est déterminé par RPS (égalité = le joueur avec le jeton premier joueur gagne).</li>
-                    <li><strong>Choix du Gagnant:</strong>
-                        <ul style="margin-top: 0.5rem;">
-                            <li>A) Enlever 1 PV à l'adversaire</li>
-                            <li>B) Attaquer un défenseur (seulement ceux qu'il peut battre)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Choix du Perdant</strong> (si le gagnant a choisi A):
-                        <ul style="margin-top: 0.5rem;">
-                            <li>A) Accepter (-1 PV, carte défaussée)</li>
-                            <li>B) Sacrifier un défenseur (défenseur défaussé, carte retourne en main, 0 PV perdu)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Résolution:</strong> Carte gagnante → défense du gagnant (max 3, remplace si besoin). Jeton premier joueur → autre joueur.</li>
-                </ol>
-            </div>
-            
-            <div class="rules-section">
-                <h3 class="rules-section-title">🛡️ Défenseurs</h3>
-                <ul class="rules-list">
-                    <li>Maximum 3 défenseurs par joueur</li>
-                    <li>Obtenu en gagnant un combat (carte gagnante devient défenseur)</li>
-                    <li>Peuvent être attaqués ou sacrifiés</li>
-                    <li>En défense, les pièces ont des pouvoirs transformés!</li>
-                    <li>Si attaque défenseur: égalité = défenseur gagne (pas de jeton premier joueur)</li>
-                </ul>
-            </div>
-            
-            <div class="rules-section">
-                <h3 class="rules-section-title">🏆 Victoire</h3>
-                <ul class="rules-list">
-                    <li>L'adversaire atteint 0 PV</li>
-                    <li>L'adversaire n'a plus de cartes en main</li>
-                </ul>
-            </div>
-            
-            <div class="rules-section">
-                <h3 class="rules-section-title">⭐ Règles Clés</h3>
-                <ul class="rules-list">
-                    <li>Maximum 1 PV perdu par tour</li>
-                    <li>Attaques uniquement depuis la main (pas les défenseurs)</li>
-                    <li>Limite de 3 défenseurs (remplacement obligatoire si dépassé)</li>
-                    <li>Jeton premier joueur alterne chaque tour</li>
-                </ul>
+            <div class="legend-section">
+                <h4 class="legend-subtitle">Défense (transformation!)</h4>
+                <div class="power-row">
+                    <span class="piece-label">♛ Reine →</span>
+                    <i class="fa-solid fa-crown power-icon crown"></i>
+                    <span class="power-name">Couronne</span>
+                </div>
+                <div class="power-row highlight">
+                    <span class="piece-label">♜ Tour →</span>
+                    <i class="fa-solid fa-hand-fist power-icon rock"></i>
+                    <span class="power-name">Pierre</span>
+                </div>
+                <div class="power-row">
+                    <span class="piece-label">♝ Fou →</span>
+                    <i class="fa-solid fa-scissors power-icon scissors"></i>
+                    <span class="power-name">Ciseaux</span>
+                </div>
+                <div class="power-row highlight">
+                    <span class="piece-label">♞ Cavalier →</span>
+                    <i class="fa-solid fa-file power-icon paper"></i>
+                    <span class="power-name">Papier</span>
+                </div>
+                <div class="power-row">
+                    <span class="piece-label">♟ Pions →</span>
+                    <span class="power-desc-small">8&3=Pierre, 7&4=Ciseaux, 6&5=Papier, 2&1=Couronne</span>
+                </div>
             </div>
         </div>
     </div>
     
-    <script src="game.js"></script>
-</body>
-</html>
+    <!-- Rules Panel
