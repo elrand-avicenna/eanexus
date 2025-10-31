@@ -1,0 +1,68 @@
+.access-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1.5s ease;
+  z-index: 99999999999;
+  border: 2px solid orange;
+  border-radius: 15px;
+}
+
+.access-screen.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.access-screen-content {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px;
+}
+
+.pickable-icon {
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: opacity 0.16s ease, transform 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.pickable-icon:hover {
+  transform: scale(1.1);
+}
+
+.access-screen-icon1 {
+  background: url('/img/anim.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.access-screen-icon2 {
+  background: url('/img/accueil.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.access-screen-icon3 {
+  background: url('/img/hourglass.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
