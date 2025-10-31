@@ -1,18 +1,34 @@
 [
   {
-    "content": "Supprimer le texte hint sous la main",
-    "status": "completed"
+    "content": "Ajouter règle spéciale: Pions 1&2 en attaque battent Reine en défense",
+    "status": "in_progress"
   },
   {
-    "content": "Remplacer clic-droit/shift+clic par long press (appui long)",
-    "status": "completed"
+    "content": "Changer égalité attaquant vs défenseur: attaquant gagne",
+    "status": "pending"
   },
   {
-    "content": "Implémenter détection touch pour mobile",
-    "status": "completed"
+    "content": "Créer 3 compteurs: Cartes main, Défausse attaque, Défausse défense",
+    "status": "pending"
   },
   {
-    "content": "Tester sur petit écran et tactile",
-    "status": "completed"
+    "content": "Ajouter défausse défense séparée (killed defenders uniquement)",
+    "status": "pending"
+  },
+  {
+    "content": "Ajouter condition victoire: 6 pièces majeures (2T+2F+2C) en défausse défense",
+    "status": "pending"
+  },
+  {
+    "content": "Afficher compteur progrès vers victoire alternative",
+    "status": "pending"
+  },
+  {
+    "content": "Mettre à jour règles dans panneau",
+    "status": "pending"
+  },
+  {
+    "content": "Tester toutes les nouvelles règles",
+    "status": "pending"
   }
 ]
