@@ -101,6 +101,7 @@ const HourglassSociety = () => {
 
   const handleGlobalMove = (e) => {
     if (!detachedIcon || !detachedIcon.isHolding) return;
+    e.preventDefault(); // Prevent scrolling on mobile
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     setDetachedIcon(prev => ({
@@ -119,10 +120,12 @@ const HourglassSociety = () => {
 
   useEffect(() => {
     if (detachedIcon && detachedIcon.isHolding) {
-      document.addEventListener('mousemove', handleGlobalMove);
-      document.addEventListener('touchmove', handleGlobalMove);
+      const moveOptions = { passive: false }; // Allow preventDefault
+      document.addEventListener('mousemove', handleGlobalMove, moveOptions);
+      document.addEventListener('touchmove', handleGlobalMove, moveOptions);
       document.addEventListener('mouseup', handleGlobalUp);
       document.addEventListener('touchend', handleGlobalUp);
+      document.addEventListener('touchcancel', handleGlobalUp);
     }
 
     return () => {
@@ -130,6 +133,7 @@ const HourglassSociety = () => {
       document.removeEventListener('touchmove', handleGlobalMove);
       document.removeEventListener('mouseup', handleGlobalUp);
       document.removeEventListener('touchend', handleGlobalUp);
+      document.removeEventListener('touchcancel', handleGlobalUp);
     };
   }, [detachedIcon?.isHolding]);
 
