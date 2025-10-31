@@ -38,6 +38,7 @@
   width: 100px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
   transition: opacity 0.16s ease, transform 0.2s ease;
   user-select: none;
@@ -49,20 +50,8 @@
   transform: scale(1.1);
 }
 
-.access-screen-icon1 {
-  background: url('/img/anim.png') no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.access-screen-icon2 {
-  background: url('/img/accueil.png') no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
+.access-screen-icon1,
+.access-screen-icon2,
 .access-screen-icon3 {
-  background: url('/img/hourglass.png') no-repeat;
-  background-size: cover;
-  background-position: center;
+  /* Background images set via inline styles */
 }
