@@ -72,7 +72,9 @@ export default function Index() {
             ]}
             onPress={handlePhonePress}
           >
-            <View style={styles.buttonTouchArea} />
+            <View style={styles.iconContainer}>
+              <Ionicons name="call" size={48} color="#FFD700" />
+            </View>
           </Pressable>
 
           {/* Middle Button - Email */}
@@ -84,7 +86,9 @@ export default function Index() {
             ]}
             onPress={handleEmailPress}
           >
-            <View style={styles.buttonTouchArea} />
+            <View style={styles.iconContainer}>
+              <Ionicons name="mail" size={48} color="#FFD700" />
+            </View>
           </Pressable>
 
           {/* Right Button - Website */}
@@ -96,7 +100,9 @@ export default function Index() {
             ]}
             onPress={handleWebsitePress}
           >
-            <View style={styles.buttonTouchArea} />
+            <View style={styles.iconContainer}>
+              <Ionicons name="globe" size={48} color="#FFD700" />
+            </View>
           </Pressable>
         </View>
       </ImageBackground>
