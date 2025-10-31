@@ -440,13 +440,44 @@ function render() {
 }
 
 function updateCardCounters() {
-  // Update player card count
-  const playerCardCount = gameState.player.hand.length;
-  document.querySelector('#player-cards .card-count').textContent = playerCardCount;
+  // Update player stats
+  document.getElementById('player-hand-count').textContent = gameState.player.hand.length;
+  document.getElementById('player-discard-count').textContent = 
+    gameState.player.discard.length + gameState.player.defenseGraveyard.length;
   
-  // Update opponent card count
-  const opponentCardCount = gameState.opponent.hand.length;
-  document.querySelector('#opponent-cards .card-count').textContent = opponentCardCount;
+  // Update opponent stats
+  document.getElementById('opponent-hand-count').textContent = gameState.opponent.hand.length;
+  document.getElementById('opponent-discard-count').textContent = 
+    gameState.opponent.discard.length + gameState.opponent.defenseGraveyard.length;
+  
+  // Update victory progress (major pieces killed)
+  const playerKilled = countMajorPieces(gameState.opponent.defenseGraveyard);
+  const opponentKilled = countMajorPieces(gameState.player.defenseGraveyard);
+  
+  document.getElementById('player-major-pieces').textContent = `${playerKilled}/6`;
+  document.getElementById('opponent-major-pieces').textContent = `${opponentKilled}/6`;
+  
+  // Highlight if close to victory
+  const playerProgress = document.getElementById('player-progress');
+  const opponentProgress = document.getElementById('opponent-progress');
+  
+  if (playerKilled >= 4) {
+    playerProgress.style.borderColor = 'var(--success)';
+    playerProgress.style.boxShadow = '0 0 20px rgba(74, 222, 128, 0.4)';
+  }
+  
+  if (opponentKilled >= 4) {
+    opponentProgress.style.borderColor = 'var(--success)';
+    opponentProgress.style.boxShadow = '0 0 20px rgba(74, 222, 128, 0.4)';
+  }
+}
+
+function countMajorPieces(graveyard) {
+  const rooks = graveyard.filter(c => c.type === CARD_TYPES.ROOK).length;
+  const bishops = graveyard.filter(c => c.type === CARD_TYPES.BISHOP).length;
+  const knights = graveyard.filter(c => c.type === CARD_TYPES.KNIGHT).length;
+  
+  return Math.min(rooks, 2) + Math.min(bishops, 2) + Math.min(knights, 2);
 }
 
 function showCardPreview(card) {
