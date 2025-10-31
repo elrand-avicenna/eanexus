@@ -164,14 +164,13 @@ body {
   .hand-mobile {
     height: 100vh !important;
     width: 100vw !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: contain !important;
-    background-position: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* Ensure background is visible on mobile */
+    background-size: cover !important;
+    background-position: center center !important;
     background-repeat: no-repeat !important;
-    /* Force le background à être visible */
-    opacity: 1 !important;
   }
 
   /* Disable lifting and idle animations on mobile, but keep reversing */
@@ -199,10 +198,9 @@ body {
 
   .smartphone {
     position: relative;
-    width: 85vw !important;
-    height: auto !important;
-    aspect-ratio: 340 / 700;
-    max-width: 100vw;
+    width: 340px !important;
+    height: 700px !important;
+    max-width: 85vw;
     max-height: 80vh;
     overflow: hidden;
   }
