@@ -7,6 +7,9 @@ import { Video, ResizeMode } from 'expo-av';
 const { width, height } = Dimensions.get('window');
 
 export default function Index() {
+  const videoRef = useRef<Video>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   const handlePhonePress = async () => {
     const phoneNumber = '1234567899'; // 12 34 56 78 99
     const url = `tel:${phoneNumber}`;
@@ -57,11 +60,37 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
+      
+      {/* Static background image as fallback */}
       <ImageBackground
-        source={require('../assets/background.png')}
+        source={require('../assets/background-static.jpg')}
         style={styles.background}
         resizeMode="cover"
       >
+        {/* Video background overlay */}
+        <Video
+          ref={videoRef}
+          source={require('../assets/contact-bg.mp4')}
+          style={styles.videoBackground}
+          resizeMode={ResizeMode.COVER}
+          shouldPlay
+          isLooping
+          isMuted
+          onLoad={() => setVideoLoaded(true)}
+          onError={(error) => {
+            console.log('Video error:', error);
+          }}
+        />
+
+        {/* Dark overlay for better text readability */}
+        <View style={styles.overlay} />
+
+        {/* Header with name and title */}
+        <View style={styles.header}>
+          <Text style={styles.name}>ELRAND AVICENNA</Text>
+          <Text style={styles.title}>GAME DESIGNER - ANIMATEUR LUDIQUE</Text>
+        </View>
+
         {/* Container for the three buttons positioned over the circles */}
         <View style={styles.buttonsContainer}>
           {/* Left Button - Phone */}
