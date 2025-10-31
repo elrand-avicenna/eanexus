@@ -179,22 +179,30 @@
 
         <form id="contactForm">
             <div class="form-group">
-                <label for="phone">📞 Numéro de Téléphone</label>
+                <label for="appUrl">🔗 URL de votre Application Expo</label>
+                <input type="url" id="appUrl" placeholder="Ex: exp://u.expo.dev/..." value="" required>
+                <small style="display: block; margin-top: 5px; color: #666; font-size: 12px;">
+                    Copiez l'URL Expo depuis votre QR code Expo Go ou utilisez l'URL de déploiement
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">📞 Numéro de Téléphone (pour l'app)</label>
                 <input type="tel" id="phone" placeholder="Ex: 1234567899" value="1234567899" required>
             </div>
 
             <div class="form-group">
-                <label for="email">📧 Adresse Email</label>
+                <label for="email">📧 Adresse Email (pour l'app)</label>
                 <input type="email" id="email" placeholder="Ex: contact@example.com" value="aaa@aaa.com" required>
             </div>
 
             <div class="form-group">
-                <label for="website">🌐 Site Web / Portfolio</label>
+                <label for="website">🌐 Site Web / Portfolio (pour l'app)</label>
                 <input type="url" id="website" placeholder="Ex: https://votresite.com" value="https://elrand-avicenna.github.io/eanexus/" required>
             </div>
 
             <div class="info-box">
-                <strong>ℹ️ Note:</strong> Le QR code généré contiendra vos informations de contact au format vCard. Scannable depuis n'importe quel smartphone!
+                <strong>ℹ️ Note:</strong> Le QR code généré contiendra l'URL de votre application. En scannant, les utilisateurs arriveront sur votre app avec la vidéo en background!
             </div>
 
             <div class="btn-container">
