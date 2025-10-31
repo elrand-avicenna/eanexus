@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pli & Mat - Chess Card Battle</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Menu Screen -->
+    <div id="main-menu" class="main-menu" data-testid="main-menu">
+        <h1 class="game-title" data-testid="game-title">Pli & Mat</h1>
+        
+        <div class="menu-container" data-testid="menu-container">
+            <div class="menu-section">
+                <label class="menu-label" for="color-select">Couleur</label>
+                <div class="btn-group" role="group" aria-label="Color selection">
+                    <button class="btn-secondary active" data-testid="select-white-button" data-color="white" aria-label="Play as white pieces">
+                        <span class="piece-icon">♔</span> Blanc
+                    </button>
+                    <button class="btn-secondary" data-testid="select-black-button" data-color="black" aria-label="Play as black pieces">
+                        <span class="piece-icon">♚</span> Noir
+                    </button>
+                </div>
+            </div>
+            
+            <div class="menu-section">
+                <label class="menu-label">Difficulté</label>
+                <div class="btn-group" role="group" aria-label="Difficulty selection">
+                    <button class="btn-secondary" data-testid="difficulty-easy-button" data-difficulty="easy" aria-label="Easy difficulty">Facile</button>
+                    <button class="btn-secondary active" data-testid="difficulty-normal-button" data-difficulty="normal" aria-label="Normal difficulty">Normal</button>
+                    <button class="btn-secondary" data-testid="difficulty-hard-button" data-difficulty="hard" aria-label="Hard difficulty">Difficile</button>
+                </div>
+            </div>
+            
+            <div class="menu-section">
+                <label class="menu-label">Mode</label>
+                <div class="btn-group" role="group" aria-label="Game mode selection">
+                    <button class="btn-secondary active" data-testid="mode-pve-button" data-mode="pve" aria-label="Player vs AI mode">vs IA</button>
+                    <button class="btn-secondary" data-testid="mode-pvp-button" data-mode="pvp" aria-label="Player vs player mode">Joueur vs Joueur</button>
+                </div>
+            </div>
+            
+            <button class="btn-primary" data-testid="start-game-button" id="start-game-btn" aria-label="Start new game">
+                <i class="fa-solid fa-play"></i> Commencer
+            </button>
+            
+            <button class="btn-secondary" data-testid="rules-toggle-button" id="rules-toggle-btn" aria-label="Toggle rules panel" style="margin-top: 1rem;">
+                <i class="fa-solid fa-circle-info"></i> Règles du jeu
+            </button>
+        </div>
+    </div>
+    
+    <!-- Game Board -->
+    <div id="game-board" class="game-board hidden" data-testid="game-board">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <button class="btn-icon" data-testid="back-to-menu-button" id="back-to-menu-btn" aria-label="Back to main menu">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            
+            <div class="phase-indicator" data-testid="phase-indicator">
+                <span class="phase-dot" data-phase="select"></span>
+                <span class="phase-label" id="phase-label">Phase de Sélection</span>
+            </div>
+            
+            <button class="btn-icon" data-testid="rules-toggle-game-button" id="rules-toggle-game-btn" aria-label="Toggle rules panel">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+        </div>
+        
+        <!-- Opponent Zone -->
+        <div class="player-zone opponent" data-testid="opponent-zone">
+            <div class="player-info">
+                <div class="hp-counter" id="opponent-hp" data-testid="opponent-hp-counter" aria-label="Opponent health points">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="hp-value" data-testid="opponent-hp-value">12</span>
+                    <span class="hp-label">HP</span>
+                </div>
+                <span class="player-label">Adversaire</span>
+            </div>
+            
+            <div class="defense-zone" id="opponent-defense" data-testid="opponent-defense-zone" aria-label="Opponent defense zone"></div>
+        </div>
+        
+        <!-- Combat Zone -->
+        <div class="combat-zone" id="combat-zone" data-testid="combat-zone" aria-label="Combat zone">
+            <div class="combat-card-slot" id="opponent-combat-slot" data-testid="opponent-combat-slot"></div>
+            
+            <div class="combat-center">
+                <div class="first-player-token" id="first-player-token" data-testid="first-player-token" aria-label="First player indicator">
+                    <i class="fa-solid fa-star"></i>
+                    <span id="first-player-label">Premier Joueur</span>
+                </div>
+            </div>
+            
+            <div class="combat-card-slot" id="player-combat-slot" data-testid="player-combat-slot"></div>
+        </div>
+        
+        <!-- Player Zone -->
+        <div class="player-zone player" data-testid="player-zone">
+            <div class="defense-zone" id="player-defense" data-testid="player-defense-zone" aria-label="Player defense zone"></div>
+            
+            <div class="player-info">
+                <span class="player-label">Vous</span>
+                <div class="hp-counter" id="player-hp" data-testid="player-hp-counter" aria-label="Player health points">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="hp-value" data-testid="player-hp-value">12</span>
+                    <span class="hp-label">HP</span>
+                </div>
+            </div>
+            
+            <div class="hand-container" data-testid="hand-container" aria-label="Your hand of cards">
+                <button class="hand-nav-btn prev" id="hand-prev-btn" aria-label="Previous cards">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="hand-cards" id="player-hand"></div>
+                <button class="hand-nav-btn next" id="hand-next-btn" aria-label="Next cards">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Action Panel -->
+        <div class="action-panel hidden" id="action-panel" data-testid="action-panel">
+            <div class="action-content">
+                <h3 class="action-title" id="action-title">Choisissez une action</h3>
+                <p class="action-description" id="action-description"></p>
+                <div class="action-buttons" id="action-buttons"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rules Panel -->
+    <div id="rules-panel" class="rules-panel" data-testid="rules-panel" aria-label="Game rules">
+        <div class="rules-header">
+            <h2 class="rules-title">Règles du Jeu</h2>
+            <button class="btn-icon" id="close-rules-btn" data-testid="close-rules-button" aria-label="Close rules panel">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="rules-content">
+            <div class="rules-section">
+                <h3 class="rules-section-title">🎯 Objectif</h3>
+                <p>Réduire les Points de Vie (PV) de l'adversaire à 0 OU vider sa main de cartes.</p>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">🎲 Configuration</h3>
+                <ul class="rules-list">
+                    <li>Chaque joueur commence avec 12 PV</li>
+                    <li>15 cartes: 8 Pions (1-8), 2 Cavaliers, 2 Tours, 2 Fous, 1 Reine</li>
+                    <li>Le premier joueur est déterminé aléatoirement</li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">⚔️ Système Pierre-Feuille-Ciseaux</h3>
+                <h4 style="color: var(--text-primary); margin-top: 1rem;">Attaque (depuis la main):</h4>
+                <ul class="rules-list">
+                    <li><i class="fa-solid fa-crown" style="color: var(--power-crown);"></i> Reine = Couronne (bat tout)</li>
+                    <li><i class="fa-solid fa-file" style="color: var(--power-paper);"></i> Tour = Papier</li>
+                    <li><i class="fa-solid fa-scissors" style="color: var(--power-scissors);"></i> Fou = Ciseaux</li>
+                    <li><i class="fa-solid fa-hand-fist" style="color: var(--power-rock);"></i> Cavalier = Pierre</li>
+                    <li>Pions = Perdent contre toutes les pièces (entre pions, le plus haut gagne)</li>
+                </ul>
+                
+                <h4 style="color: var(--text-primary); margin-top: 1rem;">Défense (transformation):</h4>
+                <ul class="rules-list">
+                    <li><i class="fa-solid fa-crown" style="color: var(--power-crown);"></i> Reine = Couronne</li>
+                    <li><i class="fa-solid fa-hand-fist" style="color: var(--power-rock);"></i> Tour = Pierre (changement!)</li>
+                    <li><i class="fa-solid fa-scissors" style="color: var(--power-scissors);"></i> Fou = Ciseaux</li>
+                    <li><i class="fa-solid fa-file" style="color: var(--power-paper);"></i> Cavalier = Papier (changement!)</li>
+                    <li>Pions 8 & 3 = Pierre, Pions 7 & 4 = Ciseaux, Pions 6 & 5 = Papier, Pions 2 & 1 = Couronne</li>
+                </ul>
+                
+                <h4 style="color: var(--text-primary); margin-top: 1rem;">Hiérarchie:</h4>
+                <ul class="rules-list">
+                    <li>Couronne > Tout</li>
+                    <li>Papier > Pierre</li>
+                    <li>Pierre > Ciseaux</li>
+                    <li>Ciseaux > Papier</li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">🎮 Déroulement d'un Tour</h3>
+                <ol class="rules-list" style="list-style: decimal; padding-left: 2rem;">
+                    <li><strong>Phase Combat:</strong> Chaque joueur sélectionne 1 carte. Révélation simultanée. Le gagnant est déterminé par RPS (égalité = le joueur avec le jeton premier joueur gagne).</li>
+                    <li><strong>Choix du Gagnant:</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>A) Enlever 1 PV à l'adversaire</li>
+                            <li>B) Attaquer un défenseur (seulement ceux qu'il peut battre)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Choix du Perdant</strong> (si le gagnant a choisi A):
+                        <ul style="margin-top: 0.5rem;">
+                            <li>A) Accepter (-1 PV, carte défaussée)</li>
+                            <li>B) Sacrifier un défenseur (défenseur défaussé, carte retourne en main, 0 PV perdu)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Résolution:</strong> Carte gagnante → défense du gagnant (max 3, remplace si besoin). Jeton premier joueur → autre joueur.</li>
+                </ol>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">🛡️ Défenseurs</h3>
+                <ul class="rules-list">
+                    <li>Maximum 3 défenseurs par joueur</li>
+                    <li>Obtenu en gagnant un combat (carte gagnante devient défenseur)</li>
+                    <li>Peuvent être attaqués ou sacrifiés</li>
+                    <li>En défense, les pièces ont des pouvoirs transformés!</li>
+                    <li>Si attaque défenseur: égalité = défenseur gagne (pas de jeton premier joueur)</li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">🏆 Victoire</h3>
+                <ul class="rules-list">
+                    <li>L'adversaire atteint 0 PV</li>
+                    <li>L'adversaire n'a plus de cartes en main</li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">⭐ Règles Clés</h3>
+                <ul class="rules-list">
+                    <li>Maximum 1 PV perdu par tour</li>
+                    <li>Attaques uniquement depuis la main (pas les défenseurs)</li>
+                    <li>Limite de 3 défenseurs (remplacement obligatoire si dépassé)</li>
+                    <li>Jeton premier joueur alterne chaque tour</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
