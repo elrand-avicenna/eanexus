@@ -17,7 +17,8 @@ const gameState = {
     hp: 12,
     hand: [],
     defense: [],
-    discard: [],
+    discard: [], // Défausse normale (cartes perdues en attaque)
+    defenseGraveyard: [], // Défausse défense (défenseurs tués par Option B gagnant)
     selectedCard: null
   },
   
@@ -25,7 +26,8 @@ const gameState = {
     hp: 12,
     hand: [],
     defense: [],
-    discard: [],
+    discard: [], // Défausse normale
+    defenseGraveyard: [], // Défausse défense (défenseurs tués par Option B gagnant)
     selectedCard: null
   },
   
