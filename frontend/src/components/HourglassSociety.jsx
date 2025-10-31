@@ -101,6 +101,22 @@ const HourglassSociety = () => {
     };
   }, [detachedIcon?.isHolding, detachedIcon?.targetPos.x, detachedIcon?.targetPos.y]);
 
+  const handleDetachedIconDown = (e) => {
+    if (!detachedIcon) return;
+    
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    
+    setDetachedIcon(prev => ({
+      ...prev,
+      targetPos: { x: clientX, y: clientY },
+      isHolding: true
+    }));
+  };
+
   const handleGlobalMove = (e) => {
     if (!detachedIcon || !detachedIcon.isHolding) return;
     e.preventDefault(); // Prevent scrolling on mobile
