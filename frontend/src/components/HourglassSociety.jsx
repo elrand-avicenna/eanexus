@@ -19,7 +19,7 @@ const HourglassSociety = () => {
 
   useEffect(() => {
     // Set background images
-    document.body.style.backgroundImage = `url(${process.env.PUBLIC_URL}/img/accueil-wallpaper.png)`;
+    document.body.style.backgroundImage = `url(${process.env.PUBLIC_URL}/img/new-background.jpg)`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
 
