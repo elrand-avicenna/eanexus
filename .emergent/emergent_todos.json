@@ -1,18 +1,18 @@
 [
   {
     "content": "Améliorer la visibilité des icônes ATK/DEF sur les cartes avec couleurs plus vives et taille plus grande",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Griser les options impossibles dans les panneaux de choix et ajouter des tooltips explicatifs",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Ajouter une légende visuelle des pouvoirs RPS accessible pendant le jeu",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester les améliorations visuelles",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
