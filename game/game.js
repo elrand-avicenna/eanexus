@@ -780,12 +780,12 @@ function proceedToResolution() {
       // No HP lost (that's the benefit of sacrificing 2 cards)
     }
   } else if (gameState.combat.winnerChoice === 'defender') {
-    // Attack defender
+    // Attack defender - goes to DEFENSE GRAVEYARD
     const defender = gameState.combat.targetDefender;
     gameState[loser].defense = gameState[loser].defense.filter(c => c.id !== defender.id);
-    gameState[loser].discard.push(defender);
+    gameState[loser].defenseGraveyard.push(defender); // Special graveyard for killed defenders
     
-    // Both cards discarded
+    // Both cards discarded (normal discard)
     gameState[loser].hand = gameState[loser].hand.filter(c => c.id !== gameState[loser].selectedCard.id);
     gameState[loser].discard.push(gameState[loser].selectedCard);
   }
