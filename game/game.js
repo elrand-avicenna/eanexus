@@ -643,14 +643,8 @@ function proceedToResolution() {
       gameState[loser].hp -= 1;
       gameState[loser].hand = gameState[loser].hand.filter(c => c.id !== gameState[loser].selectedCard.id);
       gameState[loser].discard.push(gameState[loser].selectedCard);
-    } else if (gameState.combat.loserChoice === 'sacrifice') {
-      // Loser sacrifices defender, card returns to hand
-      const defender = gameState.combat.targetDefender;
-      gameState[loser].defense = gameState[loser].defense.filter(c => c.id !== defender.id);
-      gameState[loser].discard.push(defender);
-      // Card stays in hand (already there)
     } else if (gameState.combat.loserChoice === 'replace') {
-      // NEW: Loser replaces defender with losing card, loses 1 HP
+      // Loser replaces defender with losing card, loses 1 HP
       const defender = gameState.combat.targetDefender;
       
       // Remove losing card from hand
@@ -667,6 +661,23 @@ function proceedToResolution() {
       
       // Lose 1 HP
       gameState[loser].hp -= 1;
+    } else if (gameState.combat.loserChoice === 'sacrifice') {
+      // NEW RULE: Sacrifice defender AND losing card to save HP
+      const defender = gameState.combat.targetDefender;
+      
+      // Remove losing card from hand
+      gameState[loser].hand = gameState[loser].hand.filter(c => c.id !== gameState[loser].selectedCard.id);
+      
+      // Discard losing card
+      gameState[loser].discard.push(gameState[loser].selectedCard);
+      
+      // Remove defender from defense
+      gameState[loser].defense = gameState[loser].defense.filter(c => c.id !== defender.id);
+      
+      // Discard defender
+      gameState[loser].discard.push(defender);
+      
+      // No HP lost (that's the benefit of sacrificing 2 cards)
     }
   } else if (gameState.combat.winnerChoice === 'defender') {
     // Attack defender
