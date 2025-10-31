@@ -150,15 +150,63 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  videoBackground: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Dark overlay for better contrast
+  },
+  header: {
+    position: 'absolute',
+    top: height * 0.08,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    zIndex: 10,
+  },
+  name: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FFD700',
+    textAlign: 'center',
+    marginBottom: 8,
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+    letterSpacing: 2,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#87CEEB',
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
+    letterSpacing: 1,
+  },
   buttonsContainer: {
     position: 'absolute',
-    bottom: height * 0.15, // Position buttons in the lower third where the circles are
+    bottom: height * 0.15,
     left: 0,
     right: 0,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingHorizontal: width * 0.1,
+    zIndex: 10,
   },
   button: {
     width: width * 0.2,
@@ -187,7 +235,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
-    backgroundColor: 'rgba(139, 69, 19, 0.6)', // Bronze semi-transparent background
+    backgroundColor: 'rgba(139, 69, 19, 0.6)',
     ...Platform.select({
       ios: {
         shadowColor: '#FFD700',
