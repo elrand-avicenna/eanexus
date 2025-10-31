@@ -86,15 +86,24 @@
         <!-- Opponent Zone -->
         <div class="player-zone opponent" data-testid="opponent-zone">
             <div class="player-info">
-                <div class="hp-counter" id="opponent-hp" data-testid="opponent-hp-counter" aria-label="Opponent health points">
-                    <i class="fa-solid fa-heart"></i>
-                    <span class="hp-value" data-testid="opponent-hp-value">12</span>
-                    <span class="hp-label">HP</span>
+                <div class="info-group">
+                    <div class="hp-counter" id="opponent-hp" data-testid="opponent-hp-counter" aria-label="Opponent health points">
+                        <i class="fa-solid fa-heart"></i>
+                        <span class="hp-value" data-testid="opponent-hp-value">12</span>
+                        <span class="hp-label">HP</span>
+                    </div>
+                    <div class="stat-counter">
+                        <i class="fa-solid fa-hand"></i>
+                        <span class="stat-value" id="opponent-hand-count" data-testid="opponent-hand-count">15</span>
+                    </div>
+                    <div class="stat-counter">
+                        <i class="fa-solid fa-skull-crossbones"></i>
+                        <span class="stat-value" id="opponent-discard-count" data-testid="opponent-discard-count">0</span>
+                    </div>
                 </div>
-                <div class="card-counter" id="opponent-cards" data-testid="opponent-card-counter" aria-label="Opponent cards remaining">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <span class="card-count" data-testid="opponent-card-count">15</span>
-                    <span class="card-label">Cartes</span>
+                <div class="victory-progress" id="opponent-progress" data-testid="opponent-victory-progress">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span class="progress-value" id="opponent-major-pieces" data-testid="opponent-major-pieces-count">0/6</span>
                 </div>
                 <span class="player-label">Adversaire</span>
             </div>
