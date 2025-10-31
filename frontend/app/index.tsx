@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, ImageBackground, Pressable, StyleSheet, Dimensions, Linking, Alert, Platform, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { Video, ResizeMode } from 'expo-av';
+import { useLocalSearchParams } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
