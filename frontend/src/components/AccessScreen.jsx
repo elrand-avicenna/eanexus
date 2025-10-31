@@ -117,12 +117,21 @@ const AccessScreen = ({ color, onIconClick }) => {
   }, [selectedIcon, isHolding, targetPos, iconPosition.width, iconPosition.height]);
 
   const getIconStyle = (iconIndex) => {
+    const baseStyle = {
+      backgroundImage: `url(${process.env.PUBLIC_URL}/img/${
+        iconIndex === 0 ? 'anim' :
+        iconIndex === 1 ? 'accueil' :
+        'hourglass'
+      }.png)`
+    };
+
     if (selectedIcon === null) {
-      return {};
+      return baseStyle;
     }
     
     if (selectedIcon === iconIndex) {
       return {
+        ...baseStyle,
         position: 'fixed',
         left: `${iconPosition.x}px`,
         top: `${iconPosition.y}px`,
@@ -134,6 +143,7 @@ const AccessScreen = ({ color, onIconClick }) => {
       };
     } else {
       return {
+        ...baseStyle,
         opacity: 0,
         pointerEvents: 'none'
       };
