@@ -16,6 +16,11 @@ const HourglassSociety = () => {
   const handRef = useRef(null);
 
   useEffect(() => {
+    // Set background images
+    document.body.style.backgroundImage = `url(${process.env.PUBLIC_URL}/img/accueil-wallpaper.png)`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+
     // After hand lifts, transition to idle
     const timer = setTimeout(() => {
       if (handState === 'lifting') {
@@ -59,6 +64,10 @@ const HourglassSociety = () => {
     return null;
   }
 
+  const handStyle = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/img/hand-mobile.png)`
+  };
+
   return (
     <div className="hourglass-container">
       <BackgroundAnimation fingerprintMask={fingerprintMask} />
@@ -70,11 +79,18 @@ const HourglassSociety = () => {
           handState === 'idle' ? 'idle' : 
           handState === 'reversing' ? 'reversing' : ''
         }`}
+        style={handStyle}
       >
         <div className="smartphone">
           <div className="screen">
-            <div className="bg-deverouillage-top"></div>
-            <div className="bg-deverouillage-bottom"></div>
+            <div 
+              className="bg-deverouillage-top"
+              style={{backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg-deverouillage.png)`}}
+            ></div>
+            <div 
+              className="bg-deverouillage-bottom"
+              style={{backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg-deverouillage.png)`}}
+            ></div>
             
             <canvas id="world"></canvas>
             
