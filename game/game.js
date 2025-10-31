@@ -848,18 +848,49 @@ function aiLoserChoice() {
   if (gameState.opponent.defense.length === 0) {
     gameState.combat.loserChoice = 'accept';
   } else if (difficulty === 'easy') {
-    gameState.combat.loserChoice = Math.random() > 0.5 ? 'accept' : 'sacrifice';
-  } else if (gameState.opponent.hp <= 3) {
-    // Low HP - prefer sacrifice
-    gameState.combat.loserChoice = 'sacrifice';
+    // Random choice between 3 options
+    const choices = ['accept', 'sacrifice', 'replace'];
+    gameState.combat.loserChoice = choices[Math.floor(Math.random() * choices.length)];
   } else {
-    gameState.combat.loserChoice = 'accept';
+    // Smart choice based on situation
+    const losingCard = gameState.opponent.selectedCard;
+    const losingCardScore = getCardScore(losingCard);
+    const hp = gameState.opponent.hp;
+    
+    // Evaluate defenders
+    const defenderScores = gameState.opponent.defense.map(d => ({
+      card: d,
+      score: getCardScore(d)
+    })).sort((a, b) => a.score - b.score);
+    
+    const weakestDefender = defenderScores[0];
+    
+    // Decision logic
+    if (hp <= 3) {
+      // Low HP - prefer sacrifice (0 PV)
+      gameState.combat.loserChoice = 'sacrifice';
+      gameState.combat.targetDefender = weakestDefender.card;
+    } else if (losingCardScore > weakestDefender.score && hp > 6) {
+      // Losing card is better than weakest defender and HP is comfortable
+      // Choose replace: losing card goes to defense, -1 HP
+      gameState.combat.loserChoice = 'replace';
+      gameState.combat.targetDefender = weakestDefender.card;
+    } else if (losingCardScore >= 6 && hp > 5) {
+      // Losing card is valuable, try to save it
+      gameState.combat.loserChoice = 'sacrifice';
+      gameState.combat.targetDefender = weakestDefender.card;
+    } else {
+      // Default: accept the loss
+      gameState.combat.loserChoice = 'accept';
+    }
   }
   
-  if (gameState.combat.loserChoice === 'sacrifice') {
-    // Pick lowest value defender
-    const sorted = [...gameState.opponent.defense].sort((a, b) => getCardScore(a) - getCardScore(b));
-    gameState.combat.targetDefender = sorted[0];
+  if (gameState.combat.loserChoice === 'sacrifice' || gameState.combat.loserChoice === 'replace') {
+    // Pick lowest value defender if not already chosen
+    if (!gameState.combat.targetDefender) {
+      const sorted = [...gameState.opponent.defense].sort((a, b) => getCardScore(a) - getCardScore(b));
+      gameState.combat.targetDefender = sorted[0];
+    }
   }
   
   proceedToResolution();
