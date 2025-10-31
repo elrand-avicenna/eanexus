@@ -472,11 +472,16 @@ function showWinnerChoicePanel() {
     title.textContent = 'Vous avez gagné!';
     description.textContent = 'Choisissez votre action:';
     
+    const hasAttackableDefenders = gameState.opponent.defense.some(d => 
+      canBeatDefender(gameState.player.selectedCard, d)
+    );
+    
     buttons.innerHTML = `
       <button class="action-btn primary" data-testid="winner-choice-hp" onclick="winnerChooseHP()">
         <i class="fa-solid fa-heart"></i> Enlever 1 PV
       </button>
-      <button class="action-btn" data-testid="winner-choice-defender" onclick="winnerChooseDefender()">
+      <button class="action-btn" data-testid="winner-choice-defender" onclick="winnerChooseDefender()" 
+              ${!hasAttackableDefenders ? 'disabled data-disabled-reason="Aucun défenseur battable"' : ''}>
         <i class="fa-solid fa-shield"></i> Attaquer un Défenseur
       </button>
     `;
@@ -521,11 +526,14 @@ function showLoserChoicePanel() {
     title.textContent = 'Vous avez perdu ce combat';
     description.textContent = 'Voulez-vous sacrifier un défenseur pour éviter de perdre 1 PV?';
     
+    const hasDefenders = gameState.player.defense.length > 0;
+    
     buttons.innerHTML = `
       <button class="action-btn" data-testid="loser-choice-accept" onclick="loserAccept()">
         <i class="fa-solid fa-heart-crack"></i> Accepter (-1 PV)
       </button>
-      <button class="action-btn primary" data-testid="loser-choice-sacrifice" onclick="enableDefenderSacrifice()" ${gameState.player.defense.length === 0 ? 'disabled' : ''}>
+      <button class="action-btn primary" data-testid="loser-choice-sacrifice" onclick="enableDefenderSacrifice()" 
+              ${!hasDefenders ? 'disabled data-disabled-reason="Aucun défenseur disponible"' : ''}>
         <i class="fa-solid fa-shield"></i> Sacrifier un Défenseur
       </button>
     `;
@@ -902,6 +910,24 @@ document.addEventListener('DOMContentLoaded', () => {
   
   document.getElementById('close-rules-btn').addEventListener('click', () => {
     rulesPanel.classList.remove('open');
+  });
+  
+  // Powers legend toggle
+  const powersLegend = document.getElementById('powers-legend');
+  
+  document.getElementById('powers-legend-btn').addEventListener('click', () => {
+    powersLegend.classList.toggle('hidden');
+  });
+  
+  document.getElementById('close-legend-btn').addEventListener('click', () => {
+    powersLegend.classList.add('hidden');
+  });
+  
+  // Close legend when clicking outside
+  powersLegend.addEventListener('click', (e) => {
+    if (e.target === powersLegend) {
+      powersLegend.classList.add('hidden');
+    }
   });
   
   // Hand navigation

@@ -73,9 +73,14 @@
                 <span class="phase-label" id="phase-label">Phase de Sélection</span>
             </div>
             
-            <button class="btn-icon" data-testid="rules-toggle-game-button" id="rules-toggle-game-btn" aria-label="Toggle rules panel">
-                <i class="fa-solid fa-circle-info"></i>
-            </button>
+            <div class="top-bar-actions">
+                <button class="btn-icon" data-testid="powers-legend-button" id="powers-legend-btn" aria-label="Afficher légende des pouvoirs">
+                    <i class="fa-solid fa-book"></i>
+                </button>
+                <button class="btn-icon" data-testid="rules-toggle-game-button" id="rules-toggle-game-btn" aria-label="Toggle rules panel">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            </div>
         </div>
         
         <!-- Opponent Zone -->
@@ -136,6 +141,70 @@
                 <h3 class="action-title" id="action-title">Choisissez une action</h3>
                 <p class="action-description" id="action-description"></p>
                 <div class="action-buttons" id="action-buttons"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Powers Legend Panel -->
+    <div id="powers-legend" class="powers-legend hidden" data-testid="powers-legend">
+        <div class="legend-content">
+            <div class="legend-header">
+                <h3 class="legend-title">Légende des Pouvoirs</h3>
+                <button class="btn-icon" id="close-legend-btn" aria-label="Fermer légende">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="legend-section">
+                <h4 class="legend-subtitle">Attaque (depuis la main)</h4>
+                <div class="power-row">
+                    <i class="fa-solid fa-crown power-icon crown"></i>
+                    <span class="power-name">Couronne</span>
+                    <span class="power-desc">Bat tout (Reine)</span>
+                </div>
+                <div class="power-row">
+                    <i class="fa-solid fa-file power-icon paper"></i>
+                    <span class="power-name">Papier</span>
+                    <span class="power-desc">Bat Pierre (Tour)</span>
+                </div>
+                <div class="power-row">
+                    <i class="fa-solid fa-hand-fist power-icon rock"></i>
+                    <span class="power-name">Pierre</span>
+                    <span class="power-desc">Bat Ciseaux (Cavalier)</span>
+                </div>
+                <div class="power-row">
+                    <i class="fa-solid fa-scissors power-icon scissors"></i>
+                    <span class="power-name">Ciseaux</span>
+                    <span class="power-desc">Bat Papier (Fou)</span>
+                </div>
+            </div>
+            
+            <div class="legend-section">
+                <h4 class="legend-subtitle">Défense (transformation!)</h4>
+                <div class="power-row">
+                    <span class="piece-label">♛ Reine →</span>
+                    <i class="fa-solid fa-crown power-icon crown"></i>
+                    <span class="power-name">Couronne</span>
+                </div>
+                <div class="power-row highlight">
+                    <span class="piece-label">♜ Tour →</span>
+                    <i class="fa-solid fa-hand-fist power-icon rock"></i>
+                    <span class="power-name">Pierre</span>
+                </div>
+                <div class="power-row">
+                    <span class="piece-label">♝ Fou →</span>
+                    <i class="fa-solid fa-scissors power-icon scissors"></i>
+                    <span class="power-name">Ciseaux</span>
+                </div>
+                <div class="power-row highlight">
+                    <span class="piece-label">♞ Cavalier →</span>
+                    <i class="fa-solid fa-file power-icon paper"></i>
+                    <span class="power-name">Papier</span>
+                </div>
+                <div class="power-row">
+                    <span class="piece-label">♟ Pions →</span>
+                    <span class="power-desc-small">8&3=Pierre, 7&4=Ciseaux, 6&5=Papier, 2&1=Couronne</span>
+                </div>
             </div>
         </div>
     </div>

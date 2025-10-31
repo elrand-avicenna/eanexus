@@ -319,6 +319,11 @@ button:focus-visible,
   box-shadow: var(--shadow-md);
 }
 
+.top-bar-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
 .phase-indicator {
   display: flex;
   align-items: center;
@@ -704,8 +709,9 @@ button:focus-visible,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--border);
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--border);
+  gap: var(--space-2);
 }
 
 .card-power {
@@ -713,36 +719,47 @@ button:focus-visible,
   flex-direction: column;
   align-items: center;
   gap: var(--space-1);
+  padding: var(--space-2);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-md);
+  flex: 1;
+  border: 1px solid var(--border);
 }
 
 .power-label {
-  font-family: var(--font-body);
+  font-family: var(--font-accent);
   font-size: 0.625rem;
-  font-weight: var(--font-medium);
-  color: var(--text-muted);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .power-icon {
-  font-size: var(--text-xl);
+  font-size: 1.75rem;
   color: var(--text-primary);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
 }
 
 .power-icon.crown {
-  color: var(--power-crown);
+  color: #ffd700;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
 }
 
 .power-icon.paper {
-  color: var(--power-paper);
+  color: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
 .power-icon.scissors {
-  color: var(--power-scissors);
+  color: #e0e0e0;
+  filter: drop-shadow(0 0 6px rgba(224, 224, 224, 0.4));
 }
 
 .power-icon.rock {
-  color: var(--power-rock);
+  color: #b8956a;
+  filter: drop-shadow(0 0 6px rgba(184, 149, 106, 0.4));
 }
 
 /* ===============================================
@@ -796,10 +813,11 @@ button:focus-visible,
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-xl);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   border: 2px solid var(--border);
   background: var(--bg-card);
   color: var(--text-primary);
+  position: relative;
 }
 
 .action-btn.primary {
@@ -811,9 +829,36 @@ button:focus-visible,
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.action-btn:hover {
+.action-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(212, 175, 55, 0.5);
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(50%);
+}
+
+.action-btn:disabled::after {
+  content: attr(data-disabled-reason);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.action-btn:disabled:hover::after {
+  opacity: 1;
 }
 
 /* ===============================================
@@ -890,6 +935,133 @@ button:focus-visible,
   position: absolute;
   left: 0;
   color: var(--white-primary);
+}
+
+/* ===============================================
+   POWERS LEGEND PANEL
+   =============================================== */
+.powers-legend {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 600px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-active);
+  border-radius: var(--radius-2xl);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(212, 175, 55, 0.3);
+  padding: var(--space-6);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.powers-legend:not(.hidden) {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: all;
+}
+
+.legend-content {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--border-active);
+}
+
+.legend-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--white-primary);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.legend-section {
+  margin-bottom: var(--space-6);
+  background: var(--bg-tertiary);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.legend-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.power-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+
+.power-row:hover {
+  background: var(--bg-elevated);
+}
+
+.power-row.highlight {
+  border-color: var(--white-primary);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+}
+
+.power-row .power-icon {
+  font-size: var(--text-2xl);
+  width: 40px;
+  text-align: center;
+}
+
+.power-name {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  min-width: 100px;
+}
+
+.power-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.power-desc-small {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.piece-label {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  min-width: 120px;
 }
 
 /* ===============================================
