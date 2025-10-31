@@ -1,14 +1,30 @@
 [
   {
-    "content": "Réduire la taille des icônes ATK/DEF pour qu'elles tiennent mieux sur les cartes",
-    "status": "completed"
+    "content": "Modifier showLoserChoicePanel() pour afficher 3 options au lieu de 2",
+    "status": "in_progress"
   },
   {
-    "content": "Ajouter un système de confirmation de carte avec preview en grand avant d'attaquer",
-    "status": "completed"
+    "content": "Ajouter l'option 'replace' dans la logique de résolution",
+    "status": "pending"
   },
   {
-    "content": "Tester les nouvelles améliorations",
-    "status": "completed"
+    "content": "Créer enableDefenderReplacement() pour l'option 3",
+    "status": "pending"
+  },
+  {
+    "content": "Modifier proceedToResolution() pour gérer le cas 'replace'",
+    "status": "pending"
+  },
+  {
+    "content": "Mettre à jour l'IA pour considérer l'option 3",
+    "status": "pending"
+  },
+  {
+    "content": "Mettre à jour les règles dans le panneau",
+    "status": "pending"
+  },
+  {
+    "content": "Tester la nouvelle règle",
+    "status": "pending"
   }
 ]
