@@ -1,18 +1,18 @@
 [
   {
     "content": "Créer un système de preview de carte universel (clic sur n'importe quelle carte)",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Améliorer la visibilité du jeton premier joueur (taille, couleur, animation)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Ajouter un compteur de cartes restantes pour chaque joueur",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester les 3 améliorations",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
