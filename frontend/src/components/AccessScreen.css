@@ -50,19 +50,19 @@
 }
 
 .access-screen-icon1 {
-  background: url('%PUBLIC_URL%/img/anim.png') no-repeat;
+  background: url('/img/anim.png') no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .access-screen-icon2 {
-  background: url('%PUBLIC_URL%/img/accueil.png') no-repeat;
+  background: url('/img/accueil.png') no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .access-screen-icon3 {
-  background: url('%PUBLIC_URL%/img/hourglass.png') no-repeat;
+  background: url('/img/hourglass.png') no-repeat;
   background-size: cover;
   background-position: center;
 }
