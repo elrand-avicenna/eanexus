@@ -590,15 +590,15 @@ function showLoserChoicePanel() {
     
     buttons.innerHTML = `
       <button class="action-btn" data-testid="loser-choice-accept" onclick="loserAccept()" style="flex: 1;">
-        <i class="fa-solid fa-heart-crack"></i> Accepter<br><small>(-1 PV)</small>
+        <i class="fa-solid fa-heart-crack"></i> Accepter<br><small>1 carte / -1 PV</small>
       </button>
-      <button class="action-btn" data-testid="loser-choice-sacrifice" onclick="enableDefenderSacrifice()" 
+      <button class="action-btn" data-testid="loser-choice-replace" onclick="enableDefenderReplacement()" 
               ${!hasDefenders ? 'disabled data-disabled-reason="Aucun défenseur disponible"' : ''} style="flex: 1;">
-        <i class="fa-solid fa-shield-halved"></i> Sacrifier<br><small>(0 PV)</small>
+        <i class="fa-solid fa-rotate"></i> Remplacer<br><small>1 carte / -1 PV</small>
       </button>
-      <button class="action-btn primary" data-testid="loser-choice-replace" onclick="enableDefenderReplacement()" 
+      <button class="action-btn primary" data-testid="loser-choice-sacrifice" onclick="enableDefenderSacrifice()" 
               ${!hasDefenders ? 'disabled data-disabled-reason="Aucun défenseur disponible"' : ''} style="flex: 1;">
-        <i class="fa-solid fa-rotate"></i> Remplacer<br><small>(-1 PV)</small>
+        <i class="fa-solid fa-shield-halved"></i> Sacrifier<br><small>2 cartes / 0 PV</small>
       </button>
     `;
   } else {
