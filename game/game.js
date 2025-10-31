@@ -616,6 +616,12 @@ function enableDefenderSacrifice() {
   render();
 }
 
+function enableDefenderReplacement() {
+  document.getElementById('action-panel').classList.add('hidden');
+  gameState.combat.loserChoice = 'replace';
+  render();
+}
+
 function selectDefenderToSacrifice(card) {
   gameState.combat.targetDefender = card;
   proceedToResolution();
