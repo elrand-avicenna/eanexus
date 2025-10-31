@@ -145,6 +145,35 @@
         </div>
     </div>
     
+    <!-- Card Confirmation Panel -->
+    <div id="card-confirmation" class="card-confirmation hidden" data-testid="card-confirmation">
+        <div class="confirmation-content">
+            <h3 class="confirmation-title">Confirmer votre choix</h3>
+            
+            <div id="card-preview-container" class="card-preview"></div>
+            
+            <div class="card-info" id="card-info">
+                <div class="info-row">
+                    <span class="info-label">Attaque:</span>
+                    <i id="preview-attack-icon" class="info-icon power-icon fa-solid"></i>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Défense:</span>
+                    <i id="preview-defense-icon" class="info-icon power-icon fa-solid"></i>
+                </div>
+            </div>
+            
+            <div class="confirmation-buttons">
+                <button class="confirmation-btn cancel" id="cancel-card-btn" data-testid="cancel-card-button">
+                    <i class="fa-solid fa-xmark"></i> Annuler
+                </button>
+                <button class="confirmation-btn confirm" id="confirm-card-btn" data-testid="confirm-card-button">
+                    <i class="fa-solid fa-check"></i> Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Powers Legend Panel -->
     <div id="powers-legend" class="powers-legend hidden" data-testid="powers-legend">
         <div class="legend-content">
