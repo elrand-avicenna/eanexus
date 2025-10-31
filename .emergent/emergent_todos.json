@@ -1,14 +1,14 @@
 [
   {
     "content": "Réduire la taille des icônes ATK/DEF pour qu'elles tiennent mieux sur les cartes",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Ajouter un système de confirmation de carte avec preview en grand avant d'attaquer",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester les nouvelles améliorations",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
