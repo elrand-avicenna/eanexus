@@ -830,30 +830,58 @@ function proceedToResolution() {
 }
 
 function checkWinCondition() {
+  // Victory by HP
   if (gameState.player.hp <= 0) {
-    showGameOver('opponent');
+    showGameOver('opponent', 'hp');
     return true;
   }
   
   if (gameState.opponent.hp <= 0) {
-    showGameOver('player');
+    showGameOver('player', 'hp');
     return true;
   }
   
+  // Victory by empty hand (no cards to attack with)
   if (gameState.player.hand.length === 0) {
-    showGameOver('opponent');
+    showGameOver('opponent', 'cards');
     return true;
   }
   
   if (gameState.opponent.hand.length === 0) {
-    showGameOver('player');
+    showGameOver('player', 'cards');
+    return true;
+  }
+  
+  // NEW: Victory by killing 6 major pieces (2 Rooks, 2 Bishops, 2 Knights) in defense
+  if (check6MajorPiecesVictory('player')) {
+    showGameOver('player', 'major-pieces');
+    return true;
+  }
+  
+  if (check6MajorPiecesVictory('opponent')) {
+    showGameOver('opponent', 'major-pieces');
     return true;
   }
   
   return false;
 }
 
-function showGameOver(winner) {
+function check6MajorPiecesVictory(player) {
+  // Count killed defenders (in defenseGraveyard) of opponent
+  const opponent = player === 'player' ? 'opponent' : 'player';
+  const graveyard = gameState[opponent].defenseGraveyard;
+  
+  const killed = {
+    rooks: graveyard.filter(c => c.type === CARD_TYPES.ROOK).length,
+    bishops: graveyard.filter(c => c.type === CARD_TYPES.BISHOP).length,
+    knights: graveyard.filter(c => c.type === CARD_TYPES.KNIGHT).length
+  };
+  
+  // Victory if all 6 major pieces killed (2 Rooks + 2 Bishops + 2 Knights)
+  return killed.rooks >= 2 && killed.bishops >= 2 && killed.knights >= 2;
+}
+
+function showGameOver(winner, reason) {
   const panel = document.getElementById('action-panel');
   const title = document.getElementById('action-title');
   const description = document.getElementById('action-description');
