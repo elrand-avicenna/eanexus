@@ -891,10 +891,22 @@ function showGameOver(winner, reason) {
   
   if (winner === 'player') {
     title.textContent = '🎉 Victoire!';
-    description.textContent = 'Vous avez gagné la partie!';
+    if (reason === 'hp') {
+      description.textContent = 'Vous avez gagné par élimination HP!';
+    } else if (reason === 'cards') {
+      description.textContent = 'L\'adversaire n\'a plus de cartes!';
+    } else if (reason === 'major-pieces') {
+      description.textContent = '🏆 Victoire Tactique! Vous avez éliminé les 6 pièces majeures (2 Tours, 2 Fous, 2 Cavaliers) de l\'adversaire!';
+    }
   } else {
     title.textContent = '💔 Défaite';
-    description.textContent = 'Vous avez perdu la partie.';
+    if (reason === 'hp') {
+      description.textContent = 'Vous avez perdu tous vos HP.';
+    } else if (reason === 'cards') {
+      description.textContent = 'Vous n\'avez plus de cartes en main!';
+    } else if (reason === 'major-pieces') {
+      description.textContent = '💀 Défaite Tactique! L\'adversaire a éliminé vos 6 pièces majeures.';
+    }
   }
   
   buttons.innerHTML = `
