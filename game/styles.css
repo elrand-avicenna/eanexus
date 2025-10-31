@@ -1167,6 +1167,46 @@ button:focus-visible,
 }
 
 /* ===============================================
+   CARD PREVIEW PANEL (UNIVERSAL)
+   =============================================== */
+.card-preview-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.card-preview-panel:not(.hidden) {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.preview-card-container {
+  position: relative;
+  z-index: 1;
+  transform: scale(2);
+  pointer-events: none;
+}
+
+/* ===============================================
    CARD CONFIRMATION PANEL
    =============================================== */
 .card-confirmation {
