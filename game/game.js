@@ -263,6 +263,20 @@ function renderCard(card, location = 'hand') {
     </div>
   `;
   
+  // Add click handler for preview (right-click or ctrl+click to avoid conflict with selection)
+  div.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    showCardPreview(card);
+  });
+  
+  // Also add shift+click for preview
+  div.addEventListener('click', (e) => {
+    if (e.shiftKey) {
+      e.stopPropagation();
+      showCardPreview(card);
+    }
+  });
+  
   return div;
 }
 
