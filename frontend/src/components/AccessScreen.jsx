@@ -18,6 +18,9 @@ const AccessScreen = ({ color, onIconClick }) => {
   const handleIconClick = (iconIndex, e) => {
     if (selectedIcon !== null) return;
 
+    e.preventDefault(); // Prevent default touch/click behavior
+    e.stopPropagation();
+
     const iconRefs = [icon1Ref, icon2Ref, icon3Ref];
     const clickedIcon = iconRefs[iconIndex].current;
     const rect = clickedIcon.getBoundingClientRect();
