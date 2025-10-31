@@ -1,30 +1,30 @@
 [
   {
     "content": "Create file structure: index.html, styles/main.css, scripts/game.js in /app",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Build HTML structure: menu, rules panel, game board with all zones and data-testid attributes",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Implement CSS with design tokens, typography, and component styles from guidelines",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Add game state management, card deck creation, and RPS resolution logic",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Implement AI strategies (Easy/Normal/Hard) and PvP mode",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Add all animations: card movements, clash effects, particles system",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Test gameplay, animations, and responsive design",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
