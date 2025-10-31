@@ -580,17 +580,21 @@ function showLoserChoicePanel() {
   if (gameState.combat.winner === 'opponent') {
     // Player is loser
     title.textContent = 'Vous avez perdu ce combat';
-    description.textContent = 'Voulez-vous sacrifier un défenseur pour éviter de perdre 1 PV?';
+    description.textContent = 'Choisissez votre action:';
     
     const hasDefenders = gameState.player.defense.length > 0;
     
     buttons.innerHTML = `
-      <button class="action-btn" data-testid="loser-choice-accept" onclick="loserAccept()">
-        <i class="fa-solid fa-heart-crack"></i> Accepter (-1 PV)
+      <button class="action-btn" data-testid="loser-choice-accept" onclick="loserAccept()" style="flex: 1;">
+        <i class="fa-solid fa-heart-crack"></i> Accepter<br><small>(-1 PV)</small>
       </button>
-      <button class="action-btn primary" data-testid="loser-choice-sacrifice" onclick="enableDefenderSacrifice()" 
-              ${!hasDefenders ? 'disabled data-disabled-reason="Aucun défenseur disponible"' : ''}>
-        <i class="fa-solid fa-shield"></i> Sacrifier un Défenseur
+      <button class="action-btn" data-testid="loser-choice-sacrifice" onclick="enableDefenderSacrifice()" 
+              ${!hasDefenders ? 'disabled data-disabled-reason="Aucun défenseur disponible"' : ''} style="flex: 1;">
+        <i class="fa-solid fa-shield-halved"></i> Sacrifier<br><small>(0 PV)</small>
+      </button>
+      <button class="action-btn primary" data-testid="loser-choice-replace" onclick="enableDefenderReplacement()" 
+              ${!hasDefenders ? 'disabled data-disabled-reason="Aucun défenseur disponible"' : ''} style="flex: 1;">
+        <i class="fa-solid fa-rotate"></i> Remplacer<br><small>(-1 PV)</small>
       </button>
     `;
   } else {
