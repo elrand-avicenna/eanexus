@@ -808,10 +808,11 @@ button:focus-visible,
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-xl);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   border: 2px solid var(--border);
   background: var(--bg-card);
   color: var(--text-primary);
+  position: relative;
 }
 
 .action-btn.primary {
@@ -823,9 +824,36 @@ button:focus-visible,
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.action-btn:hover {
+.action-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(212, 175, 55, 0.5);
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(50%);
+}
+
+.action-btn:disabled::after {
+  content: attr(data-disabled-reason);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.action-btn:disabled:hover::after {
+  opacity: 1;
 }
 
 /* ===============================================
