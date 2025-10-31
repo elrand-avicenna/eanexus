@@ -1,18 +1,18 @@
 [
   {
-    "content": "Créer un système de preview de carte universel (clic sur n'importe quelle carte)",
-    "status": "completed"
+    "content": "Supprimer le texte hint sous la main",
+    "status": "in_progress"
   },
   {
-    "content": "Améliorer la visibilité du jeton premier joueur (taille, couleur, animation)",
-    "status": "completed"
+    "content": "Remplacer clic-droit/shift+clic par long press (appui long)",
+    "status": "pending"
   },
   {
-    "content": "Ajouter un compteur de cartes restantes pour chaque joueur",
-    "status": "completed"
+    "content": "Implémenter détection touch pour mobile",
+    "status": "pending"
   },
   {
-    "content": "Tester les 3 améliorations",
-    "status": "completed"
+    "content": "Tester sur petit écran et tactile",
+    "status": "pending"
   }
 ]
