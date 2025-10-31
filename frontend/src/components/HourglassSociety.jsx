@@ -65,7 +65,10 @@ const HourglassSociety = () => {
   }
 
   const handStyle = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/img/hand-mobile.png)`
+    backgroundImage: `url(${process.env.PUBLIC_URL}/img/hand-mobile.png)`,
+    backgroundSize: 'contain',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
   };
 
   return (
