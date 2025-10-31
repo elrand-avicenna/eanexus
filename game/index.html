@@ -297,15 +297,15 @@
                     <li><strong>Phase Combat:</strong> Chaque joueur sélectionne 1 carte. Révélation simultanée. Le gagnant est déterminé par RPS (égalité = le joueur avec le jeton premier joueur gagne).</li>
                     <li><strong>Choix du Gagnant:</strong>
                         <ul style="margin-top: 0.5rem;">
-                            <li>A) Enlever 1 PV à l'adversaire</li>
-                            <li>B) Attaquer un défenseur (seulement ceux qu'il peut battre)</li>
+                            <li>A) Enlever 1 PV à l'adversaire → Déclenche le choix du perdant</li>
+                            <li>B) Attaquer un défenseur (seulement ceux qu'il peut battre) → 2 cartes défaussées (carte perdante + défenseur), 0 PV perdu</li>
                         </ul>
                     </li>
                     <li><strong>Choix du Perdant</strong> (si le gagnant a choisi A):
                         <ul style="margin-top: 0.5rem;">
-                            <li>A) Accepter la défaite: -1 PV, carte défaussée</li>
-                            <li>B) Sacrifier un défenseur: défenseur défaussé, carte retourne en main, 0 PV perdu</li>
-                            <li>C) Remplacer un défenseur: carte perdante va en défense, défenseur choisi défaussé, -1 PV perdu</li>
+                            <li>A) Accepter la défaite: 1 carte défaussée, -1 PV</li>
+                            <li>B) Remplacer un défenseur: carte perdante va en défense, 1 défenseur choisi défaussé, -1 PV</li>
+                            <li>C) Sacrifier un défenseur: carte perdante défaussée, 1 défenseur défaussé, 0 PV perdu (2 cartes pour sauver 1 HP)</li>
                         </ul>
                     </li>
                     <li><strong>Résolution:</strong> Carte gagnante → défense du gagnant (max 3, remplace si besoin). Jeton premier joueur → autre joueur.</li>
