@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import './AccessScreen.css';
 
 const AccessScreen = ({ color, onIconClick }) => {
@@ -12,7 +13,6 @@ const AccessScreen = ({ color, onIconClick }) => {
   const icon2Ref = useRef(null);
   const icon3Ref = useRef(null);
   const animationRef = useRef(null);
-  const velocityRef = useRef({ vx: 0, vy: 0 });
 
   useEffect(() => {
     setTimeout(() => {
@@ -65,33 +65,20 @@ const AccessScreen = ({ color, onIconClick }) => {
       document.addEventListener('mouseup', handleGlobalUp);
       document.addEventListener('touchend', handleGlobalUp);
 
-      // Spring animation
-      const freqHz = 2.2;
-      const dampingRatio = 1.05;
-      const omega = 2 * Math.PI * freqHz;
-      const z = dampingRatio;
-      let lastT = null;
-
+      // Smooth lerp animation (much smoother than spring)
       let currentX = iconPosition.x;
       let currentY = iconPosition.y;
+      const lerpFactor = 0.15; // Higher = faster response, Lower = smoother
 
-      const animate = (t) => {
-        if (lastT === null) lastT = t;
-        const dt = Math.max(0.001, Math.min(0.032, (t - lastT) / 1000));
-        lastT = t;
-
+      const animate = () => {
         const halfW = iconPosition.width / 2;
         const halfH = iconPosition.height / 2;
         const desiredX = targetPos.x - halfW;
         const desiredY = targetPos.y - halfH;
 
-        const ax = -2 * z * omega * velocityRef.current.vx - (omega * omega) * (currentX - desiredX);
-        const ay = -2 * z * omega * velocityRef.current.vy - (omega * omega) * (currentY - desiredY);
-
-        velocityRef.current.vx += ax * dt;
-        velocityRef.current.vy += ay * dt;
-        currentX += velocityRef.current.vx * dt;
-        currentY += velocityRef.current.vy * dt;
+        // Lerp (linear interpolation) for smooth movement
+        currentX += (desiredX - currentX) * lerpFactor;
+        currentY += (desiredY - currentY) * lerpFactor;
 
         setIconPosition(prev => ({
           ...prev,
@@ -150,32 +137,46 @@ const AccessScreen = ({ color, onIconClick }) => {
     }
   };
 
+  // Render selected icon in a portal (outside of hand-mobile) so it stays visible
+  const selectedIconElement = selectedIcon !== null && (
+    <div
+      className="pickable-icon-detached"
+      style={getIconStyle(selectedIcon)}
+    />
+  );
+
   return (
-    <div className={`access-screen ${isVisible ? 'active' : ''}`}>
-      <div className="access-screen-content">
-        <div
-          ref={icon1Ref}
-          className="access-screen-icon1 pickable-icon"
-          style={getIconStyle(0)}
-          onMouseDown={(e) => handleIconClick(0, e)}
-          onTouchStart={(e) => handleIconClick(0, e)}
-        />
-        <div
-          ref={icon2Ref}
-          className="access-screen-icon2 pickable-icon"
-          style={getIconStyle(1)}
-          onMouseDown={(e) => handleIconClick(1, e)}
-          onTouchStart={(e) => handleIconClick(1, e)}
-        />
-        <div
-          ref={icon3Ref}
-          className="access-screen-icon3 pickable-icon"
-          style={getIconStyle(2)}
-          onMouseDown={(e) => handleIconClick(2, e)}
-          onTouchStart={(e) => handleIconClick(2, e)}
-        />
+    <>
+      <div className={`access-screen ${isVisible ? 'active' : ''}`}>
+        <div className="access-screen-content">
+          <div
+            ref={icon1Ref}
+            className="access-screen-icon1 pickable-icon"
+            style={selectedIcon === 0 ? { opacity: 0 } : getIconStyle(0)}
+            onMouseDown={(e) => handleIconClick(0, e)}
+            onTouchStart={(e) => handleIconClick(0, e)}
+          />
+          <div
+            ref={icon2Ref}
+            className="access-screen-icon2 pickable-icon"
+            style={selectedIcon === 1 ? { opacity: 0 } : getIconStyle(1)}
+            onMouseDown={(e) => handleIconClick(1, e)}
+            onTouchStart={(e) => handleIconClick(1, e)}
+          />
+          <div
+            ref={icon3Ref}
+            className="access-screen-icon3 pickable-icon"
+            style={selectedIcon === 2 ? { opacity: 0 } : getIconStyle(2)}
+            onMouseDown={(e) => handleIconClick(2, e)}
+            onTouchStart={(e) => handleIconClick(2, e)}
+          />
+        </div>
       </div>
-    </div>
+      {selectedIcon !== null && ReactDOM.createPortal(
+        selectedIconElement,
+        document.body
+      )}
+    </>
   );
 };
 
