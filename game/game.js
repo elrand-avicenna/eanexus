@@ -297,7 +297,11 @@ function renderPlayerZone() {
     const cardEl = renderCard(card, 'defense');
     
     if (gameState.currentPhase === 'loser_choice' && gameState.combat.winner === 'opponent') {
-      cardEl.addEventListener('click', () => selectDefenderToSacrifice(card));
+      if (gameState.combat.loserChoice === 'sacrifice' || gameState.combat.loserChoice === 'replace') {
+        cardEl.addEventListener('click', () => selectDefenderToSacrifice(card));
+        cardEl.style.cursor = 'pointer';
+        cardEl.classList.add('attackable');
+      }
     }
     
     defenseContainer.appendChild(cardEl);
