@@ -246,9 +246,12 @@
             // Clear previous QR code
             qrcodeDiv.innerHTML = '';
 
-            // Generate new QR code with the app URL
+            // Build URL with query parameters
+            const urlWithParams = `${appUrl}?phone=${encodeURIComponent(phone)}&email=${encodeURIComponent(email)}&website=${encodeURIComponent(website)}`;
+
+            // Generate new QR code with the app URL including parameters
             qrCodeInstance = new QRCode(qrcodeDiv, {
-                text: appUrl,
+                text: urlWithParams,
                 width: 300,
                 height: 300,
                 colorDark: "#000000",
@@ -263,7 +266,7 @@
 
             // Update success message with info
             successMsg.innerHTML = `✅ QR Code généré! Il mènera vers votre app avec:<br>
-                <small style="font-size: 12px; opacity: 0.8;">Tel: ${phone} | Email: ${email}</small>`;
+                <small style="font-size: 12px; opacity: 0.8;">Tel: ${phone} | Email: ${email} | Site: ${website}</small>`;
 
             // Scroll to QR code
             setTimeout(() => {
