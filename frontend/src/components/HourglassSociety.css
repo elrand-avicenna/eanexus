@@ -119,18 +119,18 @@ body {
 .bg-deverouillage-top {
   height: 50%;
   width: 100%;
-  background: url('/img/bg-deverouillage.png') no-repeat;
   transform: rotate(180deg);
   background-size: cover;
   background-position: top;
+  background-repeat: no-repeat;
 }
 
 .bg-deverouillage-bottom {
   height: 50%;
   width: 100%;
-  background: url('/img/bg-deverouillage.png') no-repeat;
   background-size: cover;
   background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .erase {
