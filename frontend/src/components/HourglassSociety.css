@@ -1,0 +1,205 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('/img/accueil-wallpaper.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hourglass-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hand-mobile {
+  background: url('/img/hand-mobile.png') no-repeat;
+  background-position: center top 10px;
+  background-size: cover;
+  height: 1000px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center bottom;
+  transform-style: preserve-3d;
+  --persp: 1200px;
+}
+
+.hand-mobile.lifting {
+  animation: handLift 3s ease-in-out forwards;
+}
+
+.hand-mobile.idle {
+  animation: handIdle 12s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+.hand-mobile.reversing {
+  animation: handReverse 3s ease-in-out forwards;
+}
+
+@keyframes handLift {
+  0% {
+    transform: perspective(var(--persp)) rotateX(18deg) translateY(35px);
+  }
+  100% {
+    transform: perspective(var(--persp)) rotateX(0deg) translateY(0px);
+  }
+}
+
+@keyframes handReverse {
+  0% {
+    transform: perspective(var(--persp)) rotateX(0deg) translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(var(--persp)) rotateX(18deg) translateY(35px);
+    opacity: 0;
+  }
+}
+
+@keyframes handIdle {
+  0% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg);
+  }
+  50% {
+    transform: translateX(1.5px) translateY(4px) rotateZ(1deg);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg);
+  }
+}
+
+.smartphone {
+  width: 340px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#world {
+  display: block;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50000;
+}
+
+.screen {
+  height: 97%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 9999999999;
+  border-radius: 15px;
+  border: 2px solid orange;
+}
+
+.bg-deverouillage-top {
+  height: 50%;
+  width: 100%;
+  background: url('/img/bg-deverouillage.png') no-repeat;
+  transform: rotate(180deg);
+  background-size: cover;
+  background-position: top;
+}
+
+.bg-deverouillage-bottom {
+  height: 50%;
+  width: 100%;
+  background: url('/img/bg-deverouillage.png') no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.erase {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  height: 80%;
+  width: 12%;
+  z-index: 999999999999999999999999999;
+  background: transparent;
+}
+
+.erase2 {
+  position: absolute;
+  top: 75%;
+  right: 0px;
+  height: 6%;
+  width: 5%;
+  z-index: 999999999999999999999999999;
+  background: transparent;
+}
+
+/* Responsive */
+@media screen and (orientation: portrait) {
+  body {
+    background: #000 !important;
+    background-image: none !important;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .hand-mobile {
+    background: none !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    animation: none !important;
+    transform: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .smartphone {
+    position: relative;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  .screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  #world {
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0;
+    left: 0;
+  }
+
+  .erase,
+  .erase2 {
+    display: none !important;
+  }
+}
