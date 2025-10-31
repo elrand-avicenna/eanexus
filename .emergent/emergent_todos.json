@@ -1,30 +1,18 @@
 [
   {
-    "content": "Create file structure: index.html, styles/main.css, scripts/game.js in /app",
-    "status": "completed"
+    "content": "Améliorer la visibilité des icônes ATK/DEF sur les cartes avec couleurs plus vives et taille plus grande",
+    "status": "in_progress"
   },
   {
-    "content": "Build HTML structure: menu, rules panel, game board with all zones and data-testid attributes",
-    "status": "completed"
+    "content": "Griser les options impossibles dans les panneaux de choix et ajouter des tooltips explicatifs",
+    "status": "pending"
   },
   {
-    "content": "Implement CSS with design tokens, typography, and component styles from guidelines",
-    "status": "completed"
+    "content": "Ajouter une légende visuelle des pouvoirs RPS accessible pendant le jeu",
+    "status": "pending"
   },
   {
-    "content": "Add game state management, card deck creation, and RPS resolution logic",
-    "status": "completed"
-  },
-  {
-    "content": "Implement AI strategies (Easy/Normal/Hard) and PvP mode",
-    "status": "completed"
-  },
-  {
-    "content": "Add all animations: card movements, clash effects, particles system",
-    "status": "completed"
-  },
-  {
-    "content": "Test gameplay, animations, and responsive design",
-    "status": "completed"
+    "content": "Tester les améliorations visuelles",
+    "status": "pending"
   }
 ]
