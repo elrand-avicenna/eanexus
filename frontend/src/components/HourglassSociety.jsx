@@ -187,7 +187,6 @@ const HourglassSociety = () => {
           opacity: handState === 'hidden' ? 1 : 0,
           transition: 'opacity 1s ease'
         }}
-        loop
         muted
         playsInline
       >
