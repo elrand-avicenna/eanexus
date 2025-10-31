@@ -390,13 +390,69 @@ function updatePhaseLabel() {
 }
 
 function selectPlayerCard(card) {
-  gameState.player.selectedCard = card;
-  render();
+  // Show confirmation panel instead of directly selecting
+  showCardConfirmation(card);
+}
+
+function showCardConfirmation(card) {
+  const panel = document.getElementById('card-confirmation');
+  const previewContainer = document.getElementById('card-preview-container');
+  const attackIcon = document.getElementById('preview-attack-icon');
+  const defenseIcon = document.getElementById('preview-defense-icon');
   
-  // In PvE, opponent selects immediately
-  if (gameState.gameMode === 'pve') {
-    opponentSelectCard();
+  // Render the card preview
+  previewContainer.innerHTML = '';
+  const cardEl = renderCard(card);
+  previewContainer.appendChild(cardEl);
+  
+  // Get powers
+  const attackPower = getAttackPower(card);
+  const defensePower = getDefensePower(card);
+  
+  // Set attack icon
+  const attackIconClass = typeof attackPower === 'string' && attackPower.startsWith('pawn') ? 
+                          'fa-ban' : POWER_ICONS[attackPower];
+  const attackPowerClass = typeof attackPower === 'string' && attackPower.startsWith('pawn') ? 
+                           'rock' : attackPower;
+  attackIcon.className = `info-icon power-icon ${attackPowerClass} fa-solid ${attackIconClass}`;
+  
+  // Set defense icon
+  const defenseIconClass = POWER_ICONS[defensePower];
+  defenseIcon.className = `info-icon power-icon ${defensePower} fa-solid ${defenseIconClass}`;
+  
+  // Show panel
+  panel.classList.remove('hidden');
+  
+  // Store the card temporarily
+  panel.dataset.pendingCardId = card.id;
+}
+
+function confirmCardSelection() {
+  const panel = document.getElementById('card-confirmation');
+  const cardId = panel.dataset.pendingCardId;
+  
+  // Find the card
+  const card = gameState.player.hand.find(c => c.id === cardId);
+  
+  if (card) {
+    gameState.player.selectedCard = card;
+    render();
+    
+    // In PvE, opponent selects immediately
+    if (gameState.gameMode === 'pve') {
+      opponentSelectCard();
+    }
   }
+  
+  // Hide panel
+  panel.classList.add('hidden');
+  delete panel.dataset.pendingCardId;
+}
+
+function cancelCardSelection() {
+  const panel = document.getElementById('card-confirmation');
+  panel.classList.add('hidden');
+  delete panel.dataset.pendingCardId;
 }
 
 function opponentSelectCard() {
