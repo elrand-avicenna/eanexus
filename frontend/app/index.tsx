@@ -10,9 +10,14 @@ const { width, height } = Dimensions.get('window');
 export default function Index() {
   const videoRef = useRef<Video>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  
+  // Get URL parameters for dynamic contact info
+  const params = useLocalSearchParams();
+  const phoneNumber = (params.phone as string) || '1234567899';
+  const emailAddress = (params.email as string) || 'aaa@aaa.com';
+  const websiteUrl = (params.website as string) || 'https://elrand-avicenna.github.io/eanexus/';
 
   const handlePhonePress = async () => {
-    const phoneNumber = '1234567899'; // 12 34 56 78 99
     const url = `tel:${phoneNumber}`;
     
     try {
@@ -28,8 +33,7 @@ export default function Index() {
   };
 
   const handleEmailPress = async () => {
-    const email = 'aaa@aaa.com';
-    const url = `mailto:${email}`;
+    const url = `mailto:${emailAddress}`;
     
     try {
       const supported = await Linking.canOpenURL(url);
@@ -44,7 +48,7 @@ export default function Index() {
   };
 
   const handleWebsitePress = async () => {
-    const url = 'https://elrand-avicenna.github.io/eanexus/';
+    const url = websiteUrl;
     
     try {
       const supported = await Linking.canOpenURL(url);
