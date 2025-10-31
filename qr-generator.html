@@ -238,6 +238,7 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
 
+            const appUrl = document.getElementById('appUrl').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const website = document.getElementById('website').value;
@@ -245,19 +246,9 @@
             // Clear previous QR code
             qrcodeDiv.innerHTML = '';
 
-            // Create vCard format
-            const vCard = `BEGIN:VCARD
-VERSION:3.0
-FN:ELRAND AVICENNA
-TITLE:GAME DESIGNER - ANIMATEUR LUDIQUE
-TEL:${phone}
-EMAIL:${email}
-URL:${website}
-END:VCARD`;
-
-            // Generate new QR code
+            // Generate new QR code with the app URL
             qrCodeInstance = new QRCode(qrcodeDiv, {
-                text: vCard,
+                text: appUrl,
                 width: 300,
                 height: 300,
                 colorDark: "#000000",
@@ -270,15 +261,19 @@ END:VCARD`;
             downloadBtn.style.display = 'block';
             successMsg.style.display = 'block';
 
+            // Update success message with info
+            successMsg.innerHTML = `✅ QR Code généré! Il mènera vers votre app avec:<br>
+                <small style="font-size: 12px; opacity: 0.8;">Tel: ${phone} | Email: ${email}</small>`;
+
             // Scroll to QR code
             setTimeout(() => {
                 qrContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 100);
 
-            // Hide success message after 3 seconds
+            // Hide success message after 5 seconds
             setTimeout(() => {
                 successMsg.style.display = 'none';
-            }, 3000);
+            }, 5000);
         });
 
         downloadBtn.addEventListener('click', function() {
