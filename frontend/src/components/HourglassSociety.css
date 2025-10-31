@@ -1,6 +1,5 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('/img/accueil-wallpaper.png') no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -22,9 +21,9 @@ body {
 }
 
 .hand-mobile {
-  background: url('/img/hand-mobile.png') no-repeat;
   background-position: center top 10px;
   background-size: cover;
+  background-repeat: no-repeat;
   height: 1000px;
   width: 1000px;
   display: flex;
