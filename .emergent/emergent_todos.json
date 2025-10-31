@@ -1,34 +1,34 @@
 [
   {
     "content": "Ajouter règle spéciale: Pions 1&2 en attaque battent Reine en défense",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Changer égalité attaquant vs défenseur: attaquant gagne",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Créer 3 compteurs: Cartes main, Défausse attaque, Défausse défense",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Ajouter défausse défense séparée (killed defenders uniquement)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Ajouter condition victoire: 6 pièces majeures (2T+2F+2C) en défausse défense",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Afficher compteur progrès vers victoire alternative",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour règles dans panneau",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester toutes les nouvelles règles",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
