@@ -163,7 +163,17 @@ function resolveCombat(power1, power2) {
 function canBeatDefender(attackCard, defenderCard) {
   const attackPower = getAttackPower(attackCard);
   const defensePower = getDefensePower(defenderCard);
-  return resolveCombat(attackPower, defensePower) > 0;
+  
+  // SPECIAL RULE: Pawns 1&2 beat Queen in defense
+  if (attackCard.type === CARD_TYPES.PAWN && 
+      (attackCard.number === 1 || attackCard.number === 2) &&
+      defenderCard.type === CARD_TYPES.QUEEN) {
+    return true;
+  }
+  
+  // NEW RULE: Attacker wins on tie (changed from defender wins)
+  const result = resolveCombat(attackPower, defensePower);
+  return result >= 0; // >= instead of > (tie goes to attacker now)
 }
 
 // ===============================================
