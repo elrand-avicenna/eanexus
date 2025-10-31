@@ -472,11 +472,16 @@ function showWinnerChoicePanel() {
     title.textContent = 'Vous avez gagné!';
     description.textContent = 'Choisissez votre action:';
     
+    const hasAttackableDefenders = gameState.opponent.defense.some(d => 
+      canBeatDefender(gameState.player.selectedCard, d)
+    );
+    
     buttons.innerHTML = `
       <button class="action-btn primary" data-testid="winner-choice-hp" onclick="winnerChooseHP()">
         <i class="fa-solid fa-heart"></i> Enlever 1 PV
       </button>
-      <button class="action-btn" data-testid="winner-choice-defender" onclick="winnerChooseDefender()">
+      <button class="action-btn" data-testid="winner-choice-defender" onclick="winnerChooseDefender()" 
+              ${!hasAttackableDefenders ? 'disabled data-disabled-reason="Aucun défenseur battable"' : ''}>
         <i class="fa-solid fa-shield"></i> Attaquer un Défenseur
       </button>
     `;
