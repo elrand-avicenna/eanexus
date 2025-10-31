@@ -68,7 +68,7 @@ export default function Index() {
             style={({ pressed }) => [
               styles.button,
               styles.leftButton,
-              pressed && styles.buttonPressed
+              pressed ? styles.buttonPressed : null
             ]}
             onPress={handlePhonePress}
           >
@@ -82,7 +82,7 @@ export default function Index() {
             style={({ pressed }) => [
               styles.button,
               styles.middleButton,
-              pressed && styles.buttonPressed
+              pressed ? styles.buttonPressed : null
             ]}
             onPress={handleEmailPress}
           >
@@ -96,7 +96,7 @@ export default function Index() {
             style={({ pressed }) => [
               styles.button,
               styles.rightButton,
-              pressed && styles.buttonPressed
+              pressed ? styles.buttonPressed : null
             ]}
             onPress={handleWebsitePress}
           >
