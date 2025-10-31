@@ -1,22 +1,18 @@
 [
   {
-    "content": "Réorganiser l'ordre des boutons: Accepter, Remplacer, Sacrifier",
-    "status": "completed"
+    "content": "Créer un système de preview de carte universel (clic sur n'importe quelle carte)",
+    "status": "in_progress"
   },
   {
-    "content": "Modifier l'option Sacrifier pour défausser aussi la carte perdante",
-    "status": "completed"
+    "content": "Améliorer la visibilité du jeton premier joueur (taille, couleur, animation)",
+    "status": "pending"
   },
   {
-    "content": "Mettre à jour l'IA pour le nouveau trade-off (2 cartes vs 1 PV)",
-    "status": "completed"
+    "content": "Ajouter un compteur de cartes restantes pour chaque joueur",
+    "status": "pending"
   },
   {
-    "content": "Mettre à jour les règles dans le panneau",
-    "status": "completed"
-  },
-  {
-    "content": "Tester la nouvelle balance",
-    "status": "completed"
+    "content": "Tester les 3 améliorations",
+    "status": "pending"
   }
 ]
