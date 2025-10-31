@@ -71,9 +71,11 @@ const HourglassSociety = () => {
 
     let currentX = detachedIcon.position.x;
     let currentY = detachedIcon.position.y;
-    const lerpFactor = 0.15;
+    const lerpFactor = 0.2; // Un peu plus rapide pour meilleure réactivité
 
     const animate = () => {
+      if (!detachedIcon || !detachedIcon.isHolding) return;
+      
       const halfW = detachedIcon.width / 2;
       const halfH = detachedIcon.height / 2;
       const desiredX = detachedIcon.targetPos.x - halfW;
@@ -82,10 +84,10 @@ const HourglassSociety = () => {
       currentX += (desiredX - currentX) * lerpFactor;
       currentY += (desiredY - currentY) * lerpFactor;
 
-      setDetachedIcon(prev => ({
+      setDetachedIcon(prev => prev ? ({
         ...prev,
         position: { x: currentX, y: currentY }
-      }));
+      }) : null);
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -97,7 +99,7 @@ const HourglassSociety = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [detachedIcon?.isHolding, detachedIcon?.targetPos]);
+  }, [detachedIcon?.isHolding, detachedIcon?.targetPos.x, detachedIcon?.targetPos.y]);
 
   const handleGlobalMove = (e) => {
     if (!detachedIcon || !detachedIcon.isHolding) return;
