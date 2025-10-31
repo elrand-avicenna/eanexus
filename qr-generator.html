@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur QR Code - Carte de Contact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-generate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-generate:active {
+            transform: translateY(0);
+        }
+
+        .btn-download {
+            background: #10b981;
+            color: white;
+            display: none;
+        }
+
+        .btn-download:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .qr-container {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .qr-box {
+            background: #f9f9f9;
+            border-radius: 15px;
+            padding: 30px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        #qrcode {
+            display: inline-block;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .info-box strong {
+            color: #667eea;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            color: #065f46;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Générateur QR Code</h1>
+        <p class="subtitle">Carte de Contact Mobile - ELRAND AVICENNA</p>
+
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="phone">📞 Numéro de Téléphone</label>
+                <input type="tel" id="phone" placeholder="Ex: 1234567899" value="1234567899" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">📧 Adresse Email</label>
+                <input type="email" id="email" placeholder="Ex: contact@example.com" value="aaa@aaa.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="website">🌐 Site Web / Portfolio</label>
+                <input type="url" id="website" placeholder="Ex: https://votresite.com" value="https://elrand-avicenna.github.io/eanexus/" required>
+            </div>
+
+            <div class="info-box">
+                <strong>ℹ️ Note:</strong> Le QR code généré contiendra vos informations de contact au format vCard. Scannable depuis n'importe quel smartphone!
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" class="btn-generate">✨ Générer QR Code</button>
+                <button type="button" id="downloadBtn" class="btn-download">⬇️ Télécharger PNG</button>
+            </div>
+
+            <div class="success-message" id="successMsg">
+                ✅ QR Code généré avec succès!
+            </div>
+        </form>
+
+        <div class="qr-container" id="qrContainer">
+            <h3 style="color: #333; margin-bottom: 10px;">Votre QR Code</h3>
+            <div class="qr-box">
+                <div id="qrcode"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QRCode.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        let qrCodeInstance = null;
+
+        const form = document.getElementById('contactForm');
+        const qrContainer = document.getElementById('qrContainer');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const successMsg = document.getElementById('successMsg');
+        const qrcodeDiv = document.getElementById('qrcode');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const website = document.getElementById('website').value;
+
+            // Clear previous QR code
+            qrcodeDiv.innerHTML = '';
+
+            // Create vCard format
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:ELRAND AVICENNA
+TITLE:GAME DESIGNER - ANIMATEUR LUDIQUE
+TEL:${phone}
+EMAIL:${email}
+URL:${website}
+END:VCARD`;
+
+            // Generate new QR code
+            qrCodeInstance = new QRCode(qrcodeDiv, {
+                text: vCard,
+                width: 300,
+                height: 300,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Show QR container and download button
+            qrContainer.style.display = 'block';
+            downloadBtn.style.display = 'block';
+            successMsg.style.display = 'block';
+
+            // Scroll to QR code
+            setTimeout(() => {
+                qrContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+        });
+
+        downloadBtn.addEventListener('click', function() {
+            // Get the QR code canvas
+            const canvas = qrcodeDiv.querySelector('canvas');
+            if (canvas) {
+                // Create download link
+                const link = document.createElement('a');
+                const timestamp = new Date().getTime();
+                link.download = `qrcode-contact-${timestamp}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+                // Show feedback
+                const originalText = downloadBtn.textContent;
+                downloadBtn.textContent = '✅ Téléchargé!';
+                downloadBtn.style.background = '#059669';
+                
+                setTimeout(() => {
+                    downloadBtn.textContent = originalText;
+                    downloadBtn.style.background = '#10b981';
+                }, 2000);
+            }
+        });
+
+        // Generate initial QR code on page load
+        window.addEventListener('load', function() {
+            form.dispatchEvent(new Event('submit'));
+        });
+    </script>
+</body>
+</html>
