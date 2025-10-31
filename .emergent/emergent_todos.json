@@ -1,30 +1,30 @@
 [
   {
     "content": "Modifier showLoserChoicePanel() pour afficher 3 options au lieu de 2",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Ajouter l'option 'replace' dans la logique de résolution",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Créer enableDefenderReplacement() pour l'option 3",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Modifier proceedToResolution() pour gérer le cas 'replace'",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour l'IA pour considérer l'option 3",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour les règles dans le panneau",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester la nouvelle règle",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
