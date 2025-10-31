@@ -219,6 +219,8 @@ const HourglassSociety = () => {
       {detachedIcon && (
         <div
           className="detached-icon-global"
+          onMouseDown={handleDetachedIconDown}
+          onTouchStart={handleDetachedIconDown}
           style={{
             position: 'fixed',
             left: `${detachedIcon.position.x}px`,
@@ -230,7 +232,7 @@ const HourglassSociety = () => {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             zIndex: 9999999,
-            pointerEvents: 'none',
+            pointerEvents: 'auto',
             userSelect: 'none',
             WebkitUserSelect: 'none',
             touchAction: 'none',
