@@ -22,7 +22,7 @@ body {
 }
 
 .hand-mobile {
-  background: url('/img/hand-mobile.png') no-repeat;
+  background: url('%PUBLIC_URL%/img/hand-mobile.png') no-repeat;
   background-position: center top 10px;
   background-size: cover;
   height: 1000px;
