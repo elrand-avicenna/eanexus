@@ -1,18 +1,18 @@
 [
   {
     "content": "Supprimer le texte hint sous la main",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Remplacer clic-droit/shift+clic par long press (appui long)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Implémenter détection touch pour mobile",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester sur petit écran et tactile",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
