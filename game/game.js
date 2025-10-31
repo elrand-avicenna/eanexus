@@ -263,17 +263,62 @@ function renderCard(card, location = 'hand') {
     </div>
   `;
   
-  // Add click handler for preview (right-click or ctrl+click to avoid conflict with selection)
-  div.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-    showCardPreview(card);
+  // Add long press handler for preview (works on desktop and mobile)
+  let pressTimer = null;
+  let isPressing = false;
+  
+  // Mouse events (desktop)
+  div.addEventListener('mousedown', (e) => {
+    if (e.button === 0) { // Left click only
+      isPressing = true;
+      pressTimer = setTimeout(() => {
+        if (isPressing) {
+          showCardPreview(card);
+        }
+      }, 500); // 500ms long press
+    }
   });
   
-  // Also add shift+click for preview
-  div.addEventListener('click', (e) => {
-    if (e.shiftKey) {
-      e.stopPropagation();
-      showCardPreview(card);
+  div.addEventListener('mouseup', () => {
+    isPressing = false;
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      pressTimer = null;
+    }
+  });
+  
+  div.addEventListener('mouseleave', () => {
+    isPressing = false;
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      pressTimer = null;
+    }
+  });
+  
+  // Touch events (mobile)
+  div.addEventListener('touchstart', (e) => {
+    isPressing = true;
+    pressTimer = setTimeout(() => {
+      if (isPressing) {
+        e.preventDefault(); // Prevent default touch behavior
+        showCardPreview(card);
+      }
+    }, 500); // 500ms long press
+  });
+  
+  div.addEventListener('touchend', () => {
+    isPressing = false;
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      pressTimer = null;
+    }
+  });
+  
+  div.addEventListener('touchmove', () => {
+    isPressing = false;
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      pressTimer = null;
     }
   });
   
