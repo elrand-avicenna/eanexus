@@ -135,6 +135,8 @@ const styles = StyleSheet.create({
     height: width * 0.12,
     justifyContent: 'center',
     alignItems: 'center',
+    minWidth: 80,
+    minHeight: 80,
   },
   leftButton: {
     // Left circle position
@@ -147,10 +149,19 @@ const styles = StyleSheet.create({
   },
   buttonPressed: {
     opacity: 0.5,
+    transform: [{ scale: 0.95 }],
   },
-  buttonTouchArea: {
+  iconContainer: {
     width: '100%',
     height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 50,
+    backgroundColor: 'rgba(139, 69, 19, 0.6)', // Bronze semi-transparent background
+    shadowColor: '#FFD700',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.8,
+    shadowRadius: 8,
+    elevation: 8,
   },
 });
