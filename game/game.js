@@ -860,13 +860,14 @@ function aiLoserChoice() {
     gameState.combat.loserChoice = 'accept';
   } else if (difficulty === 'easy') {
     // Random choice between 3 options
-    const choices = ['accept', 'sacrifice', 'replace'];
+    const choices = ['accept', 'replace', 'sacrifice'];
     gameState.combat.loserChoice = choices[Math.floor(Math.random() * choices.length)];
   } else {
     // Smart choice based on situation
     const losingCard = gameState.opponent.selectedCard;
     const losingCardScore = getCardScore(losingCard);
     const hp = gameState.opponent.hp;
+    const handSize = gameState.opponent.hand.length;
     
     // Evaluate defenders
     const defenderScores = gameState.opponent.defense.map(d => ({
@@ -876,20 +877,29 @@ function aiLoserChoice() {
     
     const weakestDefender = defenderScores[0];
     
-    // Decision logic
-    if (hp <= 3) {
-      // Low HP - prefer sacrifice (0 PV)
+    // Decision logic with new rule (sacrifice = 2 cards, 0 HP)
+    if (hp <= 2 && handSize >= 3) {
+      // Critical HP and enough cards - sacrifice 2 cards to save HP
       gameState.combat.loserChoice = 'sacrifice';
       gameState.combat.targetDefender = weakestDefender.card;
     } else if (losingCardScore > weakestDefender.score && hp > 6) {
       // Losing card is better than weakest defender and HP is comfortable
-      // Choose replace: losing card goes to defense, -1 HP
+      // Replace: losing card goes to defense, -1 HP
       gameState.combat.loserChoice = 'replace';
       gameState.combat.targetDefender = weakestDefender.card;
-    } else if (losingCardScore >= 6 && hp > 5) {
-      // Losing card is valuable, try to save it
+    } else if (hp <= 5 && handSize >= 4) {
+      // Moderate HP, good hand size - consider sacrificing
       gameState.combat.loserChoice = 'sacrifice';
       gameState.combat.targetDefender = weakestDefender.card;
+    } else if (handSize <= 3) {
+      // Low hand size - don't sacrifice 2 cards
+      if (hp > 4) {
+        gameState.combat.loserChoice = 'accept'; // Can afford HP loss
+      } else if (losingCardScore > weakestDefender.score) {
+        gameState.combat.loserChoice = 'replace'; // Improve defense
+      } else {
+        gameState.combat.loserChoice = 'accept';
+      }
     } else {
       // Default: accept the loss
       gameState.combat.loserChoice = 'accept';
