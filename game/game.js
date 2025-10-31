@@ -912,6 +912,24 @@ document.addEventListener('DOMContentLoaded', () => {
     rulesPanel.classList.remove('open');
   });
   
+  // Powers legend toggle
+  const powersLegend = document.getElementById('powers-legend');
+  
+  document.getElementById('powers-legend-btn').addEventListener('click', () => {
+    powersLegend.classList.toggle('hidden');
+  });
+  
+  document.getElementById('close-legend-btn').addEventListener('click', () => {
+    powersLegend.classList.add('hidden');
+  });
+  
+  // Close legend when clicking outside
+  powersLegend.addEventListener('click', (e) => {
+    if (e.target === powersLegend) {
+      powersLegend.classList.add('hidden');
+    }
+  });
+  
   // Hand navigation
   document.getElementById('hand-prev-btn').addEventListener('click', () => {
     const container = document.getElementById('player-hand');
