@@ -1,6 +1,6 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('/img/accueil-wallpaper.png') no-repeat;
+  background: url('%PUBLIC_URL%/img/accueil-wallpaper.png') no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
