@@ -217,7 +217,9 @@ const HourglassSociety = () => {
             pointerEvents: 'none',
             userSelect: 'none',
             WebkitUserSelect: 'none',
-            touchAction: 'none'
+            touchAction: 'none',
+            willChange: 'transform',
+            cursor: detachedIcon.isHolding ? 'grabbing' : 'grab'
           }}
         />
       )}
