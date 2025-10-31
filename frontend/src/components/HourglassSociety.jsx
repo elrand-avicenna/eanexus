@@ -16,9 +16,10 @@ const HourglassSociety = () => {
   
   const handRef = useRef(null);
   const animationRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    // Set background images
+    // Set background image initially
     document.body.style.backgroundImage = `url(${process.env.PUBLIC_URL}/img/new-background.jpg)`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
@@ -31,6 +32,13 @@ const HourglassSociety = () => {
     }, 3000);
 
     return () => clearTimeout(timer);
+  }, [handState]);
+
+  // Play video when hand-mobile disappears
+  useEffect(() => {
+    if (handState === 'hidden' && videoRef.current) {
+      videoRef.current.play();
+    }
   }, [handState]);
 
   const handleCircleInHole = (color) => {
@@ -164,6 +172,28 @@ const HourglassSociety = () => {
 
   return (
     <div className="hourglass-container">
+      {/* Background video */}
+      <video
+        ref={videoRef}
+        className="background-video"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
+          zIndex: -1,
+          opacity: handState === 'hidden' ? 1 : 0,
+          transition: 'opacity 1s ease'
+        }}
+        loop
+        muted
+        playsInline
+      >
+        <source src={`${process.env.PUBLIC_URL}/img/contacts-bg.mp4`} type="video/mp4" />
+      </video>
+
       <BackgroundAnimation fingerprintMask={fingerprintMask} />
       
       {handState !== 'hidden' && (
