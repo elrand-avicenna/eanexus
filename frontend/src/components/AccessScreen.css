@@ -55,3 +55,16 @@
 .access-screen-icon3 {
   /* Background images set via inline styles */
 }
+
+.pickable-icon-detached {
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  pointer-events: none;
+  will-change: transform;
+}
