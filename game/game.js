@@ -1113,6 +1113,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
+  // Card preview handlers
+  document.getElementById('preview-overlay').addEventListener('click', hideCardPreview);
+  
   // Card confirmation handlers
   document.getElementById('confirm-card-btn').addEventListener('click', confirmCardSelection);
   document.getElementById('cancel-card-btn').addEventListener('click', cancelCardSelection);
