@@ -388,14 +388,25 @@ button:focus-visible,
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
 }
 
-.hp-value {
+.card-counter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: var(--bg-card);
+  border: 2px solid var(--white-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.hp-value, .card-count {
   font-family: var(--font-accent);
   font-size: var(--text-3xl);
   font-weight: var(--font-bold);
   color: var(--text-primary);
 }
 
-.hp-label {
+.hp-label, .card-label {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
