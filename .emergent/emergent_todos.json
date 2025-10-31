@@ -1,22 +1,22 @@
 [
   {
     "content": "Réorganiser l'ordre des boutons: Accepter, Remplacer, Sacrifier",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Modifier l'option Sacrifier pour défausser aussi la carte perdante",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour l'IA pour le nouveau trade-off (2 cartes vs 1 PV)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour les règles dans le panneau",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester la nouvelle balance",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
