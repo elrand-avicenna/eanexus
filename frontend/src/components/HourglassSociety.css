@@ -167,11 +167,32 @@ body {
     background: none !important;
     height: 100vh !important;
     width: 100vw !important;
-    animation: none !important;
-    transform: none !important;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  /* Disable lifting and idle animations on mobile, but keep reversing */
+  .hand-mobile.lifting,
+  .hand-mobile.idle {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Allow reverse animation on mobile */
+  .hand-mobile.reversing {
+    animation: handReverseMobile 3s ease-in-out forwards !important;
+  }
+
+  @keyframes handReverseMobile {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(100vh);
+    }
   }
 
   .smartphone {
