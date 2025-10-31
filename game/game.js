@@ -986,6 +986,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
+  // Card confirmation handlers
+  document.getElementById('confirm-card-btn').addEventListener('click', confirmCardSelection);
+  document.getElementById('cancel-card-btn').addEventListener('click', cancelCardSelection);
+  
+  // Close confirmation on background click
+  document.getElementById('card-confirmation').addEventListener('click', (e) => {
+    if (e.target.id === 'card-confirmation') {
+      cancelCardSelection();
+    }
+  });
+  
   // Hand navigation
   document.getElementById('hand-prev-btn').addEventListener('click', () => {
     const container = document.getElementById('player-hand');
