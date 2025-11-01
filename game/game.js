@@ -21,7 +21,8 @@ const gameState = {
     defense: [],
     discard: [], // Défausse normale (cartes perdues en attaque)
     defenseGraveyard: [], // Défausse défense (défenseurs tués par Option B gagnant)
-    selectedCard: null
+    selectedCard: null,
+    isActive: true // NEW: Pour PvP, indique si c'est le tour de ce joueur
   },
   
   opponent: {
@@ -30,7 +31,8 @@ const gameState = {
     defense: [],
     discard: [], // Défausse normale
     defenseGraveyard: [], // Défausse défense (défenseurs tués par Option B gagnant)
-    selectedCard: null
+    selectedCard: null,
+    isActive: false // NEW: Pour PvP
   },
   
   combat: {
