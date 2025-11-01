@@ -370,9 +370,9 @@
             <div class="rules-section">
                 <h3 class="rules-section-title">🏆 Victoire</h3>
                 <ul class="rules-list">
-                    <li><strong>Victoire HP:</strong> L'adversaire atteint 0 PV</li>
-                    <li><strong>Victoire Cartes:</strong> L'adversaire n'a plus de cartes en main</li>
-                    <li><strong>Victoire Tactique:</strong> Tuer les 6 pièces majeures adverses (2 Tours + 2 Fous + 2 Cavaliers) via Option B du gagnant uniquement</li>
+                    <li><strong>Victoire HP:</strong> Réduire HP adverse à 0</li>
+                    <li><strong>Victoire Cartes:</strong> L'adversaire n'a plus de cartes en main pour attaquer</li>
+                    <li><strong>Victoire Tactique:</strong> Tuer 6 défenseurs adverses (via Option B du gagnant OU Option C du perdant). Seuls les défenseurs tués comptent, pas les cartes attaquantes.</li>
                 </ul>
             </div>
             
@@ -382,10 +382,12 @@
                     <li>Maximum 1 PV perdu par tour</li>
                     <li>Attaques uniquement depuis la main (pas les défenseurs)</li>
                     <li>Limite de 3 défenseurs (remplacement obligatoire si dépassé)</li>
-                    <li>Jeton premier joueur alterne chaque tour (brise égalité en combat initial)</li>
+                    <li>Jeton premier joueur alterne chaque tour (brise égalité en combat initial attaque vs attaque)</li>
                     <li><strong>NEW:</strong> Égalité Attaquant vs Défenseur = Attaquant gagne</li>
-                    <li><strong>NEW:</strong> Pions 1&2 battent Reine en défense (exception spéciale)</li>
-                    <li><strong>NEW:</strong> Défausse Défense séparée (défenseurs tués via Option B) compte pour Victoire Tactique</li>
+                    <li><strong>NEW:</strong> Pions 1&2 battent TOUJOURS la Reine (en attaque ou défense)</li>
+                    <li><strong>NEW:</strong> Reine en attaque bat Pions 1&2 en défense (Couronne vs Couronne → attaquant gagne)</li>
+                    <li><strong>NEW:</strong> Défausse Défense séparée: Défenseurs tués via Option B gagnant OU Option C perdant</li>
+                    <li><strong>NEW:</strong> Défausse Attaque séparée: Cartes attaquantes perdues</li>
                 </ul>
             </div>
         </div>
