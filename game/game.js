@@ -1218,6 +1218,7 @@ function startGame() {
   gameState.player.defenseGraveyard = []; // NEW: Killed defenders
   gameState.player.hp = gameState.startingHP; // Use selected starting HP
   gameState.player.selectedCard = null;
+  gameState.player.isActive = true;
   
   gameState.opponent.hand = createDeck(opponentColor);
   gameState.opponent.defense = [];
@@ -1225,6 +1226,7 @@ function startGame() {
   gameState.opponent.defenseGraveyard = []; // NEW: Killed defenders
   gameState.opponent.hp = gameState.startingHP; // Use selected starting HP
   gameState.opponent.selectedCard = null;
+  gameState.opponent.isActive = false;
   
   // Random first player
   gameState.firstPlayerToken = Math.random() > 0.5 ? 'player' : 'opponent';
@@ -1242,7 +1244,13 @@ function startGame() {
   document.getElementById('main-menu').classList.add('hidden');
   document.getElementById('game-board').classList.remove('hidden');
   
-  render();
+  // In PvP, show transition for first player
+  if (gameState.gameMode === 'pvp') {
+    const firstPlayerColor = gameState.firstPlayerToken === 'player' ? gameState.playerColor : opponentColor;
+    showTurnTransition(gameState.firstPlayerToken, firstPlayerColor);
+  } else {
+    render();
+  }
 }
 
 function backToMenu() {
