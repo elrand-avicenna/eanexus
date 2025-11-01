@@ -803,20 +803,20 @@ function proceedToResolution() {
       // Lose 1 HP
       gameState[loser].hp -= 1;
     } else if (gameState.combat.loserChoice === 'sacrifice') {
-      // NEW RULE: Sacrifice defender AND losing card to save HP
+      // Sacrifice defender AND losing card to save HP
       const defender = gameState.combat.targetDefender;
       
       // Remove losing card from hand
       gameState[loser].hand = gameState[loser].hand.filter(c => c.id !== gameState[loser].selectedCard.id);
       
-      // Discard losing card
+      // Discard losing card (goes to NORMAL discard, not defense graveyard)
       gameState[loser].discard.push(gameState[loser].selectedCard);
       
       // Remove defender from defense
       gameState[loser].defense = gameState[loser].defense.filter(c => c.id !== defender.id);
       
-      // Discard defender
-      gameState[loser].discard.push(defender);
+      // Defender goes to DEFENSE GRAVEYARD (counts for tactical victory)
+      gameState[loser].defenseGraveyard.push(defender);
       
       // No HP lost (that's the benefit of sacrificing 2 cards)
     }
