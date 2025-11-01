@@ -877,6 +877,29 @@ function showWinnerChoicePanel() {
   const description = document.getElementById('action-description');
   const buttons = document.getElementById('action-buttons');
   
+  // In PvP, show transition for winner first
+  if (gameState.gameMode === 'pvp') {
+    const winnerColor = gameState.combat.winner === 'player' ? gameState.playerColor : 
+                        (gameState.playerColor === 'white' ? 'black' : 'white');
+    const winnerName = winnerColor === 'white' ? 'Blanc' : 'Noir';
+    
+    // Show transition
+    const transition = document.getElementById('turn-transition');
+    const icon = document.getElementById('turn-icon');
+    const transTitle = document.getElementById('turn-title');
+    const subtitle = document.getElementById('turn-subtitle');
+    
+    icon.textContent = winnerColor === 'white' ? '♔' : '♚';
+    transTitle.textContent = 'Vous avez gagné!';
+    subtitle.textContent = `Joueur ${winnerName}`;
+    subtitle.style.color = winnerColor === 'white' ? 'var(--white-primary)' : 'var(--black-primary)';
+    
+    transition.classList.remove('hidden');
+    
+    // When ready is clicked, show the choice panel
+    return;
+  }
+  
   panel.classList.remove('hidden');
   
   if (gameState.combat.winner === 'player') {
