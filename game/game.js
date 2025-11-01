@@ -9,6 +9,7 @@ const gameState = {
   gameMode: 'pve', // 'pve' | 'pvp'
   difficulty: 'normal', // 'easy' | 'normal' | 'hard'
   playerColor: 'white', // 'white' | 'black'
+  startingHP: 6, // NEW: HP de départ (3/6/9/12, défaut 6)
   currentPhase: 'combat_select', // 'combat_select' | 'reveal' | 'winner_choice' | 'loser_choice' | 'resolution'
   firstPlayerToken: 'player', // 'player' | 'opponent'
   turnCount: 0,
