@@ -456,7 +456,13 @@ function enableOpponentSelection() {
     const cardEl = renderCard(card);
     cardEl.classList.add('drawing');
     cardEl.style.animationDelay = `${index * 0.05}s`;
-    cardEl.addEventListener('click', () => selectOpponentCard(card));
+    
+    // On click, show confirmation like for player
+    cardEl.addEventListener('click', () => {
+      // Remove long-press handlers and directly show confirmation
+      showCardConfirmationForOpponent(card);
+    });
+    
     overlayHandContainer.appendChild(cardEl);
   });
   
