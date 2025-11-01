@@ -913,12 +913,12 @@ function checkWinCondition() {
 }
 
 function check6MajorPiecesVictory(player) {
-  // SIMPLIFIED: Just count total defenders killed (any 6 cards in defense graveyard)
+  // Uses configurable target (tacticalVictoryTarget)
   const opponent = player === 'player' ? 'opponent' : 'player';
   const graveyard = gameState[opponent].defenseGraveyard;
   
-  // Victory if 6 or more defenders killed via Option B or Option C (Sacrifice)
-  return graveyard.length >= 6;
+  // Victory if target number of defenders killed
+  return graveyard.length >= gameState.tacticalVictoryTarget;
 }
 
 function showGameOver(winner, reason) {
