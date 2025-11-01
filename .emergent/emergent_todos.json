@@ -1,26 +1,18 @@
 [
   {
-    "content": "Créer écran de transition 'C'est votre tour' pour mode PvP",
-    "status": "completed"
+    "content": "Mettre à jour légende des pouvoirs avec toutes les nouvelles règles (Pions 1&2, etc.)",
+    "status": "in_progress"
   },
   {
-    "content": "Implémenter alternance joueurs en mode PvP avec cache d'interface",
-    "status": "completed"
+    "content": "Corriger PvP: Carte cliquée dans overlay doit montrer confirmation",
+    "status": "pending"
   },
   {
-    "content": "Adapter interface selon joueur actif (Blanc en bas, Noir en haut puis inverse)",
-    "status": "completed"
+    "content": "Ajouter transitions entre chaque phase PvP (gagnant, perdant)",
+    "status": "pending"
   },
   {
-    "content": "Réécrire les règles complètes dans le menu principal (plus clair)",
-    "status": "completed"
-  },
-  {
-    "content": "Réécrire les règles complètes dans le panneau de jeu",
-    "status": "completed"
-  },
-  {
-    "content": "Tester mode PvP avec transitions et nouvelles règles",
-    "status": "completed"
+    "content": "Tester PvP complet avec toutes les phases",
+    "status": "pending"
   }
 ]
