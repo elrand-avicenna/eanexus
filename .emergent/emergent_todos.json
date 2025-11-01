@@ -1,11 +1,11 @@
 [
   {
     "content": "Créer écran de transition 'C'est votre tour' pour mode PvP",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Implémenter alternance joueurs en mode PvP avec cache d'interface",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Adapter interface selon joueur actif (Blanc en bas, Noir en haut puis inverse)",
@@ -13,11 +13,11 @@
   },
   {
     "content": "Réécrire les règles complètes dans le menu principal (plus clair)",
-    "status": "pending"
+    "status": "in_progress"
   },
   {
     "content": "Réécrire les règles complètes dans le panneau de jeu",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester mode PvP avec transitions",
