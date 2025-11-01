@@ -485,12 +485,9 @@ function updateCardCounters() {
   }
 }
 
-function countMajorPieces(graveyard) {
-  const rooks = graveyard.filter(c => c.type === CARD_TYPES.ROOK).length;
-  const bishops = graveyard.filter(c => c.type === CARD_TYPES.BISHOP).length;
-  const knights = graveyard.filter(c => c.type === CARD_TYPES.KNIGHT).length;
-  
-  return Math.min(rooks, 2) + Math.min(bishops, 2) + Math.min(knights, 2);
+function countKilledDefenders(graveyard) {
+  // Simply return total count for display
+  return graveyard.length;
 }
 
 function showCardPreview(card) {
@@ -908,18 +905,12 @@ function checkWinCondition() {
 }
 
 function check6MajorPiecesVictory(player) {
-  // Count killed defenders (in defenseGraveyard) of opponent
+  // SIMPLIFIED: Just count total defenders killed (any 6 cards in defense graveyard)
   const opponent = player === 'player' ? 'opponent' : 'player';
   const graveyard = gameState[opponent].defenseGraveyard;
   
-  const killed = {
-    rooks: graveyard.filter(c => c.type === CARD_TYPES.ROOK).length,
-    bishops: graveyard.filter(c => c.type === CARD_TYPES.BISHOP).length,
-    knights: graveyard.filter(c => c.type === CARD_TYPES.KNIGHT).length
-  };
-  
-  // Victory if all 6 major pieces killed (2 Rooks + 2 Bishops + 2 Knights)
-  return killed.rooks >= 2 && killed.bishops >= 2 && killed.knights >= 2;
+  // Victory if 6 or more defenders killed via Option B or Option C (Sacrifice)
+  return graveyard.length >= 6;
 }
 
 function showGameOver(winner, reason) {
