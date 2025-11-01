@@ -10,6 +10,7 @@ const gameState = {
   difficulty: 'normal', // 'easy' | 'normal' | 'hard'
   playerColor: 'white', // 'white' | 'black'
   startingHP: 6, // NEW: HP de départ (3/6/9/12, défaut 6)
+  tacticalVictoryTarget: 6, // NEW: Défenseurs à tuer pour victoire tactique (1-12, défaut 6)
   currentPhase: 'combat_select', // 'combat_select' | 'reveal' | 'winner_choice' | 'loser_choice' | 'resolution'
   firstPlayerToken: 'player', // 'player' | 'opponent'
   turnCount: 0,
