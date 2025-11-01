@@ -465,18 +465,19 @@ function updateCardCounters() {
   document.getElementById('opponent-discard-count').textContent = 
     gameState.opponent.discard.length + gameState.opponent.defenseGraveyard.length;
   
-  // Update victory progress (defenders killed)
+  // Update victory progress (defenders killed) - Use configurable target
   const playerKilled = countKilledDefenders(gameState.opponent.defenseGraveyard);
   const opponentKilled = countKilledDefenders(gameState.player.defenseGraveyard);
   
-  document.getElementById('player-major-pieces').textContent = `${playerKilled}/6`;
-  document.getElementById('opponent-major-pieces').textContent = `${opponentKilled}/6`;
+  const target = gameState.tacticalVictoryTarget;
+  document.getElementById('player-major-pieces').textContent = `${playerKilled}/${target}`;
+  document.getElementById('opponent-major-pieces').textContent = `${opponentKilled}/${target}`;
   
-  // Highlight if close to victory
+  // Highlight if close to victory (within 2 of target)
   const playerProgress = document.getElementById('player-progress');
   const opponentProgress = document.getElementById('opponent-progress');
   
-  if (playerKilled >= 4) {
+  if (playerKilled >= target - 2) {
     playerProgress.style.borderColor = 'var(--success)';
     playerProgress.style.boxShadow = '0 0 20px rgba(74, 222, 128, 0.4)';
   } else {
@@ -484,7 +485,7 @@ function updateCardCounters() {
     playerProgress.style.boxShadow = '0 0 12px rgba(212, 175, 55, 0.2)';
   }
   
-  if (opponentKilled >= 4) {
+  if (opponentKilled >= target - 2) {
     opponentProgress.style.borderColor = 'var(--success)';
     opponentProgress.style.boxShadow = '0 0 20px rgba(74, 222, 128, 0.4)';
   } else {
