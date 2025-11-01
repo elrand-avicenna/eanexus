@@ -520,6 +520,64 @@ function hideCardPreview() {
 }
 
 // ===============================================
+// PVP TURN SYSTEM
+// ===============================================
+
+function showTurnTransition(playerName, color) {
+  const transition = document.getElementById('turn-transition');
+  const icon = document.getElementById('turn-icon');
+  const title = document.getElementById('turn-title');
+  const subtitle = document.getElementById('turn-subtitle');
+  
+  // Set content based on player
+  if (color === 'white') {
+    icon.textContent = '♔';
+    subtitle.textContent = 'Joueur Blanc';
+    subtitle.style.color = 'var(--white-primary)';
+  } else {
+    icon.textContent = '♚';
+    subtitle.textContent = 'Joueur Noir';
+    subtitle.style.color = 'var(--black-primary)';
+  }
+  
+  title.textContent = 'À votre tour';
+  
+  // Show transition
+  transition.classList.remove('hidden');
+}
+
+function hideTurnTransition() {
+  const transition = document.getElementById('turn-transition');
+  transition.classList.add('hidden');
+}
+
+function getActivePlayerInPvP() {
+  // In PvP, determine which physical player should play
+  // If player zone is for white and it's white's turn, player area is active
+  // This gets complex - we need to track who is playing
+  
+  if (gameState.currentPhase === 'combat_select') {
+    // Both need to select, but sequentially in PvP
+    if (!gameState.player.selectedCard) {
+      return 'player';
+    } else if (!gameState.opponent.selectedCard) {
+      return 'opponent';
+    }
+  }
+  
+  // During choices, determine based on winner/loser
+  if (gameState.currentPhase === 'winner_choice') {
+    return gameState.combat.winner;
+  }
+  
+  if (gameState.currentPhase === 'loser_choice') {
+    return gameState.combat.winner === 'player' ? 'opponent' : 'player';
+  }
+  
+  return 'player';
+}
+
+// ===============================================
 // GAME PHASES
 // ===============================================
 
