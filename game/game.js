@@ -936,6 +936,31 @@ function winnerChooseHP() {
   document.getElementById('action-panel').classList.add('hidden');
   
   gameState.currentPhase = 'loser_choice';
+  
+  // In PvP, show transition for loser
+  if (gameState.gameMode === 'pvp') {
+    const loser = gameState.combat.winner === 'player' ? 'opponent' : 'player';
+    const loserColor = loser === 'player' ? gameState.playerColor : 
+                       (gameState.playerColor === 'white' ? 'black' : 'white');
+    const loserName = loserColor === 'white' ? 'Blanc' : 'Noir';
+    
+    const transition = document.getElementById('turn-transition');
+    const icon = document.getElementById('turn-icon');
+    const transTitle = document.getElementById('turn-title');
+    const subtitle = document.getElementById('turn-subtitle');
+    
+    icon.textContent = loserColor === 'white' ? '♔' : '♚';
+    transTitle.textContent = 'Vous avez perdu';
+    subtitle.textContent = `Joueur ${loserName}`;
+    subtitle.style.color = loserColor === 'white' ? 'var(--white-primary)' : 'var(--black-primary)';
+    
+    transition.classList.remove('hidden');
+  } else {
+    showLoserChoicePanel();
+  }
+}
+
+function showLoserChoicePanelAfterTransition() {
   showLoserChoicePanel();
 }
 
