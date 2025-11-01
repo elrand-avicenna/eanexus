@@ -655,6 +655,10 @@ function confirmCardSelection() {
     // In PvE, opponent selects immediately
     if (gameState.gameMode === 'pve') {
       opponentSelectCard();
+    } else if (gameState.gameMode === 'pvp') {
+      // In PvP, show transition for opponent to play
+      const opponentColor = gameState.playerColor === 'white' ? 'black' : 'white';
+      showTurnTransition('opponent', opponentColor);
     }
   }
   
