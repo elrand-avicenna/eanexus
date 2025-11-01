@@ -1,22 +1,22 @@
 [
   {
     "content": "Ajouter sélecteur 'Victoire Tactique' dans menu (1-12 défenseurs, défaut 6)",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Ajouter targetDefendersForVictory dans gameState",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour check6MajorPiecesVictory() pour utiliser la variable",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Mettre à jour affichage X/Y (Y = valeur configurable)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester différentes configurations (3HP/3D, 12HP/12D, etc.)",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
