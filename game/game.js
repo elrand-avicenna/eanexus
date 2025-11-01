@@ -750,12 +750,32 @@ function confirmCardSelection() {
   const isOpponent = panel.dataset.isOpponent === 'true';
   
   if (isOpponent) {
-    // Opponent confirmation (PvP)
-    confirmOpponentCardSelection();
+    // Opponent confirmation (PvP) - use separate function
+    const card = gameState.opponent.hand.find(c => c.id === cardId);
+    
+    if (card) {
+      gameState.opponent.selectedCard = card;
+      
+      // Remove overlay
+      const overlay = document.getElementById('opponent-hand-overlay');
+      if (overlay) overlay.remove();
+      
+      render();
+      
+      // Both selected, proceed to reveal
+      if (gameState.player.selectedCard && gameState.opponent.selectedCard) {
+        setTimeout(() => revealCards(), 1000);
+      }
+    }
+    
+    // Hide panel
+    panel.classList.add('hidden');
+    delete panel.dataset.pendingCardId;
+    delete panel.dataset.isOpponent;
     return;
   }
   
-  // Find the card
+  // Find the card (player)
   const card = gameState.player.hand.find(c => c.id === cardId);
   
   if (card) {
@@ -765,16 +785,15 @@ function confirmCardSelection() {
     panel.classList.add('hidden');
     delete panel.dataset.pendingCardId;
     
+    render();
+    
     // In PvE, opponent selects immediately
     if (gameState.gameMode === 'pve') {
-      render();
       opponentSelectCard();
     } else if (gameState.gameMode === 'pvp') {
       // In PvP, show transition for second player
-      render();
       const opponentColor = gameState.playerColor === 'white' ? 'black' : 'white';
-      const opponentName = opponentColor === 'white' ? 'Blanc' : 'Noir';
-      showTurnTransition(opponentName, opponentColor);
+      showTurnTransition('Joueur 2', opponentColor);
     }
   } else {
     panel.classList.add('hidden');
