@@ -872,11 +872,6 @@ function resolveCombatPhase() {
 }
 
 function showWinnerChoicePanel() {
-  const panel = document.getElementById('action-panel');
-  const title = document.getElementById('action-title');
-  const description = document.getElementById('action-description');
-  const buttons = document.getElementById('action-buttons');
-  
   // In PvP, show transition for winner first
   if (gameState.gameMode === 'pvp') {
     const winnerColor = gameState.combat.winner === 'player' ? gameState.playerColor : 
@@ -895,19 +890,29 @@ function showWinnerChoicePanel() {
     subtitle.style.color = winnerColor === 'white' ? 'var(--white-primary)' : 'var(--black-primary)';
     
     transition.classList.remove('hidden');
-    
-    // When ready is clicked, show the choice panel
     return;
   }
   
+  showWinnerChoicePanelAfterTransition();
+}
+
+function showWinnerChoicePanelAfterTransition() {
+  const panel = document.getElementById('action-panel');
+  const title = document.getElementById('action-title');
+  const description = document.getElementById('action-description');
+  const buttons = document.getElementById('action-buttons');
+  
   panel.classList.remove('hidden');
   
-  if (gameState.combat.winner === 'player') {
+  if (gameState.combat.winner === 'player' || gameState.gameMode === 'pvp') {
     title.textContent = 'Vous avez gagné!';
     description.textContent = 'Choisissez votre action:';
     
-    const hasAttackableDefenders = gameState.opponent.defense.some(d => 
-      canBeatDefender(gameState.player.selectedCard, d)
+    const winnerCard = gameState.combat.winner === 'player' ? gameState.player.selectedCard : gameState.opponent.selectedCard;
+    const loserDefense = gameState.combat.winner === 'player' ? gameState.opponent.defense : gameState.player.defense;
+    
+    const hasAttackableDefenders = loserDefense.some(d => 
+      canBeatDefender(winnerCard, d)
     );
     
     buttons.innerHTML = `
