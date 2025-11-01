@@ -654,10 +654,7 @@ function revealCards() {
 }
 
 function resolveCombatPhase() {
-  const playerPower = getAttackPower(gameState.player.selectedCard);
-  const opponentPower = getAttackPower(gameState.opponent.selectedCard);
-  
-  const result = resolveCombat(playerPower, opponentPower);
+  const result = resolveCombatWithCards(gameState.player.selectedCard, gameState.opponent.selectedCard, false);
   
   if (result > 0) {
     gameState.combat.winner = 'player';
