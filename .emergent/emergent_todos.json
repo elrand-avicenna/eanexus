@@ -1,34 +1,30 @@
 [
   {
-    "content": "Ajouter règle spéciale: Pions 1&2 en attaque battent Reine en défense",
-    "status": "completed"
+    "content": "CORRIGER: Pions 1&2 battent Reine en attaque ET défense (pas seulement défense)",
+    "status": "in_progress"
   },
   {
-    "content": "Changer égalité attaquant vs défenseur: attaquant gagne",
-    "status": "completed"
+    "content": "SIMPLIFIER: Victoire tactique = 6 cartes dans defenseGraveyard (pas de type spécifique)",
+    "status": "pending"
   },
   {
-    "content": "Créer 3 compteurs: Cartes main, Défausse attaque, Défausse défense",
-    "status": "completed"
+    "content": "CORRIGER: Option C Sacrifier → défenseur va dans defenseGraveyard (pas discard)",
+    "status": "pending"
   },
   {
-    "content": "Ajouter défausse défense séparée (killed defenders uniquement)",
-    "status": "completed"
+    "content": "AJOUTER: Sélecteur HP de départ dans menu (3/6/9/12, défaut 6)",
+    "status": "pending"
   },
   {
-    "content": "Ajouter condition victoire: 6 pièces majeures (2T+2F+2C) en défausse défense",
-    "status": "completed"
-  },
-  {
-    "content": "Afficher compteur progrès vers victoire alternative",
-    "status": "completed"
+    "content": "Mettre à jour affichage compteur victoire (6 cartes au lieu de 6 pièces spécifiques)",
+    "status": "pending"
   },
   {
     "content": "Mettre à jour règles dans panneau",
-    "status": "completed"
+    "status": "pending"
   },
   {
-    "content": "Tester toutes les nouvelles règles",
-    "status": "completed"
+    "content": "Tester tous les changements",
+    "status": "pending"
   }
 ]
