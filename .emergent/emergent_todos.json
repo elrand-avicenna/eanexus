@@ -9,18 +9,18 @@
   },
   {
     "content": "Adapter interface selon joueur actif (Blanc en bas, Noir en haut puis inverse)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Réécrire les règles complètes dans le menu principal (plus clair)",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Réécrire les règles complètes dans le panneau de jeu",
     "status": "completed"
   },
   {
-    "content": "Tester mode PvP avec transitions",
-    "status": "pending"
+    "content": "Tester mode PvP avec transitions et nouvelles règles",
+    "status": "in_progress"
   }
 ]
