@@ -1,18 +1,18 @@
 [
   {
     "content": "Mettre à jour légende des pouvoirs avec toutes les nouvelles règles (Pions 1&2, etc.)",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Corriger PvP: Carte cliquée dans overlay doit montrer confirmation",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Ajouter transitions entre chaque phase PvP (gagnant, perdant)",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester PvP complet avec toutes les phases",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
