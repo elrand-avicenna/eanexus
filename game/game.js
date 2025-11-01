@@ -478,11 +478,17 @@ function updateCardCounters() {
   if (playerKilled >= 4) {
     playerProgress.style.borderColor = 'var(--success)';
     playerProgress.style.boxShadow = '0 0 20px rgba(74, 222, 128, 0.4)';
+  } else {
+    playerProgress.style.borderColor = 'var(--white-primary)';
+    playerProgress.style.boxShadow = '0 0 12px rgba(212, 175, 55, 0.2)';
   }
   
   if (opponentKilled >= 4) {
     opponentProgress.style.borderColor = 'var(--success)';
     opponentProgress.style.boxShadow = '0 0 20px rgba(74, 222, 128, 0.4)';
+  } else {
+    opponentProgress.style.borderColor = 'var(--white-primary)';
+    opponentProgress.style.boxShadow = '0 0 12px rgba(212, 175, 55, 0.2)';
   }
 }
 
