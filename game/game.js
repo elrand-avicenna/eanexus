@@ -935,7 +935,7 @@ function showGameOver(winner, reason) {
     } else if (reason === 'cards') {
       description.textContent = 'L\'adversaire n\'a plus de cartes!';
     } else if (reason === 'major-pieces') {
-      description.textContent = '🏆 Victoire Tactique! Vous avez éliminé les 6 pièces majeures (2 Tours, 2 Fous, 2 Cavaliers) de l\'adversaire!';
+      description.textContent = '🏆 Victoire Tactique! Vous avez éliminé 6 défenseurs adverses!';
     }
   } else {
     title.textContent = '💔 Défaite';
