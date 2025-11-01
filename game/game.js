@@ -1139,14 +1139,14 @@ function startGame() {
   gameState.player.defense = [];
   gameState.player.discard = [];
   gameState.player.defenseGraveyard = []; // NEW: Killed defenders
-  gameState.player.hp = 12;
+  gameState.player.hp = gameState.startingHP; // Use selected starting HP
   gameState.player.selectedCard = null;
   
   gameState.opponent.hand = createDeck(opponentColor);
   gameState.opponent.defense = [];
   gameState.opponent.discard = [];
   gameState.opponent.defenseGraveyard = []; // NEW: Killed defenders
-  gameState.opponent.hp = 12;
+  gameState.opponent.hp = gameState.startingHP; // Use selected starting HP
   gameState.opponent.selectedCard = null;
   
   // Random first player
