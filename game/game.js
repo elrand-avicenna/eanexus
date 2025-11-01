@@ -429,6 +429,17 @@ function renderOpponentZone() {
   
   // Update HP
   document.querySelector('#opponent-hp .hp-value').textContent = gameState.opponent.hp;
+  
+  // In PvP, render opponent hand as well (they're Player 2)
+  if (gameState.gameMode === 'pvp') {
+    renderOpponentHandForPvP();
+  }
+}
+
+function renderOpponentHandForPvP() {
+  // This creates hidden card placeholders for opponent
+  // In PvP, opponent hand is not shown to player 1, but exists for player 2 to select
+  // We'll handle this by creating a separate selection flow
 }
 
 function renderCombatZone() {
