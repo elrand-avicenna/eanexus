@@ -274,7 +274,7 @@
                 <div class="power-row">
                     <i class="fa-solid fa-crown power-icon crown"></i>
                     <span class="power-name">Couronne</span>
-                    <span class="power-desc">Bat tout (Reine)</span>
+                    <span class="power-desc">Bat tout (Reine) SAUF Pions 1&2!</span>
                 </div>
                 <div class="power-row">
                     <i class="fa-solid fa-file power-icon paper"></i>
@@ -290,6 +290,11 @@
                     <i class="fa-solid fa-scissors power-icon scissors"></i>
                     <span class="power-name">Ciseaux</span>
                     <span class="power-desc">Bat Papier (Fou)</span>
+                </div>
+                <div class="power-row" style="background: rgba(255, 215, 0, 0.1); border-color: var(--warning);">
+                    <i class="fa-solid fa-ban power-icon rock"></i>
+                    <span class="power-name">Pions 1&2</span>
+                    <span class="power-desc">BATTENT LA REINE! (Exception spéciale)</span>
                 </div>
             </div>
             
@@ -318,6 +323,23 @@
                 <div class="power-row">
                     <span class="piece-label">♟ Pions →</span>
                     <span class="power-desc-small">8&3=Pierre, 7&4=Ciseaux, 6&5=Papier, 2&1=Couronne</span>
+                </div>
+            </div>
+            
+            <div class="legend-section" style="background: rgba(212, 175, 55, 0.1); border-color: var(--white-primary);">
+                <h4 class="legend-subtitle">⚠️ Règles Spéciales</h4>
+                <div class="power-row" style="background: transparent; border: none; padding: var(--space-2) 0;">
+                    <span class="power-desc" style="width: 100%;">
+                        <strong style="color: var(--white-primary);">Pions 1&2 vs Reine:</strong><br>
+                        • Pions 1&2 en ATTAQUE → Battent la Reine (attaque OU défense)<br>
+                        • Reine en ATTAQUE vs Pions 1&2 en DÉFENSE → Reine gagne (égalité, attaquant prioritaire)
+                    </span>
+                </div>
+                <div class="power-row" style="background: transparent; border: none; padding: var(--space-2) 0;">
+                    <span class="power-desc" style="width: 100%;">
+                        <strong style="color: var(--white-primary);">Égalité Attaquant vs Défenseur:</strong><br>
+                        En cas d'égalité lors d'une attaque de défenseur → L'attaquant gagne (nouveau!)
+                    </span>
                 </div>
             </div>
         </div>
