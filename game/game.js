@@ -655,21 +655,26 @@ function confirmCardSelection() {
   
   if (card) {
     gameState.player.selectedCard = card;
-    render();
+    
+    // Hide panel
+    panel.classList.add('hidden');
+    delete panel.dataset.pendingCardId;
     
     // In PvE, opponent selects immediately
     if (gameState.gameMode === 'pve') {
+      render();
       opponentSelectCard();
     } else if (gameState.gameMode === 'pvp') {
-      // In PvP, show transition for opponent to play
+      // In PvP, show transition for second player
+      render();
       const opponentColor = gameState.playerColor === 'white' ? 'black' : 'white';
-      showTurnTransition('opponent', opponentColor);
+      const opponentName = opponentColor === 'white' ? 'Blanc' : 'Noir';
+      showTurnTransition(opponentName, opponentColor);
     }
+  } else {
+    panel.classList.add('hidden');
+    delete panel.dataset.pendingCardId;
   }
-  
-  // Hide panel
-  panel.classList.add('hidden');
-  delete panel.dataset.pendingCardId;
 }
 
 function cancelCardSelection() {
