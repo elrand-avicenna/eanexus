@@ -1,22 +1,26 @@
 [
   {
-    "content": "Ajouter sélecteur 'Victoire Tactique' dans menu (1-12 défenseurs, défaut 6)",
-    "status": "completed"
+    "content": "Créer écran de transition 'C'est votre tour' pour mode PvP",
+    "status": "in_progress"
   },
   {
-    "content": "Ajouter targetDefendersForVictory dans gameState",
-    "status": "completed"
+    "content": "Implémenter alternance joueurs en mode PvP avec cache d'interface",
+    "status": "pending"
   },
   {
-    "content": "Mettre à jour check6MajorPiecesVictory() pour utiliser la variable",
-    "status": "completed"
+    "content": "Adapter interface selon joueur actif (Blanc en bas, Noir en haut puis inverse)",
+    "status": "pending"
   },
   {
-    "content": "Mettre à jour affichage X/Y (Y = valeur configurable)",
-    "status": "completed"
+    "content": "Réécrire les règles complètes dans le menu principal (plus clair)",
+    "status": "pending"
   },
   {
-    "content": "Tester différentes configurations (3HP/3D, 12HP/12D, etc.)",
-    "status": "completed"
+    "content": "Réécrire les règles complètes dans le panneau de jeu",
+    "status": "pending"
+  },
+  {
+    "content": "Tester mode PvP avec transitions",
+    "status": "pending"
   }
 ]
