@@ -437,9 +437,96 @@ function renderOpponentZone() {
 }
 
 function renderOpponentHandForPvP() {
-  // This creates hidden card placeholders for opponent
-  // In PvP, opponent hand is not shown to player 1, but exists for player 2 to select
-  // We'll handle this by creating a separate selection flow
+  // In PvP, we need to allow opponent to select cards
+  // We'll create a hidden overlay that shows opponent's hand when it's their turn
+}
+
+function enableOpponentSelection() {
+  // Create temporary hand for opponent selection
+  const opponentHandOverlay = document.createElement('div');
+  opponentHandOverlay.id = 'opponent-hand-overlay';
+  opponentHandOverlay.className = 'opponent-hand-overlay';
+  opponentHandOverlay.setAttribute('data-testid', 'opponent-hand-overlay');
+  
+  opponentHandOverlay.innerHTML = '<div class="overlay-title">Sélectionnez votre carte</div><div class="overlay-hand" id="overlay-hand-cards"></div>';
+  
+  const overlayHandContainer = opponentHandOverlay.querySelector('#overlay-hand-cards');
+  
+  gameState.opponent.hand.forEach((card, index) => {
+    const cardEl = renderCard(card);
+    cardEl.classList.add('drawing');
+    cardEl.style.animationDelay = `${index * 0.05}s`;
+    cardEl.addEventListener('click', () => selectOpponentCard(card));
+    overlayHandContainer.appendChild(cardEl);
+  });
+  
+  document.body.appendChild(opponentHandOverlay);
+}
+
+function selectOpponentCard(card) {
+  // Show confirmation for opponent
+  showCardConfirmationForOpponent(card);
+}
+
+function showCardConfirmationForOpponent(card) {
+  const panel = document.getElementById('card-confirmation');
+  const previewContainer = document.getElementById('card-preview-container');
+  const attackIcon = document.getElementById('preview-attack-icon');
+  const defenseIcon = document.getElementById('preview-defense-icon');
+  
+  // Render the card preview
+  previewContainer.innerHTML = '';
+  const cardEl = renderCard(card);
+  previewContainer.appendChild(cardEl);
+  
+  // Get powers
+  const attackPower = getAttackPower(card);
+  const defensePower = getDefensePower(card);
+  
+  // Set icons
+  const attackIconClass = typeof attackPower === 'string' && attackPower.startsWith('pawn') ? 
+                          'fa-ban' : POWER_ICONS[attackPower];
+  const attackPowerClass = typeof attackPower === 'string' && attackPower.startsWith('pawn') ? 
+                           'rock' : attackPower;
+  attackIcon.className = `info-icon power-icon ${attackPowerClass} fa-solid ${attackIconClass}`;
+  
+  const defenseIconClass = POWER_ICONS[defensePower];
+  defenseIcon.className = `info-icon power-icon ${defensePower} fa-solid ${defenseIconClass}`;
+  
+  // Show panel
+  panel.classList.remove('hidden');
+  
+  // Store the card temporarily
+  panel.dataset.pendingCardId = card.id;
+  panel.dataset.isOpponent = 'true';
+}
+
+function confirmOpponentCardSelection() {
+  const panel = document.getElementById('card-confirmation');
+  const cardId = panel.dataset.pendingCardId;
+  
+  // Find the card
+  const card = gameState.opponent.hand.find(c => c.id === cardId);
+  
+  if (card) {
+    gameState.opponent.selectedCard = card;
+    
+    // Remove overlay
+    const overlay = document.getElementById('opponent-hand-overlay');
+    if (overlay) overlay.remove();
+    
+    render();
+    
+    // Both selected, proceed to reveal
+    if (gameState.player.selectedCard && gameState.opponent.selectedCard) {
+      setTimeout(() => revealCards(), 1000);
+    }
+  }
+  
+  // Hide panel
+  panel.classList.add('hidden');
+  delete panel.dataset.pendingCardId;
+  delete panel.dataset.isOpponent;
 }
 
 function renderCombatZone() {
