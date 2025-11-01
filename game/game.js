@@ -946,7 +946,7 @@ function showGameOver(winner, reason) {
     } else if (reason === 'cards') {
       description.textContent = 'Vous n\'avez plus de cartes en main!';
     } else if (reason === 'major-pieces') {
-      description.textContent = '💀 Défaite Tactique! L\'adversaire a éliminé 6 de vos défenseurs.';
+      description.textContent = `💀 Défaite Tactique! L'adversaire a éliminé ${gameState.tacticalVictoryTarget} de vos défenseurs.`;
     }
   }
   
