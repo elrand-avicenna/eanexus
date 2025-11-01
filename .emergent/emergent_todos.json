@@ -1,30 +1,22 @@
 [
   {
-    "content": "CORRIGER: Pions 1&2 battent Reine en attaque ET défense (pas seulement défense)",
-    "status": "completed"
+    "content": "Ajouter sélecteur 'Victoire Tactique' dans menu (1-12 défenseurs, défaut 6)",
+    "status": "in_progress"
   },
   {
-    "content": "SIMPLIFIER: Victoire tactique = 6 cartes dans defenseGraveyard (pas de type spécifique)",
-    "status": "completed"
+    "content": "Ajouter targetDefendersForVictory dans gameState",
+    "status": "pending"
   },
   {
-    "content": "CORRIGER: Option C Sacrifier → défenseur va dans defenseGraveyard (pas discard)",
-    "status": "completed"
+    "content": "Mettre à jour check6MajorPiecesVictory() pour utiliser la variable",
+    "status": "pending"
   },
   {
-    "content": "AJOUTER: Sélecteur HP de départ dans menu (3/6/9/12, défaut 6)",
-    "status": "completed"
+    "content": "Mettre à jour affichage X/Y (Y = valeur configurable)",
+    "status": "pending"
   },
   {
-    "content": "Mettre à jour affichage compteur victoire (6 cartes au lieu de 6 pièces spécifiques)",
-    "status": "completed"
-  },
-  {
-    "content": "Mettre à jour règles dans panneau",
-    "status": "completed"
-  },
-  {
-    "content": "Tester tous les changements",
-    "status": "completed"
+    "content": "Tester différentes configurations (3HP/3D, 12HP/12D, etc.)",
+    "status": "pending"
   }
 ]
