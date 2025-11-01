@@ -747,6 +747,13 @@ function showCardConfirmation(card) {
 function confirmCardSelection() {
   const panel = document.getElementById('card-confirmation');
   const cardId = panel.dataset.pendingCardId;
+  const isOpponent = panel.dataset.isOpponent === 'true';
+  
+  if (isOpponent) {
+    // Opponent confirmation (PvP)
+    confirmOpponentCardSelection();
+    return;
+  }
   
   // Find the card
   const card = gameState.player.hand.find(c => c.id === cardId);
