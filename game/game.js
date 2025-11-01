@@ -463,9 +463,9 @@ function updateCardCounters() {
   document.getElementById('opponent-discard-count').textContent = 
     gameState.opponent.discard.length + gameState.opponent.defenseGraveyard.length;
   
-  // Update victory progress (major pieces killed)
-  const playerKilled = countMajorPieces(gameState.opponent.defenseGraveyard);
-  const opponentKilled = countMajorPieces(gameState.player.defenseGraveyard);
+  // Update victory progress (defenders killed)
+  const playerKilled = countKilledDefenders(gameState.opponent.defenseGraveyard);
+  const opponentKilled = countKilledDefenders(gameState.player.defenseGraveyard);
   
   document.getElementById('player-major-pieces').textContent = `${playerKilled}/6`;
   document.getElementById('opponent-major-pieces').textContent = `${opponentKilled}/6`;
