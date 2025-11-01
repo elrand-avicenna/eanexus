@@ -1261,6 +1261,60 @@ button:focus-visible,
 }
 
 /* ===============================================
+   PLAYER TURN TRANSITION (PVP)
+   =============================================== */
+.turn-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.turn-transition:not(.hidden) {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.transition-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+
+.turn-icon {
+  font-size: 6rem;
+  animation: rotate-star 4s linear infinite;
+}
+
+.turn-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-black);
+  color: var(--text-primary);
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+}
+
+.turn-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  color: var(--white-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ===============================================
    CARD PREVIEW PANEL (UNIVERSAL)
    =============================================== */
 .card-preview-panel {
