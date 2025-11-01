@@ -1338,6 +1338,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Card preview handlers
   document.getElementById('preview-overlay').addEventListener('click', hideCardPreview);
   
+  // PvP turn transition
+  document.getElementById('turn-ready-btn').addEventListener('click', () => {
+    hideTurnTransition();
+    
+    // In PvP, if opponent hasn't selected yet, they can now select
+    if (gameState.gameMode === 'pvp' && !gameState.opponent.selectedCard) {
+      // Opponent can now select their card
+      render();
+    }
+  });
+  
   // Card confirmation handlers
   document.getElementById('confirm-card-btn').addEventListener('click', confirmCardSelection);
   document.getElementById('cancel-card-btn').addEventListener('click', cancelCardSelection);
