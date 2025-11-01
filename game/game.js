@@ -1371,10 +1371,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('turn-ready-btn').addEventListener('click', () => {
     hideTurnTransition();
     
-    // In PvP, if opponent hasn't selected yet, they can now select
-    if (gameState.gameMode === 'pvp' && !gameState.opponent.selectedCard) {
-      // Opponent can now select their card
+    // In PvP, after hiding transition, render the board
+    // The second player can now see the interface and select
+    if (gameState.gameMode === 'pvp') {
       render();
+      
+      // If opponent hasn't selected, enable opponent hand selection
+      if (!gameState.opponent.selectedCard && gameState.currentPhase === 'combat_select') {
+        enableOpponentSelection();
+      }
     }
   });
   
