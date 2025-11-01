@@ -1188,6 +1188,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  // HP selection
+  document.querySelectorAll('[data-hp]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-hp]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      gameState.startingHP = parseInt(btn.dataset.hp);
+    });
+  });
+  
   // Difficulty selection
   document.querySelectorAll('[data-difficulty]').forEach(btn => {
     btn.addEventListener('click', () => {
