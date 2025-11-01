@@ -182,19 +182,11 @@ function resolveCombatWithCards(card1, card2, isDefenderScenario = false) {
 }
 
 function canBeatDefender(attackCard, defenderCard) {
-  const attackPower = getAttackPower(attackCard);
-  const defensePower = getDefensePower(defenderCard);
+  // Use card-based resolution with defender flag
+  const result = resolveCombatWithCards(attackCard, defenderCard, true);
   
-  // SPECIAL RULE: Pawns 1&2 beat Queen in defense
-  if (attackCard.type === CARD_TYPES.PAWN && 
-      (attackCard.number === 1 || attackCard.number === 2) &&
-      defenderCard.type === CARD_TYPES.QUEEN) {
-    return true;
-  }
-  
-  // NEW RULE: Attacker wins on tie (changed from defender wins)
-  const result = resolveCombat(attackPower, defensePower);
-  return result >= 0; // >= instead of > (tie goes to attacker now)
+  // Attacker wins on tie (>= 0 instead of > 0)
+  return result >= 0;
 }
 
 // ===============================================
