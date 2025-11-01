@@ -316,42 +316,52 @@
         
         <div class="rules-content">
             <div class="rules-section">
-                <h3 class="rules-section-title">🎯 Objectif</h3>
-                <p>Réduire les Points de Vie (PV) de l'adversaire à 0 OU vider sa main de cartes.</p>
+                <h3 class="rules-section-title">🎯 Objectifs du Jeu</h3>
+                <p>Gagner la partie de l'une des 3 façons suivantes:</p>
+                <ul class="rules-list">
+                    <li><strong>Victoire HP:</strong> Réduire les HP adverses à 0</li>
+                    <li><strong>Victoire Cartes:</strong> L'adversaire n'a plus de cartes en main pour attaquer</li>
+                    <li><strong>Victoire Tactique:</strong> Éliminer le nombre configuré de défenseurs adverses (1-12, défaut 6)</li>
+                </ul>
             </div>
             
             <div class="rules-section">
-                <h3 class="rules-section-title">🎲 Configuration</h3>
+                <h3 class="rules-section-title">🎲 Configuration de Partie</h3>
                 <ul class="rules-list">
-                    <li>Chaque joueur commence avec HP configurables (3/6/9/12, défaut: 6)</li>
-                    <li>15 cartes: 8 Pions (1-8), 2 Cavaliers, 2 Tours, 2 Fous, 1 Reine</li>
-                    <li>Le premier joueur est déterminé aléatoirement</li>
+                    <li><strong>HP de départ:</strong> Configurable (3/6/9/12, recommandé: 6)</li>
+                    <li><strong>Victoire tactique:</strong> Configurable (1-12 défenseurs, recommandé: 6)</li>
+                    <li><strong>Deck:</strong> 15 cartes par joueur (8 Pions numérotés 1-8, 2 Cavaliers, 2 Tours, 2 Fous, 1 Reine)</li>
+                    <li><strong>Premier joueur:</strong> Déterminé aléatoirement (brise égalités en combat)</li>
                 </ul>
             </div>
             
             <div class="rules-section">
                 <h3 class="rules-section-title">⚔️ Système Pierre-Feuille-Ciseaux</h3>
-                <h4 style="color: var(--text-primary); margin-top: 1rem;">Attaque (depuis la main):</h4>
+                <p><strong>Pouvoirs en ATTAQUE (cartes depuis la main):</strong></p>
                 <ul class="rules-list">
-                    <li><i class="fa-solid fa-crown" style="color: var(--power-crown);"></i> Reine = Couronne (bat tout)</li>
-                    <li><i class="fa-solid fa-file" style="color: var(--power-paper);"></i> Tour = Papier</li>
-                    <li><i class="fa-solid fa-scissors" style="color: var(--power-scissors);"></i> Fou = Ciseaux</li>
-                    <li><i class="fa-solid fa-hand-fist" style="color: var(--power-rock);"></i> Cavalier = Pierre</li>
-                    <li>Pions = Perdent contre toutes les pièces (entre pions, le plus haut gagne)</li>
+                    <li><i class="fa-solid fa-crown" style="color: #ffd700;"></i> <strong>Reine</strong> = Couronne (bat tout sauf Pions 1&2!)</li>
+                    <li><i class="fa-solid fa-file" style="color: #ffffff;"></i> <strong>Tour</strong> = Papier (bat Pierre)</li>
+                    <li><i class="fa-solid fa-scissors" style="color: #e0e0e0;"></i> <strong>Fou</strong> = Ciseaux (bat Papier)</li>
+                    <li><i class="fa-solid fa-hand-fist" style="color: #b8956a;"></i> <strong>Cavalier</strong> = Pierre (bat Ciseaux)</li>
+                    <li><i class="fa-solid fa-ban"></i> <strong>Pions 3-8</strong> = Faibles (perdent contre pièces majeures, entre pions le plus haut gagne)</li>
+                    <li><i class="fa-solid fa-ban"></i> <strong>Pions 1-2</strong> = Faibles contre tout SAUF BATTENT LA REINE!</li>
                 </ul>
                 
-                <h4 style="color: var(--text-primary); margin-top: 1rem;">Défense (transformation):</h4>
+                <p style="margin-top: 1rem;"><strong>Pouvoirs en DÉFENSE (transformations!):</strong></p>
                 <ul class="rules-list">
-                    <li><i class="fa-solid fa-crown" style="color: var(--power-crown);"></i> Reine = Couronne</li>
-                    <li><i class="fa-solid fa-hand-fist" style="color: var(--power-rock);"></i> Tour = Pierre (changement!)</li>
-                    <li><i class="fa-solid fa-scissors" style="color: var(--power-scissors);"></i> Fou = Ciseaux</li>
-                    <li><i class="fa-solid fa-file" style="color: var(--power-paper);"></i> Cavalier = Papier (changement!)</li>
-                    <li>Pions 8 & 3 = Pierre, Pions 7 & 4 = Ciseaux, Pions 6 & 5 = Papier, Pions 2 & 1 = Couronne</li>
+                    <li><i class="fa-solid fa-crown" style="color: #ffd700;"></i> <strong>Reine</strong> = Couronne</li>
+                    <li><i class="fa-solid fa-hand-fist" style="color: #b8956a;"></i> <strong>Tour</strong> = Pierre <span style="color: var(--warning);">(changement!)</span></li>
+                    <li><i class="fa-solid fa-scissors" style="color: #e0e0e0;"></i> <strong>Fou</strong> = Ciseaux</li>
+                    <li><i class="fa-solid fa-file" style="color: #ffffff;"></i> <strong>Cavalier</strong> = Papier <span style="color: var(--warning);">(changement!)</span></li>
+                    <li><strong>Pions 8 & 3</strong> = Pierre</li>
+                    <li><strong>Pions 7 & 4</strong> = Ciseaux</li>
+                    <li><strong>Pions 6 & 5</strong> = Papier</li>
+                    <li><strong>Pions 2 & 1</strong> = Couronne</li>
                 </ul>
                 
-                <h4 style="color: var(--text-primary); margin-top: 1rem;">Hiérarchie:</h4>
+                <p style="margin-top: 1rem;"><strong>Hiérarchie:</strong></p>
                 <ul class="rules-list">
-                    <li>Couronne > Tout</li>
+                    <li>Couronne > Tout (sauf Pions 1-2 battent Reine)</li>
                     <li>Papier > Pierre</li>
                     <li>Pierre > Ciseaux</li>
                     <li>Ciseaux > Papier</li>
@@ -359,58 +369,133 @@
             </div>
             
             <div class="rules-section">
-                <h3 class="rules-section-title">🎮 Déroulement d'un Tour</h3>
-                <ol class="rules-list" style="list-style: decimal; padding-left: 2rem;">
-                    <li><strong>Phase Combat:</strong> Chaque joueur sélectionne 1 carte. Révélation simultanée. Le gagnant est déterminé par RPS (égalité = le joueur avec le jeton premier joueur gagne).</li>
-                    <li><strong>Choix du Gagnant:</strong>
-                        <ul style="margin-top: 0.5rem;">
-                            <li>A) Enlever 1 PV à l'adversaire → Déclenche le choix du perdant</li>
-                            <li>B) Attaquer un défenseur (seulement ceux qu'il peut battre) → 2 cartes défaussées (carte perdante + défenseur), 0 PV perdu</li>
-                        </ul>
-                    </li>
-                    <li><strong>Choix du Perdant</strong> (si le gagnant a choisi A):
-                        <ul style="margin-top: 0.5rem;">
-                            <li>A) Accepter la défaite: 1 carte défaussée, -1 PV</li>
-                            <li>B) Remplacer un défenseur: carte perdante va en défense, 1 défenseur choisi défaussé, -1 PV</li>
-                            <li>C) Sacrifier un défenseur: carte perdante défaussée, 1 défenseur défaussé, 0 PV perdu (2 cartes pour sauver 1 HP)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Résolution:</strong> Carte gagnante → défense du gagnant (max 3, remplace si besoin). Jeton premier joueur → autre joueur.</li>
-                </ol>
-            </div>
-            
-            <div class="rules-section">
-                <h3 class="rules-section-title">🛡️ Défenseurs</h3>
+                <h3 class="rules-section-title">🎮 Tour de Jeu - 4 Phases</h3>
+                
+                <h4 style="color: var(--white-primary); margin-top: 1rem;">PHASE 1: Combat</h4>
                 <ul class="rules-list">
-                    <li>Maximum 3 défenseurs par joueur</li>
-                    <li>Obtenu en gagnant un combat (carte gagnante devient défenseur)</li>
-                    <li>Peuvent être attaqués ou sacrifiés</li>
-                    <li>En défense, les pièces ont des pouvoirs transformés!</li>
-                    <li>Si attaque défenseur: égalité = défenseur gagne (pas de jeton premier joueur)</li>
+                    <li>Chaque joueur sélectionne 1 carte de sa main</li>
+                    <li>Révélation simultanée des cartes</li>
+                    <li>Résolution selon RPS (Pierre-Feuille-Ciseaux)</li>
+                    <li>Si égalité → Le joueur avec le jeton ⭐ premier joueur gagne</li>
+                </ul>
+                
+                <h4 style="color: var(--white-primary); margin-top: 1rem;">PHASE 2: Choix du Gagnant</h4>
+                <p>Le gagnant choisit:</p>
+                <ul class="rules-list">
+                    <li><strong>A) Enlever 1 PV</strong> à l'adversaire
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>→ Déclenche la Phase 3 (choix du perdant)</li>
+                        </ul>
+                    </li>
+                    <li><strong>B) Attaquer un Défenseur</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Seulement les défenseurs qu'il peut battre</li>
+                            <li>Égalité → Attaquant gagne (nouveau!)</li>
+                            <li>Résultat: 2 cartes défaussées (carte perdante + défenseur)</li>
+                            <li>Défenseur → <strong>Défausse Défense</strong> (compte pour victoire tactique!)</li>
+                            <li>Carte perdante → Défausse normale</li>
+                            <li>Aucun PV perdu</li>
+                            <li>→ Passe directement à Phase 4 (résolution)</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h4 style="color: var(--white-primary); margin-top: 1rem;">PHASE 3: Choix du Perdant</h4>
+                <p>(Uniquement si gagnant a choisi Option A)</p>
+                <p>Le perdant a 3 options:</p>
+                <ul class="rules-list">
+                    <li><strong>A) Accepter</strong> - Coût: 1 carte / -1 PV
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Carte perdante → défaussée</li>
+                            <li>Perd 1 PV</li>
+                        </ul>
+                    </li>
+                    <li><strong>B) Remplacer un Défenseur</strong> - Coût: 1 carte / -1 PV
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Carte perdante → va en DÉFENSE</li>
+                            <li>Défenseur choisi → défaussé (défausse normale)</li>
+                            <li>Perd 1 PV</li>
+                            <li>Avantage: Améliore qualité de la défense</li>
+                        </ul>
+                    </li>
+                    <li><strong>C) Sacrifier un Défenseur</strong> - Coût: 2 cartes / 0 PV
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Carte perdante → défaussée (défausse normale)</li>
+                            <li>Défenseur choisi → <strong>Défausse Défense</strong> (compte pour victoire tactique!)</li>
+                            <li>Perd 0 PV</li>
+                            <li>Trade-off: Sauve HP mais aide victoire tactique adverse</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h4 style="color: var(--white-primary); margin-top: 1rem;">PHASE 4: Résolution</h4>
+                <ul class="rules-list">
+                    <li>Carte gagnante → va en défense du gagnant</li>
+                    <li>Si le gagnant a déjà 3 défenseurs → doit remplacer un (choix automatique)</li>
+                    <li>Carte remplacée → retourne en main</li>
+                    <li>Jeton ⭐ premier joueur → passe à l'autre joueur</li>
+                    <li>Vérification des conditions de victoire</li>
+                    <li>Tour suivant commence</li>
                 </ul>
             </div>
             
             <div class="rules-section">
-                <h3 class="rules-section-title">🏆 Victoire</h3>
+                <h3 class="rules-section-title">🛡️ Système de Défense</h3>
                 <ul class="rules-list">
-                    <li><strong>Victoire HP:</strong> Réduire HP adverse à 0</li>
-                    <li><strong>Victoire Cartes:</strong> L'adversaire n'a plus de cartes en main pour attaquer</li>
-                    <li><strong>Victoire Tactique:</strong> Tuer 6 défenseurs adverses (via Option B du gagnant OU Option C du perdant). Seuls les défenseurs tués comptent, pas les cartes attaquantes.</li>
+                    <li><strong>Limite:</strong> Maximum 3 défenseurs par joueur</li>
+                    <li><strong>Acquisition:</strong> Gagner un combat (carte gagnante → défense)</li>
+                    <li><strong>Transformations:</strong> Les pouvoirs changent en défense (voir ci-dessus)</li>
+                    <li><strong>Utilité:</strong> Peuvent être ciblés par Option B gagnant, ou sacrifiés par Option C perdant</li>
+                    <li><strong>Compteur:</strong> 🏆 X/Y affiche défenseurs tués (Y configurable)</li>
                 </ul>
             </div>
             
             <div class="rules-section">
-                <h3 class="rules-section-title">⭐ Règles Clés</h3>
+                <h3 class="rules-section-title">⭐ Règles Spéciales</h3>
                 <ul class="rules-list">
-                    <li>Maximum 1 PV perdu par tour</li>
-                    <li>Attaques uniquement depuis la main (pas les défenseurs)</li>
-                    <li>Limite de 3 défenseurs (remplacement obligatoire si dépassé)</li>
-                    <li>Jeton premier joueur alterne chaque tour (brise égalité en combat initial attaque vs attaque)</li>
-                    <li><strong>NEW:</strong> Égalité Attaquant vs Défenseur = Attaquant gagne</li>
-                    <li><strong>NEW:</strong> Pions 1&2 battent TOUJOURS la Reine (en attaque ou défense)</li>
-                    <li><strong>NEW:</strong> Reine en attaque bat Pions 1&2 en défense (Couronne vs Couronne → attaquant gagne)</li>
-                    <li><strong>NEW:</strong> Défausse Défense séparée: Défenseurs tués via Option B gagnant OU Option C perdant</li>
-                    <li><strong>NEW:</strong> Défausse Attaque séparée: Cartes attaquantes perdues</li>
+                    <li><strong>Jeton Premier Joueur:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Brise égalités en Phase 1 (combat attaque vs attaque)</li>
+                            <li>Alterne chaque tour</li>
+                            <li>NE compte PAS lors d'attaque de défenseur</li>
+                        </ul>
+                    </li>
+                    <li><strong>Égalité Attaquant vs Défenseur:</strong> Attaquant gagne (nouveau!)</li>
+                    <li><strong>Pions 1 & 2 vs Reine (EXCEPTION MAJEURE):</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Pions 1&2 en ATTAQUE → BATTENT TOUJOURS la Reine (attaque OU défense)</li>
+                            <li>Reine en ATTAQUE vs Pions 1&2 en DÉFENSE → Reine gagne (Couronne vs Couronne, attaquant prioritaire)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Défausses Séparées:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Défausse normale: Cartes perdantes</li>
+                            <li>Défausse défense: Défenseurs tués (Option B + Option C) → Compte pour victoire tactique!</li>
+                        </ul>
+                    </li>
+                    <li><strong>Maximum 1 PV perdu par tour</strong></li>
+                    <li><strong>Limite 3 défenseurs</strong> (remplacement auto si dépassement)</li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">📊 Compteurs</h3>
+                <ul class="rules-list">
+                    <li>❤️ <strong>HP:</strong> Points de vie restants (défaite si 0)</li>
+                    <li>🖐️ <strong>Main:</strong> Cartes disponibles pour attaquer (défaite si 0)</li>
+                    <li>💀 <strong>Défausse:</strong> Total cartes perdues (normale + défense)</li>
+                    <li>🏆 <strong>Victoire:</strong> Défenseurs tués / Objectif configuré</li>
+                </ul>
+            </div>
+            
+            <div class="rules-section">
+                <h3 class="rules-section-title">💡 Conseils Stratégiques</h3>
+                <ul class="rules-list">
+                    <li><strong>Pions 1&2:</strong> Gardez-les pour tuer la Reine adverse!</li>
+                    <li><strong>Option B vs A:</strong> Option B élimine 2 cartes et progresse vers victoire tactique</li>
+                    <li><strong>Option C (Sacrifier):</strong> Sauve HP mais aide l'adversaire vers victoire tactique</li>
+                    <li><strong>Transformations:</strong> Tour et Cavalier changent en défense (Pierre ↔ Papier)</li>
+                    <li><strong>Égalité:</strong> Attaquant a l'avantage contre défenseur</li>
                 </ul>
             </div>
         </div>
