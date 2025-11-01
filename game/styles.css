@@ -1269,7 +1269,8 @@ button:focus-visible,
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(20, 20, 20, 0.98) 100%);
+  backdrop-filter: blur(20px);
   z-index: 3000;
   display: flex;
   align-items: center;
@@ -1290,11 +1291,18 @@ button:focus-visible,
   align-items: center;
   gap: var(--space-8);
   text-align: center;
+  padding: var(--space-12);
+  background: var(--bg-secondary);
+  border: 3px solid var(--white-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(212, 175, 55, 0.4);
 }
 
 .turn-icon {
   font-size: 6rem;
-  animation: rotate-star 4s linear infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .turn-title {
@@ -1312,6 +1320,41 @@ button:focus-visible,
   color: var(--white-primary);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.opponent-hand-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  z-index: 2800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-8);
+}
+
+.overlay-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--white-primary);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.overlay-hand {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  overflow-y: auto;
+  max-height: 60vh;
+  padding: var(--space-4);
 }
 
 /* ===============================================
