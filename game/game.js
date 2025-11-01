@@ -364,7 +364,12 @@ function renderPlayerZone() {
     cardEl.classList.add('drawing');
     cardEl.style.animationDelay = `${index * 0.1}s`;
     
-    if (gameState.currentPhase === 'combat_select' && !gameState.player.selectedCard) {
+    // In PvP, only allow selection if it's player's turn and no card selected yet
+    const canSelect = gameState.currentPhase === 'combat_select' && 
+                      !gameState.player.selectedCard &&
+                      (gameState.gameMode === 'pve' || !gameState.opponent.selectedCard);
+    
+    if (canSelect) {
       cardEl.addEventListener('click', () => selectPlayerCard(card));
     } else {
       cardEl.classList.add('disabled');
