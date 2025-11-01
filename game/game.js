@@ -1204,6 +1204,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  // Tactical victory target selection
+  document.querySelectorAll('[data-victory]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-victory]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      gameState.tacticalVictoryTarget = parseInt(btn.dataset.victory);
+    });
+  });
+  
   // Difficulty selection
   document.querySelectorAll('[data-difficulty]').forEach(btn => {
     btn.addEventListener('click', () => {
