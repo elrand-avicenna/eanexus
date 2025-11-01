@@ -125,6 +125,9 @@ function getDefensePower(card) {
 }
 
 function resolveCombat(power1, power2) {
+  // SPECIAL RULE: Pawns 1&2 always beat Queen (in both attack and defense scenarios)
+  // This is checked in the calling context using actual cards, not just powers
+  
   // Crown beats everything
   if (power1 === POWERS.CROWN && power2 !== POWERS.CROWN) return 1;
   if (power2 === POWERS.CROWN && power1 !== POWERS.CROWN) return -1;
@@ -158,6 +161,24 @@ function resolveCombat(power1, power2) {
   }
   
   return 0; // Tie
+}
+
+function resolveCombatWithCards(card1, card2, isDefenderScenario = false) {
+  // SPECIAL RULE: Pawns 1&2 ALWAYS beat Queen (attack or defense)
+  const isPawn12_1 = card1.type === CARD_TYPES.PAWN && (card1.number === 1 || card1.number === 2);
+  const isPawn12_2 = card2.type === CARD_TYPES.PAWN && (card2.number === 1 || card2.number === 2);
+  const isQueen1 = card1.type === CARD_TYPES.QUEEN;
+  const isQueen2 = card2.type === CARD_TYPES.QUEEN;
+  
+  // Pawn 1/2 vs Queen (Pawn always wins)
+  if (isPawn12_1 && isQueen2) return 1;
+  if (isPawn12_2 && isQueen1) return -1;
+  
+  // Normal power resolution
+  const power1 = isDefenderScenario ? getDefensePower(card1) : getAttackPower(card1);
+  const power2 = isDefenderScenario ? getDefensePower(card2) : getAttackPower(card2);
+  
+  return resolveCombat(power1, power2);
 }
 
 function canBeatDefender(attackCard, defenderCard) {
