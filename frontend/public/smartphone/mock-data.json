@@ -1,0 +1,135 @@
+{
+  "anim-connect": [
+    {
+      "id": "1",
+      "title": "Animation Festival 2024",
+      "description": "Conception et animation d'ateliers créatifs pour enfants lors du festival annuel",
+      "date": "2024-06-15",
+      "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
+      "tags": ["Animation", "Festival", "Enfants"]
+    },
+    {
+      "id": "2",
+      "title": "Jeux de Société Géants",
+      "description": "Organisation de tournois de jeux de société géants en plein air",
+      "date": "2024-05-20",
+      "image": "https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=800",
+      "tags": ["Jeux", "Extérieur", "Compétition"]
+    },
+    {
+      "id": "3",
+      "title": "Escape Game Mobile",
+      "description": "Création d'un escape game itinérant pour événements d'entreprise",
+      "date": "2024-04-10",
+      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800",
+      "tags": ["Escape Game", "Team Building", "Innovation"]
+    }
+  ],
+  "echo-sphere": [
+    {
+      "id": "1",
+      "title": "Les Chroniques de l'Ombre",
+      "description": "Une saga fantasy épique en 5 tomes explorant un monde où magie et technologie coexistent",
+      "date": "2024-03-12",
+      "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800",
+      "tags": ["Fantasy", "Saga", "Aventure"]
+    },
+    {
+      "id": "2",
+      "title": "Nouvelles du Crépuscule",
+      "description": "Recueil de nouvelles courtes explorant des thèmes de science-fiction et d'anticipation",
+      "date": "2024-02-28",
+      "image": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800",
+      "tags": ["Science-Fiction", "Nouvelles", "Dystopie"]
+    },
+    {
+      "id": "3",
+      "title": "Le Murmure des Étoiles",
+      "description": "Roman de space opera narrant l'odyssée d'une équipe d'explorateurs intersidéraux",
+      "date": "2024-01-15",
+      "image": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800",
+      "tags": ["Space Opera", "Exploration", "Épopée"]
+    }
+  ],
+  "arena": [
+    {
+      "id": "1",
+      "title": "Battle Royale: Nexus",
+      "description": "Jeu de combat multijoueur stratégique avec système de cartes innovant",
+      "date": "2024-07-01",
+      "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800",
+      "tags": ["Multijoueur", "Stratégie", "Compétitif"]
+    },
+    {
+      "id": "2",
+      "title": "Duel Arena Champions",
+      "description": "Jeu de combat en 1v1 avec mécaniques de timing et de contre-attaques",
+      "date": "2024-06-05",
+      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
+      "tags": ["Combat", "PvP", "Réflexes"]
+    },
+    {
+      "id": "3",
+      "title": "Tower Defense: Last Stand",
+      "description": "Défense de tour coopérative avec éléments de construction stratégique",
+      "date": "2024-05-12",
+      "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800",
+      "tags": ["Tower Defense", "Coopératif", "Stratégie"]
+    }
+  ],
+  "adventures": [
+    {
+      "id": "1",
+      "title": "Legends of Eldoria",
+      "description": "RPG d'aventure narratif avec système de choix impactant l'histoire",
+      "date": "2024-08-20",
+      "image": "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800",
+      "tags": ["RPG", "Narratif", "Choix"]
+    },
+    {
+      "id": "2",
+      "title": "The Lost Kingdom",
+      "description": "Jeu d'exploration et de puzzle dans un royaume ancien oublié",
+      "date": "2024-07-15",
+      "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800",
+      "tags": ["Exploration", "Puzzle", "Mystère"]
+    },
+    {
+      "id": "3",
+      "title": "Voyage Beyond Time",
+      "description": "Aventure temporelle combinant énigmes et gestion de paradoxes",
+      "date": "2024-06-22",
+      "image": "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?w=800",
+      "tags": ["Voyage Temporel", "Énigmes", "Aventure"]
+    }
+  ],
+  "medias": [
+    {
+      "id": "1",
+      "title": "Montage Cinématique",
+      "description": "Série de courts-métrages expérimentaux explorant la narration visuelle",
+      "date": "2024-09-01",
+      "type": "video",
+      "thumbnail": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800",
+      "tags": ["Court-Métrage", "Expérimental", "Cinéma"]
+    },
+    {
+      "id": "2",
+      "title": "Compositions Électroniques",
+      "description": "Album de musique électronique ambient et downtempo",
+      "date": "2024-08-10",
+      "type": "music",
+      "thumbnail": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800",
+      "tags": ["Musique", "Électronique", "Ambient"]
+    },
+    {
+      "id": "3",
+      "title": "Vlogs Créatifs",
+      "description": "Série de vlogs documentant le processus créatif de mes projets",
+      "date": "2024-07-25",
+      "type": "video",
+      "thumbnail": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800",
+      "tags": ["Vlog", "Making-of", "Créativité"]
+    }
+  ]
+}

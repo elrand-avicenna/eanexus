@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphone Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone-frame">
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="status-left">
+                    <span class="time" id="currentTime">12:34</span>
+                </div>
+                <div class="status-right">
+                    <svg class="status-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="5" width="22" height="14" rx="2" ry="2"></rect>
+                        <line x1="23" y1="13" x2="23" y2="11"></line>
+                    </svg>
+                    <span class="battery-level">87%</span>
+                </div>
+            </div>
+
+            <!-- Video Background -->
+            <div class="video-background">
+                <video id="videoA" class="background-video active" muted playsinline>
+                    <source src="https://customer-assets.emergentagent.com/job_device-interface/artifacts/txhoxz74_Video%20A.mp4" type="video/mp4">
+                </video>
+                <video id="videoB" class="background-video" muted playsinline>
+                    <source src="https://customer-assets.emergentagent.com/job_device-interface/artifacts/hqs5z2kt_Video%20B.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <!-- App Grid -->
+            <div class="app-grid">
+                <div class="app-icon" data-app="anim-connect" data-color="#FF6B6B">
+                    <div class="app-icon-inner">
+                        <svg class="app-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <span class="app-name">Anim'Connect</span>
+                </div>
+
+                <div class="app-icon" data-app="echo-sphere" data-color="#4ECDC4">
+                    <div class="app-icon-inner">
+                        <svg class="app-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <span class="app-name">Echo-Sphere</span>
+                </div>
+
+                <div class="app-icon" data-app="arena" data-color="#FF6B35">
+                    <div class="app-icon-inner">
+                        <svg class="app-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                        </svg>
+                    </div>
+                    <span class="app-name">Arena</span>
+                </div>
+
+                <div class="app-icon" data-app="adventures" data-color="#95E1D3">
+                    <div class="app-icon-inner">
+                        <svg class="app-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="app-name">Adventures</span>
+                </div>
+
+                <div class="app-icon" data-app="medias" data-color="#F38181">
+                    <div class="app-icon-inner">
+                        <svg class="app-svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                    <span class="app-name">Medias</span>
+                </div>
+            </div>
+
+            <!-- Home Indicator -->
+            <div class="home-indicator"></div>
+        </div>
+    </div>
+
+    <!-- App Opening Animation -->
+    <div class="app-opening" id="appOpening">
+        <div class="app-opening-circle"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
