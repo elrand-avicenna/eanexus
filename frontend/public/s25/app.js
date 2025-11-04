@@ -77,6 +77,9 @@ async function loadData() {
         renderProjects(projectsData);
         renderNexusApps(projectsData);
         renderCategoryApps(projectsData);
+        
+        // Load Characters
+        await loadCharacters();
     } catch (error) {
         console.error('Error loading data:', error);
     }
