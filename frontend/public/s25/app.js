@@ -506,25 +506,141 @@ function initializeTextColorPicker() {
     });
 }
 
-function applyTextColor(color) {
-    // Apply to all text elements
-    document.documentElement.style.setProperty('--text-color', color);
-    document.body.style.color = color;
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function lightenColor(hex, percent) {
+    const rgb = hexToRgb(hex);
+    if (!rgb) return hex;
     
-    // Apply specifically to portal/notification elements
-    const portalElements = document.querySelectorAll('.portal-title, .portal-description, .notification-title, .notification-summary, .notification-card');
-    portalElements.forEach(el => {
+    const r = Math.min(255, Math.floor(rgb.r + (255 - rgb.r) * percent));
+    const g = Math.min(255, Math.floor(rgb.g + (255 - rgb.g) * percent));
+    const b = Math.min(255, Math.floor(rgb.b + (255 - rgb.b) * percent));
+    
+    return rgbToHex(r, g, b);
+}
+
+function darkenColor(hex, percent) {
+    const rgb = hexToRgb(hex);
+    if (!rgb) return hex;
+    
+    const r = Math.floor(rgb.r * (1 - percent));
+    const g = Math.floor(rgb.g * (1 - percent));
+    const b = Math.floor(rgb.b * (1 - percent));
+    
+    return rgbToHex(r, g, b);
+}
+
+function applyTextColor(color) {
+    // Apply only to titles (h1, h2, h3, h4, h5, h6)
+    const titles = document.querySelectorAll('h1, h2, h3, h4, h5, h6, .portal-title, .notification-title, .settings-title, .category-name, .nexus-app-name, .post-name, .chat-name, .game-title, .habit-name, .video-title, .track-title, .author-name');
+    titles.forEach(el => {
         el.style.color = color;
     });
     
-    // Apply to all text elements throughout the app
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, div, label');
-    textElements.forEach(el => {
-        // Don't override gradient text (like portal title)
-        if (!el.classList.contains('portal-title') && !el.style.backgroundClip) {
-            el.style.color = color;
-        }
+    // Generate variants
+    const lightVariant = lightenColor(color, 0.3); // 30% plus clair
+    const darkVariant = darkenColor(color, 0.2); // 20% plus foncé
+    const veryLightVariant = lightenColor(color, 0.6); // 60% plus clair
+    
+    // Apply variants to UI elements
+    
+    // Buttons backgrounds
+    const buttons = document.querySelectorAll('.control-btn, .dock-app:hover, .reset-btn:hover, .social-btn:hover, .category-card:hover, .nexus-app:hover');
+    buttons.forEach(el => {
+        el.style.backgroundColor = `${color}33`; // 20% opacity
     });
+    
+    // Active states and borders
+    const activeElements = document.querySelectorAll('.wallpaper-option.active, .playlist-item.active, .playlist-item-settings.active, .nexus-app:hover, .category-card:hover');
+    activeElements.forEach(el => {
+        el.style.borderColor = color;
+        el.style.backgroundColor = `${color}33`;
+    });
+    
+    // Radio buttons and checkboxes
+    const inputs = document.querySelectorAll('input[type="range"]::-webkit-slider-thumb');
+    document.documentElement.style.setProperty('--accent-color', color);
+    document.documentElement.style.setProperty('--accent-light', lightVariant);
+    document.documentElement.style.setProperty('--accent-dark', darkVariant);
+    
+    // Update CSS variables for dynamic styling
+    const style = document.createElement('style');
+    style.id = 'dynamic-color-styles';
+    
+    // Remove old style if exists
+    const oldStyle = document.getElementById('dynamic-color-styles');
+    if (oldStyle) oldStyle.remove();
+    
+    style.innerHTML = `
+        .control-btn:hover, .dock-app:hover, .reset-btn:hover, .social-btn:hover {
+            background-color: ${color}66 !important;
+        }
+        
+        .play-btn, .habit-checkbox.checked {
+            background-color: ${color} !important;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            background: ${color} !important;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            background: ${color} !important;
+        }
+        
+        .wallpaper-option.active, .playlist-item.active, .playlist-item-settings.active {
+            border-color: ${color} !important;
+            background: ${color}33 !important;
+        }
+        
+        .category-card:hover, .nexus-app:hover, .game-card:hover {
+            border-color: ${color} !important;
+            background: ${color}33 !important;
+        }
+        
+        .calendar-day.today {
+            background: ${color} !important;
+        }
+        
+        .calendar-day:hover {
+            background: ${color}4D !important;
+        }
+        
+        .post-action:hover, .notification-card {
+            border-color: ${lightVariant} !important;
+        }
+        
+        .habit-checkbox {
+            border-color: ${color} !important;
+        }
+        
+        .habit-progress, .stat-value {
+            color: ${color} !important;
+        }
+        
+        .social-btn {
+            border-color: ${color} !important;
+            color: ${color} !important;
+        }
+        
+        .social-btn:hover {
+            background: ${color} !important;
+            color: #fff !important;
+        }
+    `;
+    
+    document.head.appendChild(style);
 }
 
 function resetTextColor() {
