@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": "animConnect",
-      "name": "Anim'Connect",
+      "name": "EA ANIM'CONNECT",
       "icon": "🎭",
       "summary": "Projets d'animation ludique pour événements et team building",
       "items": [
@@ -40,7 +40,7 @@
     },
     {
       "id": "echoSphere",
-      "name": "Echo-Sphere",
+      "name": "EA JOURNEY",
       "icon": "📖",
       "summary": "Histoires originales et univers narratifs immersifs",
       "items": [
@@ -72,7 +72,7 @@
     },
     {
       "id": "arena",
-      "name": "Arena",
+      "name": "EA ARENA",
       "icon": "⚔️",
       "summary": "Jeux d'affrontement compétitifs et stratégiques",
       "items": [
@@ -116,7 +116,7 @@
     },
     {
       "id": "adventures",
-      "name": "Adventures",
+      "name": "EA ECHO-SPHERE",
       "icon": "🗺️",
       "summary": "Jeux d'aventure et d'exploration narrative",
       "items": [
@@ -154,7 +154,7 @@
     },
     {
       "id": "medias",
-      "name": "Medias",
+      "name": "EA THEATER",
       "icon": "🎬",
       "summary": "Vidéos et créations musicales originales",
       "items": [
@@ -192,6 +192,42 @@
           "views": "890",
           "date": "Il y a 1 mois",
           "icon": "💻"
+        }
+      ]
+    },
+    {
+      "id": "eaCenter",
+      "name": "EA CENTER",
+      "icon": "📚",
+      "summary": "Tutoriels et guides pour créateurs",
+      "items": [
+        {
+          "title": "Guide du Game Design",
+          "description": "Les fondamentaux pour créer un jeu équilibré",
+          "views": "3.2k",
+          "date": "Il y a 1 semaine",
+          "icon": "🎮"
+        },
+        {
+          "title": "Animation d'Événements",
+          "description": "Conseils pour réussir vos animations ludiques",
+          "views": "1.8k",
+          "date": "Il y a 2 semaines",
+          "icon": "🎭"
+        },
+        {
+          "title": "Écriture Narrative",
+          "description": "Techniques pour créer des histoires captivantes",
+          "views": "2.5k",
+          "date": "Il y a 3 semaines",
+          "icon": "✍️"
+        },
+        {
+          "title": "Musique & Sound Design",
+          "description": "Créer des ambiances sonores immersives",
+          "views": "1.5k",
+          "date": "Il y a 1 mois",
+          "icon": "🎵"
         }
       ]
     }
