@@ -317,6 +317,8 @@ function togglePlay() {
 }
 
 function changeTrack(direction) {
+    const wasPlaying = musicPlayer.isPlaying;
+    
     if (musicPlayer.shuffleMode && direction > 0) {
         // Random next track
         const randomIndex = Math.floor(Math.random() * musicPlayer.playlist.length);
@@ -331,8 +333,11 @@ function changeTrack(direction) {
     }
     loadTrack();
     renderPlaylist();
-    if (musicPlayer.isPlaying) {
-        audio.play();
+    
+    // Auto-play if music was playing
+    if (wasPlaying) {
+        musicPlayer.isPlaying = true;
+        audio.play().catch(err => console.log('Auto-play error:', err));
     }
 }
 
