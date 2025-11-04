@@ -392,6 +392,161 @@ window.toggleSequential = toggleSequential;
 window.toggleRepeat = toggleRepeat;
 window.toggleShuffle = toggleShuffle;
 
+// ===== CHAT SYSTEM =====
+
+let currentChatCharacter = null;
+let chatHistory = {}; // Store chat history per character
+
+function openChat(characterId) {
+    const character = characters.find(c => c.id === characterId);
+    if (!character) return;
+    
+    currentChatCharacter = character;
+    
+    // Update chat header
+    document.getElementById('chatHeaderName').textContent = character.name;
+    const avatarEl = document.getElementById('chatHeaderAvatar');
+    avatarEl.style.background = character.background;
+    avatarEl.textContent = character.avatar;
+    
+    // Initialize chat history if doesn't exist
+    if (!chatHistory[characterId]) {
+        chatHistory[characterId] = [
+            {
+                from: 'character',
+                text: `Bonjour ! Je suis ${character.name}. Comment puis-je vous aider ?`,
+                time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+            }
+        ];
+    }
+    
+    renderChatMessages();
+    openApp('chat');
+    
+    // Focus input
+    setTimeout(() => {
+        document.getElementById('chatInput').focus();
+    }, 300);
+}
+
+function renderChatMessages() {
+    const container = document.getElementById('chatMessages');
+    const messages = chatHistory[currentChatCharacter.id] || [];
+    
+    container.innerHTML = messages.map(msg => {
+        const isSent = msg.from === 'user';
+        return `
+            <div class="chat-message ${isSent ? 'sent' : ''}">
+                <div class="chat-message-avatar" style="background: ${isSent ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : currentChatCharacter.background}">
+                    ${isSent ? '👤' : currentChatCharacter.avatar}
+                </div>
+                <div class="chat-message-bubble">
+                    <div class="chat-message-text">${msg.text}</div>
+                    <div class="chat-message-time">${msg.time}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    // Scroll to bottom
+    setTimeout(() => {
+        container.scrollTop = container.scrollHeight;
+    }, 100);
+}
+
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const text = input.value.trim();
+    
+    if (!text || !currentChatCharacter) return;
+    
+    // Add user message
+    const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    chatHistory[currentChatCharacter.id].push({
+        from: 'user',
+        text: text,
+        time: time
+    });
+    
+    // Clear input
+    input.value = '';
+    renderChatMessages();
+    
+    // Auto-reply from character after delay
+    setTimeout(() => {
+        const reply = generateCharacterReply(currentChatCharacter, text);
+        chatHistory[currentChatCharacter.id].push({
+            from: 'character',
+            text: reply,
+            time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+        });
+        renderChatMessages();
+    }, 1000 + Math.random() * 2000);
+}
+
+function generateCharacterReply(character, userMessage) {
+    const lowerMsg = userMessage.toLowerCase();
+    
+    // Context-aware replies based on character role
+    const replies = {
+        1: [ // Expert Auteur
+            "Merci pour votre message ! Je suis ravi de partager ma passion créative avec vous.",
+            "C'est une excellente question ! L'animation ludique est mon domaine de prédilection.",
+            "Je travaille actuellement sur plusieurs projets passionnants. Explorez EA NEXUS pour en découvrir plus !",
+            "La créativité est un voyage sans fin. Chaque projet est une nouvelle aventure !"
+        ],
+        2: [ // Aria CodeWeaver
+            "Techniquement parlant, c'est tout à fait réalisable avec les frameworks modernes.",
+            "J'adore optimiser le code ! La performance est essentielle pour une bonne expérience utilisateur.",
+            "React et JavaScript sont mes outils de prédilection pour créer des interfaces réactives.",
+            "L'architecture du système est cruciale. Je veille à ce que tout soit scalable."
+        ],
+        3: [ // Kael Storyforge
+            "Chaque histoire commence par une idée. Laissez-moi vous raconter...",
+            "Les personnages sont l'âme d'une bonne narration. Je les développe avec soin.",
+            "Le world building est fascinant ! Créer des univers cohérents est un art.",
+            "Une intrigue captivante demande du temps et de la réflexion. La patience est clé."
+        ]
+    };
+    
+    // Get replies for this character or use default
+    const characterReplies = replies[character.id] || [
+        `Intéressant ! En tant que ${character.title}, je peux vous dire que c'est un sujet important.`,
+        `Merci de votre intérêt. Mon rôle de ${character.title} me permet d'apporter une expertise unique.`,
+        "C'est une excellente question ! Laissez-moi y réfléchir...",
+        `Mon expérience en tant que ${character.title} m'a appris beaucoup sur ce domaine.`
+    ];
+    
+    // Return random reply
+    return characterReplies[Math.floor(Math.random() * characterReplies.length)];
+}
+
+function backToCharacter() {
+    if (currentChatCharacter) {
+        openCharacterDetail(currentChatCharacter.id);
+    } else {
+        openApp('auteur');
+    }
+}
+
+// Enter key to send message
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const chatInput = document.getElementById('chatInput');
+        if (chatInput) {
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+    }, 500);
+});
+
+window.openChat = openChat;
+window.sendMessage = sendMessage;
+window.backToCharacter = backToCharacter;
+
 // Wallpapers
 function renderWallpapers() {
     const gallery = document.getElementById('wallpaperGallery');
