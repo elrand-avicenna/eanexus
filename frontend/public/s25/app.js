@@ -111,23 +111,27 @@ function openApp(appId) {
     }
     
     // Update icon states
+    const homeIcon = document.getElementById('homeIcon');
     const notifIcon = document.getElementById('notificationsIcon');
     const settingsIcon = document.getElementById('settingsIcon');
     
-    if (appId === 'portal') {
+    // Remove all active states
+    homeIcon.classList.remove('active');
+    notifIcon.classList.remove('active');
+    settingsIcon.classList.remove('active');
+    
+    // Set active based on current app
+    if (appId === 'home') {
+        homeIcon.classList.add('active');
+    } else if (appId === 'portal') {
         notifIcon.classList.add('active');
-        settingsIcon.classList.remove('active');
     } else if (appId === 'parametres') {
         settingsIcon.classList.add('active');
-        notifIcon.classList.remove('active');
-    } else {
-        notifIcon.classList.remove('active');
-        settingsIcon.classList.remove('active');
     }
 }
 
 function closeApp() {
-    openApp('portal');
+    openApp('home');
 }
 
 window.openApp = openApp;
