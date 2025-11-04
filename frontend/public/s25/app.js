@@ -1011,6 +1011,12 @@ function openCharacterDetail(characterId) {
             </div>
             <div class="character-detail-name">${character.name}</div>
             <div class="character-detail-title">${character.title}</div>
+            <button class="messenger-btn" onclick="openChat(${character.id})">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 2C6.48 2 2 6.15 2 11.25c0 2.92 1.44 5.51 3.69 7.24V22l3.41-1.87c.91.25 1.87.37 2.9.37 5.52 0 10-4.15 10-9.25S17.52 2 12 2zm1 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
+                </svg>
+                Envoyer un message
+            </button>
         </div>
         
         <div class="character-detail-bio">${character.bio}</div>
