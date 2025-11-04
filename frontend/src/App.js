@@ -38,15 +38,18 @@ const Home = () => {
 };
 
 function App() {
+  useEffect(() => {
+    // Redirection automatique vers le site smartphone
+    window.location.href = '/s25/index.html';
+  }, []);
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <header className="App-header">
+        <p>
+          Redirection vers EA Mobile S25 Ultra...
+        </p>
+      </header>
     </div>
   );
 }
