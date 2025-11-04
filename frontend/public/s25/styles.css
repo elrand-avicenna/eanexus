@@ -642,15 +642,16 @@ body {
 
 .category-card {
     padding: 20px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s;
 }
 
 .category-card:hover {
-    background: rgba(102, 126, 234, 0.2);
+    background: rgba(102, 126, 234, 0.3);
     border-color: #667eea;
     transform: translateY(-5px);
 }
@@ -690,8 +691,9 @@ body {
 
 .nexus-app {
     aspect-ratio: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -704,7 +706,7 @@ body {
 }
 
 .nexus-app:hover {
-    background: rgba(102, 126, 234, 0.2);
+    background: rgba(102, 126, 234, 0.3);
     border-color: #667eea;
     transform: scale(1.05);
 }
