@@ -19,9 +19,17 @@ window.addEventListener('DOMContentLoaded', () => {
     initializeLoading();
     initializeCalendar();
     initializeMusicPlayer();
+    initializeTextColorPicker();
+    initializeSettingsSeekBar();
+    initializeSettingsVolumeBar();
+    
+    // Render settings components after data is loaded
+    setTimeout(() => {
+        renderWallpaperSettings();
+        renderPlaylistSettings();
+        updateSettingsMusicInfo();
+    }, 500);
 });
-
-// Time Update
 function initializeTime() {
     const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
     const monthsOfYear = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
