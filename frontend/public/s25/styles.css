@@ -94,6 +94,7 @@ body {
     height: calc(100% - 120px);
     position: relative;
     overflow: hidden;
+    z-index: 10;
 }
 
 /* App Windows */
