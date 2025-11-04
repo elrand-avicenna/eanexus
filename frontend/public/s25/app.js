@@ -892,3 +892,82 @@ window.addEventListener('DOMContentLoaded', () => {
         updateSettingsMusicInfo();
     }, 500);
 });
+
+// Characters data
+let characters = [];
+
+// Load Characters
+async function loadCharacters() {
+    try {
+        const response = await fetch('data/characters.json');
+        characters = await response.json();
+        renderCharactersGallery();
+    } catch (error) {
+        console.error('Error loading characters:', error);
+    }
+}
+
+// Render Characters Gallery
+function renderCharactersGallery() {
+    const container = document.getElementById('charactersGallery');
+    container.innerHTML = '<div class="characters-grid">' +
+        characters.map(character => `
+            <div class="character-card" onclick="openCharacterDetail(${character.id})">
+                <div class="character-avatar" style="background: ${character.background}">
+                    ${character.avatar}
+                </div>
+                <div class="character-name">${character.name}</div>
+                <div class="character-title">${character.title}</div>
+            </div>
+        `).join('') +
+    '</div>';
+}
+
+// Open Character Detail
+function openCharacterDetail(characterId) {
+    const character = characters.find(c => c.id === characterId);
+    if (!character) return;
+    
+    document.getElementById('characterDetailName').textContent = character.name;
+    
+    const content = document.getElementById('characterDetailContent');
+    content.innerHTML = `
+        <div class="character-detail-header">
+            <div class="character-detail-avatar" style="background: ${character.background}">
+                ${character.avatar}
+            </div>
+            <div class="character-detail-name">${character.name}</div>
+            <div class="character-detail-title">${character.title}</div>
+        </div>
+        
+        <div class="character-detail-bio">${character.bio}</div>
+        
+        <div class="character-stats">
+            <h3>Statistiques</h3>
+            ${Object.entries(character.stats).map(([key, value]) => `
+                <div class="stat-bar">
+                    <div class="stat-bar-label">
+                        <span>${key}</span>
+                        <span>${value}%</span>
+                    </div>
+                    <div class="stat-bar-fill">
+                        <div class="stat-bar-progress" style="width: ${value}%"></div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+        
+        <div class="character-skills">
+            <h3>Compétences</h3>
+            <div class="skills-list">
+                ${character.skills.map(skill => `
+                    <div class="skill-item">✦ ${skill}</div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    openApp('characterDetail');
+}
+
+window.openCharacterDetail = openCharacterDetail;
