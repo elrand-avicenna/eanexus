@@ -101,6 +101,21 @@ function openApp(appId) {
         newWindow.classList.add('active');
         currentApp = appId;
     }
+    
+    // Update icon states
+    const notifIcon = document.getElementById('notificationsIcon');
+    const settingsIcon = document.getElementById('settingsIcon');
+    
+    if (appId === 'portal') {
+        notifIcon.classList.add('active');
+        settingsIcon.classList.remove('active');
+    } else if (appId === 'parametres') {
+        settingsIcon.classList.add('active');
+        notifIcon.classList.remove('active');
+    } else {
+        notifIcon.classList.remove('active');
+        settingsIcon.classList.remove('active');
+    }
 }
 
 function closeApp() {
