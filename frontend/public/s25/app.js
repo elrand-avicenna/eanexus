@@ -310,11 +310,17 @@ function togglePlay() {
 }
 
 function changeTrack(direction) {
-    musicPlayer.currentTrack += direction;
-    if (musicPlayer.currentTrack < 0) {
-        musicPlayer.currentTrack = musicPlayer.playlist.length - 1;
-    } else if (musicPlayer.currentTrack >= musicPlayer.playlist.length) {
-        musicPlayer.currentTrack = 0;
+    if (musicPlayer.shuffleMode && direction > 0) {
+        // Random next track
+        const randomIndex = Math.floor(Math.random() * musicPlayer.playlist.length);
+        musicPlayer.currentTrack = randomIndex;
+    } else {
+        musicPlayer.currentTrack += direction;
+        if (musicPlayer.currentTrack < 0) {
+            musicPlayer.currentTrack = musicPlayer.playlist.length - 1;
+        } else if (musicPlayer.currentTrack >= musicPlayer.playlist.length) {
+            musicPlayer.currentTrack = 0;
+        }
     }
     loadTrack();
     renderPlaylist();
@@ -330,6 +336,32 @@ function formatTime(seconds) {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${String(secs).padStart(2, '0')}`;
 }
+
+// Playback Mode Controls
+function toggleRepeat() {
+    musicPlayer.repeatMode = !musicPlayer.repeatMode;
+    const btn = document.getElementById('repeatBtn');
+    btn.classList.toggle('active');
+    
+    // Disable shuffle if repeat is enabled
+    if (musicPlayer.repeatMode && musicPlayer.shuffleMode) {
+        toggleShuffle();
+    }
+}
+
+function toggleShuffle() {
+    musicPlayer.shuffleMode = !musicPlayer.shuffleMode;
+    const btn = document.getElementById('shuffleBtn');
+    btn.classList.toggle('active');
+    
+    // Disable repeat if shuffle is enabled
+    if (musicPlayer.shuffleMode && musicPlayer.repeatMode) {
+        toggleRepeat();
+    }
+}
+
+window.toggleRepeat = toggleRepeat;
+window.toggleShuffle = toggleShuffle;
 
 // Wallpapers
 function renderWallpapers() {
