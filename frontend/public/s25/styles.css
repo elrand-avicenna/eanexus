@@ -81,6 +81,22 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     gap: 8px;
 }
 
+.time-date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+#currentTime {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#currentDate {
+    font-size: 9px;
+    opacity: 0.8;
+}
+
 .settings-icon {
     background: none;
     border: none;
