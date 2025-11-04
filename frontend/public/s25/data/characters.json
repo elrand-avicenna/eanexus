@@ -1,142 +1,142 @@
 [
   {
     "id": 1,
-    "name": "Aria Stormwind",
-    "title": "Gardienne des Éléments",
-    "avatar": "🌪️",
+    "name": "Nova Chen",
+    "title": "Data Scientist & AI Specialist",
+    "avatar": "💻",
     "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    "bio": "Aria maîtrise les forces de la nature et protège l'équilibre entre les éléments. Son pouvoir lui permet de contrôler le vent, l'eau et la foudre.",
+    "bio": "Experte en intelligence artificielle et machine learning, Nova développe des algorithmes prédictifs pour optimiser les systèmes complexes. Passionnée par l'éthique de l'IA.",
     "stats": {
-      "Puissance": 85,
-      "Sagesse": 92,
-      "Agilité": 78
+      "Technique": 95,
+      "Créativité": 85,
+      "Leadership": 78
     },
-    "skills": ["Manipulation des vents", "Invocation d'orage", "Bouclier élémentaire"]
+    "skills": ["Machine Learning", "Python & TensorFlow", "Data Visualization"]
   },
   {
     "id": 2,
-    "name": "Kael Shadowblade",
-    "title": "Assassin des Ombres",
-    "avatar": "🗡️",
-    "background": "linear-gradient(135deg, #2d3436 0%, #000000 100%)",
-    "bio": "Maître de la discrétion et des techniques d'infiltration, Kael évolue dans l'ombre pour accomplir ses missions avec une précision mortelle.",
+    "name": "Alex Rivera",
+    "title": "UX/UI Designer",
+    "avatar": "🎨",
+    "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "bio": "Designer créatif spécialisé dans l'expérience utilisateur, Alex conçoit des interfaces intuitives qui allient esthétique et fonctionnalité pour créer des expériences mémorables.",
     "stats": {
-      "Puissance": 75,
-      "Sagesse": 70,
-      "Agilité": 95
+      "Technique": 80,
+      "Créativité": 98,
+      "Leadership": 75
     },
-    "skills": ["Furtivité absolue", "Lames empoisonnées", "Téléportation d'ombre"]
+    "skills": ["Figma & Adobe XD", "Design System", "User Research"]
   },
   {
     "id": 3,
-    "name": "Luna Starweaver",
-    "title": "Tisseuse de Destinées",
-    "avatar": "✨",
-    "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    "bio": "Luna possède le don rare de lire et d'influencer les fils du destin. Ses visions lui permettent d'anticiper l'avenir et de guider les héros.",
+    "name": "Maya Singh",
+    "title": "Blockchain Developer",
+    "avatar": "⛓️",
+    "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    "bio": "Développeuse blockchain pionnière, Maya crée des smart contracts sécurisés et des solutions décentralisées innovantes pour transformer la finance et les transactions numériques.",
     "stats": {
-      "Puissance": 60,
-      "Sagesse": 98,
-      "Agilité": 65
+      "Technique": 92,
+      "Créativité": 70,
+      "Leadership": 82
     },
-    "skills": ["Vision prophétique", "Manipulation du destin", "Aura de chance"]
+    "skills": ["Solidity & Web3", "Smart Contracts", "DeFi Solutions"]
   },
   {
     "id": 4,
-    "name": "Thorin Ironheart",
-    "title": "Gardien de la Forge",
-    "avatar": "⚒️",
-    "background": "linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%)",
-    "bio": "Forgeron légendaire et guerrier intrépide, Thorin crée des armes enchantées et défend son peuple avec une détermination inébranlable.",
+    "name": "Jordan Park",
+    "title": "DevOps Engineer",
+    "avatar": "🚀",
+    "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+    "bio": "Expert en infrastructure cloud et automatisation, Jordan optimise les pipelines CI/CD et garantit la scalabilité des systèmes avec Docker, Kubernetes et AWS.",
     "stats": {
-      "Puissance": 95,
-      "Sagesse": 75,
-      "Agilité": 55
+      "Technique": 90,
+      "Créativité": 65,
+      "Leadership": 88
     },
-    "skills": ["Forge mystique", "Résistance de fer", "Frappe dévastatrice"]
+    "skills": ["Kubernetes & Docker", "AWS Cloud", "CI/CD Automation"]
   },
   {
     "id": 5,
-    "name": "Zephyr Nova",
-    "title": "Explorateur Galactique",
-    "avatar": "🚀",
-    "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-    "bio": "Pilote d'élite et explorateur des confins de l'espace, Zephyr découvre de nouvelles civilisations et repousse les frontières de l'inconnu.",
+    "name": "Zara Williams",
+    "title": "Cybersecurity Analyst",
+    "avatar": "🔒",
+    "background": "linear-gradient(135deg, #2d3436 0%, #636e72 100%)",
+    "bio": "Spécialiste en sécurité informatique, Zara protège les systèmes contre les cyberattaques avec des audits de sécurité, des tests de pénétration et des stratégies de défense avancées.",
     "stats": {
-      "Puissance": 70,
-      "Sagesse": 88,
-      "Agilité": 90
+      "Technique": 93,
+      "Créativité": 72,
+      "Leadership": 85
     },
-    "skills": ["Navigation stellaire", "Technologies avancées", "Combat spatial"]
+    "skills": ["Penetration Testing", "Network Security", "Threat Analysis"]
   },
   {
     "id": 6,
-    "name": "Raven Nightwhisper",
-    "title": "Maîtresse des Secrets",
-    "avatar": "🦉",
+    "name": "Kai Nakamura",
+    "title": "Full-Stack Developer",
+    "avatar": "⚡",
     "background": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-    "bio": "Raven collectionne les secrets et les informations précieuses. Son réseau d'espions s'étend à travers tous les royaumes.",
+    "bio": "Développeur polyvalent maîtrisant frontend et backend, Kai construit des applications web performantes avec React, Node.js et des architectures microservices modernes.",
     "stats": {
-      "Puissance": 55,
-      "Sagesse": 94,
-      "Agilité": 82
+      "Technique": 88,
+      "Créativité": 82,
+      "Leadership": 76
     },
-    "skills": ["Réseau d'espionnage", "Déchiffrage", "Manipulation mentale"]
+    "skills": ["React & Next.js", "Node.js & Express", "MongoDB & PostgreSQL"]
   },
   {
     "id": 7,
-    "name": "Blaze Fireheart",
-    "title": "Pyromancien Suprême",
-    "avatar": "🔥",
-    "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-    "bio": "Maître absolu des flammes, Blaze peut invoquer des tempêtes de feu et contrôler la température avec une précision parfaite.",
+    "name": "Riley Thompson",
+    "title": "Product Manager",
+    "avatar": "📊",
+    "background": "linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%)",
+    "bio": "Product Manager stratégique, Riley définit les roadmaps produit, coordonne les équipes cross-fonctionnelles et transforme les insights utilisateurs en fonctionnalités innovantes.",
     "stats": {
-      "Puissance": 92,
-      "Sagesse": 68,
-      "Agilité": 75
+      "Technique": 70,
+      "Créativité": 90,
+      "Leadership": 95
     },
-    "skills": ["Contrôle du feu", "Météore enflammé", "Régénération par les flammes"]
+    "skills": ["Product Strategy", "Agile & Scrum", "Market Analysis"]
   },
   {
     "id": 8,
-    "name": "Iris Dreamwalker",
-    "title": "Voyageuse des Songes",
-    "avatar": "🌙",
-    "background": "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
-    "bio": "Iris peut entrer dans les rêves et naviguer entre les dimensions oniriques. Elle aide les âmes perdues et combat les cauchemars.",
+    "name": "Sam Martinez",
+    "title": "Content Creator & Streamer",
+    "avatar": "🎥",
+    "background": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+    "bio": "Créateur de contenu digital et streamer influent, Sam produit des vidéos engageantes sur la tech, le gaming et le lifestyle avec une communauté de 500K+ followers.",
     "stats": {
-      "Puissance": 65,
-      "Sagesse": 90,
-      "Agilité": 80
+      "Technique": 75,
+      "Créativité": 96,
+      "Leadership": 80
     },
-    "skills": ["Marche onirique", "Création de songes", "Banissement des cauchemars"]
+    "skills": ["Video Editing", "Social Media Strategy", "Community Management"]
   },
   {
     "id": 9,
-    "name": "Titan Stoneguard",
-    "title": "Protecteur Ancestral",
-    "avatar": "🛡️",
-    "background": "linear-gradient(135deg, #868f96 0%, #596164 100%)",
-    "bio": "Géant de pierre millénaire, Titan est le gardien immuable de terres sacrées. Sa force et sa résistance sont légendaires.",
+    "name": "Taylor Lee",
+    "title": "Quantum Computing Researcher",
+    "avatar": "🔬",
+    "background": "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+    "bio": "Chercheur en informatique quantique, Taylor explore les algorithmes quantiques pour résoudre des problèmes complexes impossibles pour les ordinateurs classiques.",
     "stats": {
-      "Puissance": 98,
-      "Sagesse": 85,
-      "Agilité": 45
+      "Technique": 97,
+      "Créativité": 88,
+      "Leadership": 73
     },
-    "skills": ["Peau de pierre", "Frappe sismique", "Mur indestructible"]
+    "skills": ["Quantum Algorithms", "Qiskit Programming", "Cryptography Research"]
   },
   {
     "id": 10,
-    "name": "Lyra Songbird",
-    "title": "Chanteuse Enchanteresse",
-    "avatar": "🎵",
-    "background": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
-    "bio": "La voix de Lyra possède un pouvoir magique capable de soigner, d'inspirer ou de charmer. Ses mélodies sont connues dans tout le royaume.",
+    "name": "Echo Diaz",
+    "title": "VR/AR Experience Designer",
+    "avatar": "🥽",
+    "background": "linear-gradient(135deg, #868f96 0%, #596164 100%)",
+    "bio": "Designer d'expériences immersives en réalité virtuelle et augmentée, Echo crée des mondes interactifs pour l'éducation, le divertissement et la formation professionnelle.",
     "stats": {
-      "Puissance": 50,
-      "Sagesse": 87,
-      "Agilité": 70
+      "Technique": 84,
+      "Créativité": 94,
+      "Leadership": 79
     },
-    "skills": ["Chant de guérison", "Mélodie de courage", "Charme vocal"]
+    "skills": ["Unity & Unreal Engine", "3D Modeling", "Spatial Design"]
   }
 ]
