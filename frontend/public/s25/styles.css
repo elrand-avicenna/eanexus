@@ -1073,6 +1073,226 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     color: #ccc;
 }
 
+/* Settings Page */
+.settings-content {
+    padding: 20px;
+}
+
+.settings-section {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.settings-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Color Picker */
+.color-picker-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#textColorPicker {
+    width: 60px;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    background: none;
+}
+
+.reset-btn {
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.reset-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Wallpaper Settings */
+.wallpaper-settings {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.wallpaper-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.wallpaper-option:hover {
+    background: rgba(0,0,0,0.4);
+    border-color: #667eea;
+}
+
+.wallpaper-option.active {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.wallpaper-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.wallpaper-option label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.video-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Music Player Settings */
+.music-player-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.current-track-info {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.track-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.track-artist {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.progress-bar-settings {
+    width: 100%;
+}
+
+.progress-bar-settings input[type="range"] {
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    background: rgba(255,255,255,0.2);
+    -webkit-appearance: none;
+}
+
+.progress-bar-settings input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+.music-controls-settings {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.volume-control-settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-control-settings input[type="range"] {
+    flex: 1;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    background: rgba(255,255,255,0.2);
+    -webkit-appearance: none;
+}
+
+.volume-control-settings input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+.playlist-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.playlist-item-settings {
+    padding: 15px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.playlist-item-settings:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.playlist-item-settings.active {
+    background: rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.playlist-item-settings .playlist-icon {
+    font-size: 24px;
+}
+
+.playlist-item-settings .playlist-info {
+    flex: 1;
+}
+
+.playlist-item-settings .playlist-info h4 {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.playlist-item-settings .playlist-info p {
+    font-size: 12px;
+    color: #888;
+}
+
 /* Dock */
 .dock {
     height: 80px;
