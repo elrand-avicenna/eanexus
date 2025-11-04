@@ -526,6 +526,25 @@ function renderMedias(category) {
     '</div>';
 }
 
+// EA Center (Tutoriels)
+function renderEaCenter(category) {
+    const container = document.getElementById('eaCenterLayout');
+    container.innerHTML = '<div class="video-grid">' + 
+        category.items.map((item, index) => `
+            <div class="video-item">
+                <div class="video-thumbnail">
+                    ${item.icon || '📚'}
+                    <div class="play-overlay">▶</div>
+                </div>
+                <div class="video-details">
+                    <div class="video-title">${item.title}</div>
+                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues • ${item.date || 'Il y a 1 semaine'}</div>
+                </div>
+            </div>
+        `).join('') + 
+    '</div>';
+}
+
 // ===== SETTINGS PAGE FUNCTIONS =====
 
 // Text Color
