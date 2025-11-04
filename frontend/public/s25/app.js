@@ -10,6 +10,8 @@ let musicPlayer = {
 };
 let wallpapers = [];
 let currentWallpaper = 0;
+let events = [];
+let characters = [];
 
 // DOM Elements
 const audio = document.getElementById('globalAudio');
@@ -18,9 +20,8 @@ const backgroundVideo = document.getElementById('backgroundVideo');
 // Initialize App
 window.addEventListener('DOMContentLoaded', () => {
     initializeTime();
-    loadData();
+    loadData(); // This will load everything including events, then initialize calendar
     initializeLoading();
-    initializeCalendar();
     initializeMusicPlayer();
     initializeTextColorPicker();
     initializeSettingsSeekBar();
