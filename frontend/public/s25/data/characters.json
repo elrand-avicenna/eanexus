@@ -1,142 +1,142 @@
 [
   {
     "id": 1,
-    "name": "Nova Chen",
-    "title": "Data Scientist & AI Specialist",
-    "avatar": "💻",
+    "name": "Expert Auteur",
+    "title": "Concepteur, Scénariste & Animateur",
+    "avatar": "👑",
     "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    "bio": "Experte en intelligence artificielle et machine learning, Nova développe des algorithmes prédictifs pour optimiser les systèmes complexes. Passionnée par l'éthique de l'IA.",
+    "bio": "Créateur principal de cet univers créatif. Je conçois des expériences interactives, écris des histoires captivantes et anime des événements ludiques pour créer des moments inoubliables.",
     "stats": {
-      "Technique": 95,
-      "Créativité": 85,
-      "Leadership": 78
+      "Créativité": 98,
+      "Technique": 85,
+      "Vision": 95
     },
-    "skills": ["Machine Learning", "Python & TensorFlow", "Data Visualization"]
+    "skills": ["Conception de Jeux", "Écriture Narrative", "Animation d'Événements"]
   },
   {
     "id": 2,
-    "name": "Alex Rivera",
-    "title": "UX/UI Designer",
-    "avatar": "🎨",
-    "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    "bio": "Designer créatif spécialisé dans l'expérience utilisateur, Alex conçoit des interfaces intuitives qui allient esthétique et fonctionnalité pour créer des expériences mémorables.",
+    "name": "Aria CodeWeaver",
+    "title": "Développeuse Lead",
+    "avatar": "⚡",
+    "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    "bio": "Architecte technique du projet, Aria transforme les visions créatives en code élégant. Elle maîtrise les frameworks modernes et garantit la performance des applications.",
     "stats": {
-      "Technique": 80,
-      "Créativité": 98,
-      "Leadership": 75
+      "Créativité": 82,
+      "Technique": 96,
+      "Vision": 88
     },
-    "skills": ["Figma & Adobe XD", "Design System", "User Research"]
+    "skills": ["React & JavaScript", "Architecture Système", "Optimisation Performance"]
   },
   {
     "id": 3,
-    "name": "Maya Singh",
-    "title": "Blockchain Developer",
-    "avatar": "⛓️",
-    "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-    "bio": "Développeuse blockchain pionnière, Maya crée des smart contracts sécurisés et des solutions décentralisées innovantes pour transformer la finance et les transactions numériques.",
+    "name": "Kael Storyforge",
+    "title": "Scénariste en Chef",
+    "avatar": "📖",
+    "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "bio": "Maître conteur et créateur d'univers narratifs, Kael tisse des intrigues captivantes et développe des personnages mémorables qui donnent vie aux histoires du projet.",
     "stats": {
-      "Technique": 92,
-      "Créativité": 70,
-      "Leadership": 82
+      "Créativité": 97,
+      "Technique": 70,
+      "Vision": 92
     },
-    "skills": ["Solidity & Web3", "Smart Contracts", "DeFi Solutions"]
+    "skills": ["Écriture Créative", "Développement de Personnages", "World Building"]
   },
   {
     "id": 4,
-    "name": "Jordan Park",
-    "title": "DevOps Engineer",
-    "avatar": "🚀",
+    "name": "Luna Artisan",
+    "title": "Directrice Artistique",
+    "avatar": "🎨",
     "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-    "bio": "Expert en infrastructure cloud et automatisation, Jordan optimise les pipelines CI/CD et garantit la scalabilité des systèmes avec Docker, Kubernetes et AWS.",
+    "bio": "Visionnaire du design visuel, Luna crée l'identité graphique du projet. Son sens artistique transforme chaque interface en une œuvre d'art interactive.",
     "stats": {
-      "Technique": 90,
-      "Créativité": 65,
-      "Leadership": 88
+      "Créativité": 99,
+      "Technique": 88,
+      "Vision": 94
     },
-    "skills": ["Kubernetes & Docker", "AWS Cloud", "CI/CD Automation"]
+    "skills": ["Design UI/UX", "Direction Artistique", "Branding Créatif"]
   },
   {
     "id": 5,
-    "name": "Zara Williams",
-    "title": "Cybersecurity Analyst",
-    "avatar": "🔒",
-    "background": "linear-gradient(135deg, #2d3436 0%, #636e72 100%)",
-    "bio": "Spécialiste en sécurité informatique, Zara protège les systèmes contre les cyberattaques avec des audits de sécurité, des tests de pénétration et des stratégies de défense avancées.",
+    "name": "Thorin Soundsmith",
+    "title": "Compositeur & Sound Designer",
+    "avatar": "🎵",
+    "background": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+    "bio": "Créateur d'ambiances sonores immersives, Thorin compose des musiques épiques et des effets sonores qui enrichissent l'expérience et transportent dans l'univers.",
     "stats": {
-      "Technique": 93,
-      "Créativité": 72,
-      "Leadership": 85
+      "Créativité": 95,
+      "Technique": 84,
+      "Vision": 87
     },
-    "skills": ["Penetration Testing", "Network Security", "Threat Analysis"]
+    "skills": ["Composition Musicale", "Sound Design", "Audio Engineering"]
   },
   {
     "id": 6,
-    "name": "Kai Nakamura",
-    "title": "Full-Stack Developer",
-    "avatar": "⚡",
-    "background": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-    "bio": "Développeur polyvalent maîtrisant frontend et backend, Kai construit des applications web performantes avec React, Node.js et des architectures microservices modernes.",
+    "name": "Zephyr Playtest",
+    "title": "Chef Testeur QA",
+    "avatar": "🎮",
+    "background": "linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%)",
+    "bio": "Gardien de la qualité, Zephyr teste rigoureusement chaque fonctionnalité pour garantir une expérience utilisateur parfaite. Aucun bug n'échappe à sa vigilance.",
     "stats": {
-      "Technique": 88,
-      "Créativité": 82,
-      "Leadership": 76
+      "Créativité": 75,
+      "Technique": 90,
+      "Vision": 85
     },
-    "skills": ["React & Next.js", "Node.js & Express", "MongoDB & PostgreSQL"]
+    "skills": ["Tests Fonctionnels", "Débogage Expert", "Assurance Qualité"]
   },
   {
     "id": 7,
-    "name": "Riley Thompson",
-    "title": "Product Manager",
-    "avatar": "📊",
-    "background": "linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%)",
-    "bio": "Product Manager stratégique, Riley définit les roadmaps produit, coordonne les équipes cross-fonctionnelles et transforme les insights utilisateurs en fonctionnalités innovantes.",
+    "name": "Raven Strategist",
+    "title": "Chef de Projet",
+    "avatar": "🗺️",
+    "background": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+    "bio": "Stratège et coordinateur, Raven orchestre toutes les phases du projet. Elle synchronise les équipes, définit les priorités et assure que chaque deadline soit respectée.",
     "stats": {
-      "Technique": 70,
-      "Créativité": 90,
-      "Leadership": 95
+      "Créativité": 80,
+      "Technique": 78,
+      "Vision": 96
     },
-    "skills": ["Product Strategy", "Agile & Scrum", "Market Analysis"]
+    "skills": ["Gestion de Projet", "Méthodologie Agile", "Coordination d'Équipes"]
   },
   {
     "id": 8,
-    "name": "Sam Martinez",
-    "title": "Content Creator & Streamer",
-    "avatar": "🎥",
-    "background": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
-    "bio": "Créateur de contenu digital et streamer influent, Sam produit des vidéos engageantes sur la tech, le gaming et le lifestyle avec une communauté de 500K+ followers.",
+    "name": "Blaze Animator",
+    "title": "Animateur 3D",
+    "avatar": "🎬",
+    "background": "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+    "bio": "Spécialiste en animation et motion design, Blaze donne vie aux personnages et crée des cinématiques épiques qui rendent chaque projet visuellement spectaculaire.",
     "stats": {
-      "Technique": 75,
-      "Créativité": 96,
-      "Leadership": 80
+      "Créativité": 94,
+      "Technique": 87,
+      "Vision": 85
     },
-    "skills": ["Video Editing", "Social Media Strategy", "Community Management"]
+    "skills": ["Animation 3D", "Motion Design", "Cinématiques"]
   },
   {
     "id": 9,
-    "name": "Taylor Lee",
-    "title": "Quantum Computing Researcher",
-    "avatar": "🔬",
-    "background": "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
-    "bio": "Chercheur en informatique quantique, Taylor explore les algorithmes quantiques pour résoudre des problèmes complexes impossibles pour les ordinateurs classiques.",
+    "name": "Iris DataMage",
+    "title": "Analyste de Données",
+    "avatar": "📊",
+    "background": "linear-gradient(135deg, #868f96 0%, #596164 100%)",
+    "bio": "Magicienne des données, Iris analyse les métriques utilisateurs et transforme les chiffres en insights actionnables pour améliorer continuellement l'expérience.",
     "stats": {
-      "Technique": 97,
-      "Créativité": 88,
-      "Leadership": 73
+      "Créativité": 72,
+      "Technique": 93,
+      "Vision": 89
     },
-    "skills": ["Quantum Algorithms", "Qiskit Programming", "Cryptography Research"]
+    "skills": ["Analytics", "Data Mining", "Reporting Stratégique"]
   },
   {
     "id": 10,
-    "name": "Echo Diaz",
-    "title": "VR/AR Experience Designer",
-    "avatar": "🥽",
-    "background": "linear-gradient(135deg, #868f96 0%, #596164 100%)",
-    "bio": "Designer d'expériences immersives en réalité virtuelle et augmentée, Echo crée des mondes interactifs pour l'éducation, le divertissement et la formation professionnelle.",
+    "name": "Titan Guardian",
+    "title": "Responsable Sécurité",
+    "avatar": "🛡️",
+    "background": "linear-gradient(135deg, #2d3436 0%, #636e72 100%)",
+    "bio": "Protecteur inébranlable des systèmes, Titan sécurise l'infrastructure, protège les données sensibles et garantit la conformité aux standards de sécurité les plus élevés.",
     "stats": {
-      "Technique": 84,
-      "Créativité": 94,
-      "Leadership": 79
+      "Créativité": 65,
+      "Technique": 97,
+      "Vision": 82
     },
-    "skills": ["Unity & Unreal Engine", "3D Modeling", "Spatial Design"]
+    "skills": ["Sécurité Système", "Cryptographie", "Audit de Code"]
   }
 ]
