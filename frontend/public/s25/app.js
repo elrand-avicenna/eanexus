@@ -221,6 +221,7 @@ function initializeCalendar() {
     let currentDate = new Date();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
+    let selectedDay = null;
 
     const monthNames = [
         'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
@@ -255,11 +256,47 @@ function initializeCalendar() {
                           currentMonth === today.getMonth() && 
                           currentYear === today.getFullYear();
             const todayClass = isToday ? 'today' : '';
-            html += `<div class="calendar-day ${todayClass}">${day}</div>`;
+            
+            // Check if day has events
+            const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const hasEvent = window.events && window.events.some(e => e.date === dateStr);
+            const eventClass = hasEvent ? 'has-event' : '';
+            
+            html += `<div class="calendar-day ${todayClass} ${eventClass}" onclick="selectDay(${day}, '${dateStr}')">${day}</div>`;
         }
 
         grid.innerHTML = html;
     };
+    
+    window.selectDay = function(day, dateStr) {
+        selectedDay = day;
+        showDayEvents(dateStr);
+    };
+    
+    function showDayEvents(dateStr) {
+        const container = document.getElementById('dayEvents');
+        const dayEvents = window.events ? window.events.filter(e => e.date === dateStr) : [];
+        
+        if (dayEvents.length > 0) {
+            container.innerHTML = `
+                <div class="day-events-title">Événements du ${dateStr.split('-')[2]} ${monthNames[currentMonth]}</div>
+                ${dayEvents.map(event => {
+                    const character = characters.find(c => c.id === event.characterId);
+                    return `
+                        <div class="event-card" onclick="openEventDetail(${event.id})">
+                            <div class="event-card-title">${event.title}</div>
+                            <div class="event-card-meta">🕐 ${event.time} • 👤 ${event.characterName}</div>
+                            <div class="event-card-desc">${event.description}</div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="day-events-title">Aucun événement ce jour</div>
+            `;
+        }
+    }
 
     document.getElementById('prevMonth').addEventListener('click', () => {
         currentMonth--;
@@ -268,6 +305,7 @@ function initializeCalendar() {
             currentYear--;
         }
         renderCalendar();
+        document.getElementById('dayEvents').innerHTML = '';
     });
 
     document.getElementById('nextMonth').addEventListener('click', () => {
@@ -277,10 +315,56 @@ function initializeCalendar() {
             currentYear++;
         }
         renderCalendar();
+        document.getElementById('dayEvents').innerHTML = '';
     });
 
     renderCalendar();
 }
+
+// Event Detail
+function openEventDetail(eventId) {
+    const event = window.events.find(e => e.id === eventId);
+    if (!event) return;
+    
+    const character = characters.find(c => c.id === event.characterId);
+    
+    document.getElementById('eventDetailTitle').textContent = event.title;
+    
+    const content = document.getElementById('eventDetailContent');
+    content.innerHTML = `
+        <div class="event-detail-header">
+            <div class="event-detail-character">
+                <div class="event-detail-avatar" style="background: ${character ? character.background : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}">
+                    ${character ? character.avatar : '👤'}
+                </div>
+                <div class="event-detail-organizer">
+                    <div class="event-organizer-name">${event.characterName}</div>
+                    <div class="event-organizer-title">${character ? character.title : 'Organisateur'}</div>
+                </div>
+            </div>
+            <div class="event-detail-title">${event.title}</div>
+            <div class="event-detail-meta">
+                <span>📅 ${event.date}</span>
+                <span>🕐 ${event.time}</span>
+            </div>
+        </div>
+        
+        <div class="event-detail-description">${event.fullDescription}</div>
+        
+        <div class="event-actions">
+            <button class="event-btn" onclick="openChat(${event.characterId})">
+                💬 Contacter l'organisateur
+            </button>
+            <button class="event-btn secondary" onclick="openCategoryApp('${event.category}')">
+                🔗 Voir la catégorie
+            </button>
+        </div>
+    `;
+    
+    openApp('eventDetail');
+}
+
+window.openEventDetail = openEventDetail;
 
 // Music Player
 function initializeMusicPlayer() {
