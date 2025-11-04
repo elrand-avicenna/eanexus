@@ -1425,6 +1425,37 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     cursor: pointer;
 }
 
+.playback-mode-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.mode-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.mode-btn.active {
+    background: #667eea;
+    border-color: #667eea;
+}
+
 .playlist-settings {
     display: flex;
     flex-direction: column;
