@@ -95,8 +95,64 @@
                 </div>
             </div>
 
-            <!-- Casque (Music Player) -->
-            <div class="app-window" id="casque">
+            <!-- Paramètres -->
+            <div class="app-window" id="parametres">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Paramètres</h2>
+                </div>
+                <div class="app-content settings-content">
+                    <!-- Couleur du texte -->
+                    <div class="settings-section">
+                        <h3 class="settings-title">🎨 Couleur du texte</h3>
+                        <div class="color-picker-container">
+                            <input type="color" id="textColorPicker" value="#ffffff">
+                            <button class="reset-btn" onclick="resetTextColor()">Réinitialiser</button>
+                        </div>
+                    </div>
+
+                    <!-- Fond d'écran vidéo -->
+                    <div class="settings-section">
+                        <h3 class="settings-title">🖼️ Fond d'écran</h3>
+                        <div class="wallpaper-settings" id="wallpaperSettings"></div>
+                        <div class="video-controls">
+                            <button class="control-btn" id="videoPlayBtn" onclick="toggleVideoPlayback()">⏸️ Pause</button>
+                            <button class="control-btn" id="videoStopBtn" onclick="stopVideo()">⏹️ Stop</button>
+                        </div>
+                    </div>
+
+                    <!-- Lecteur de musique -->
+                    <div class="settings-section">
+                        <h3 class="settings-title">🎧 Musique</h3>
+                        <div class="music-player-settings">
+                            <div class="current-track-info">
+                                <div class="track-title" id="settingsTrackTitle">Aucune musique</div>
+                                <div class="track-artist" id="settingsTrackArtist">-</div>
+                            </div>
+                            <div class="progress-bar-settings">
+                                <input type="range" id="settingsSeekBar" min="0" max="100" value="0">
+                                <div class="time-display">
+                                    <span id="settingsCurrentTime">0:00</span>
+                                    <span id="settingsTotalTime">0:00</span>
+                                </div>
+                            </div>
+                            <div class="music-controls-settings">
+                                <button class="control-btn" id="settingsPlayBtn" onclick="toggleMusicPlayback()">▶️ Play</button>
+                                <button class="control-btn" id="settingsPauseBtn" onclick="pauseMusic()">⏸️ Pause</button>
+                                <button class="control-btn" id="settingsStopBtn" onclick="stopMusic()">⏹️ Stop</button>
+                            </div>
+                            <div class="volume-control-settings">
+                                <span>🔊</span>
+                                <input type="range" id="settingsVolumeBar" min="0" max="100" value="70">
+                            </div>
+                            <div class="playlist-settings" id="playlistSettings"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casque (Music Player) - Keep for backward compatibility but hidden -->
+            <div class="app-window" id="casque" style="display: none;">
                 <div class="app-header">
                     <button class="back-btn" onclick="closeApp()">←</button>
                     <h2>Musique</h2>
@@ -127,8 +183,8 @@
                 </div>
             </div>
 
-            <!-- Fond d'écran -->
-            <div class="app-window" id="fondEcran">
+            <!-- Fond d'écran - Keep for backward compatibility but hidden -->
+            <div class="app-window" id="fondEcran" style="display: none;">
                 <div class="app-header">
                     <button class="back-btn" onclick="closeApp()">←</button>
                     <h2>Fond d'écran</h2>
