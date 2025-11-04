@@ -92,7 +92,7 @@ function initializeLoading() {
 }
 
 function finishLoading() {
-    openApp('portal');
+    openApp('home');
 }
 
 // App Navigation
