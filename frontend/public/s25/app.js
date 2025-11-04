@@ -493,16 +493,19 @@ function renderMedias(category) {
 // Text Color
 function initializeTextColorPicker() {
     const colorPicker = document.getElementById('textColorPicker');
-    const savedColor = localStorage.getItem('textColor');
+    const savedColor = localStorage.getItem('accentColor');
     
     if (savedColor) {
         colorPicker.value = savedColor;
-        applyTextColor(savedColor);
+        applyAccentColor(savedColor);
+    } else {
+        // Set default blue color
+        colorPicker.value = '#667eea';
     }
     
     colorPicker.addEventListener('change', (e) => {
-        applyTextColor(e.target.value);
-        localStorage.setItem('textColor', e.target.value);
+        applyAccentColor(e.target.value);
+        localStorage.setItem('accentColor', e.target.value);
     });
 }
 
@@ -541,56 +544,84 @@ function darkenColor(hex, percent) {
     return rgbToHex(r, g, b);
 }
 
-function applyTextColor(color) {
-    // Apply only to titles (h1, h2, h3, h4, h5, h6)
-    const titles = document.querySelectorAll('h1, h2, h3, h4, h5, h6, .portal-title, .notification-title, .settings-title, .category-name, .nexus-app-name, .post-name, .chat-name, .game-title, .habit-name, .video-title, .track-title, .author-name');
-    titles.forEach(el => {
-        el.style.color = color;
-    });
-    
+function applyAccentColor(color) {
     // Generate variants
-    const lightVariant = lightenColor(color, 0.3); // 30% plus clair
-    const darkVariant = darkenColor(color, 0.2); // 20% plus foncé
-    const veryLightVariant = lightenColor(color, 0.6); // 60% plus clair
+    const lightVariant = lightenColor(color, 0.3);
+    const darkVariant = darkenColor(color, 0.2);
     
-    // Apply variants to UI elements
-    
-    // Buttons backgrounds
-    const buttons = document.querySelectorAll('.control-btn, .dock-app:hover, .reset-btn:hover, .social-btn:hover, .category-card:hover, .nexus-app:hover');
-    buttons.forEach(el => {
-        el.style.backgroundColor = `${color}33`; // 20% opacity
-    });
-    
-    // Active states and borders
-    const activeElements = document.querySelectorAll('.wallpaper-option.active, .playlist-item.active, .playlist-item-settings.active, .nexus-app:hover, .category-card:hover');
-    activeElements.forEach(el => {
-        el.style.borderColor = color;
-        el.style.backgroundColor = `${color}33`;
-    });
-    
-    // Radio buttons and checkboxes
-    const inputs = document.querySelectorAll('input[type="range"]::-webkit-slider-thumb');
+    // Update CSS variables
     document.documentElement.style.setProperty('--accent-color', color);
     document.documentElement.style.setProperty('--accent-light', lightVariant);
     document.documentElement.style.setProperty('--accent-dark', darkVariant);
     
-    // Update CSS variables for dynamic styling
+    // Create dynamic styles to replace all blue (#667eea) elements
     const style = document.createElement('style');
-    style.id = 'dynamic-color-styles';
+    style.id = 'dynamic-accent-styles';
     
     // Remove old style if exists
-    const oldStyle = document.getElementById('dynamic-color-styles');
+    const oldStyle = document.getElementById('dynamic-accent-styles');
     if (oldStyle) oldStyle.remove();
     
     style.innerHTML = `
-        .control-btn:hover, .dock-app:hover, .reset-btn:hover, .social-btn:hover {
-            background-color: ${color}66 !important;
+        /* Gradients with accent color */
+        .loading-logo, .portal-title {
+            background: linear-gradient(135deg, ${color} 0%, ${darkVariant} 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
         }
         
-        .play-btn, .habit-checkbox.checked {
-            background-color: ${color} !important;
+        .author-avatar, .post-avatar, .chat-avatar {
+            background: linear-gradient(135deg, ${color} 0%, ${darkVariant} 100%) !important;
         }
         
+        .album-art, .video-thumbnail, .game-cover {
+            background: linear-gradient(135deg, ${color} 0%, ${darkVariant} 100%) !important;
+        }
+        
+        .loading-text {
+            color: ${color} !important;
+        }
+        
+        .loading-spinner {
+            border-color: ${color}33 !important;
+            border-top-color: ${color} !important;
+        }
+        
+        /* Notification and card titles */
+        .notification-title {
+            color: ${color} !important;
+        }
+        
+        /* Stats and highlights */
+        .stat-value, .habit-progress {
+            color: ${color} !important;
+        }
+        
+        /* Buttons and interactive elements */
+        .play-btn {
+            background: ${color} !important;
+        }
+        
+        .control-btn:hover, .dock-app:hover {
+            background: ${color}33 !important;
+        }
+        
+        /* Borders and active states */
+        .wallpaper-option.active, .playlist-item.active, .playlist-item-settings.active {
+            border-color: ${color} !important;
+            background: ${color}33 !important;
+        }
+        
+        .category-card:hover, .nexus-app:hover {
+            background: ${color}33 !important;
+            border-color: ${color} !important;
+        }
+        
+        .game-card:hover {
+            box-shadow: 0 10px 30px ${color}4D !important;
+        }
+        
+        /* Range inputs */
         input[type="range"]::-webkit-slider-thumb {
             background: ${color} !important;
         }
@@ -599,16 +630,7 @@ function applyTextColor(color) {
             background: ${color} !important;
         }
         
-        .wallpaper-option.active, .playlist-item.active, .playlist-item-settings.active {
-            border-color: ${color} !important;
-            background: ${color}33 !important;
-        }
-        
-        .category-card:hover, .nexus-app:hover, .game-card:hover {
-            border-color: ${color} !important;
-            background: ${color}33 !important;
-        }
-        
+        /* Calendar */
         .calendar-day.today {
             background: ${color} !important;
         }
@@ -617,19 +639,13 @@ function applyTextColor(color) {
             background: ${color}4D !important;
         }
         
-        .post-action:hover, .notification-card {
-            border-color: ${lightVariant} !important;
-        }
-        
-        .habit-checkbox {
-            border-color: ${color} !important;
-        }
-        
-        .habit-progress, .stat-value {
+        .calendar-day.header {
             color: ${color} !important;
         }
         
+        /* Social buttons */
         .social-btn {
+            background: ${color}33 !important;
             border-color: ${color} !important;
             color: ${color} !important;
         }
@@ -638,16 +654,30 @@ function applyTextColor(color) {
             background: ${color} !important;
             color: #fff !important;
         }
+        
+        /* Checkboxes */
+        .habit-checkbox {
+            border-color: ${color} !important;
+        }
+        
+        .habit-checkbox.checked {
+            background: ${color} !important;
+        }
+        
+        /* Post actions */
+        .post-action:hover {
+            color: ${color} !important;
+        }
     `;
     
     document.head.appendChild(style);
 }
 
 function resetTextColor() {
-    const defaultColor = '#ffffff';
+    const defaultColor = '#667eea';
     document.getElementById('textColorPicker').value = defaultColor;
-    applyTextColor(defaultColor);
-    localStorage.removeItem('textColor');
+    applyAccentColor(defaultColor);
+    localStorage.removeItem('accentColor');
 }
 
 // Wallpaper Settings
