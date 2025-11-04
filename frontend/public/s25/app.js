@@ -23,12 +23,22 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Time Update
 function initializeTime() {
+    const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    const monthsOfYear = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    
     const updateTime = () => {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
+        
+        // Update date
+        const dayName = daysOfWeek[now.getDay()];
+        const day = now.getDate();
+        const monthName = monthsOfYear[now.getMonth()];
+        const year = now.getFullYear();
+        document.getElementById('currentDate').textContent = `${dayName} ${day} ${monthName} ${year}`;
     };
     updateTime();
     setInterval(updateTime, 1000); // Update every second
