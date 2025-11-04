@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EA Mobile S25 Ultra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Global Music Player (Hidden Audio Element) -->
+    <audio id="globalAudio"></audio>
+
+    <!-- Smartphone Frame -->
+    <div class="smartphone-frame">
+        <!-- Background Video Wallpaper - INSIDE the phone -->
+        <video id="backgroundVideo" autoplay muted loop playsinline>
+            <source src="" type="video/mp4">
+        </video>
+        <div class="background-overlay"></div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span id="currentTime">12:00</span>
+            </div>
+            <div class="status-center">
+                <div class="camera-cutout"></div>
+            </div>
+            <div class="status-right">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                <span class="battery-icon">98%</span>
+            </div>
+        </div>
+
+        <!-- Main Screen Content -->
+        <div class="screen-content" id="screenContent">
+            <!-- Loading Screen -->
+            <div class="app-window active" id="loadingScreen">
+                <div class="loading-container">
+                    <div class="loading-logo">EA</div>
+                    <div class="loading-text">NEXUS</div>
+                    <div class="loading-spinner"></div>
+                    <button class="skip-btn" id="skipBtn">Passer</button>
+                </div>
+            </div>
+
+            <!-- Portal (Welcome) -->
+            <div class="app-window" id="portal">
+                <div class="portal-content">
+                    <h1 class="portal-title">Bienvenue sur EA Mobile</h1>
+                    <p class="portal-description">Votre interface personnalisée pour explorer mes projets créatifs</p>
+                    <div class="notifications-container" id="notificationsContainer"></div>
+                </div>
+            </div>
+
+            <!-- Le Coin de l'Auteur -->
+            <div class="app-window" id="auteur">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Le Coin de l'Auteur</h2>
+                </div>
+                <div class="app-content author-profile">
+                    <div class="author-avatar">EA</div>
+                    <h3 class="author-name">Expert Auteur</h3>
+                    <p class="author-bio">Créateur passionné d'expériences interactives, d'animations ludiques et d'univers narratifs. Bienvenue dans mon espace créatif.</p>
+                    <div class="author-stats">
+                        <div class="stat"><span class="stat-value">15+</span><span class="stat-label">Projets</span></div>
+                        <div class="stat"><span class="stat-value">5</span><span class="stat-label">Catégories</span></div>
+                        <div class="stat"><span class="stat-value">∞</span><span class="stat-label">Créativité</span></div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-btn">LinkedIn</a>
+                        <a href="#" class="social-btn">GitHub</a>
+                        <a href="#" class="social-btn">Portfolio</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendrier -->
+            <div class="app-window" id="calendrier">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Calendrier</h2>
+                </div>
+                <div class="app-content calendar-view">
+                    <div class="calendar-header">
+                        <button id="prevMonth">←</button>
+                        <span id="currentMonth">Janvier 2025</span>
+                        <button id="nextMonth">→</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+            </div>
+
+            <!-- Casque (Music Player) -->
+            <div class="app-window" id="casque">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Musique</h2>
+                </div>
+                <div class="app-content music-player">
+                    <div class="album-art">
+                        <div class="album-placeholder">♫</div>
+                    </div>
+                    <h3 id="trackTitle">Sélectionner une musique</h3>
+                    <p id="trackArtist">EA Mobile</p>
+                    <div class="progress-bar">
+                        <input type="range" id="seekBar" min="0" max="100" value="0">
+                        <div class="time-display">
+                            <span id="currentTimeMusic">0:00</span>
+                            <span id="totalTime">0:00</span>
+                        </div>
+                    </div>
+                    <div class="music-controls">
+                        <button class="control-btn" id="prevBtn">⏮</button>
+                        <button class="control-btn play-btn" id="playBtn">▶</button>
+                        <button class="control-btn" id="nextBtn">⏭</button>
+                    </div>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" id="volumeBar" min="0" max="100" value="70">
+                    </div>
+                    <div class="playlist" id="playlistContainer"></div>
+                </div>
+            </div>
+
+            <!-- Fond d'écran -->
+            <div class="app-window" id="fondEcran">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Fond d'écran</h2>
+                </div>
+                <div class="app-content wallpaper-gallery" id="wallpaperGallery"></div>
+            </div>
+
+            <!-- Projets -->
+            <div class="app-window" id="projets">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Mes Projets</h2>
+                </div>
+                <div class="app-content projects-overview">
+                    <div class="project-categories" id="projectCategories"></div>
+                </div>
+            </div>
+
+            <!-- EA NEXUS (App Launcher) -->
+            <div class="app-window" id="eaNexus">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>EA NEXUS</h2>
+                </div>
+                <div class="app-content nexus-launcher">
+                    <div class="nexus-grid" id="nexusGrid"></div>
+                </div>
+            </div>
+
+            <!-- Anim'Connect -->
+            <div class="app-window" id="animConnect">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Anim'Connect</h2>
+                </div>
+                <div class="app-content whatsapp-layout">
+                    <div class="chat-list" id="chatList"></div>
+                </div>
+            </div>
+
+            <!-- Echo-Sphere -->
+            <div class="app-window" id="echoSphere">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Echo-Sphere</h2>
+                </div>
+                <div class="app-content social-feed" id="socialFeed"></div>
+            </div>
+
+            <!-- Arena -->
+            <div class="app-window" id="arena">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Arena</h2>
+                </div>
+                <div class="app-content gaming-hub" id="gamingHub"></div>
+            </div>
+
+            <!-- Adventures -->
+            <div class="app-window" id="adventures">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Adventures</h2>
+                </div>
+                <div class="app-content habit-tracker" id="habitTracker"></div>
+            </div>
+
+            <!-- Medias -->
+            <div class="app-window" id="medias">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Medias</h2>
+                </div>
+                <div class="app-content youtube-layout" id="youtubeLayout"></div>
+            </div>
+        </div>
+
+        <!-- Fixed Dock -->
+        <div class="dock">
+            <button class="dock-app" onclick="openApp('auteur')">
+                <span class="dock-icon">👤</span>
+                <span class="dock-label">Auteur</span>
+            </button>
+            <button class="dock-app" onclick="openApp('calendrier')">
+                <span class="dock-icon">📅</span>
+                <span class="dock-label">Calendrier</span>
+            </button>
+            <button class="dock-app" onclick="openApp('casque')">
+                <span class="dock-icon">🎧</span>
+                <span class="dock-label">Casque</span>
+            </button>
+            <button class="dock-app" onclick="openApp('fondEcran')">
+                <span class="dock-icon">🖼️</span>
+                <span class="dock-label">Fond</span>
+            </button>
+            <button class="dock-app" onclick="openApp('projets')">
+                <span class="dock-icon">📁</span>
+                <span class="dock-label">Projets</span>
+            </button>
+            <button class="dock-app" onclick="openApp('eaNexus')">
+                <span class="dock-icon">⚡</span>
+                <span class="dock-label">NEXUS</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

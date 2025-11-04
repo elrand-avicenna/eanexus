@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "type": "video",
+    "title": "Nexus",
+    "url": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/6tcu83ul_Nexus.mp4",
+    "poster": ""
+  },
+  {
+    "id": 2,
+    "type": "video",
+    "title": "Kajiit Mage Alchimiste",
+    "url": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/z97nb42w_Kajiit%20Mage%20Alchimiste.mp4",
+    "poster": ""
+  },
+  {
+    "id": 3,
+    "type": "video",
+    "title": "Cyber Haqueuse",
+    "url": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/hg05l3f8_Cyber%20Haqueuse.mp4",
+    "poster": ""
+  }
+]

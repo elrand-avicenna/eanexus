@@ -1,0 +1,21 @@
+{
+  "welcomeTitle": "Bienvenue sur EA Mobile",
+  "welcomeText": "Découvrez mes projets créatifs à travers une interface smartphone unique",
+  "notifications": [
+    {
+      "id": 1,
+      "title": "🎮 Nouveau projet Arena",
+      "summary": "Découvrez 'Battle Royale Legends', un nouveau jeu d'affrontement stratégique avec des mécaniques innovantes."
+    },
+    {
+      "id": 2,
+      "title": "📖 Histoire en vedette",
+      "summary": "'Le Royaume des Ombres' - Une épopée fantasy captivante maintenant disponible dans Echo-Sphere."
+    },
+    {
+      "id": 3,
+      "title": "🎭 Animation ludique",
+      "summary": "Nouveau concept d'animation interactive pour événements d'entreprise ajouté à Anim'Connect."
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "categories": [
+    {
+      "id": "animConnect",
+      "name": "Anim'Connect",
+      "icon": "🎭",
+      "summary": "Projets d'animation ludique pour événements et team building",
+      "items": [
+        {
+          "title": "Escape Game Entreprise",
+          "description": "Animation immersive pour renforcer la cohésion d'équipe",
+          "date": "Aujourd'hui",
+          "icon": "🔐"
+        },
+        {
+          "title": "Quiz Interactif Géant",
+          "description": "Jeu de questions-réponses avec buzzer connecté",
+          "date": "Hier",
+          "icon": "❓"
+        },
+        {
+          "title": "Rallye Photo Urbain",
+          "description": "Chasse au trésor moderne avec défis photo",
+          "date": "Il y a 2 jours",
+          "icon": "📸"
+        },
+        {
+          "title": "Murder Party",
+          "description": "Enquête policière immersive pour soirée événementielle",
+          "date": "Il y a 3 jours",
+          "icon": "🔍"
+        },
+        {
+          "title": "Olympiades Créatives",
+          "description": "Compétition ludique par équipes avec épreuves variées",
+          "date": "Il y a 1 semaine",
+          "icon": "🏆"
+        }
+      ]
+    },
+    {
+      "id": "echoSphere",
+      "name": "Echo-Sphere",
+      "icon": "📖",
+      "summary": "Histoires originales et univers narratifs immersifs",
+      "items": [
+        {
+          "title": "Le Royaume des Ombres",
+          "description": "Une épopée fantasy où un jeune héros doit affronter les forces obscures qui menacent son royaume. Magie, trahison et courage au rendez-vous.",
+          "date": "Il y a 2 jours",
+          "icon": "👑"
+        },
+        {
+          "title": "Chroniques Cyberpunk",
+          "description": "Dans une mégalopole futuriste, une hackeuse rebelle découvre un complot qui pourrait changer le destin de l'humanité.",
+          "date": "Il y a 5 jours",
+          "icon": "🤖"
+        },
+        {
+          "title": "Les Gardiens du Temps",
+          "description": "Voyage à travers les époques pour réparer les anomalies temporelles et préserver la ligne du temps.",
+          "date": "Il y a 1 semaine",
+          "icon": "⏰"
+        },
+        {
+          "title": "L'Archipel des Mystères",
+          "description": "Exploration d'îles légendaires regorgeant de trésors, de créatures mythiques et de secrets ancestraux.",
+          "date": "Il y a 2 semaines",
+          "icon": "🏝️"
+        }
+      ]
+    },
+    {
+      "id": "arena",
+      "name": "Arena",
+      "icon": "⚔️",
+      "summary": "Jeux d'affrontement compétitifs et stratégiques",
+      "items": [
+        {
+          "title": "Battle Royale Legends",
+          "description": "Affrontement stratégique en équipe",
+          "tag": "Action • Multijoueur",
+          "icon": "🎯"
+        },
+        {
+          "title": "Duel des Mages",
+          "description": "Combat de sorts en 1v1",
+          "tag": "Magie • PvP",
+          "icon": "✨"
+        },
+        {
+          "title": "Gladiateur Spatial",
+          "description": "Arène futuriste dans l'espace",
+          "tag": "Sci-Fi • Combat",
+          "icon": "🚀"
+        },
+        {
+          "title": "Tournoi des Champions",
+          "description": "Compétition d'élite mondiale",
+          "tag": "Esport • Stratégie",
+          "icon": "🏆"
+        },
+        {
+          "title": "Clash of Kingdoms",
+          "description": "Guerre de territoires médiévale",
+          "tag": "Medieval • Tactique",
+          "icon": "🏰"
+        },
+        {
+          "title": "Cyber Arena 2077",
+          "description": "Arène cyberpunk avec augmentations",
+          "tag": "Cyberpunk • FPS",
+          "icon": "🎮"
+        }
+      ]
+    },
+    {
+      "id": "adventures",
+      "name": "Adventures",
+      "icon": "🗺️",
+      "summary": "Jeux d'aventure et d'exploration narrative",
+      "items": [
+        {
+          "title": "Quête du Dragon Ancestral",
+          "description": "Exploration d'un monde fantasy épique",
+          "progress": "7/10",
+          "icon": "🐉"
+        },
+        {
+          "title": "Voyage dans les Étoiles",
+          "description": "Découverte de planètes inexplorées",
+          "progress": "5/10",
+          "icon": "🌟"
+        },
+        {
+          "title": "Le Trésor des Pirates",
+          "description": "Aventure maritime et chasse au trésor",
+          "progress": "8/10",
+          "icon": "🏴‍☠️"
+        },
+        {
+          "title": "Mystères de la Pyramide",
+          "description": "Exploration archéologique en Égypte",
+          "progress": "3/10",
+          "icon": "🔺"
+        },
+        {
+          "title": "Expédition Amazonienne",
+          "description": "Survie et découvertes dans la jungle",
+          "progress": "6/10",
+          "icon": "🌴"
+        }
+      ]
+    },
+    {
+      "id": "medias",
+      "name": "Medias",
+      "icon": "🎬",
+      "summary": "Vidéos et créations musicales originales",
+      "items": [
+        {
+          "title": "Making-of Royaume des Ombres",
+          "description": "Coulisses de la création d'une épopée fantasy",
+          "views": "2.4k",
+          "date": "Il y a 3 jours",
+          "icon": "🎥"
+        },
+        {
+          "title": "Compilation Musiques Épiques",
+          "description": "1 heure de compositions orchestrales originales",
+          "views": "5.8k",
+          "date": "Il y a 1 semaine",
+          "icon": "🎵"
+        },
+        {
+          "title": "Tutoriel Game Design",
+          "description": "Créer un système de combat équilibré",
+          "views": "1.2k",
+          "date": "Il y a 2 semaines",
+          "icon": "📚"
+        },
+        {
+          "title": "Ambiances Cyberpunk - Mix",
+          "description": "Playlist synthwave et musique futuriste",
+          "views": "3.6k",
+          "date": "Il y a 3 semaines",
+          "icon": "🎧"
+        },
+        {
+          "title": "Dev Log - Arena Project",
+          "description": "Journal de développement d'un jeu d'affrontement",
+          "views": "890",
+          "date": "Il y a 1 mois",
+          "icon": "💻"
+        }
+      ]
+    }
+  ]
+}
