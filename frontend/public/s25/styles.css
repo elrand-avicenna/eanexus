@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     opacity: 0.8;
 }
 
-.settings-icon {
+.settings-icon, .notifications-icon {
     background: none;
     border: none;
     cursor: pointer;
@@ -109,12 +109,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     transition: all 0.3s;
 }
 
-.settings-icon:hover {
+.settings-icon:hover, .notifications-icon:hover {
     background: rgba(255,255,255,0.2);
     transform: scale(1.1);
 }
 
-.settings-icon svg {
+.settings-icon svg, .notifications-icon svg {
     display: block;
 }
 
