@@ -103,21 +103,16 @@
                     <button class="back-btn" onclick="closeApp()">←</button>
                     <h2>Le Coin de l'Auteur</h2>
                 </div>
-                <div class="app-content author-profile">
-                    <div class="author-avatar">EA</div>
-                    <h3 class="author-name">Expert Auteur</h3>
-                    <p class="author-bio">Créateur passionné d'expériences interactives, d'animations ludiques et d'univers narratifs. Bienvenue dans mon espace créatif.</p>
-                    <div class="author-stats">
-                        <div class="stat"><span class="stat-value">15+</span><span class="stat-label">Projets</span></div>
-                        <div class="stat"><span class="stat-value">5</span><span class="stat-label">Catégories</span></div>
-                        <div class="stat"><span class="stat-value">∞</span><span class="stat-label">Créativité</span></div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-btn">LinkedIn</a>
-                        <a href="#" class="social-btn">GitHub</a>
-                        <a href="#" class="social-btn">Portfolio</a>
-                    </div>
+                <div class="app-content characters-gallery" id="charactersGallery"></div>
+            </div>
+
+            <!-- Character Detail Page -->
+            <div class="app-window" id="characterDetail">
+                <div class="app-header">
+                    <button class="back-btn" onclick="openApp('auteur')">←</button>
+                    <h2 id="characterDetailName">Personnage</h2>
                 </div>
+                <div class="app-content character-detail-content" id="characterDetailContent"></div>
             </div>
 
             <!-- Calendrier -->
