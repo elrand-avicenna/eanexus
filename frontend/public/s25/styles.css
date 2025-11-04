@@ -114,6 +114,10 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     transform: scale(1.1);
 }
 
+.settings-icon.active, .notifications-icon.active {
+    background: rgba(255,255,255,0.3);
+}
+
 .settings-icon svg, .notifications-icon svg {
     display: block;
 }
