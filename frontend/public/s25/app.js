@@ -424,6 +424,9 @@ function renderCategoryApps(data) {
             case 'medias':
                 renderMedias(category);
                 break;
+            case 'eaCenter':
+                renderEaCenter(category);
+                break;
         }
     });
 }
