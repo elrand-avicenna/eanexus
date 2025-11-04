@@ -152,12 +152,68 @@ window.closeApp = closeApp;
 // Portal
 function renderPortal(data) {
     const container = document.getElementById('notificationsContainer');
-    container.innerHTML = data.notifications.map(notif => `
+    
+    // Generate dynamic notifications based on time and events
+    const dynamicNotifications = generateDynamicNotifications();
+    
+    // Combine static and dynamic notifications
+    const allNotifications = [...dynamicNotifications, ...data.notifications];
+    
+    container.innerHTML = allNotifications.map(notif => `
         <div class="notification-card">
             <div class="notification-title">${notif.title}</div>
             <div class="notification-summary">${notif.summary}</div>
         </div>
     `).join('');
+}
+
+function generateDynamicNotifications() {
+    const now = new Date();
+    const hour = now.getHours();
+    const notifications = [];
+    
+    // Time-based notifications from characters
+    if (hour >= 6 && hour < 12) {
+        notifications.push({
+            title: "☀️ Bonjour de Luna Artisan",
+            summary: "Bonne matinée ! Prêt à créer quelque chose de magnifique aujourd'hui ? Je viens de terminer de nouveaux concepts visuels !"
+        });
+    } else if (hour >= 12 && hour < 18) {
+        notifications.push({
+            title: "🌤️ Message d'Aria CodeWeaver",
+            summary: "L'après-midi est parfait pour coder ! J'ai optimisé quelques fonctionnalités du système. Viens voir les améliorations !"
+        });
+    } else if (hour >= 18 && hour < 22) {
+        notifications.push({
+            title: "🌆 Kael Storyforge vous salue",
+            summary: "Bonsoir ! C'est le moment idéal pour l'inspiration créative. J'ai une nouvelle histoire à partager avec vous..."
+        });
+    } else {
+        notifications.push({
+            title: "🌙 Bonne nuit de Thorin Soundsmith",
+            summary: "La nuit est propice à la créativité musicale. J'ai composé une nouvelle mélodie apaisante pour vous."
+        });
+    }
+    
+    // Event-based notifications (upcoming events in next 3 days)
+    if (window.events) {
+        const upcomingEvents = window.events.filter(event => {
+            const eventDate = new Date(event.date);
+            const daysUntil = Math.ceil((eventDate - now) / (1000 * 60 * 60 * 24));
+            return daysUntil >= 0 && daysUntil <= 3;
+        });
+        
+        upcomingEvents.slice(0, 2).forEach(event => {
+            const character = characters.find(c => c.id === event.characterId);
+            const characterName = character ? character.name : event.characterName;
+            notifications.push({
+                title: `📅 ${characterName} : Événement proche`,
+                summary: `${event.title} - ${event.description.substring(0, 100)}...`
+            });
+        });
+    }
+    
+    return notifications;
 }
 
 // Calendar
