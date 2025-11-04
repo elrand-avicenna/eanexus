@@ -745,10 +745,12 @@ body {
     display: flex;
     gap: 15px;
     align-items: center;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
 }
 
 .chat-item:hover {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.15);
 }
 
 .chat-avatar {
