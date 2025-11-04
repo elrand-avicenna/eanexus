@@ -3,7 +3,9 @@ let currentApp = 'loadingScreen';
 let musicPlayer = {
     currentTrack: 0,
     isPlaying: false,
-    playlist: []
+    playlist: [],
+    repeatMode: false,
+    shuffleMode: false
 };
 let wallpapers = [];
 let currentWallpaper = 0;
