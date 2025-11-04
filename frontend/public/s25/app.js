@@ -5,7 +5,8 @@ let musicPlayer = {
     isPlaying: false,
     playlist: [],
     repeatMode: false,
-    shuffleMode: false
+    shuffleMode: false,
+    sequentialMode: true  // Active par défaut
 };
 let wallpapers = [];
 let currentWallpaper = 0;
