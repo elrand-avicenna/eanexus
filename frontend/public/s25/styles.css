@@ -227,13 +227,15 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .portal-description {
     font-size: 16px;
-    color: #aaa;
+    color: #fff;
     margin-bottom: 40px;
     line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .notifications-container {
@@ -243,9 +245,8 @@ body {
 }
 
 .notification-card {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 15px;
     padding: 20px;
     text-align: left;
