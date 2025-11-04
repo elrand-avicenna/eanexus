@@ -61,6 +61,12 @@ async function loadData() {
         // Load Portal Data
         const portalResponse = await fetch('data/portal.json');
         const portalData = await portalResponse.json();
+        
+        // Load Events
+        const eventsResponse = await fetch('data/events.json');
+        window.events = await eventsResponse.json();
+        
+        // Generate dynamic notifications with events
         renderPortal(portalData);
 
         // Load Wallpapers
