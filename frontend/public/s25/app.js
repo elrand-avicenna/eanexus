@@ -1272,9 +1272,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
 });
 
-// Characters data
-let characters = [];
-
 // Load Characters
 async function loadCharacters() {
     try {
