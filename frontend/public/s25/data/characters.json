@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Aria Stormwind",
+    "title": "Gardienne des Éléments",
+    "avatar": "🌪️",
+    "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    "bio": "Aria maîtrise les forces de la nature et protège l'équilibre entre les éléments. Son pouvoir lui permet de contrôler le vent, l'eau et la foudre.",
+    "stats": {
+      "Puissance": 85,
+      "Sagesse": 92,
+      "Agilité": 78
+    },
+    "skills": ["Manipulation des vents", "Invocation d'orage", "Bouclier élémentaire"]
+  },
+  {
+    "id": 2,
+    "name": "Kael Shadowblade",
+    "title": "Assassin des Ombres",
+    "avatar": "🗡️",
+    "background": "linear-gradient(135deg, #2d3436 0%, #000000 100%)",
+    "bio": "Maître de la discrétion et des techniques d'infiltration, Kael évolue dans l'ombre pour accomplir ses missions avec une précision mortelle.",
+    "stats": {
+      "Puissance": 75,
+      "Sagesse": 70,
+      "Agilité": 95
+    },
+    "skills": ["Furtivité absolue", "Lames empoisonnées", "Téléportation d'ombre"]
+  },
+  {
+    "id": 3,
+    "name": "Luna Starweaver",
+    "title": "Tisseuse de Destinées",
+    "avatar": "✨",
+    "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "bio": "Luna possède le don rare de lire et d'influencer les fils du destin. Ses visions lui permettent d'anticiper l'avenir et de guider les héros.",
+    "stats": {
+      "Puissance": 60,
+      "Sagesse": 98,
+      "Agilité": 65
+    },
+    "skills": ["Vision prophétique", "Manipulation du destin", "Aura de chance"]
+  },
+  {
+    "id": 4,
+    "name": "Thorin Ironheart",
+    "title": "Gardien de la Forge",
+    "avatar": "⚒️",
+    "background": "linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%)",
+    "bio": "Forgeron légendaire et guerrier intrépide, Thorin crée des armes enchantées et défend son peuple avec une détermination inébranlable.",
+    "stats": {
+      "Puissance": 95,
+      "Sagesse": 75,
+      "Agilité": 55
+    },
+    "skills": ["Forge mystique", "Résistance de fer", "Frappe dévastatrice"]
+  },
+  {
+    "id": 5,
+    "name": "Zephyr Nova",
+    "title": "Explorateur Galactique",
+    "avatar": "🚀",
+    "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    "bio": "Pilote d'élite et explorateur des confins de l'espace, Zephyr découvre de nouvelles civilisations et repousse les frontières de l'inconnu.",
+    "stats": {
+      "Puissance": 70,
+      "Sagesse": 88,
+      "Agilité": 90
+    },
+    "skills": ["Navigation stellaire", "Technologies avancées", "Combat spatial"]
+  },
+  {
+    "id": 6,
+    "name": "Raven Nightwhisper",
+    "title": "Maîtresse des Secrets",
+    "avatar": "🦉",
+    "background": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+    "bio": "Raven collectionne les secrets et les informations précieuses. Son réseau d'espions s'étend à travers tous les royaumes.",
+    "stats": {
+      "Puissance": 55,
+      "Sagesse": 94,
+      "Agilité": 82
+    },
+    "skills": ["Réseau d'espionnage", "Déchiffrage", "Manipulation mentale"]
+  },
+  {
+    "id": 7,
+    "name": "Blaze Fireheart",
+    "title": "Pyromancien Suprême",
+    "avatar": "🔥",
+    "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+    "bio": "Maître absolu des flammes, Blaze peut invoquer des tempêtes de feu et contrôler la température avec une précision parfaite.",
+    "stats": {
+      "Puissance": 92,
+      "Sagesse": 68,
+      "Agilité": 75
+    },
+    "skills": ["Contrôle du feu", "Météore enflammé", "Régénération par les flammes"]
+  },
+  {
+    "id": 8,
+    "name": "Iris Dreamwalker",
+    "title": "Voyageuse des Songes",
+    "avatar": "🌙",
+    "background": "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
+    "bio": "Iris peut entrer dans les rêves et naviguer entre les dimensions oniriques. Elle aide les âmes perdues et combat les cauchemars.",
+    "stats": {
+      "Puissance": 65,
+      "Sagesse": 90,
+      "Agilité": 80
+    },
+    "skills": ["Marche onirique", "Création de songes", "Banissement des cauchemars"]
+  },
+  {
+    "id": 9,
+    "name": "Titan Stoneguard",
+    "title": "Protecteur Ancestral",
+    "avatar": "🛡️",
+    "background": "linear-gradient(135deg, #868f96 0%, #596164 100%)",
+    "bio": "Géant de pierre millénaire, Titan est le gardien immuable de terres sacrées. Sa force et sa résistance sont légendaires.",
+    "stats": {
+      "Puissance": 98,
+      "Sagesse": 85,
+      "Agilité": 45
+    },
+    "skills": ["Peau de pierre", "Frappe sismique", "Mur indestructible"]
+  },
+  {
+    "id": 10,
+    "name": "Lyra Songbird",
+    "title": "Chanteuse Enchanteresse",
+    "avatar": "🎵",
+    "background": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+    "bio": "La voix de Lyra possède un pouvoir magique capable de soigner, d'inspirer ou de charmer. Ses mélodies sont connues dans tout le royaume.",
+    "stats": {
+      "Puissance": 50,
+      "Sagesse": 87,
+      "Agilité": 70
+    },
+    "skills": ["Chant de guérison", "Mélodie de courage", "Charme vocal"]
+  }
+]
