@@ -507,8 +507,24 @@ function initializeTextColorPicker() {
 }
 
 function applyTextColor(color) {
+    // Apply to all text elements
     document.documentElement.style.setProperty('--text-color', color);
     document.body.style.color = color;
+    
+    // Apply specifically to portal/notification elements
+    const portalElements = document.querySelectorAll('.portal-title, .portal-description, .notification-title, .notification-summary, .notification-card');
+    portalElements.forEach(el => {
+        el.style.color = color;
+    });
+    
+    // Apply to all text elements throughout the app
+    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, a, div, label');
+    textElements.forEach(el => {
+        // Don't override gradient text (like portal title)
+        if (!el.classList.contains('portal-title') && !el.style.backgroundClip) {
+            el.style.color = color;
+        }
+    });
 }
 
 function resetTextColor() {
