@@ -115,6 +115,24 @@
                 <div class="app-content character-detail-content" id="characterDetailContent"></div>
             </div>
 
+            <!-- Chat Page -->
+            <div class="app-window" id="chat">
+                <div class="app-header">
+                    <button class="back-btn" onclick="backToCharacter()">←</button>
+                    <div class="chat-header-info">
+                        <div class="chat-header-avatar" id="chatHeaderAvatar"></div>
+                        <h2 id="chatHeaderName">Chat</h2>
+                    </div>
+                </div>
+                <div class="app-content chat-content">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Écrire un message..." />
+                        <button class="send-btn" onclick="sendMessage()">📤</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Calendrier -->
             <div class="app-window" id="calendrier">
                 <div class="app-header">
