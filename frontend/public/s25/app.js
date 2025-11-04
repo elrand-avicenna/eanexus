@@ -255,8 +255,15 @@ function initializeMusicPlayer() {
             audio.currentTime = 0;
             audio.play();
         } else {
-            // Move to next track
+            // Move to next track and play automatically
+            const wasPlaying = musicPlayer.isPlaying;
             changeTrack(1);
+            if (wasPlaying) {
+                // Force play after track change
+                setTimeout(() => {
+                    audio.play().catch(err => console.log('Auto-play error:', err));
+                }, 100);
+            }
         }
     });
 
