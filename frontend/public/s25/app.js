@@ -351,28 +351,40 @@ function formatTime(seconds) {
 }
 
 // Playback Mode Controls
-function toggleRepeat() {
-    musicPlayer.repeatMode = !musicPlayer.repeatMode;
-    const btn = document.getElementById('repeatBtn');
-    btn.classList.toggle('active');
+function toggleSequential() {
+    // Activate sequential mode, deactivate others
+    musicPlayer.sequentialMode = true;
+    musicPlayer.repeatMode = false;
+    musicPlayer.shuffleMode = false;
     
-    // Disable shuffle if repeat is enabled
-    if (musicPlayer.repeatMode && musicPlayer.shuffleMode) {
-        toggleShuffle();
-    }
+    document.getElementById('sequentialBtn').classList.add('active');
+    document.getElementById('repeatBtn').classList.remove('active');
+    document.getElementById('shuffleBtn').classList.remove('active');
+}
+
+function toggleRepeat() {
+    // Activate repeat mode, deactivate others
+    musicPlayer.repeatMode = true;
+    musicPlayer.sequentialMode = false;
+    musicPlayer.shuffleMode = false;
+    
+    document.getElementById('repeatBtn').classList.add('active');
+    document.getElementById('sequentialBtn').classList.remove('active');
+    document.getElementById('shuffleBtn').classList.remove('active');
 }
 
 function toggleShuffle() {
-    musicPlayer.shuffleMode = !musicPlayer.shuffleMode;
-    const btn = document.getElementById('shuffleBtn');
-    btn.classList.toggle('active');
+    // Activate shuffle mode, deactivate others
+    musicPlayer.shuffleMode = true;
+    musicPlayer.sequentialMode = false;
+    musicPlayer.repeatMode = false;
     
-    // Disable repeat if shuffle is enabled
-    if (musicPlayer.shuffleMode && musicPlayer.repeatMode) {
-        toggleRepeat();
-    }
+    document.getElementById('shuffleBtn').classList.add('active');
+    document.getElementById('sequentialBtn').classList.remove('active');
+    document.getElementById('repeatBtn').classList.remove('active');
 }
 
+window.toggleSequential = toggleSequential;
 window.toggleRepeat = toggleRepeat;
 window.toggleShuffle = toggleShuffle;
 
