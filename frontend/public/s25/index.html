@@ -55,7 +55,35 @@
                 </div>
             </div>
 
-            <!-- Portal (Welcome) -->
+            <!-- Home (Page d'accueil) -->
+            <div class="app-window active" id="home">
+                <div class="home-content">
+                    <div class="home-welcome">
+                        <h1 class="home-title">EA Mobile</h1>
+                        <p class="home-subtitle">Interface Samsung S25 Ultra</p>
+                    </div>
+                    <div class="home-grid">
+                        <button class="home-card" onclick="openApp('portal')">
+                            <span class="home-card-icon">🔔</span>
+                            <span class="home-card-label">Notifications</span>
+                        </button>
+                        <button class="home-card" onclick="openApp('parametres')">
+                            <span class="home-card-icon">⚙️</span>
+                            <span class="home-card-label">Paramètres</span>
+                        </button>
+                        <button class="home-card" onclick="openApp('calendrier')">
+                            <span class="home-card-icon">📅</span>
+                            <span class="home-card-label">Calendrier</span>
+                        </button>
+                        <button class="home-card" onclick="openApp('eaNexus')">
+                            <span class="home-card-icon">⚡</span>
+                            <span class="home-card-label">EA NEXUS</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portal (Notifications) -->
             <div class="app-window" id="portal">
                 <div class="portal-content">
                     <h1 class="portal-title">Bienvenue sur EA Mobile</h1>
