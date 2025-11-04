@@ -250,7 +250,14 @@ function initializeMusicPlayer() {
     });
 
     audio.addEventListener('ended', () => {
-        changeTrack(1);
+        if (musicPlayer.repeatMode) {
+            // Repeat current track
+            audio.currentTime = 0;
+            audio.play();
+        } else {
+            // Move to next track
+            changeTrack(1);
+        }
     });
 
     // Set initial volume
