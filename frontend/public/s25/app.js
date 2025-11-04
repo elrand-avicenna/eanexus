@@ -59,13 +59,17 @@ function initializeTime() {
 // Load All Data
 async function loadData() {
     try {
+        // Load Events first
+        const eventsResponse = await fetch('data/events.json');
+        events = await eventsResponse.json();
+        window.events = events;
+        
+        // Load Characters
+        await loadCharacters();
+        
         // Load Portal Data
         const portalResponse = await fetch('data/portal.json');
         const portalData = await portalResponse.json();
-        
-        // Load Events
-        const eventsResponse = await fetch('data/events.json');
-        window.events = await eventsResponse.json();
         
         // Generate dynamic notifications with events
         renderPortal(portalData);
@@ -88,8 +92,8 @@ async function loadData() {
         renderNexusApps(projectsData);
         renderCategoryApps(projectsData);
         
-        // Load Characters
-        await loadCharacters();
+        // Initialize calendar after events are loaded
+        initializeCalendar();
     } catch (error) {
         console.error('Error loading data:', error);
     }
