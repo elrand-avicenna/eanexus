@@ -321,10 +321,14 @@ function changeTrack(direction) {
     const wasPlaying = musicPlayer.isPlaying;
     
     if (musicPlayer.shuffleMode && direction > 0) {
-        // Random next track
-        const randomIndex = Math.floor(Math.random() * musicPlayer.playlist.length);
+        // Random next track (shuffle mode)
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * musicPlayer.playlist.length);
+        } while (randomIndex === musicPlayer.currentTrack && musicPlayer.playlist.length > 1);
         musicPlayer.currentTrack = randomIndex;
     } else {
+        // Sequential mode (normal or backward)
         musicPlayer.currentTrack += direction;
         if (musicPlayer.currentTrack < 0) {
             musicPlayer.currentTrack = musicPlayer.playlist.length - 1;
