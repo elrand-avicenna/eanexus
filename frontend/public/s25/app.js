@@ -487,3 +487,186 @@ function renderMedias(category) {
         `).join('') + 
     '</div>';
 }
+
+// ===== SETTINGS PAGE FUNCTIONS =====
+
+// Text Color
+function initializeTextColorPicker() {
+    const colorPicker = document.getElementById('textColorPicker');
+    const savedColor = localStorage.getItem('textColor');
+    
+    if (savedColor) {
+        colorPicker.value = savedColor;
+        applyTextColor(savedColor);
+    }
+    
+    colorPicker.addEventListener('change', (e) => {
+        applyTextColor(e.target.value);
+        localStorage.setItem('textColor', e.target.value);
+    });
+}
+
+function applyTextColor(color) {
+    document.documentElement.style.setProperty('--text-color', color);
+    document.body.style.color = color;
+}
+
+function resetTextColor() {
+    const defaultColor = '#ffffff';
+    document.getElementById('textColorPicker').value = defaultColor;
+    applyTextColor(defaultColor);
+    localStorage.removeItem('textColor');
+}
+
+// Wallpaper Settings
+function renderWallpaperSettings() {
+    const container = document.getElementById('wallpaperSettings');
+    container.innerHTML = wallpapers.map((wallpaper, index) => `
+        <div class="wallpaper-option ${index === currentWallpaper ? 'active' : ''}" onclick="selectWallpaperFromSettings(${index})">
+            <input type="radio" name="wallpaper" id="wallpaper${index}" ${index === currentWallpaper ? 'checked' : ''}>
+            <label for="wallpaper${index}">${wallpaper.title}</label>
+        </div>
+    `).join('');
+}
+
+function selectWallpaperFromSettings(index) {
+    setWallpaper(index);
+    renderWallpaperSettings();
+}
+
+// Video Controls
+let videoPlaying = true;
+
+function toggleVideoPlayback() {
+    const video = document.getElementById('backgroundVideo');
+    const btn = document.getElementById('videoPlayBtn');
+    
+    if (videoPlaying) {
+        video.pause();
+        btn.textContent = '▶️ Play';
+        videoPlaying = false;
+    } else {
+        video.play();
+        btn.textContent = '⏸️ Pause';
+        videoPlaying = true;
+    }
+}
+
+function stopVideo() {
+    const video = document.getElementById('backgroundVideo');
+    const btn = document.getElementById('videoPlayBtn');
+    video.pause();
+    video.currentTime = 0;
+    btn.textContent = '▶️ Play';
+    videoPlaying = false;
+}
+
+// Music Controls for Settings
+function renderPlaylistSettings() {
+    const container = document.getElementById('playlistSettings');
+    container.innerHTML = musicPlayer.playlist.map((track, index) => `
+        <div class="playlist-item-settings ${index === musicPlayer.currentTrack ? 'active' : ''}" 
+             onclick="selectTrackFromSettings(${index})">
+            <div class="playlist-icon">♫</div>
+            <div class="playlist-info">
+                <h4>${track.title}</h4>
+                <p>${track.artist}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+function selectTrackFromSettings(index) {
+    selectTrack(index);
+    updateSettingsMusicInfo();
+    renderPlaylistSettings();
+}
+
+function toggleMusicPlayback() {
+    const btn = document.getElementById('settingsPlayBtn');
+    
+    if (!audio.src) {
+        loadTrack();
+    }
+
+    if (musicPlayer.isPlaying) {
+        audio.pause();
+        btn.textContent = '▶️ Play';
+        musicPlayer.isPlaying = false;
+    } else {
+        audio.play();
+        btn.textContent = '⏸️ Pause';
+        musicPlayer.isPlaying = true;
+    }
+    updateSettingsMusicInfo();
+}
+
+function pauseMusic() {
+    audio.pause();
+    document.getElementById('settingsPlayBtn').textContent = '▶️ Play';
+    musicPlayer.isPlaying = false;
+}
+
+function stopMusic() {
+    audio.pause();
+    audio.currentTime = 0;
+    document.getElementById('settingsPlayBtn').textContent = '▶️ Play';
+    musicPlayer.isPlaying = false;
+    updateSettingsMusicInfo();
+}
+
+function updateSettingsMusicInfo() {
+    if (musicPlayer.playlist.length > 0) {
+        const track = musicPlayer.playlist[musicPlayer.currentTrack];
+        document.getElementById('settingsTrackTitle').textContent = track.title;
+        document.getElementById('settingsTrackArtist').textContent = track.artist;
+    }
+}
+
+// Settings seek bar
+function initializeSettingsSeekBar() {
+    const seekBar = document.getElementById('settingsSeekBar');
+    
+    seekBar.addEventListener('input', (e) => {
+        const time = (audio.duration * e.target.value) / 100;
+        audio.currentTime = time;
+    });
+    
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            seekBar.value = progress;
+            document.getElementById('settingsCurrentTime').textContent = formatTime(audio.currentTime);
+            document.getElementById('settingsTotalTime').textContent = formatTime(audio.duration);
+        }
+    });
+}
+
+// Settings volume bar
+function initializeSettingsVolumeBar() {
+    const volumeBar = document.getElementById('settingsVolumeBar');
+    volumeBar.value = 70;
+    
+    volumeBar.addEventListener('input', (e) => {
+        audio.volume = e.target.value / 100;
+    });
+}
+
+// Initialize settings when app opens
+window.addEventListener('DOMContentLoaded', () => {
+    initializeTime();
+    loadData();
+    initializeLoading();
+    initializeCalendar();
+    initializeMusicPlayer();
+    initializeTextColorPicker();
+    initializeSettingsSeekBar();
+    initializeSettingsVolumeBar();
+    
+    // Render settings components after data is loaded
+    setTimeout(() => {
+        renderWallpaperSettings();
+        renderPlaylistSettings();
+        updateSettingsMusicInfo();
+    }, 500);
+});
