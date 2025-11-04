@@ -1169,6 +1169,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     display: flex;
     gap: 10px;
     margin-top: 15px;
+    justify-content: center;
 }
 
 /* Music Player Settings */
