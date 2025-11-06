@@ -68,6 +68,11 @@
                     <button class="modal-close-btn" onclick="closeCommanderMessage()">✕</button>
                 </div>
                 <div class="commander-body">
+                    <div class="message-navigation">
+                        <button class="nav-message-btn" id="prevMessageBtn" onclick="prevCommanderMessage()">◀</button>
+                        <span class="message-counter">Message 1/2</span>
+                        <button class="nav-message-btn" id="nextMessageBtn" onclick="nextCommanderMessage()">▶</button>
+                    </div>
                     <div class="audio-message-title" id="audioMessageTitle">Briefing d'infiltration</div>
                     <div class="audio-player-container">
                         <audio id="commanderAudio"></audio>
