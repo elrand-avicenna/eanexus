@@ -73,9 +73,14 @@ function showPrologueIntro() {
         <div class="prologue-title">HOURGLASS PROJECT</div>
         <div class="prologue-year">AN ${prologueData.year}</div>
         <div id="contextTexts"></div>
-        <button class="continue-btn" onclick="showMissionBriefing()" style="display: none;" id="continueBtn">
-            Continuer →
-        </button>
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button class="continue-btn" onclick="showMissionBriefing()" style="display: none;" id="continueBtn">
+                Continuer →
+            </button>
+            <button class="skip-btn" onclick="showMissionBriefing()" style="display: block;">
+                Passer l'intro
+            </button>
+        </div>
     `;
     
     // Animate context texts
@@ -90,7 +95,10 @@ function showPrologueIntro() {
             // Show continue button after last text
             if (index === prologueData.context.length - 1) {
                 setTimeout(() => {
-                    document.getElementById('continueBtn').style.display = 'block';
+                    const continueBtn = document.getElementById('continueBtn');
+                    if (continueBtn) {
+                        continueBtn.style.display = 'block';
+                    }
                 }, 1000);
             }
         }, index * 3000);
