@@ -1637,10 +1637,101 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 }
 
 .nexus-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nexus-accordion-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.nexus-accordion-header {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.nexus-accordion-header:hover {
+    background: rgba(0,0,0,0.3);
+}
+
+.nexus-header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nexus-icon {
+    font-size: 24px;
+}
+
+.nexus-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.nexus-accordion-icon {
+    font-size: 14px;
+    transition: transform 0.3s;
+    color: #888;
+}
+
+.nexus-accordion-item.active .nexus-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.nexus-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.nexus-accordion-item.active .nexus-accordion-content {
+    max-height: 300px;
+}
+
+.nexus-accordion-body {
+    padding: 0 15px 15px 15px;
+}
+
+.nexus-synopsis {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #ddd;
+    margin-bottom: 12px;
+}
+
+.nexus-meta {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.nexus-enter-btn {
+    width: 100%;
+    padding: 12px;
+    background: rgba(102, 126, 234, 0.3);
+    border: 1px solid #667eea;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nexus-enter-btn:hover {
+    background: #667eea;
+    transform: translateY(-2px);
 }
 
 .nexus-app {
