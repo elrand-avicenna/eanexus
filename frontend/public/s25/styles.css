@@ -72,6 +72,12 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
         border-radius: 0;
         border: none;
         padding-bottom: env(safe-area-inset-bottom);
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    .status-bar {
+        padding-top: env(safe-area-inset-top);
+        height: calc(40px + env(safe-area-inset-top));
     }
     
     .dock {
