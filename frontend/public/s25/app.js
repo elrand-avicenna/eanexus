@@ -255,9 +255,15 @@ function showFinalResult() {
 }
 
 function enterHourglassSociety() {
-    // Start the main loading sequence
+    // Show loading screen after passing prologue
     openApp('loadingScreen');
-    initializeLoading();
+    
+    // Initialize loading which will then go to Home
+    setTimeout(() => {
+        initializeLoading();
+    }, 100);
+    
+    // Load all data
     loadData();
     
     // Render settings components after data is loaded
