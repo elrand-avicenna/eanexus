@@ -1149,6 +1149,197 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     transform: scale(0.95);
 }
 
+/* Flash Page (Actualités) */
+.flash-content {
+    padding: 20px;
+}
+
+.flash-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.flash-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.flash-title {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.weather-widget {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.weather-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.weather-temp {
+    font-size: 24px;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.news-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-item {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid #667eea;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.news-item.urgent {
+    border-left-color: #ff4444;
+    animation: urgentFlash 2s infinite;
+}
+
+@keyframes urgentFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.news-item:hover {
+    background: rgba(0,0,0,0.5);
+    transform: translateX(5px);
+}
+
+.news-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.news-icon {
+    font-size: 28px;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.news-summary {
+    font-size: 13px;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.news-time {
+    font-size: 11px;
+    color: #888;
+    margin-left: auto;
+}
+
+/* Carte Page (Map) */
+.carte-content {
+    padding: 20px;
+}
+
+.map-container {
+    text-align: center;
+}
+
+.map-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.map-subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.map-zone {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.map-zone:hover {
+    background: rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+    transform: translateY(-5px);
+}
+
+.zone-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.zone-name {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.zone-info {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 100px;
+    display: none;
+}
+
+.zone-info.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+.zone-detail-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.zone-detail-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
 /* Calendar */
 .calendar-view {
     padding: 15px;
