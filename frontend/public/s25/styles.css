@@ -61,6 +61,32 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     border: 3px solid #333;
 }
 
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .smartphone-frame {
+        max-width: 100%;
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height */
+        max-height: 100vh;
+        max-height: 100dvh;
+        border-radius: 0;
+        border: none;
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .dock {
+        padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+    }
+    
+    body {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+    }
+}
+
 /* Status Bar */
 .status-bar {
     height: 40px;
