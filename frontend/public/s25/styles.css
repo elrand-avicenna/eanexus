@@ -283,6 +283,142 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 
 .commander-body {
     padding: 25px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.messages-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accordion-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.accordion-header {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.accordion-header:hover {
+    background: rgba(255,68,68,0.2);
+}
+
+.accordion-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    flex: 1;
+}
+
+.accordion-icon {
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 400px;
+}
+
+.accordion-body {
+    padding: 0 15px 15px 15px;
+}
+
+.message-timestamp {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.message-audio-player {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.message-audio-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.message-audio-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,68,68,0.3);
+    border: 1px solid #ff4444;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-audio-btn:hover {
+    background: #ff4444;
+}
+
+.message-audio-progress input[type="range"] {
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    outline: none;
+    background: rgba(255,255,255,0.2);
+    -webkit-appearance: none;
+    margin-bottom: 5px;
+}
+
+.message-audio-progress input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff4444;
+    cursor: pointer;
+}
+
+.message-audio-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #888;
+}
+
+.message-transcript {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #ff4444;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #ddd;
+    font-style: italic;
 }
 
 .message-navigation {
