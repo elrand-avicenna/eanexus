@@ -77,7 +77,7 @@ function showPrologueIntro() {
             <button class="continue-btn" onclick="showMissionBriefing()" style="display: none;" id="continueBtn">
                 Continuer →
             </button>
-            <button class="skip-btn" onclick="showMissionBriefing()" style="display: block;">
+            <button class="skip-btn" onclick="enterHourglassSociety()" style="display: block;">
                 Passer l'intro
             </button>
         </div>
