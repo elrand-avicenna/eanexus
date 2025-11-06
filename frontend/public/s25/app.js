@@ -960,7 +960,11 @@ function showCommanderModal() {
     const modal = document.getElementById('commanderModal');
     modal.classList.add('active');
     
-    // Load first unread message
+    // Display current message
+    displayCommanderMessage();
+}
+
+function displayCommanderMessage() {
     const message = commanderData.messages[currentCommanderMessage];
     
     document.getElementById('audioMessageTitle').textContent = message.title;
@@ -974,18 +978,59 @@ function showCommanderModal() {
     commanderPlaying = false;
     
     // Setup audio events
+    audio.removeEventListener('timeupdate', updateCommanderAudioProgress);
+    audio.removeEventListener('ended', onCommanderAudioEnded);
     audio.addEventListener('timeupdate', updateCommanderAudioProgress);
-    audio.addEventListener('ended', () => {
-        document.getElementById('audioPlayBtn').textContent = '▶️';
-        commanderPlaying = false;
-    });
+    audio.addEventListener('ended', onCommanderAudioEnded);
     
-    // Remove notification badge
-    const badge = document.querySelector('.notification-badge');
-    if (badge) {
-        badge.style.display = 'none';
+    // Update message counter
+    updateMessageCounter();
+}
+
+function onCommanderAudioEnded() {
+    document.getElementById('audioPlayBtn').textContent = '▶️';
+    commanderPlaying = false;
+}
+
+function updateMessageCounter() {
+    const counter = document.querySelector('.message-counter');
+    if (counter) {
+        counter.textContent = `Message ${currentCommanderMessage + 1}/${commanderData.messages.length}`;
+    }
+    
+    // Update navigation buttons
+    const prevBtn = document.getElementById('prevMessageBtn');
+    const nextBtn = document.getElementById('nextMessageBtn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentCommanderMessage === 0;
+        prevBtn.style.opacity = currentCommanderMessage === 0 ? '0.3' : '1';
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentCommanderMessage >= commanderData.messages.length - 1;
+        nextBtn.style.opacity = currentCommanderMessage >= commanderData.messages.length - 1 ? '0.3' : '1';
     }
 }
+
+function prevCommanderMessage() {
+    if (currentCommanderMessage > 0) {
+        stopCommanderAudio();
+        currentCommanderMessage--;
+        displayCommanderMessage();
+    }
+}
+
+function nextCommanderMessage() {
+    if (currentCommanderMessage < commanderData.messages.length - 1) {
+        stopCommanderAudio();
+        currentCommanderMessage++;
+        displayCommanderMessage();
+    }
+}
+
+window.prevCommanderMessage = prevCommanderMessage;
+window.nextCommanderMessage = nextCommanderMessage;
 
 function closeCommanderMessage() {
     const modal = document.getElementById('commanderModal');
