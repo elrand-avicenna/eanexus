@@ -960,77 +960,125 @@ function showCommanderModal() {
     const modal = document.getElementById('commanderModal');
     modal.classList.add('active');
     
-    // Display current message
-    displayCommanderMessage();
-}
-
-function displayCommanderMessage() {
-    const message = commanderData.messages[currentCommanderMessage];
+    // Display all messages as accordion
+    displayCommanderAccordion();
     
-    document.getElementById('audioMessageTitle').textContent = message.title;
-    document.getElementById('audioTranscript').textContent = message.transcript;
-    
-    const audio = document.getElementById('commanderAudio');
-    audio.src = message.audioUrl;
-    
-    // Reset audio controls
-    document.getElementById('audioPlayBtn').textContent = '▶️';
-    commanderPlaying = false;
-    
-    // Setup audio events
-    audio.removeEventListener('timeupdate', updateCommanderAudioProgress);
-    audio.removeEventListener('ended', onCommanderAudioEnded);
-    audio.addEventListener('timeupdate', updateCommanderAudioProgress);
-    audio.addEventListener('ended', onCommanderAudioEnded);
-    
-    // Update message counter
-    updateMessageCounter();
-}
-
-function onCommanderAudioEnded() {
-    document.getElementById('audioPlayBtn').textContent = '▶️';
-    commanderPlaying = false;
-}
-
-function updateMessageCounter() {
-    const counter = document.querySelector('.message-counter');
-    if (counter) {
-        counter.textContent = `Message ${currentCommanderMessage + 1}/${commanderData.messages.length}`;
-    }
-    
-    // Update navigation buttons
-    const prevBtn = document.getElementById('prevMessageBtn');
-    const nextBtn = document.getElementById('nextMessageBtn');
-    
-    if (prevBtn) {
-        prevBtn.disabled = currentCommanderMessage === 0;
-        prevBtn.style.opacity = currentCommanderMessage === 0 ? '0.3' : '1';
-    }
-    
-    if (nextBtn) {
-        nextBtn.disabled = currentCommanderMessage >= commanderData.messages.length - 1;
-        nextBtn.style.opacity = currentCommanderMessage >= commanderData.messages.length - 1 ? '0.3' : '1';
+    // Remove notification badge
+    const badge = document.querySelector('.notification-badge');
+    if (badge) {
+        badge.style.display = 'none';
     }
 }
 
-function prevCommanderMessage() {
-    if (currentCommanderMessage > 0) {
-        stopCommanderAudio();
-        currentCommanderMessage--;
-        displayCommanderMessage();
+function displayCommanderAccordion() {
+    const container = document.getElementById('messagesAccordion');
+    
+    container.innerHTML = commanderData.messages.map((message, index) => `
+        <div class="accordion-item" id="accordion-${index}">
+            <div class="accordion-header" onclick="toggleAccordion(${index})">
+                <span class="accordion-title">🔒 ${message.title}</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-body">
+                    <div class="message-timestamp">📅 ${message.timestamp}</div>
+                    <div class="message-audio-player">
+                        <div class="message-audio-controls">
+                            <button class="message-audio-btn" onclick="toggleMessageAudio(${index})">
+                                <span id="audioBtn-${index}">▶️</span>
+                            </button>
+                            <button class="message-audio-btn" onclick="stopMessageAudio(${index})">⏹️</button>
+                        </div>
+                        <div class="message-audio-progress">
+                            <input type="range" id="audioSeek-${index}" min="0" max="100" value="0">
+                            <div class="message-audio-time">
+                                <span id="audioTime-${index}">0:00</span>
+                                <span id="audioDuration-${index}">0:00</span>
+                            </div>
+                        </div>
+                        <audio id="audio-${index}" src="${message.audioUrl}"></audio>
+                    </div>
+                    <div class="message-transcript">${message.transcript}</div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Setup audio event listeners for all messages
+    commanderData.messages.forEach((message, index) => {
+        const audio = document.getElementById(`audio-${index}`);
+        const seekBar = document.getElementById(`audioSeek-${index}`);
+        
+        if (audio && seekBar) {
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    seekBar.value = progress;
+                    document.getElementById(`audioTime-${index}`).textContent = formatTime(audio.currentTime);
+                    document.getElementById(`audioDuration-${index}`).textContent = formatTime(audio.duration);
+                }
+            });
+            
+            audio.addEventListener('ended', () => {
+                document.getElementById(`audioBtn-${index}`).textContent = '▶️';
+            });
+            
+            seekBar.addEventListener('input', (e) => {
+                const time = (audio.duration * e.target.value) / 100;
+                audio.currentTime = time;
+            });
+        }
+    });
+}
+
+function toggleAccordion(index) {
+    const item = document.getElementById(`accordion-${index}`);
+    const wasActive = item.classList.contains('active');
+    
+    // Close all other accordions
+    document.querySelectorAll('.accordion-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Toggle current accordion
+    if (!wasActive) {
+        item.classList.add('active');
     }
 }
 
-function nextCommanderMessage() {
-    if (currentCommanderMessage < commanderData.messages.length - 1) {
-        stopCommanderAudio();
-        currentCommanderMessage++;
-        displayCommanderMessage();
+function toggleMessageAudio(index) {
+    const audio = document.getElementById(`audio-${index}`);
+    const btn = document.getElementById(`audioBtn-${index}`);
+    
+    if (audio.paused) {
+        // Pause all other audios
+        commanderData.messages.forEach((msg, i) => {
+            const otherAudio = document.getElementById(`audio-${i}`);
+            if (otherAudio && !otherAudio.paused) {
+                otherAudio.pause();
+                document.getElementById(`audioBtn-${i}`).textContent = '▶️';
+            }
+        });
+        
+        audio.play();
+        btn.textContent = '⏸️';
+    } else {
+        audio.pause();
+        btn.textContent = '▶️';
     }
 }
 
-window.prevCommanderMessage = prevCommanderMessage;
-window.nextCommanderMessage = nextCommanderMessage;
+function stopMessageAudio(index) {
+    const audio = document.getElementById(`audio-${index}`);
+    const btn = document.getElementById(`audioBtn-${index}`);
+    audio.pause();
+    audio.currentTime = 0;
+    btn.textContent = '▶️';
+}
+
+window.toggleAccordion = toggleAccordion;
+window.toggleMessageAudio = toggleMessageAudio;
+window.stopMessageAudio = stopMessageAudio;
 
 function closeCommanderMessage() {
     const modal = document.getElementById('commanderModal');
