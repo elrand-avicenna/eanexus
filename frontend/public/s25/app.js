@@ -1460,6 +1460,93 @@ function toggleProjectAccordion(itemId) {
 
 window.toggleProjectAccordion = toggleProjectAccordion;
 
+// ===== FLASH PAGE (Actualités) =====
+
+async function loadFlashNews() {
+    try {
+        const response = await fetch('data/flash.json');
+        const flashData = await response.json();
+        renderFlashNews(flashData);
+    } catch (error) {
+        console.error('Error loading flash news:', error);
+    }
+}
+
+function renderFlashNews(data) {
+    const container = document.getElementById('flashContent');
+    const now = new Date();
+    
+    container.innerHTML = `
+        <div class="flash-header">
+            <div class="flash-date">${now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+            <div class="flash-title">⚡ Flash Info</div>
+        </div>
+        
+        <div class="weather-widget">
+            <div class="weather-icon">${data.weatherForecast.icon}</div>
+            <div class="weather-temp">${data.weatherForecast.temperature}</div>
+            <div style="color: #888; font-size: 13px;">${data.weatherForecast.condition}</div>
+        </div>
+        
+        <div class="news-feed">
+            ${data.dailyNews.map(news => `
+                <div class="news-item ${news.urgent ? 'urgent' : ''}">
+                    <div class="news-header">
+                        <div class="news-icon">${news.icon}</div>
+                        <div class="news-content">
+                            <div class="news-title">${news.title}</div>
+                            <div class="news-summary">${news.summary}</div>
+                        </div>
+                        <div class="news-time">${news.time}</div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+// ===== CARTE PAGE (Map) =====
+
+const zoneDescriptions = {
+    nexus: {
+        title: "Nexus Central",
+        description: "Cœur névralgique de Hourglass Society. Centre de commandement et de coordination où toutes les décisions importantes sont prises. Accès réservé aux membres autorisés."
+    },
+    creative: {
+        title: "Zone Créative",
+        description: "Espace dédié aux arts et à la création. Studios d'animation, ateliers de design et salles d'écriture narrative. Luna et Kael y travaillent quotidiennement."
+    },
+    tech: {
+        title: "Hub Technologique",
+        description: "Laboratoires de développement et serveurs de calcul. Aria et Iris y conçoivent les systèmes les plus avancés de la société."
+    },
+    leisure: {
+        title: "Zone Loisirs",
+        description: "Arènes de jeux, espaces de détente et salles de projection. Le lieu préféré de Zephyr pour tester les nouveaux jeux d'affrontement."
+    },
+    archives: {
+        title: "Archives",
+        description: "Bibliothèque numérique contenant toutes les histoires, projets et tutoriels de la société. Gardée par Titan pour assurer la sécurité des données."
+    },
+    port: {
+        title: "Port d'Accès",
+        description: "Point d'entrée unique de l'île. C'est ici que vous avez été interrogé par NEXUS-PRIME lors de votre infiltration."
+    }
+};
+
+function showZoneInfo(zoneId) {
+    const infoContainer = document.getElementById('zoneInfo');
+    const zone = zoneDescriptions[zoneId];
+    
+    infoContainer.innerHTML = `
+        <div class="zone-detail-title">${zone.title}</div>
+        <div class="zone-detail-desc">${zone.description}</div>
+    `;
+    infoContainer.classList.add('active');
+}
+
+window.showZoneInfo = showZoneInfo;
+
 // ===== SETTINGS PAGE FUNCTIONS =====
 
 // Text Color
