@@ -1224,14 +1224,44 @@ window.openCategoryApp = openCategoryApp;
 // EA NEXUS
 function renderNexusApps(data) {
     const grid = document.getElementById('nexusGrid');
-    grid.innerHTML = data.categories.map(category => `
-        <div class="nexus-app" onclick="openCategoryApp('${category.id}')">
-            <div class="nexus-app-icon">${category.icon}</div>
-            <div class="nexus-app-name">${category.name}</div>
-            <div class="nexus-app-desc">${category.items.length} projets</div>
+    grid.innerHTML = data.categories.map((category, index) => `
+        <div class="nexus-accordion-item" id="nexus-accordion-${index}">
+            <div class="nexus-accordion-header" onclick="toggleNexusAccordion(${index})">
+                <div class="nexus-header-content">
+                    <span class="nexus-icon">${category.icon}</span>
+                    <span class="nexus-title">${category.name}</span>
+                </div>
+                <span class="nexus-accordion-icon">▼</span>
+            </div>
+            <div class="nexus-accordion-content">
+                <div class="nexus-accordion-body">
+                    <p class="nexus-synopsis">${category.summary}</p>
+                    <div class="nexus-meta">${category.items.length} projets disponibles</div>
+                    <button class="nexus-enter-btn" onclick="openCategoryApp('${category.id}')">
+                        Entrer →
+                    </button>
+                </div>
+            </div>
         </div>
     `).join('');
 }
+
+function toggleNexusAccordion(index) {
+    const item = document.getElementById(`nexus-accordion-${index}`);
+    const wasActive = item.classList.contains('active');
+    
+    // Close all other accordions
+    document.querySelectorAll('.nexus-accordion-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Toggle current accordion
+    if (!wasActive) {
+        item.classList.add('active');
+    }
+}
+
+window.toggleNexusAccordion = toggleNexusAccordion;
 
 // Category Apps
 function renderCategoryApps(data) {
