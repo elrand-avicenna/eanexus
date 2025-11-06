@@ -131,13 +131,72 @@
                 </div>
             </div>
 
-            <!-- Le Coin de l'Auteur -->
+            <!-- Le Coin de l'Auteur → Membres -->
+            <div class="app-window" id="membres">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Membres</h2>
+                </div>
+                <div class="app-content characters-gallery" id="charactersGallery"></div>
+            </div>
+
+            <!-- Flash (Actualités du jour) -->
+            <div class="app-window" id="flash">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Flash</h2>
+                </div>
+                <div class="app-content flash-content" id="flashContent"></div>
+            </div>
+
+            <!-- Carte (Map) -->
+            <div class="app-window" id="carte">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Carte</h2>
+                </div>
+                <div class="app-content carte-content">
+                    <div class="map-container">
+                        <div class="map-title">🗺️ Hourglass Society</div>
+                        <div class="map-subtitle">Île Secrète des Robots</div>
+                        <div class="map-grid">
+                            <div class="map-zone" onclick="showZoneInfo('nexus')">
+                                <div class="zone-icon">⚡</div>
+                                <div class="zone-name">Nexus Central</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('creative')">
+                                <div class="zone-icon">🎨</div>
+                                <div class="zone-name">Zone Créative</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('tech')">
+                                <div class="zone-icon">💻</div>
+                                <div class="zone-name">Hub Technologique</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('leisure')">
+                                <div class="zone-icon">🎮</div>
+                                <div class="zone-name">Zone Loisirs</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('archives')">
+                                <div class="zone-icon">📚</div>
+                                <div class="zone-name">Archives</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('port')">
+                                <div class="zone-icon">⚓</div>
+                                <div class="zone-name">Port d'Accès</div>
+                            </div>
+                        </div>
+                        <div class="zone-info" id="zoneInfo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Le Coin de l'Auteur (old - keep for ID compatibility) -->
             <div class="app-window" id="auteur">
                 <div class="app-header">
                     <button class="back-btn" onclick="closeApp()">←</button>
-                    <h2>Le Coin de l'Auteur</h2>
+                    <h2>Membres</h2>
                 </div>
-                <div class="app-content characters-gallery" id="charactersGallery"></div>
+                <div class="app-content characters-gallery" id="charactersGalleryOld"></div>
             </div>
 
             <!-- Character Detail Page -->
