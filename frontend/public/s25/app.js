@@ -928,6 +928,132 @@ window.openChat = openChat;
 window.sendMessage = sendMessage;
 window.backToCharacter = backToCharacter;
 
+// ===== COMMANDER MESSAGE SYSTEM =====
+
+let commanderData = null;
+let currentCommanderMessage = 0;
+const commanderAudio = document.getElementById('commanderAudio');
+let commanderPlaying = false;
+
+async function loadCommanderData() {
+    try {
+        const response = await fetch('data/commander.json');
+        commanderData = await response.json();
+    } catch (error) {
+        console.error('Error loading commander data:', error);
+    }
+}
+
+function openCommanderMessage() {
+    if (!commanderData) {
+        loadCommanderData().then(() => {
+            if (commanderData) {
+                showCommanderModal();
+            }
+        });
+    } else {
+        showCommanderModal();
+    }
+}
+
+function showCommanderModal() {
+    const modal = document.getElementById('commanderModal');
+    modal.classList.add('active');
+    
+    // Load first unread message
+    const message = commanderData.messages[currentCommanderMessage];
+    
+    document.getElementById('audioMessageTitle').textContent = message.title;
+    document.getElementById('audioTranscript').textContent = message.transcript;
+    
+    const audio = document.getElementById('commanderAudio');
+    audio.src = message.audioUrl;
+    
+    // Reset audio controls
+    document.getElementById('audioPlayBtn').textContent = '▶️';
+    commanderPlaying = false;
+    
+    // Setup audio events
+    audio.addEventListener('timeupdate', updateCommanderAudioProgress);
+    audio.addEventListener('ended', () => {
+        document.getElementById('audioPlayBtn').textContent = '▶️';
+        commanderPlaying = false;
+    });
+    
+    // Remove notification badge
+    const badge = document.querySelector('.notification-badge');
+    if (badge) {
+        badge.style.display = 'none';
+    }
+}
+
+function closeCommanderMessage() {
+    const modal = document.getElementById('commanderModal');
+    modal.classList.remove('active');
+    
+    // Stop audio
+    const audio = document.getElementById('commanderAudio');
+    audio.pause();
+    audio.currentTime = 0;
+    commanderPlaying = false;
+}
+
+function toggleCommanderAudio() {
+    const audio = document.getElementById('commanderAudio');
+    const btn = document.getElementById('audioPlayBtn');
+    
+    if (commanderPlaying) {
+        audio.pause();
+        btn.textContent = '▶️';
+        commanderPlaying = false;
+    } else {
+        audio.play();
+        btn.textContent = '⏸️';
+        commanderPlaying = true;
+    }
+}
+
+function stopCommanderAudio() {
+    const audio = document.getElementById('commanderAudio');
+    const btn = document.getElementById('audioPlayBtn');
+    audio.pause();
+    audio.currentTime = 0;
+    btn.textContent = '▶️';
+    commanderPlaying = false;
+}
+
+function updateCommanderAudioProgress() {
+    const audio = document.getElementById('commanderAudio');
+    if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        document.getElementById('audioSeek').value = progress;
+        document.getElementById('audioCurrent').textContent = formatTime(audio.currentTime);
+        document.getElementById('audioTotal').textContent = formatTime(audio.duration);
+    }
+}
+
+// Seek audio
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const seekBar = document.getElementById('audioSeek');
+        if (seekBar) {
+            seekBar.addEventListener('input', (e) => {
+                const audio = document.getElementById('commanderAudio');
+                const time = (audio.duration * e.target.value) / 100;
+                audio.currentTime = time;
+            });
+        }
+        
+        // Load commander data
+        loadCommanderData();
+    }, 500);
+});
+
+window.openCommanderMessage = openCommanderMessage;
+window.closeCommanderMessage = closeCommanderMessage;
+window.toggleCommanderAudio = toggleCommanderAudio;
+window.stopCommanderAudio = stopCommanderAudio;
+
 // Wallpapers
 function renderWallpapers() {
     const gallery = document.getElementById('wallpaperGallery');
