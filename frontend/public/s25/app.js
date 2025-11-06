@@ -1289,77 +1289,99 @@ function renderCategoryApps(data) {
     });
 }
 
-// Anim'Connect (WhatsApp-like)
+// Anim'Connect (WhatsApp-like avec accordéon)
 function renderAnimConnect(category) {
     const container = document.getElementById('chatList');
     container.innerHTML = category.items.map((item, index) => `
-        <div class="chat-item">
-            <div class="chat-avatar">${item.icon || '🎮'}</div>
-            <div class="chat-info">
-                <div class="chat-name">${item.title}</div>
-                <div class="chat-message">${item.description}</div>
+        <div class="project-accordion-item" id="anim-${index}">
+            <div class="project-accordion-header" onclick="toggleProjectAccordion('anim-${index}')">
+                <div class="chat-avatar">${item.icon || '🎭'}</div>
+                <div class="chat-info">
+                    <div class="chat-name">${item.title}</div>
+                    <div class="chat-message">${item.description.substring(0, 50)}...</div>
+                </div>
+                <span class="project-accordion-icon">▼</span>
             </div>
-            <div class="chat-time">${item.date || 'Récent'}</div>
+            <div class="project-accordion-content">
+                <div class="project-accordion-body">
+                    <p class="project-full-desc">${item.description}</p>
+                    <div class="project-date">📅 ${item.date || 'Récent'}</div>
+                </div>
+            </div>
         </div>
     `).join('');
 }
 
-// Echo-Sphere (LinkedIn-like)
+// Echo-Sphere (LinkedIn-like avec accordéon)
 function renderEchoSphere(category) {
     const container = document.getElementById('socialFeed');
     container.innerHTML = category.items.map((item, index) => `
-        <div class="feed-post">
-            <div class="post-header">
+        <div class="project-accordion-item" id="echo-${index}">
+            <div class="project-accordion-header" onclick="toggleProjectAccordion('echo-${index}')">
                 <div class="post-avatar">${item.icon || '📖'}</div>
                 <div class="post-author">
-                    <div class="post-name">Expert Auteur</div>
+                    <div class="post-name">${item.title}</div>
                     <div class="post-time">${item.date || 'Il y a 2 jours'}</div>
                 </div>
+                <span class="project-accordion-icon">▼</span>
             </div>
-            <div class="post-content">
-                <div class="post-title">${item.title}</div>
-                <div class="post-text">${item.description}</div>
-            </div>
-            <div class="post-actions">
-                <div class="post-action">👍 J'aime</div>
-                <div class="post-action">💬 Commenter</div>
-                <div class="post-action">🔄 Partager</div>
+            <div class="project-accordion-content">
+                <div class="project-accordion-body">
+                    <div class="post-text">${item.description}</div>
+                    <div class="post-actions">
+                        <div class="post-action">👍 J'aime</div>
+                        <div class="post-action">💬 Commenter</div>
+                        <div class="post-action">🔄 Partager</div>
+                    </div>
+                </div>
             </div>
         </div>
     `).join('');
 }
 
-// Arena (Gaming Hub)
+// Arena (Gaming Hub avec accordéon)
 function renderArena(category) {
     const container = document.getElementById('gamingHub');
-    container.innerHTML = '<div class="game-grid">' + 
-        category.items.map((item, index) => `
-            <div class="game-card">
-                <div class="game-cover">${item.icon || '⚔️'}</div>
-                <div class="game-info">
+    container.innerHTML = category.items.map((item, index) => `
+        <div class="project-accordion-item" id="arena-${index}">
+            <div class="project-accordion-header" onclick="toggleProjectAccordion('arena-${index}')">
+                <div class="game-cover-small">${item.icon || '⚔️'}</div>
+                <div class="game-info-compact">
                     <div class="game-title">${item.title}</div>
                     <div class="game-tag">${item.tag || 'Action'}</div>
                 </div>
+                <span class="project-accordion-icon">▼</span>
             </div>
-        `).join('') + 
-    '</div>';
+            <div class="project-accordion-content">
+                <div class="project-accordion-body">
+                    <p class="project-full-desc">${item.description}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
 }
 
-// Adventures (Habit Tracker)
+// Adventures (Habit Tracker avec accordéon)
 function renderAdventures(category) {
     const container = document.getElementById('habitTracker');
-    container.innerHTML = '<div class="habit-list">' + 
-        category.items.map((item, index) => `
-            <div class="habit-item">
-                <div class="habit-checkbox" onclick="toggleHabit(this)"></div>
+    container.innerHTML = category.items.map((item, index) => `
+        <div class="project-accordion-item" id="adv-${index}">
+            <div class="project-accordion-header" onclick="toggleProjectAccordion('adv-${index}')">
+                <div class="habit-checkbox" onclick="event.stopPropagation(); toggleHabit(this)"></div>
                 <div class="habit-details">
                     <div class="habit-name">${item.title}</div>
-                    <div class="habit-desc">${item.description}</div>
+                    <div class="habit-desc">${item.description.substring(0, 40)}...</div>
                 </div>
                 <div class="habit-progress">${item.progress || '0/10'}</div>
+                <span class="project-accordion-icon">▼</span>
             </div>
-        `).join('') + 
-    '</div>';
+            <div class="project-accordion-content">
+                <div class="project-accordion-body">
+                    <p class="project-full-desc">${item.description}</p>
+                </div>
+            </div>
+        </div>
+    `).join('');
 }
 
 function toggleHabit(element) {
@@ -1368,43 +1390,75 @@ function toggleHabit(element) {
 
 window.toggleHabit = toggleHabit;
 
-// Medias (YouTube-like)
+// Medias (YouTube-like avec accordéon)
 function renderMedias(category) {
     const container = document.getElementById('youtubeLayout');
-    container.innerHTML = '<div class="video-grid">' + 
-        category.items.map((item, index) => `
-            <div class="video-item">
-                <div class="video-thumbnail">
+    container.innerHTML = category.items.map((item, index) => `
+        <div class="project-accordion-item" id="media-${index}">
+            <div class="project-accordion-header" onclick="toggleProjectAccordion('media-${index}')">
+                <div class="video-thumbnail-small">
                     ${item.icon || '🎬'}
-                    <div class="play-overlay">▶</div>
+                    <div class="play-overlay-small">▶</div>
                 </div>
-                <div class="video-details">
+                <div class="video-details-compact">
                     <div class="video-title">${item.title}</div>
-                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues • ${item.date || 'Il y a 1 semaine'}</div>
+                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues</div>
+                </div>
+                <span class="project-accordion-icon">▼</span>
+            </div>
+            <div class="project-accordion-content">
+                <div class="project-accordion-body">
+                    <p class="project-full-desc">${item.description}</p>
+                    <div class="project-date">📅 ${item.date || 'Il y a 1 semaine'}</div>
                 </div>
             </div>
-        `).join('') + 
-    '</div>';
+        </div>
+    `).join('');
 }
 
-// EA Center (Tutoriels)
+// EA Center (Tutoriels avec accordéon)
 function renderEaCenter(category) {
     const container = document.getElementById('eaCenterLayout');
-    container.innerHTML = '<div class="video-grid">' + 
-        category.items.map((item, index) => `
-            <div class="video-item">
-                <div class="video-thumbnail">
+    container.innerHTML = category.items.map((item, index) => `
+        <div class="project-accordion-item" id="center-${index}">
+            <div class="project-accordion-header" onclick="toggleProjectAccordion('center-${index}')">
+                <div class="video-thumbnail-small">
                     ${item.icon || '📚'}
-                    <div class="play-overlay">▶</div>
+                    <div class="play-overlay-small">▶</div>
                 </div>
-                <div class="video-details">
+                <div class="video-details-compact">
                     <div class="video-title">${item.title}</div>
-                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues • ${item.date || 'Il y a 1 semaine'}</div>
+                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues</div>
+                </div>
+                <span class="project-accordion-icon">▼</span>
+            </div>
+            <div class="project-accordion-content">
+                <div class="project-accordion-body">
+                    <p class="project-full-desc">${item.description}</p>
+                    <div class="project-date">📅 ${item.date || 'Il y a 1 semaine'}</div>
                 </div>
             </div>
-        `).join('') + 
-    '</div>';
+        </div>
+    `).join('');
 }
+
+function toggleProjectAccordion(itemId) {
+    const item = document.getElementById(itemId);
+    const wasActive = item.classList.contains('active');
+    
+    // Close all accordions in the same container
+    const container = item.parentElement;
+    container.querySelectorAll('.project-accordion-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Toggle current accordion
+    if (!wasActive) {
+        item.classList.add('active');
+    }
+}
+
+window.toggleProjectAccordion = toggleProjectAccordion;
 
 // ===== SETTINGS PAGE FUNCTIONS =====
 
