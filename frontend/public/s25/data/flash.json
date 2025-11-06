@@ -1,0 +1,54 @@
+{
+  "dailyNews": [
+    {
+      "id": 1,
+      "icon": "🎮",
+      "title": "Tournoi Arena - Inscriptions ouvertes",
+      "summary": "Le grand tournoi commence dans 2 jours ! Zephyr Playtest annonce des récompenses exclusives.",
+      "time": "08:30",
+      "category": "arena",
+      "urgent": true
+    },
+    {
+      "id": 2,
+      "icon": "📖",
+      "title": "Nouvelle histoire publiée",
+      "summary": "Kael Storyforge vient de publier 'Le Royaume des Ombres' - Une épopée fantasy captivante.",
+      "time": "10:15",
+      "category": "echoSphere",
+      "urgent": false
+    },
+    {
+      "id": 3,
+      "icon": "🎨",
+      "title": "Expo Design ce soir",
+      "summary": "Luna Artisan présente ses nouveaux concepts visuels à 18h. Ne manquez pas le vernissage !",
+      "time": "14:00",
+      "category": "eaCenter",
+      "urgent": true
+    },
+    {
+      "id": 4,
+      "icon": "💻",
+      "title": "Mise à jour système",
+      "summary": "Aria CodeWeaver a déployé de nouvelles optimisations. Performance améliorée de 30%.",
+      "time": "16:45",
+      "category": "tech",
+      "urgent": false
+    },
+    {
+      "id": 5,
+      "icon": "🎵",
+      "title": "Nouveau morceau disponible",
+      "summary": "Thorin Soundsmith ajoute 'Symphonie du Crépuscule' à la playlist EA Theater.",
+      "time": "18:20",
+      "category": "medias",
+      "urgent": false
+    }
+  ],
+  "weatherForecast": {
+    "condition": "Ensoleillé",
+    "temperature": "24°C",
+    "icon": "☀️"
+  }
+}
