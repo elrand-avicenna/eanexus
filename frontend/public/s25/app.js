@@ -255,15 +255,7 @@ function showFinalResult() {
 }
 
 function enterHourglassSociety() {
-    // Show loading screen after passing prologue
-    openApp('loadingScreen');
-    
-    // Initialize loading which will then go to Home
-    setTimeout(() => {
-        initializeLoading();
-    }, 100);
-    
-    // Load all data
+    // Go directly to Home after prologue
     loadData();
     
     // Render settings components after data is loaded
@@ -274,6 +266,11 @@ function enterHourglassSociety() {
             updateSettingsMusicInfo();
         }
     }, 500);
+    
+    // Open Home directly
+    setTimeout(() => {
+        openApp('home');
+    }, 100);
 }
 
 function startLoading() {
