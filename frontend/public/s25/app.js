@@ -51,6 +51,230 @@ function initializeTime() {
     setInterval(updateTime, 1000); // Update every second
 }
 
+
+// ===== PROLOGUE SYSTEM =====
+
+async function loadPrologue() {
+    try {
+        const response = await fetch('data/prologue.json');
+        prologueData = await response.json();
+        showPrologueIntro();
+    } catch (error) {
+        console.error('Error loading prologue:', error);
+        // Skip to loading if prologue fails
+        startLoading();
+    }
+}
+
+function showPrologueIntro() {
+    const screen = document.getElementById('prologueScreen');
+    
+    screen.innerHTML = `
+        <div class="prologue-title">HOURGLASS PROJECT</div>
+        <div class="prologue-year">AN ${prologueData.year}</div>
+        <div id="contextTexts"></div>
+        <button class="continue-btn" onclick="showMissionBriefing()" style="display: none;" id="continueBtn">
+            Continuer →
+        </button>
+    `;
+    
+    // Animate context texts
+    const container = document.getElementById('contextTexts');
+    prologueData.context.forEach((text, index) => {
+        setTimeout(() => {
+            const p = document.createElement('p');
+            p.className = 'prologue-text';
+            p.textContent = text;
+            container.appendChild(p);
+            
+            // Show continue button after last text
+            if (index === prologueData.context.length - 1) {
+                setTimeout(() => {
+                    document.getElementById('continueBtn').style.display = 'block';
+                }, 1000);
+            }
+        }, index * 3000);
+    });
+}
+
+function showMissionBriefing() {
+    const screen = document.getElementById('prologueScreen');
+    const mission = prologueData.mission;
+    
+    screen.innerHTML = `
+        <div class="prologue-mission">
+            <div class="mission-title">${mission.title}</div>
+            <div class="mission-briefing">${mission.briefing}</div>
+            <div class="mission-warning">${mission.warning}</div>
+        </div>
+        <button class="continue-btn" onclick="showGuardianInteraction()">
+            Approcher la porte →
+        </button>
+    `;
+}
+
+function showGuardianInteraction() {
+    currentQuestion = 0;
+    selectedAnswers = [];
+    showQuestion();
+}
+
+function showQuestion() {
+    const screen = document.getElementById('prologueScreen');
+    const guardian = prologueData.guardian;
+    
+    if (currentQuestion === 0) {
+        // First question - show guardian
+        screen.innerHTML = `
+            <div class="guardian-screen">
+                <div class="guardian-avatar">${guardian.avatar}</div>
+                <div class="guardian-name">${guardian.name}</div>
+                <div class="guardian-message">${guardian.greeting}</div>
+            </div>
+        `;
+        
+        setTimeout(() => {
+            showQuestionForm();
+        }, 2000);
+    } else {
+        showQuestionForm();
+    }
+}
+
+function showQuestionForm() {
+    const screen = document.getElementById('prologueScreen');
+    const guardian = prologueData.guardian;
+    const question = guardian.questions[currentQuestion];
+    
+    screen.innerHTML = `
+        <div class="guardian-screen">
+            <div class="guardian-avatar">${guardian.avatar}</div>
+            <div class="guardian-name">${guardian.name}</div>
+            <div class="question-container">
+                <div class="question-text">${question.question}</div>
+                <div id="answerOptions">
+                    ${question.options.map((option, index) => `
+                        <div class="answer-option" onclick="selectAnswer(${index})">
+                            ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            <button class="submit-answer-btn" id="submitBtn" onclick="submitAnswer()" disabled>
+                Répondre
+            </button>
+            <div id="answerResult"></div>
+        </div>
+    `;
+}
+
+let selectedAnswer = null;
+
+function selectAnswer(index) {
+    selectedAnswer = index;
+    
+    // Update UI
+    const options = document.querySelectorAll('.answer-option');
+    options.forEach((opt, i) => {
+        opt.classList.remove('selected');
+        if (i === index) {
+            opt.classList.add('selected');
+        }
+    });
+    
+    // Enable submit button
+    document.getElementById('submitBtn').disabled = false;
+}
+
+function submitAnswer() {
+    const question = prologueData.guardian.questions[currentQuestion];
+    const isCorrect = selectedAnswer === question.correct;
+    
+    selectedAnswers.push(isCorrect);
+    
+    // Show feedback
+    const options = document.querySelectorAll('.answer-option');
+    options.forEach((opt, i) => {
+        if (i === question.correct) {
+            opt.classList.add('correct');
+        } else if (i === selectedAnswer) {
+            opt.classList.add('incorrect');
+        }
+    });
+    
+    document.getElementById('submitBtn').disabled = true;
+    
+    setTimeout(() => {
+        if (currentQuestion < prologueData.guardian.questions.length - 1) {
+            // Next question
+            currentQuestion++;
+            selectedAnswer = null;
+            showQuestion();
+        } else {
+            // All questions answered
+            showFinalResult();
+        }
+    }, 2000);
+}
+
+function showFinalResult() {
+    const screen = document.getElementById('prologueScreen');
+    const guardian = prologueData.guardian;
+    const correctCount = selectedAnswers.filter(a => a).length;
+    const total = selectedAnswers.length;
+    const passed = correctCount >= 2; // Need at least 2/3 correct
+    
+    screen.innerHTML = `
+        <div class="guardian-screen">
+            <div class="guardian-avatar">${guardian.avatar}</div>
+            <div class="guardian-name">${guardian.name}</div>
+            <div class="access-result ${passed ? 'success' : 'failure'}">
+                ${passed ? guardian.success : guardian.failure}
+            </div>
+            <div style="margin: 20px 0; font-size: 14px; color: #888;">
+                Réponses correctes : ${correctCount}/${total}
+            </div>
+            ${passed ? 
+                `<button class="continue-btn" onclick="enterHourglassSociety()">
+                    Entrer dans Hourglass Society →
+                </button>` :
+                `<button class="continue-btn" onclick="showGuardianInteraction()">
+                    Réessayer
+                </button>`
+            }
+        </div>
+    `;
+}
+
+function enterHourglassSociety() {
+    // Start the main loading sequence
+    openApp('loadingScreen');
+    initializeLoading();
+    loadData();
+    
+    // Render settings components after data is loaded
+    setTimeout(() => {
+        if (typeof renderWallpaperSettings === 'function') {
+            renderWallpaperSettings();
+            renderPlaylistSettings();
+            updateSettingsMusicInfo();
+        }
+    }, 500);
+}
+
+function startLoading() {
+    openApp('loadingScreen');
+    initializeLoading();
+    loadData();
+}
+
+window.selectAnswer = selectAnswer;
+window.submitAnswer = submitAnswer;
+window.showMissionBriefing = showMissionBriefing;
+window.showGuardianInteraction = showGuardianInteraction;
+window.enterHourglassSociety = enterHourglassSociety;
+
+
 // Load All Data
 async function loadData() {
     try {
