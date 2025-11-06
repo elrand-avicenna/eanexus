@@ -1782,6 +1782,87 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     flex-direction: column;
 }
 
+/* Project Accordion System */
+.project-accordion-item {
+    background: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.project-accordion-header {
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.project-accordion-header:hover {
+    background: rgba(0,0,0,0.4);
+}
+
+.project-accordion-icon {
+    margin-left: auto;
+    font-size: 12px;
+    color: #888;
+    transition: transform 0.3s;
+}
+
+.project-accordion-item.active .project-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.project-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.project-accordion-item.active .project-accordion-content {
+    max-height: 300px;
+}
+
+.project-accordion-body {
+    padding: 0 20px 15px 20px;
+}
+
+.project-full-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 12px;
+}
+
+.project-date {
+    font-size: 12px;
+    color: #888;
+}
+
+.game-cover-small, .video-thumbnail-small {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.play-overlay-small {
+    position: absolute;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+}
+
+.game-info-compact, .video-details-compact {
+    flex: 1;
+}
+
 .chat-item {
     padding: 15px 20px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
