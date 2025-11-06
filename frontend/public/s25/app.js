@@ -1,5 +1,5 @@
 // Global State
-let currentApp = 'loadingScreen';
+let currentApp = 'prologue';
 let musicPlayer = {
     currentTrack: 0,
     isPlaying: false,
@@ -12,6 +12,9 @@ let wallpapers = [];
 let currentWallpaper = 0;
 let events = [];
 let characters = [];
+let prologueData = null;
+let currentQuestion = 0;
+let selectedAnswers = [];
 
 // DOM Elements
 const audio = document.getElementById('globalAudio');
@@ -20,19 +23,11 @@ const backgroundVideo = document.getElementById('backgroundVideo');
 // Initialize App
 window.addEventListener('DOMContentLoaded', () => {
     initializeTime();
-    loadData(); // This will load everything including events, then initialize calendar
-    initializeLoading();
+    loadPrologue(); // Start with prologue
     initializeMusicPlayer();
     initializeTextColorPicker();
     initializeSettingsSeekBar();
     initializeSettingsVolumeBar();
-    
-    // Render settings components after data is loaded
-    setTimeout(() => {
-        renderWallpaperSettings();
-        renderPlaylistSettings();
-        updateSettingsMusicInfo();
-    }, 500);
 });
 function initializeTime() {
     const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
