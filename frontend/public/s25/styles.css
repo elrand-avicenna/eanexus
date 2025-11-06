@@ -72,16 +72,18 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
         border-radius: 0;
         border: none;
         padding-bottom: env(safe-area-inset-bottom);
-        padding-top: env(safe-area-inset-top);
+        padding-top: max(env(safe-area-inset-top), 20px);
     }
     
     .status-bar {
-        padding-top: env(safe-area-inset-top);
-        height: calc(40px + env(safe-area-inset-top));
+        margin-top: max(env(safe-area-inset-top), 20px);
+        padding-top: 5px;
+        height: auto;
+        min-height: 40px;
     }
     
     .dock {
-        padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+        padding-bottom: max(env(safe-area-inset-bottom), 20px);
     }
     
     body {
@@ -90,6 +92,8 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
         width: 100%;
         height: 100vh;
         height: 100dvh;
+        padding-top: 0;
+        margin-top: 0;
     }
 }
 
