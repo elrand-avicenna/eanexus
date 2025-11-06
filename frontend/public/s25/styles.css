@@ -1899,6 +1899,226 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     color: #fff;
 }
 
+/* Prologue */
+.prologue-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #000;
+    padding: 30px;
+}
+
+.prologue-screen {
+    max-width: 380px;
+    width: 100%;
+}
+
+.prologue-title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.prologue-year {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #888;
+}
+
+.prologue-text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: #ddd;
+    text-align: justify;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.prologue-text:nth-child(1) { animation-delay: 0.5s; }
+.prologue-text:nth-child(2) { animation-delay: 1s; }
+.prologue-text:nth-child(3) { animation-delay: 1.5s; }
+.prologue-text:nth-child(4) { animation-delay: 2s; }
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.prologue-mission {
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid #667eea;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.mission-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.mission-briefing {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.mission-warning {
+    font-size: 12px;
+    color: #ff6b6b;
+    font-style: italic;
+}
+
+.continue-btn {
+    width: 100%;
+    padding: 15px;
+    background: #667eea;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.continue-btn:hover {
+    background: #5563d1;
+    transform: translateY(-2px);
+}
+
+/* Guardian Interaction */
+.guardian-screen {
+    text-align: center;
+}
+
+.guardian-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    animation: pulse 2s infinite;
+}
+
+.guardian-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.guardian-message {
+    font-size: 14px;
+    color: #ddd;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.question-container {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.answer-option {
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.answer-option:hover {
+    background: rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.answer-option.selected {
+    background: rgba(102, 126, 234, 0.4);
+    border-color: #667eea;
+    color: #fff;
+}
+
+.answer-option.correct {
+    background: rgba(76, 175, 80, 0.4);
+    border-color: #4caf50;
+}
+
+.answer-option.incorrect {
+    background: rgba(244, 67, 54, 0.4);
+    border-color: #f44336;
+}
+
+.submit-answer-btn {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-answer-btn:hover {
+    background: #5563d1;
+}
+
+.submit-answer-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.access-result {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.access-result.success {
+    background: rgba(76, 175, 80, 0.3);
+    border: 1px solid #4caf50;
+    color: #4caf50;
+}
+
+.access-result.failure {
+    background: rgba(244, 67, 54, 0.3);
+    border: 1px solid #f44336;
+    color: #f44336;
+}
+
 /* Dock */
 .dock {
     height: 80px;
