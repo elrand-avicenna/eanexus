@@ -1483,25 +1483,6 @@ function initializeSettingsVolumeBar() {
     });
 }
 
-// Initialize settings when app opens
-window.addEventListener('DOMContentLoaded', () => {
-    initializeTime();
-    loadData();
-    initializeLoading();
-    initializeCalendar();
-    initializeMusicPlayer();
-    initializeTextColorPicker();
-    initializeSettingsSeekBar();
-    initializeSettingsVolumeBar();
-    
-    // Render settings components after data is loaded
-    setTimeout(() => {
-        renderWallpaperSettings();
-        renderPlaylistSettings();
-        updateSettingsMusicInfo();
-    }, 500);
-});
-
 // Load Characters
 async function loadCharacters() {
     try {
