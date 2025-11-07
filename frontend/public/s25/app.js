@@ -405,6 +405,11 @@ function openApp(appId) {
         if (settingsIcon) settingsIcon.classList.add('active');
     } else if (appId === 'membres' || appId === 'characterDetail') {
         if (membresIcon) membresIcon.classList.add('active');
+    } else if (appId === 'messages') {
+        // Render messages when opening the page
+        if (typeof renderMemberMessages === 'function') {
+            renderMemberMessages();
+        }
     }
 }
 
