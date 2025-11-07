@@ -2657,6 +2657,106 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     color: #888;
 }
 
+/* Music Player Full in Settings */
+.music-player-full {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.album-art-settings {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.album-placeholder-settings {
+    font-size: 60px;
+}
+
+.current-track-info-full {
+    text-align: center;
+}
+
+.track-title-full {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.track-artist-full {
+    font-size: 14px;
+    color: #888;
+}
+
+.music-controls-full {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.control-btn-music {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn-music:hover {
+    background: rgba(102, 126, 234, 0.5);
+    transform: scale(1.1);
+}
+
+.play-btn-music {
+    width: 60px;
+    height: 60px;
+    background: #667eea;
+    font-size: 22px;
+}
+
+.playlist-settings-full {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.playlist-settings-full .playlist-item-settings {
+    padding: 12px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.playlist-settings-full .playlist-item-settings:hover {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+.playlist-settings-full .playlist-item-settings.active {
+    background: rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
 /* Home Page */
 .home-content {
     display: flex;
