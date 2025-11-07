@@ -1910,41 +1910,6 @@ function openCharacterDetail(characterId) {
     const character = characters.find(c => c.id === characterId);
     if (!character) return;
     
-    // Change wallpaper to character's video (if not locked to another)
-    if (character.videoWallpaper) {
-        const video = document.getElementById('backgroundVideo');
-        const bgImage = document.getElementById('backgroundImage');
-        
-        // Hide image, show video
-        bgImage.style.display = 'none';
-        video.style.display = 'block';
-        video.src = character.videoWallpaper;
-        video.load();
-        video.play();
-    }
-    
-    document.getElementById('characterDetailName').textContent = character.name;
-    
-    const content = document.getElementById('characterDetailContent');
-    const isLocked = lockedWallpaper && lockedWallpaperUrl === character.videoWallpaper;
-    
-    content.innerHTML = `
-        <div class="character-detail-header">
-            <div class="character-detail-avatar" style="background: ${character.background}">
-                ${character.avatar}
-            </div>
-            <div class="character-detail-name">${character.name}</div>
-            <div class="character-detail-title">${character.title}</div>
-            <div class="character-status">
-                <span class="status-badge ${character.availability === 'En ligne' ? 'online' : 'busy'}">${character.availability}</span>
-                <span class="location-badge">📍 ${character.location}</span>
-            </div>
-            
-// Open Character Detail
-function openCharacterDetail(characterId) {
-    const character = characters.find(c => c.id === characterId);
-    if (!character) return;
-    
     // Change wallpaper to character's video
     if (character.videoWallpaper) {
         const video = document.getElementById('backgroundVideo');
