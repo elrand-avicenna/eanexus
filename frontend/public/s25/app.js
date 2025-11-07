@@ -374,19 +374,23 @@ function openApp(appId) {
     const homeIcon = document.getElementById('homeIcon');
     const notifIcon = document.getElementById('notificationsIcon');
     const settingsIcon = document.getElementById('settingsIcon');
+    const membresIcon = document.getElementById('membresIcon');
     
     // Remove all active states
-    homeIcon.classList.remove('active');
-    notifIcon.classList.remove('active');
-    settingsIcon.classList.remove('active');
+    if (homeIcon) homeIcon.classList.remove('active');
+    if (notifIcon) notifIcon.classList.remove('active');
+    if (settingsIcon) settingsIcon.classList.remove('active');
+    if (membresIcon) membresIcon.classList.remove('active');
     
     // Set active based on current app
     if (appId === 'home') {
-        homeIcon.classList.add('active');
+        if (homeIcon) homeIcon.classList.add('active');
     } else if (appId === 'portal') {
-        notifIcon.classList.add('active');
+        if (notifIcon) notifIcon.classList.add('active');
     } else if (appId === 'parametres') {
-        settingsIcon.classList.add('active');
+        if (settingsIcon) settingsIcon.classList.add('active');
+    } else if (appId === 'membres' || appId === 'characterDetail') {
+        if (membresIcon) membresIcon.classList.add('active');
     }
 }
 
