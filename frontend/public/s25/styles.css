@@ -1448,6 +1448,169 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 .calendar-header {
     display: flex;
     justify-content: space-between;
+
+/* Wallpaper Lock Toggle */
+.wallpaper-lock-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+}
+
+.wallpaper-lock-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.wallpaper-lock-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    width: 50px;
+    height: 26px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 26px;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s;
+}
+
+.wallpaper-lock-toggle input:checked + .toggle-slider {
+    background: #667eea;
+}
+
+.wallpaper-lock-toggle input:checked + .toggle-slider::before {
+    transform: translateX(24px);
+}
+
+.toggle-label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.status-badge.online {
+    background: rgba(76, 175, 80, 0.3);
+    color: #4caf50;
+    border: 1px solid #4caf50;
+}
+
+.status-badge.busy {
+    background: rgba(255, 152, 0, 0.3);
+    color: #ff9800;
+    border: 1px solid #ff9800;
+}
+
+.location-badge {
+    font-size: 12px;
+    color: #888;
+}
+
+.character-status {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.character-role-section,
+.character-bio-section,
+.character-specialites-section,
+.character-achievements {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.character-role-section h3,
+.character-bio-section h3,
+.character-specialites-section h3,
+.character-achievements h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.character-role-section p,
+.character-bio-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.specialites-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.specialite-badge {
+    background: rgba(102, 126, 234, 0.3);
+    border: 1px solid #667eea;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement-item {
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid #667eea;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.character-quote {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #667eea;
+    padding: 20px;
+    border-radius: 10px;
+    font-style: italic;
+    text-align: center;
+}
+
+.quote-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.quote-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
     align-items: center;
     margin-bottom: 20px;
     padding: 15px;
