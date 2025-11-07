@@ -310,6 +310,9 @@ async function loadData() {
         // Load Flash News
         await loadFlashNews();
         
+        // Load Member Messages
+        await loadMemberMessages();
+        
         // Load Portal Data
         const portalResponse = await fetch('data/portal.json');
         const portalData = await portalResponse.json();
