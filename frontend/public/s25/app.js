@@ -700,8 +700,17 @@ function selectTrack(index) {
 function loadTrack() {
     const track = musicPlayer.playlist[musicPlayer.currentTrack];
     audio.src = track.url;
-    document.getElementById('trackTitle').textContent = track.title;
-    document.getElementById('trackArtist').textContent = track.artist;
+    
+    // Update both old player and settings player
+    const titleEl = document.getElementById('trackTitle');
+    const artistEl = document.getElementById('trackArtist');
+    const settingsTitleEl = document.getElementById('settingsTrackTitle');
+    const settingsArtistEl = document.getElementById('settingsTrackArtist');
+    
+    if (titleEl) titleEl.textContent = track.title;
+    if (artistEl) artistEl.textContent = track.artist;
+    if (settingsTitleEl) settingsTitleEl.textContent = track.title;
+    if (settingsArtistEl) settingsArtistEl.textContent = track.artist;
 }
 
 function togglePlay() {
