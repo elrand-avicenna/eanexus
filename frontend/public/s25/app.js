@@ -1739,141 +1739,35 @@ window.toggleProjectItemAccordion = toggleProjectItemAccordion;
 window.openFinalProjectDetail = openFinalProjectDetail;
 window.goBackToMainCategory = goBackToMainCategory;
 
-// Echo-Sphere (Style uniforme comme ANIM'CONNECT)
-function renderEchoSphere(category) {
-    const container = document.getElementById('socialFeed');
-    container.innerHTML = category.items.map((item, index) => `
-        <div class="project-accordion-item" id="echo-${index}">
-            <div class="project-accordion-header" onclick="toggleProjectAccordion('echo-${index}')">
-                <div class="chat-avatar">${item.icon || '📖'}</div>
-                <div class="chat-info">
-                    <div class="chat-name">${item.title}</div>
-                    <div class="chat-message">${item.description.substring(0, 50)}...</div>
-                </div>
-                <span class="project-accordion-icon">▼</span>
-            </div>
-            <div class="project-accordion-content">
-                <div class="project-accordion-body">
-                    <div class="post-text">${item.description}</div>
-                    <div class="post-actions">
-                        <div class="post-action">👍 J'aime</div>
-                        <div class="post-action">💬 Commenter</div>
-                        <div class="post-action">🔄 Partager</div>
+// Echo-Sphere, Arena, Adventures, Medias, EaCenter - Toutes affichent maintenant les sous-catégories
+function renderEchoSphere(category) { renderCategorySubcategories('echoSphere', 'socialFeed'); }
+function renderArena(category) { renderCategorySubcategories('arena', 'gamingHub'); }
+function renderAdventures(category) { renderCategorySubcategories('adventures', 'habitTracker'); }
+function renderMedias(category) { renderCategorySubcategories('medias', 'youtubeLayout'); }
+function renderEaCenter(category) { renderCategorySubcategories('eaCenter', 'eaCenterLayout'); }
+
+// Fonction générique pour afficher les sous-catégories
+function renderCategorySubcategories(categoryId, containerId) {
+    fetch('data/projects-hierarchy.json')
+        .then(res => res.json())
+        .then(data => {
+            const cat = data.categories.find(c => c.id === categoryId);
+            if (!cat || !cat.subcategories) return;
+            
+            const container = document.getElementById(containerId);
+            container.innerHTML = cat.subcategories.map((subcat, index) => `
+                <div class="project-accordion-item">
+                    <div class="project-accordion-header" onclick="openSubcategory('${categoryId}', ${index})">
+                        <div class="chat-avatar">${subcat.icon}</div>
+                        <div class="chat-info">
+                            <div class="chat-name">${subcat.name}</div>
+                            <div class="chat-message">${subcat.description}</div>
+                        </div>
+                        <span class="project-accordion-icon">→</span>
                     </div>
-                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('echoSphere', ${index})" style="margin-top: 15px;">
-                        Entrer →
-                    </button>
                 </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Arena (Style uniforme comme ANIM'CONNECT)
-function renderArena(category) {
-    const container = document.getElementById('gamingHub');
-    container.innerHTML = category.items.map((item, index) => `
-        <div class="project-accordion-item" id="arena-${index}">
-            <div class="project-accordion-header" onclick="toggleProjectAccordion('arena-${index}')">
-                <div class="chat-avatar">${item.icon || '⚔️'}</div>
-                <div class="chat-info">
-                    <div class="chat-name">${item.title}</div>
-                    <div class="chat-message">${item.tag || item.description.substring(0, 50)}</div>
-                </div>
-                <span class="project-accordion-icon">▼</span>
-            </div>
-            <div class="project-accordion-content">
-                <div class="project-accordion-body">
-                    <p class="project-full-desc">${item.description}</p>
-                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('arena', ${index})">
-                        Entrer →
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Adventures (Style uniforme comme ANIM'CONNECT)
-function renderAdventures(category) {
-    const container = document.getElementById('habitTracker');
-    container.innerHTML = category.items.map((item, index) => `
-        <div class="project-accordion-item" id="adv-${index}">
-            <div class="project-accordion-header" onclick="toggleProjectAccordion('adv-${index}')">
-                <div class="chat-avatar">${item.icon || '🗺️'}</div>
-                <div class="chat-info">
-                    <div class="chat-name">${item.title}</div>
-                    <div class="chat-message">${item.description.substring(0, 40)}... • ${item.progress || '0/10'}</div>
-                </div>
-                <span class="project-accordion-icon">▼</span>
-            </div>
-            <div class="project-accordion-content">
-                <div class="project-accordion-body">
-                    <p class="project-full-desc">${item.description}</p>
-                    <div class="habit-checkbox" onclick="event.stopPropagation(); toggleHabit(this)" style="margin-top: 15px;"></div>
-                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('adventures', ${index})" style="margin-top: 10px;">
-                        Entrer →
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-function toggleHabit(element) {
-    element.classList.toggle('checked');
-}
-
-window.toggleHabit = toggleHabit;
-
-// Medias (Style uniforme comme ANIM'CONNECT)
-function renderMedias(category) {
-    const container = document.getElementById('youtubeLayout');
-    container.innerHTML = category.items.map((item, index) => `
-        <div class="project-accordion-item" id="media-${index}">
-            <div class="project-accordion-header" onclick="toggleProjectAccordion('media-${index}')">
-                <div class="chat-avatar">${item.icon || '🎬'}</div>
-                <div class="chat-info">
-                    <div class="chat-name">${item.title}</div>
-                    <div class="chat-message">${item.views || '1.2k'} vues • ${item.date || 'Récent'}</div>
-                </div>
-                <span class="project-accordion-icon">▼</span>
-            </div>
-            <div class="project-accordion-content">
-                <div class="project-accordion-body">
-                    <p class="project-full-desc">${item.description}</p>
-                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('medias', ${index})">
-                        Entrer →
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// EA Center (Style uniforme comme ANIM'CONNECT)
-function renderEaCenter(category) {
-    const container = document.getElementById('eaCenterLayout');
-    container.innerHTML = category.items.map((item, index) => `
-        <div class="project-accordion-item" id="center-${index}">
-            <div class="project-accordion-header" onclick="toggleProjectAccordion('center-${index}')">
-                <div class="chat-avatar">${item.icon || '📚'}</div>
-                <div class="chat-info">
-                    <div class="chat-name">${item.title}</div>
-                    <div class="chat-message">${item.views || '1.2k'} vues • ${item.date || 'Récent'}</div>
-                </div>
-                <span class="project-accordion-icon">▼</span>
-            </div>
-            <div class="project-accordion-content">
-                <div class="project-accordion-body">
-                    <p class="project-full-desc">${item.description}</p>
-                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('eaCenter', ${index})">
-                        Entrer →
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
+            `).join('');
+        });
 }
 
 function toggleProjectAccordion(itemId) {
