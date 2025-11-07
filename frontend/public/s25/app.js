@@ -1645,6 +1645,9 @@ function renderEchoSphere(category) {
                         <div class="post-action">💬 Commenter</div>
                         <div class="post-action">🔄 Partager</div>
                     </div>
+                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('echoSphere', ${index})" style="margin-top: 15px;">
+                        Entrer →
+                    </button>
                 </div>
             </div>
         </div>
@@ -1667,6 +1670,9 @@ function renderArena(category) {
             <div class="project-accordion-content">
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
+                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('arena', ${index})">
+                        Entrer →
+                    </button>
                 </div>
             </div>
         </div>
@@ -1690,6 +1696,9 @@ function renderAdventures(category) {
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
                     <div class="habit-checkbox" onclick="event.stopPropagation(); toggleHabit(this)" style="margin-top: 15px;"></div>
+                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('adventures', ${index})" style="margin-top: 10px;">
+                        Entrer →
+                    </button>
                 </div>
             </div>
         </div>
@@ -1718,6 +1727,9 @@ function renderMedias(category) {
             <div class="project-accordion-content">
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
+                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('medias', ${index})">
+                        Entrer →
+                    </button>
                 </div>
             </div>
         </div>
@@ -1740,6 +1752,9 @@ function renderEaCenter(category) {
             <div class="project-accordion-content">
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
+                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('eaCenter', ${index})">
+                        Entrer →
+                    </button>
                 </div>
             </div>
         </div>
