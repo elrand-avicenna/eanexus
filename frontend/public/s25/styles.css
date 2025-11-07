@@ -3348,6 +3348,199 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 }
 
 .lieux-grid {
+
+/* Locations Accordion - Same as NEXUS */
+.location-accordion-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.location-accordion-header {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.location-accordion-header:hover {
+    background: rgba(0,0,0,0.3);
+}
+
+.location-header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.location-icon {
+    font-size: 24px;
+}
+
+.location-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.location-accordion-icon {
+    font-size: 14px;
+    transition: transform 0.3s;
+    color: #888;
+}
+
+.location-accordion-item.active .location-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.location-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.location-accordion-item.active .location-accordion-content {
+    max-height: 300px;
+}
+
+.location-accordion-body {
+    padding: 0 15px 15px 15px;
+}
+
+.location-synopsis {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #ddd;
+    margin-bottom: 12px;
+}
+
+.location-meta {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.location-enter-btn {
+    width: 100%;
+    padding: 12px;
+    background: rgba(240, 147, 251, 0.3);
+    border: 1px solid #f093fb;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.location-enter-btn:hover {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    transform: translateY(-2px);
+}
+
+/* Location Detail */
+.location-detail-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+}
+
+.location-detail-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.location-detail-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.location-detail-header p {
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.zones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Zone Accordion */
+.zone-accordion-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.zone-accordion-header {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.zone-accordion-header:hover {
+    background: rgba(240, 147, 251, 0.2);
+}
+
+.zone-header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.zone-icon {
+    font-size: 22px;
+}
+
+.zone-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.zone-accordion-icon {
+    font-size: 14px;
+    transition: transform 0.3s;
+    color: #888;
+}
+
+.zone-accordion-item.active .zone-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.zone-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.zone-accordion-item.active .zone-accordion-content {
+    max-height: 200px;
+}
+
+.zone-accordion-body {
+    padding: 0 15px 15px 15px;
+}
+
+.zone-description {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
     display: flex;
     flex-direction: column;
     gap: 10px;
