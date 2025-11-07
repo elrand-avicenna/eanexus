@@ -96,11 +96,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     }
     
     .screen-content {
-        height: calc(100% - 120px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-    }
-    
-    .dock {
-        padding-bottom: env(safe-area-inset-bottom);
+        height: calc(100% - 40px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     }
 }
 
