@@ -327,6 +327,13 @@ async function loadData() {
         const playlistResponse = await fetch('data/playlist.json');
         musicPlayer.playlist = await playlistResponse.json();
         renderPlaylist();
+        
+        // Render playlist in settings too
+        setTimeout(() => {
+            if (typeof renderPlaylistSettings === 'function') {
+                renderPlaylistSettings();
+            }
+        }, 100);
 
         // Load Projects
         const projectsResponse = await fetch('data/projects.json');
