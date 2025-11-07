@@ -1,0 +1,92 @@
+{
+  "categories": [
+    {
+      "id": "animConnect",
+      "name": "EA ANIM'CONNECT",
+      "icon": "🎭",
+      "summary": "Projets d'animation ludique pour événements et team building",
+      "subcategories": [
+        {
+          "id": "escapeGames",
+          "name": "ESCAPE GAME ENTREPRISE",
+          "icon": "🔐",
+          "description": "Escape games sur mesure pour renforcer la cohésion d'équipe",
+          "projects": [
+            {
+              "id": "eg1",
+              "title": "Escape Game Entreprise 1",
+              "shortDesc": "Thème Mystère & Investigation",
+              "fullDescription": "Escape game thématique investigation policière dans un labo secret high-tech. Énigmes logiques, codes informatiques, travail d'équipe essentiel. Installation sur site avec matériel fourni.",
+              "icon": "🔍",
+              "details": {
+                "Thème": "Investigation Policière",
+                "Durée": "2h30",
+                "Participants": "6-8 personnes",
+                "Difficulté": "Intermédiaire",
+                "Prix": "800€",
+                "Inclus": "Matériel tech, Installation, Animation"
+              },
+              "externalLink": "https://example.com/escape-game-1"
+            },
+            {
+              "id": "eg2",
+              "title": "Escape Game Entreprise 2",
+              "shortDesc": "Thème Aventure Spatiale",
+              "fullDescription": "Mission spatiale immersive avec compte à rebours. Réparez le vaisseau, résolvez les énigmes techniques. Ambiance futuriste avec effets sonores et lumineux.",
+              "icon": "🚀",
+              "details": {
+                "Thème": "Spatial & Futuriste",
+                "Durée": "2h",
+                "Participants": "8-10 personnes",
+                "Difficulté": "Facile",
+                "Prix": "750€",
+                "Inclus": "Décor spatial, Effets spéciaux, Animation"
+              },
+              "externalLink": "https://example.com/escape-game-2"
+            }
+          ]
+        },
+        {
+          "id": "quizInteractifs",
+          "name": "QUIZ INTERACTIF GÉANT",
+          "icon": "❓",
+          "description": "Animations quiz avec buzzers connectés et écran géant",
+          "projects": [
+            {
+              "id": "quiz1",
+              "title": "Quiz Interactif 1",
+              "shortDesc": "Culture Générale & Entreprise",
+              "fullDescription": "Quiz personnalisé combinant culture générale et questions sur votre entreprise. Buzzers sans fil, écran géant, musiques d'ambiance, podium et récompenses.",
+              "icon": "🎯",
+              "details": {
+                "Thème": "Culture Générale",
+                "Durée": "1h30",
+                "Participants": "20-50 personnes",
+                "Questions": "45 questions",
+                "Prix": "500€",
+                "Inclus": "Buzzers, Écran, Sonorisation, Animateur"
+              },
+              "externalLink": "https://example.com/quiz-1"
+            },
+            {
+              "id": "quiz2",
+              "title": "Quiz Interactif 2",
+              "shortDesc": "Spécial Tech & Innovation",
+              "fullDescription": "Quiz tech pour passionnés : IA, robotique, coding, startups, innovations. Format compétitif avec classement live. Idéal pour événements tech et hackathons.",
+              "icon": "💻",
+              "details": {
+                "Thème": "Tech & Innovation",
+                "Durée": "2h",
+                "Participants": "30-100 personnes",
+                "Questions": "60 questions",
+                "Prix": "650€",
+                "Inclus": "Setup tech complet, Dashboard live, Animateur expert"
+              },
+              "externalLink": "https://example.com/quiz-2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
