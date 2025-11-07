@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>HOURGLASS PROJECT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Global Music Player (Hidden Audio Element) -->
+    <audio id="globalAudio"></audio>
+
+    <!-- Smartphone Frame -->
+    <div class="smartphone-frame">
+        <!-- Background Video Wallpaper - INSIDE the phone -->
+        <video id="backgroundVideo" muted loop playsinline style="display:none;">
+            <source src="" type="video/mp4">
+        </video>
+        <div class="background-image" id="backgroundImage"></div>
+        <div class="background-overlay"></div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <button class="home-icon active" id="homeIcon" onclick="openApp('home')" title="Accueil">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                </button>
+                <button class="notifications-icon" id="notificationsIcon" onclick="openApp('portal')" title="Notifications">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                    </svg>
+                </button>
+                <button class="calendar-icon" id="calendarIcon" onclick="openApp('calendrier')" title="Calendrier">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="status-center">
+                <div class="time-date-container">
+                    <span id="currentTime">12:00:00</span>
+                    <span id="currentDate">Lundi 4 Novembre 2024</span>
+                </div>
+                <div class="camera-cutout"></div>
+            </div>
+            <div class="status-right">
+                <button class="urgent-message-btn" id="urgentMessageBtn" onclick="openApp('messages')" title="Messages">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                    </svg>
+                    <span class="notification-badge">2</span>
+                </button>
+                <button class="membres-icon" id="membresIcon" onclick="openApp('membres')" title="Membres">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                    </svg>
+                </button>
+                <button class="settings-icon" id="settingsIcon" onclick="openApp('parametres')" title="Paramètres">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                        <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Commander Message Modal -->
+        <div class="commander-modal" id="commanderModal">
+            <div class="commander-modal-content">
+                <div class="commander-header">
+                    <div class="commander-profile">
+                        <div class="commander-avatar">🕵️</div>
+                        <div class="commander-info">
+                            <div class="commander-name">Messages Classifiés</div>
+                            <div class="commander-rank">Commandant Omega</div>
+                        </div>
+                    </div>
+                    <button class="modal-close-btn" onclick="closeCommanderMessage()">✕</button>
+                </div>
+                <div class="commander-body">
+                    <div class="messages-accordion" id="messagesAccordion"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Screen Content -->
+        <div class="screen-content" id="screenContent">
+            <!-- Home (Page d'accueil) -->
+            <div class="app-window active" id="home">
+                <div class="home-content">
+                    <div class="home-welcome">
+                        <h1 class="home-title">EA Mobile</h1>
+                        <p class="home-subtitle">Interface Samsung S25 Ultra</p>
+                    </div>
+                    <div class="home-grid">
+                        <!-- <button class="home-card" onclick="openApp('portal')">
+                            <span class="home-card-icon">🔔</span>
+                            <span class="home-card-label">Notifications</span>
+                        </button>
+                        <button class="home-card" onclick="openApp('parametres')">
+                            <span class="home-card-icon">⚙️</span>
+                            <span class="home-card-label">Paramètres</span>
+                        </button>
+                        <button class="home-card" onclick="openApp('calendrier')">
+                            <span class="home-card-icon">📅</span>
+                            <span class="home-card-label">Calendrier</span>
+                        </button>
+                        <button class="home-card" onclick="openApp('eaNexus')">
+                            <span class="home-card-icon">⚡</span>
+                            <span class="home-card-label">Projets</span>
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portal (Notifications) -->
+            <div class="app-window" id="portal">
+                <div class="portal-content">
+                    <h1 class="portal-title">Bienvenue sur EA Mobile</h1>
+                    <p class="portal-description">Votre interface personnalisée pour explorer mes projets créatifs</p>
+                    <div class="notifications-container" id="notificationsContainer"></div>
+                </div>
+            </div>
+
+            <!-- Le Coin de l'Auteur → Membres -->
+            <div class="app-window" id="membres">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Membres</h2>
+                </div>
+                <div class="app-content characters-gallery" id="charactersGallery"></div>
+            </div>
+
+            <!-- Flash (Actualités du jour) -->
+            <div class="app-window" id="flash">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Flash</h2>
+                </div>
+                <div class="app-content flash-content" id="flashContent"></div>
+            </div>
+
+            <!-- Carte (Map) -->
+            <div class="app-window" id="carte">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Carte</h2>
+                </div>
+                <div class="app-content carte-content">
+                    <div class="map-container">
+                        <div class="map-title">🗺️ Hourglass Society</div>
+                        <div class="map-subtitle">Île Secrète des Robots</div>
+                        <div class="map-grid">
+                            <div class="map-zone" onclick="showZoneInfo('nexus')">
+                                <div class="zone-icon">⚡</div>
+                                <div class="zone-name">Nexus Central</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('creative')">
+                                <div class="zone-icon">🎨</div>
+                                <div class="zone-name">Zone Créative</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('tech')">
+                                <div class="zone-icon">💻</div>
+                                <div class="zone-name">Hub Technologique</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('leisure')">
+                                <div class="zone-icon">🎮</div>
+                                <div class="zone-name">Zone Loisirs</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('archives')">
+                                <div class="zone-icon">📚</div>
+                                <div class="zone-name">Archives</div>
+                            </div>
+                            <div class="map-zone" onclick="showZoneInfo('port')">
+                                <div class="zone-icon">⚓</div>
+                                <div class="zone-name">Port d'Accès</div>
+                            </div>
+                        </div>
+                        <div class="zone-info" id="zoneInfo"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Le Coin de l'Auteur (old - keep for ID compatibility) -->
+            <!-- <div class="app-window" id="auteur">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Membres</h2>
+                </div>
+                <div class="app-content characters-gallery" id="charactersGalleryOld"></div>
+            </div> -->
+
+            <!-- Character Detail Page -->
+            <div class="app-window" id="characterDetail">
+                <div class="app-header">
+                    <button class="back-btn" onclick="openApp('membres')">←</button>
+                    <h2 id="characterDetailName">Personnage</h2>
+                </div>
+                <div class="app-content character-detail-content" id="characterDetailContent"></div>
+            </div>
+
+            <!-- Chat Page -->
+            <div class="app-window" id="chat">
+                <div class="app-header">
+                    <button class="back-btn" onclick="backToCharacter()">←</button>
+                    <div class="chat-header-info">
+                        <div class="chat-header-avatar" id="chatHeaderAvatar"></div>
+                        <h2 id="chatHeaderName">Chat</h2>
+                    </div>
+                </div>
+                <div class="app-content chat-content">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" placeholder="Écrire un message..." />
+                        <button class="send-btn" onclick="sendMessage()">📤</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendrier -->
+            <div class="app-window" id="calendrier">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Calendrier</h2>
+                </div>
+                <div class="app-content calendar-view">
+                    <!-- Flash News Section -->
+                    <div class="calendar-flash-section" id="calendarFlashSection">
+                        <h3 class="flash-section-title">⚡ Actualités du Jour</h3>
+                        <div class="flash-mini-feed" id="flashMiniFeed"></div>
+                    </div>
+                    
+                    <div class="calendar-header">
+                        <button id="prevMonth">←</button>
+                        <span id="currentMonth">Janvier 2025</span>
+                        <button id="nextMonth">→</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                    <div class="day-events" id="dayEvents"></div>
+                </div>
+            </div>
+
+            <!-- Event Detail Page -->
+            <div class="app-window" id="eventDetail">
+                <div class="app-header">
+                    <button class="back-btn" onclick="openApp('calendrier')">←</button>
+                    <h2 id="eventDetailTitle">Événement</h2>
+                </div>
+                <div class="app-content event-detail-content" id="eventDetailContent"></div>
+            </div>
+
+            <!-- Project Detail Page -->
+            <div class="app-window" id="projectDetail">
+                <div class="app-header">
+                    <button class="back-btn" onclick="goBackToCategory()">←</button>
+                    <h2 id="projectDetailTitle">Projet</h2>
+                </div>
+                <div class="app-content project-detail-content" id="projectDetailContent"></div>
+            </div>
+
+            <!-- Messages (remplace Commander Modal) -->
+            <div class="app-window" id="messages">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Messages</h2>
+                </div>
+                <div class="app-content messages-content" id="messagesContent"></div>
+            </div>
+
+            <!-- Paramètres -->
+            <div class="app-window" id="parametres">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Paramètres</h2>
+                </div>
+                <div class="app-content settings-content">
+                    <!-- Couleur du texte -->
+                    <div class="settings-section">
+                        <h3 class="settings-title">🎨 Couleur d'accentuation</h3>
+                        <div class="color-picker-container">
+                            <input type="color" id="textColorPicker" value="#667eea">
+                            <button class="reset-btn" onclick="resetTextColor()">Réinitialiser</button>
+                        </div>
+                    </div>
+
+                    <!-- Lecteur de musique -->
+                    <div class="settings-section">
+                        <h3 class="settings-title">🎧 Lecteur de Musique</h3>
+                        <div class="music-player-full">
+                            <div class="album-art-settings">
+                                <div class="album-placeholder-settings">♫</div>
+                            </div>
+                            <div class="current-track-info-full">
+                                <div class="track-title-full" id="settingsTrackTitle">Sélectionner une musique</div>
+                                <div class="track-artist-full" id="settingsTrackArtist">EA Mobile</div>
+                            </div>
+                            <div class="progress-bar-settings">
+                                <input type="range" id="settingsSeekBar" min="0" max="100" value="0">
+                                <div class="time-display">
+                                    <span id="settingsCurrentTime">0:00</span>
+                                    <span id="settingsTotalTime">0:00</span>
+                                </div>
+                            </div>
+                            <div class="music-controls-full">
+                                <button class="control-btn-music" id="settingsPrevBtn" onclick="changeTrack(-1)">⏮</button>
+                                <button class="control-btn-music play-btn-music" id="settingsPlayBtn" onclick="toggleMusicPlayback()">▶️</button>
+                                <button class="control-btn-music" id="settingsNextBtn" onclick="changeTrack(1)">⏭</button>
+                                <button class="control-btn-music" id="settingsStopBtn" onclick="stopMusic()">⏹️</button>
+                            </div>
+                            <div class="playback-mode-controls">
+                                <button class="mode-btn active" id="sequentialBtn" onclick="toggleSequential()" title="Lecture séquentielle">⏭️</button>
+                                <button class="mode-btn" id="repeatBtn" onclick="toggleRepeat()" title="Répéter">🔁</button>
+                                <button class="mode-btn" id="shuffleBtn" onclick="toggleShuffle()" title="Aléatoire">🔀</button>
+                            </div>
+                            <div class="volume-control-settings">
+                                <span>🔊</span>
+                                <input type="range" id="settingsVolumeBar" min="0" max="100" value="70">
+                            </div>
+                            <div class="playlist-settings-full" id="playlistSettings"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casque (Music Player) - Keep for backward compatibility but hidden -->
+            <div class="app-window" id="casque" style="display: none;">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Musique</h2>
+                </div>
+                <div class="app-content music-player">
+                    <div class="album-art">
+                        <div class="album-placeholder">♫</div>
+                    </div>
+                    <h3 id="trackTitle">Sélectionner une musique</h3>
+                    <p id="trackArtist">EA Mobile</p>
+                    <div class="progress-bar">
+                        <input type="range" id="seekBar" min="0" max="100" value="0">
+                        <div class="time-display">
+                            <span id="currentTimeMusic">0:00</span>
+                            <span id="totalTime">0:00</span>
+                        </div>
+                    </div>
+                    <div class="music-controls">
+                        <button class="control-btn" id="prevBtn">⏮</button>
+                        <button class="control-btn play-btn" id="playBtn">▶</button>
+                        <button class="control-btn" id="nextBtn">⏭</button>
+                    </div>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" id="volumeBar" min="0" max="100" value="70">
+                    </div>
+                    <div class="playlist" id="playlistContainer"></div>
+                </div>
+            </div>
+
+            <!-- Fond d'écran - Keep for backward compatibility but hidden -->
+            <div class="app-window" id="fondEcran" style="display: none;">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Fond d'écran</h2>
+                </div>
+                <div class="app-content wallpaper-gallery" id="wallpaperGallery"></div>
+            </div>
+
+            <!-- Projets -->
+            <div class="app-window" id="projets">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Mes Projets</h2>
+                </div>
+                <div class="app-content projects-overview">
+                    <div class="project-categories" id="projectCategories"></div>
+                </div>
+            </div>
+
+            <!-- Lieux -->
+            <div class="app-window" id="lieux">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Lieux</h2>
+                </div>
+                <div class="app-content lieux-content">
+                    <div class="lieux-grid" id="lieuxGrid"></div>
+                </div>
+            </div>
+
+            <!-- Location Detail (Zones) -->
+            <div class="app-window" id="locationDetail">
+                <div class="app-header">
+                    <button class="back-btn" onclick="openApp('lieux')">←</button>
+                    <h2 id="locationDetailName">Lieu</h2>
+                </div>
+                <div class="app-content location-zones" id="locationZones"></div>
+            </div>
+
+            <!-- EA NEXUS (App Launcher) -->
+            <div class="app-window" id="eaNexus">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>EA NEXUS</h2>
+                </div>
+                <div class="app-content nexus-launcher">
+                    <div class="nexus-grid" id="nexusGrid"></div>
+                </div>
+            </div>
+
+            <!-- Anim'Connect -->
+            <div class="app-window" id="animConnect">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Anim'Connect</h2>
+                </div>
+                <div class="app-content whatsapp-layout">
+                    <div class="chat-list" id="chatList"></div>
+                </div>
+            </div>
+
+            <!-- Subcategory Page (niveau 3) -->
+            <div class="app-window" id="subcategoryPage">
+                <div class="app-header">
+                    <button class="back-btn" onclick="goBackToMainCategory()">←</button>
+                    <h2 id="subcategoryName">Sous-catégorie</h2>
+                </div>
+                <div class="app-content">
+                    <div id="subcategoryProjects"></div>
+                </div>
+            </div>
+
+            <!-- Echo-Sphere -->
+            <div class="app-window" id="echoSphere">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Echo-Sphere</h2>
+                </div>
+                <div class="app-content social-feed" id="socialFeed"></div>
+            </div>
+
+            <!-- Arena -->
+            <div class="app-window" id="arena">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Arena</h2>
+                </div>
+                <div class="app-content gaming-hub" id="gamingHub"></div>
+            </div>
+
+            <!-- Adventures -->
+            <div class="app-window" id="adventures">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Adventures</h2>
+                </div>
+                <div class="app-content habit-tracker" id="habitTracker"></div>
+            </div>
+
+            <!-- Medias -->
+            <div class="app-window" id="medias">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>EA THEATER</h2>
+                </div>
+                <div class="app-content youtube-layout" id="youtubeLayout"></div>
+            </div>
+
+            <!-- EA Center (Tutoriels) -->
+            <div class="app-window" id="eaCenter">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>EA CENTER</h2>
+                </div>
+                <div class="app-content youtube-layout" id="eaCenterLayout"></div>
+            </div>
+        </div>
+
+        <!-- Floating Lieux Button -->
+        <button class="floating-lieux-btn" onclick="openApp('lieux')" title="Lieux">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </button>
+
+        <!-- Floating Projets Button -->
+        <button class="floating-projets-btn" onclick="openApp('eaNexus')" title="Projets">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
