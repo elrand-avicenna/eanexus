@@ -122,12 +122,32 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex: 1;
+}
+
+.status-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.camera-cutout {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    border: 1px solid #333;
+    margin-top: 5px;
 }
 
 .time-date-container {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    align-items: center;
 }
 
 #currentTime {
@@ -140,7 +160,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     opacity: 0.8;
 }
 
-.settings-icon, .notifications-icon, .home-icon, .urgent-message-btn, .membres-icon {
+.settings-icon, .notifications-icon, .home-icon, .urgent-message-btn, .membres-icon, .calendar-icon {
     background: none;
     border: none;
     cursor: pointer;
@@ -153,16 +173,16 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     position: relative;
 }
 
-.settings-icon:hover, .notifications-icon:hover, .home-icon:hover, .membres-icon:hover {
+.settings-icon:hover, .notifications-icon:hover, .home-icon:hover, .membres-icon:hover, .calendar-icon:hover {
     background: rgba(255,255,255,0.2);
     transform: scale(1.1);
 }
 
-.settings-icon.active, .notifications-icon.active, .home-icon.active, .membres-icon.active {
+.settings-icon.active, .notifications-icon.active, .home-icon.active, .membres-icon.active, .calendar-icon.active {
     background: rgba(255,255,255,0.3);
 }
 
-.settings-icon svg, .notifications-icon svg, .home-icon svg, .membres-icon svg {
+.settings-icon svg, .notifications-icon svg, .home-icon svg, .membres-icon svg, .calendar-icon svg {
     display: block;
 }
 
