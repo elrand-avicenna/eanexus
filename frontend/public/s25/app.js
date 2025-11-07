@@ -1915,6 +1915,15 @@ function openCharacterDetail(characterId) {
     const character = characters.find(c => c.id === characterId);
     if (!character) return;
     
+    // Change wallpaper to character's video
+    if (character.videoWallpaper) {
+        const video = document.getElementById('backgroundVideo');
+        video.src = character.videoWallpaper;
+        video.style.display = 'block';
+        video.load();
+        video.play();
+    }
+    
     document.getElementById('characterDetailName').textContent = character.name;
     
     const content = document.getElementById('characterDetailContent');
@@ -1925,6 +1934,10 @@ function openCharacterDetail(characterId) {
             </div>
             <div class="character-detail-name">${character.name}</div>
             <div class="character-detail-title">${character.title}</div>
+            <div class="character-status">
+                <span class="status-badge ${character.availability === 'En ligne' ? 'online' : 'busy'}">${character.availability}</span>
+                <span class="location-badge">📍 ${character.location}</span>
+            </div>
             <button class="messenger-btn" onclick="openChat(${character.id})">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <path d="M12 2C6.48 2 2 6.15 2 11.25c0 2.92 1.44 5.51 3.69 7.24V22l3.41-1.87c.91.25 1.87.37 2.9.37 5.52 0 10-4.15 10-9.25S17.52 2 12 2zm1 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
@@ -1933,10 +1946,27 @@ function openCharacterDetail(characterId) {
             </button>
         </div>
         
-        <div class="character-detail-bio">${character.bio}</div>
+        <div class="character-role-section">
+            <h3>🎭 Rôle</h3>
+            <p>${character.role}</p>
+        </div>
+        
+        <div class="character-bio-section">
+            <h3>📖 Biographie</h3>
+            <p>${character.bio}</p>
+        </div>
+        
+        <div class="character-specialites-section">
+            <h3>⚡ Spécialités</h3>
+            <div class="specialites-grid">
+                ${character.specialites.map(spec => `
+                    <div class="specialite-badge">${spec}</div>
+                `).join('')}
+            </div>
+        </div>
         
         <div class="character-stats">
-            <h3>Statistiques</h3>
+            <h3>📊 Statistiques</h3>
             ${Object.entries(character.stats).map(([key, value]) => `
                 <div class="stat-bar">
                     <div class="stat-bar-label">
@@ -1951,12 +1981,26 @@ function openCharacterDetail(characterId) {
         </div>
         
         <div class="character-skills">
-            <h3>Compétences</h3>
+            <h3>🌟 Compétences</h3>
             <div class="skills-list">
                 ${character.skills.map(skill => `
                     <div class="skill-item">✦ ${skill}</div>
                 `).join('')}
             </div>
+        </div>
+        
+        <div class="character-achievements">
+            <h3>🏅 Accomplissements</h3>
+            <div class="achievements-list">
+                ${character.achievements.map(achievement => `
+                    <div class="achievement-item">${achievement}</div>
+                `).join('')}
+            </div>
+        </div>
+        
+        <div class="character-quote">
+            <div class="quote-icon">💬</div>
+            <div class="quote-text">"${character.quote}"</div>
         </div>
     `;
     
