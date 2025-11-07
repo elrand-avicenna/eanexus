@@ -3140,6 +3140,80 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     border-left-color: #667eea;
 }
 
+/* Modern Playlist Items */
+.playlist-item-modern {
+    padding: 15px;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    border-left: 3px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.playlist-item-modern:hover {
+    background: rgba(255,255,255,0.08);
+    border-left-color: #667eea;
+    transform: translateX(5px);
+}
+
+.playlist-item-modern.active {
+    background: rgba(102, 126, 234, 0.2);
+    border-left-color: #667eea;
+}
+
+.track-number-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+    flex-shrink: 0;
+}
+
+.playlist-item-modern.active .track-number-circle {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.track-icon {
+    flex-shrink: 0;
+}
+
+.track-info-modern {
+    flex: 1;
+    min-width: 0;
+}
+
+.track-title-modern {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artist-modern {
+    font-size: 12px;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.equalizer-icon {
+    flex-shrink: 0;
+}
+
 /* Home Page */
 .home-content {
     display: flex;
