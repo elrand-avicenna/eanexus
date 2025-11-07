@@ -17,14 +17,14 @@
   },
   {
     "content": "Modifier paramètres : enlever wallpaper, remettre lecteur musique complet",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Intégrer Flash dans le calendrier",
-    "status": "pending"
+    "status": "completed"
   },
   {
     "content": "Tester toutes les fonctionnalités",
-    "status": "pending"
+    "status": "in_progress"
   }
 ]
