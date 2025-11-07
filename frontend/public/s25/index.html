@@ -252,23 +252,16 @@
                         </div>
                     </div>
 
-                    <!-- Fond d'écran vidéo -->
-                    <div class="settings-section">
-                        <h3 class="settings-title">🖼️ Fond d'écran</h3>
-                        <div class="wallpaper-settings" id="wallpaperSettings"></div>
-                        <div class="video-controls">
-                            <button class="control-btn" id="videoPlayBtn" onclick="toggleVideoPlayback()">⏸️ Pause</button>
-                            <button class="control-btn" id="videoStopBtn" onclick="stopVideo()">⏹️ Stop</button>
-                        </div>
-                    </div>
-
                     <!-- Lecteur de musique -->
                     <div class="settings-section">
-                        <h3 class="settings-title">🎧 Musique</h3>
-                        <div class="music-player-settings">
-                            <div class="current-track-info">
-                                <div class="track-title" id="settingsTrackTitle">Aucune musique</div>
-                                <div class="track-artist" id="settingsTrackArtist">-</div>
+                        <h3 class="settings-title">🎧 Lecteur de Musique</h3>
+                        <div class="music-player-full">
+                            <div class="album-art-settings">
+                                <div class="album-placeholder-settings">♫</div>
+                            </div>
+                            <div class="current-track-info-full">
+                                <div class="track-title-full" id="settingsTrackTitle">Sélectionner une musique</div>
+                                <div class="track-artist-full" id="settingsTrackArtist">EA Mobile</div>
                             </div>
                             <div class="progress-bar-settings">
                                 <input type="range" id="settingsSeekBar" min="0" max="100" value="0">
@@ -277,9 +270,11 @@
                                     <span id="settingsTotalTime">0:00</span>
                                 </div>
                             </div>
-                            <div class="music-controls-settings">
-                                <button class="control-btn" id="settingsPlayBtn" onclick="toggleMusicPlayback()">▶️ Play</button>
-                                <button class="control-btn" id="settingsStopBtn" onclick="stopMusic()">⏹️ Stop</button>
+                            <div class="music-controls-full">
+                                <button class="control-btn-music" id="settingsPrevBtn" onclick="changeTrack(-1)">⏮</button>
+                                <button class="control-btn-music play-btn-music" id="settingsPlayBtn" onclick="toggleMusicPlayback()">▶️</button>
+                                <button class="control-btn-music" id="settingsNextBtn" onclick="changeTrack(1)">⏭</button>
+                                <button class="control-btn-music" id="settingsStopBtn" onclick="stopMusic()">⏹️</button>
                             </div>
                             <div class="playback-mode-controls">
                                 <button class="mode-btn active" id="sequentialBtn" onclick="toggleSequential()" title="Lecture séquentielle">⏭️</button>
@@ -290,7 +285,7 @@
                                 <span>🔊</span>
                                 <input type="range" id="settingsVolumeBar" min="0" max="100" value="70">
                             </div>
-                            <div class="playlist-settings" id="playlistSettings"></div>
+                            <div class="playlist-settings-full" id="playlistSettings"></div>
                         </div>
                     </div>
                 </div>
