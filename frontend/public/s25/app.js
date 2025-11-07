@@ -1534,26 +1534,33 @@ window.openCategoryApp = openCategoryApp;
 // EA NEXUS
 function renderNexusApps(data) {
     const grid = document.getElementById('nexusGrid');
-    grid.innerHTML = data.categories.map((category, index) => `
-        <div class="nexus-accordion-item" id="nexus-accordion-${index}">
-            <div class="nexus-accordion-header" onclick="toggleNexusAccordion(${index})">
-                <div class="nexus-header-content">
-                    <span class="nexus-icon">${category.icon}</span>
-                    <span class="nexus-title">${category.name}</span>
+    
+    // Support both old and new JSON formats
+    const categories = data.categories || [];
+    
+    grid.innerHTML = categories.map((category, index) => {
+        const itemCount = category.subcategories?.reduce((sum, sub) => sum + (sub.projects?.length || 0), 0) || category.items?.length || 0;
+        return `
+            <div class="nexus-accordion-item" id="nexus-accordion-${index}">
+                <div class="nexus-accordion-header" onclick="toggleNexusAccordion(${index})">
+                    <div class="nexus-header-content">
+                        <span class="nexus-icon">${category.icon}</span>
+                        <span class="nexus-title">${category.name}</span>
+                    </div>
+                    <span class="nexus-accordion-icon">▼</span>
                 </div>
-                <span class="nexus-accordion-icon">▼</span>
-            </div>
-            <div class="nexus-accordion-content">
-                <div class="nexus-accordion-body">
-                    <p class="nexus-synopsis">${category.summary}</p>
-                    <div class="nexus-meta">${category.items.length} projets disponibles</div>
-                    <button class="nexus-enter-btn" onclick="openCategoryApp('${category.id}')">
-                        Entrer →
-                    </button>
+                <div class="nexus-accordion-content">
+                    <div class="nexus-accordion-body">
+                        <p class="nexus-synopsis">${category.summary}</p>
+                        <div class="nexus-meta">${itemCount} projets disponibles</div>
+                        <button class="nexus-enter-btn" onclick="openCategoryApp('${category.id}')">
+                            Entrer →
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 function toggleNexusAccordion(index) {
