@@ -1476,43 +1476,27 @@ async function loadFlashNews() {
     try {
         const response = await fetch('data/flash.json');
         const flashData = await response.json();
-        renderFlashNews(flashData);
+        renderFlashInCalendar(flashData);
     } catch (error) {
         console.error('Error loading flash news:', error);
     }
 }
 
-function renderFlashNews(data) {
-    const container = document.getElementById('flashContent');
-    const now = new Date();
+function renderFlashInCalendar(data) {
+    const container = document.getElementById('flashMiniFeed');
     
-    container.innerHTML = `
-        <div class="flash-header">
-            <div class="flash-date">${now.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
-            <div class="flash-title">⚡ Flash Info</div>
+    // Show top 3 urgent/recent news
+    const topNews = data.dailyNews.slice(0, 3);
+    
+    container.innerHTML = topNews.map(news => `
+        <div class="flash-mini-item ${news.urgent ? 'urgent' : ''}">
+            <span class="flash-mini-icon">${news.icon}</span>
+            <div class="flash-mini-content">
+                <div class="flash-mini-title">${news.title}</div>
+                <div class="flash-mini-time">${news.time}</div>
+            </div>
         </div>
-        
-        <div class="weather-widget">
-            <div class="weather-icon">${data.weatherForecast.icon}</div>
-            <div class="weather-temp">${data.weatherForecast.temperature}</div>
-            <div style="color: #888; font-size: 13px;">${data.weatherForecast.condition}</div>
-        </div>
-        
-        <div class="news-feed">
-            ${data.dailyNews.map(news => `
-                <div class="news-item ${news.urgent ? 'urgent' : ''}">
-                    <div class="news-header">
-                        <div class="news-icon">${news.icon}</div>
-                        <div class="news-content">
-                            <div class="news-title">${news.title}</div>
-                            <div class="news-summary">${news.summary}</div>
-                        </div>
-                        <div class="news-time">${news.time}</div>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-    `;
+    `).join('');
 }
 
 // ===== CARTE PAGE (Map) =====
