@@ -25,6 +25,7 @@ const backgroundVideo = document.getElementById('backgroundVideo');
 // Initialize App
 window.addEventListener('DOMContentLoaded', () => {
     initializeTime();
+    checkLockedWallpaper(); // Check if wallpaper is locked
     loadData(); // Load data directly, skip prologue
     initializeMusicPlayer();
     initializeTextColorPicker();
