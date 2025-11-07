@@ -341,10 +341,11 @@ async function loadData() {
             }
         }, 100);
 
-        // Load Projects
-        const projectsResponse = await fetch('data/projects.json');
+        // Load Projects with hierarchy
+        const projectsResponse = await fetch('data/projects-hierarchy.json');
         const projectsDataTemp = await projectsResponse.json();
-        projectsData = projectsDataTemp; // Store globally
+        projectsData = projectsDataTemp;
+        window.projectsDataHierarchy = projectsDataTemp; // Global for hierarchy
         renderProjects(projectsDataTemp);
         renderNexusApps(projectsDataTemp);
         renderCategoryApps(projectsDataTemp);
