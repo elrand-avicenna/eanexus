@@ -373,12 +373,14 @@ function openApp(appId) {
     // Update icon states
     const homeIcon = document.getElementById('homeIcon');
     const notifIcon = document.getElementById('notificationsIcon');
+    const calendarIcon = document.getElementById('calendarIcon');
     const settingsIcon = document.getElementById('settingsIcon');
     const membresIcon = document.getElementById('membresIcon');
     
     // Remove all active states
     if (homeIcon) homeIcon.classList.remove('active');
     if (notifIcon) notifIcon.classList.remove('active');
+    if (calendarIcon) calendarIcon.classList.remove('active');
     if (settingsIcon) settingsIcon.classList.remove('active');
     if (membresIcon) membresIcon.classList.remove('active');
     
@@ -387,6 +389,8 @@ function openApp(appId) {
         if (homeIcon) homeIcon.classList.add('active');
     } else if (appId === 'portal') {
         if (notifIcon) notifIcon.classList.add('active');
+    } else if (appId === 'calendrier') {
+        if (calendarIcon) calendarIcon.classList.add('active');
     } else if (appId === 'parametres') {
         if (settingsIcon) settingsIcon.classList.add('active');
     } else if (appId === 'membres' || appId === 'characterDetail') {
