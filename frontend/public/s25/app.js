@@ -1,5 +1,5 @@
 // Global State
-let currentApp = 'prologue';
+let currentApp = 'home';
 let musicPlayer = {
     currentTrack: 0,
     isPlaying: false,
@@ -23,11 +23,18 @@ const backgroundVideo = document.getElementById('backgroundVideo');
 // Initialize App
 window.addEventListener('DOMContentLoaded', () => {
     initializeTime();
-    loadPrologue(); // Start with prologue
+    loadData(); // Load data directly, skip prologue
     initializeMusicPlayer();
     initializeTextColorPicker();
     initializeSettingsSeekBar();
     initializeSettingsVolumeBar();
+    
+    // Render settings components after data is loaded
+    setTimeout(() => {
+        renderWallpaperSettings();
+        renderPlaylistSettings();
+        updateSettingsMusicInfo();
+    }, 500);
 });
 function initializeTime() {
     const daysOfWeek = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
