@@ -1611,7 +1611,7 @@ function renderAnimConnect(category) {
     const container = document.getElementById('chatList');
     
     // Load new hierarchical data
-    fetch('data/projects-new.json')
+    fetch('data/projects-hierarchy.json')
         .then(res => res.json())
         .then(data => {
             const cat = data.categories.find(c => c.id === 'animConnect');
