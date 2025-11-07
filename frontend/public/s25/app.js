@@ -420,6 +420,27 @@ function closeApp() {
     openApp('home');
 }
 
+// Update floating buttons active state
+function updateFloatingButtons(appId) {
+    const lieuxBtn = document.querySelector('.floating-lieux-btn');
+    const projetsBtn = document.querySelector('.floating-projets-btn');
+    
+    if (lieuxBtn) {
+        lieuxBtn.classList.remove('active');
+        if (appId === 'lieux' || appId === 'locationDetail') {
+            lieuxBtn.classList.add('active');
+        }
+    }
+    
+    if (projetsBtn) {
+        projetsBtn.classList.remove('active');
+        if (appId === 'eaNexus' || appId.includes('animConnect') || appId.includes('echoSphere') || 
+            appId.includes('arena') || appId.includes('adventures') || appId.includes('medias') || appId.includes('eaCenter')) {
+            projetsBtn.classList.add('active');
+        }
+    }
+}
+
 window.openApp = openApp;
 window.closeApp = closeApp;
 
