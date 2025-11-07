@@ -1332,6 +1332,62 @@ window.toggleLocationAccordion = toggleLocationAccordion;
 window.openLocationDetail = openLocationDetail;
 window.toggleZoneAccordion = toggleZoneAccordion;
 
+
+// ===== PROJECT DETAIL SYSTEM =====
+
+let currentCategoryId = null;
+let projectsData = null;
+
+function openProjectDetail(categoryId, projectIndex) {
+    currentCategoryId = categoryId;
+    
+    // Find the category and project
+    const category = projectsData?.categories.find(c => c.id === categoryId);
+    if (!category) return;
+    
+    const project = category.items[projectIndex];
+    if (!project) return;
+    
+    document.getElementById('projectDetailTitle').textContent = project.title;
+    
+    const content = document.getElementById('projectDetailContent');
+    content.innerHTML = `
+        <div class="project-detail-header">
+            <div class="project-detail-icon">${project.icon}</div>
+            <h3>${project.title}</h3>
+            <p class="project-detail-category">${category.name}</p>
+        </div>
+        
+        <div class="project-detail-description">
+            ${project.fullDescription}
+        </div>
+        
+        <div class="project-detail-info">
+            <h3>📋 Informations</h3>
+            ${Object.entries(project.details || {}).map(([key, value]) => `
+                <div class="info-row">
+                    <span class="info-label">${key}</span>
+                    <span class="info-value">${value}</span>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    openApp('projectDetail');
+}
+
+function goBackToCategory() {
+    if (currentCategoryId) {
+        openCategoryApp(currentCategoryId);
+    } else {
+        openApp('eaNexus');
+    }
+}
+
+window.openProjectDetail = openProjectDetail;
+window.goBackToCategory = goBackToCategory;
+
+
 function closeCommanderMessage() {
     const modal = document.getElementById('commanderModal');
     modal.classList.remove('active');
