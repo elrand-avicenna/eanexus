@@ -1195,6 +1195,116 @@ function openMemberChat(memberId, messageId) {
 
 window.openMemberChat = openMemberChat;
 
+// ===== LIEUX SYSTEM =====
+
+let locations = [];
+
+async function loadLocations() {
+    try {
+        const response = await fetch('data/locations.json');
+        const data = await response.json();
+        locations = data.locations;
+        renderLieux();
+    } catch (error) {
+        console.error('Error loading locations:', error);
+    }
+}
+
+function renderLieux() {
+    const grid = document.getElementById('lieuxGrid');
+    grid.innerHTML = locations.map((location, index) => `
+        <div class="location-accordion-item" id="location-accordion-${index}">
+            <div class="location-accordion-header" onclick="toggleLocationAccordion(${index})">
+                <div class="location-header-content">
+                    <span class="location-icon">${location.icon}</span>
+                    <span class="location-title">${location.name}</span>
+                </div>
+                <span class="location-accordion-icon">▼</span>
+            </div>
+            <div class="location-accordion-content">
+                <div class="location-accordion-body">
+                    <p class="location-synopsis">${location.summary}</p>
+                    <div class="location-meta">${location.zones.length} zones disponibles</div>
+                    <button class="location-enter-btn" onclick="openLocationDetail('${location.id}')">
+                        Explorer →
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function toggleLocationAccordion(index) {
+    const item = document.getElementById(`location-accordion-${index}`);
+    const wasActive = item.classList.contains('active');
+    
+    // Close all other accordions
+    document.querySelectorAll('.location-accordion-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Toggle current accordion
+    if (!wasActive) {
+        item.classList.add('active');
+    }
+}
+
+function openLocationDetail(locationId) {
+    const location = locations.find(l => l.id === locationId);
+    if (!location) return;
+    
+    document.getElementById('locationDetailName').textContent = location.name;
+    
+    const container = document.getElementById('locationZones');
+    container.innerHTML = `
+        <div class="location-detail-header">
+            <div class="location-detail-icon">${location.icon}</div>
+            <h3>${location.name}</h3>
+            <p>${location.summary}</p>
+        </div>
+        
+        <div class="zones-list">
+            ${location.zones.map((zone, index) => `
+                <div class="zone-accordion-item" id="zone-${locationId}-${index}">
+                    <div class="zone-accordion-header" onclick="toggleZoneAccordion('${locationId}-${index}')">
+                        <div class="zone-header-content">
+                            <span class="zone-icon">${zone.icon}</span>
+                            <span class="zone-name">${zone.name}</span>
+                        </div>
+                        <span class="zone-accordion-icon">▼</span>
+                    </div>
+                    <div class="zone-accordion-content">
+                        <div class="zone-accordion-body">
+                            <p class="zone-description">${zone.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    openApp('locationDetail');
+}
+
+function toggleZoneAccordion(zoneId) {
+    const item = document.getElementById(`zone-${zoneId}`);
+    const wasActive = item.classList.contains('active');
+    
+    // Close all other zones
+    document.querySelectorAll('.zone-accordion-item').forEach(el => {
+        el.classList.remove('active');
+    });
+    
+    // Toggle current zone
+    if (!wasActive) {
+        item.classList.add('active');
+    }
+}
+
+window.toggleLocationAccordion = toggleLocationAccordion;
+window.openLocationDetail = openLocationDetail;
+window.toggleZoneAccordion = toggleZoneAccordion;
+
 function closeCommanderMessage() {
     const modal = document.getElementById('commanderModal');
     modal.classList.remove('active');
