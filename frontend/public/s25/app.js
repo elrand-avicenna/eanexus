@@ -1807,23 +1807,32 @@ function renderPlaylistSettings() {
     container.innerHTML = musicPlayer.playlist.map((track, index) => {
         const isActive = index === musicPlayer.currentTrack;
         return `
-            <div class="playlist-item-settings ${isActive ? 'active' : ''}" 
+            <div class="playlist-item-modern ${isActive ? 'active' : ''}" 
                  onclick="selectTrackFromSettings(${index})">
-                <div class="track-number">${index + 1}</div>
-                <div class="track-wave-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="${isActive ? '#667eea' : '#888'}">
-                        <path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/>
-                    </svg>
+                <div class="track-number-circle">${index + 1}</div>
+                <svg class="track-icon" width="20" height="20" viewBox="0 0 24 24" fill="${isActive ? '#667eea' : '#666'}">
+                    <path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/>
+                </svg>
+                <div class="track-info-modern">
+                    <div class="track-title-modern">${track.title}</div>
+                    <div class="track-artist-modern">${track.artist}</div>
                 </div>
-                <div class="playlist-info">
-                    <h4>${track.title}</h4>
-                    <p>${track.artist}</p>
-                </div>
-                <div class="track-playing-indicator ${isActive ? 'playing' : ''}">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                ${isActive && musicPlayer.isPlaying ? `
+                <svg class="equalizer-icon" width="20" height="20" viewBox="0 0 24 24" fill="#667eea">
+                    <rect x="4" y="14" width="2" height="6" rx="1">
+                        <animate attributeName="height" values="6;14;6" dur="1s" repeatCount="indefinite"/>
+                        <animate attributeName="y" values="14;10;14" dur="1s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="10" y="10" width="2" height="10" rx="1">
+                        <animate attributeName="height" values="10;18;10" dur="0.8s" repeatCount="indefinite"/>
+                        <animate attributeName="y" values="10;6;10" dur="0.8s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="16" y="12" width="2" height="8" rx="1">
+                        <animate attributeName="height" values="8;16;8" dur="1.2s" repeatCount="indefinite"/>
+                        <animate attributeName="y" values="12;8;12" dur="1.2s" repeatCount="indefinite"/>
+                    </rect>
+                </svg>
+                ` : ''}
             </div>
         `;
     }).join('');
