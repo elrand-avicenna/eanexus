@@ -750,6 +750,11 @@ function changeTrack(direction) {
     loadTrack();
     renderPlaylist();
     
+    // Update settings playlist view
+    if (typeof renderPlaylistSettings === 'function') {
+        renderPlaylistSettings();
+    }
+    
     // Auto-play if music was playing
     if (wasPlaying) {
         musicPlayer.isPlaying = true;
