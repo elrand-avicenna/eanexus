@@ -1901,11 +1901,15 @@ function openCharacterDetail(characterId) {
     const character = characters.find(c => c.id === characterId);
     if (!character) return;
     
-    // Change wallpaper to character's video
+    // Change wallpaper to character's video (if not locked to another)
     if (character.videoWallpaper) {
         const video = document.getElementById('backgroundVideo');
-        video.src = character.videoWallpaper;
+        const bgImage = document.getElementById('backgroundImage');
+        
+        // Hide image, show video
+        bgImage.style.display = 'none';
         video.style.display = 'block';
+        video.src = character.videoWallpaper;
         video.load();
         video.play();
     }
@@ -1913,6 +1917,8 @@ function openCharacterDetail(characterId) {
     document.getElementById('characterDetailName').textContent = character.name;
     
     const content = document.getElementById('characterDetailContent');
+    const isLocked = lockedWallpaper && lockedWallpaperUrl === character.videoWallpaper;
+    
     content.innerHTML = `
         <div class="character-detail-header">
             <div class="character-detail-avatar" style="background: ${character.background}">
@@ -1924,6 +1930,16 @@ function openCharacterDetail(characterId) {
                 <span class="status-badge ${character.availability === 'En ligne' ? 'online' : 'busy'}">${character.availability}</span>
                 <span class="location-badge">📍 ${character.location}</span>
             </div>
+            
+            <!-- Wallpaper Lock Toggle -->
+            <div class="wallpaper-lock-section">
+                <label class="wallpaper-lock-toggle">
+                    <input type="checkbox" id="wallpaperLockToggle" ${isLocked ? 'checked' : ''} onchange="toggleWallpaperLock('${character.videoWallpaper}')">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-label">🔒 Verrouiller ce fond d'écran</span>
+                </label>
+            </div>
+            
             <button class="messenger-btn" onclick="openChat(${character.id})">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <path d="M12 2C6.48 2 2 6.15 2 11.25c0 2.92 1.44 5.51 3.69 7.24V22l3.41-1.87c.91.25 1.87.37 2.9.37 5.52 0 10-4.15 10-9.25S17.52 2 12 2zm1 12h-2v-2h2v2zm0-4h-2V6h2v4z"/>
@@ -1993,4 +2009,39 @@ function openCharacterDetail(characterId) {
     openApp('characterDetail');
 }
 
+function toggleWallpaperLock(videoUrl) {
+    const toggle = document.getElementById('wallpaperLockToggle');
+    
+    if (toggle.checked) {
+        // Lock wallpaper
+        lockedWallpaper = true;
+        lockedWallpaperUrl = videoUrl;
+        localStorage.setItem('lockedWallpaper', videoUrl);
+    } else {
+        // Unlock wallpaper
+        lockedWallpaper = false;
+        lockedWallpaperUrl = null;
+        localStorage.removeItem('lockedWallpaper');
+    }
+}
+
+// Check for locked wallpaper on page load
+function checkLockedWallpaper() {
+    const locked = localStorage.getItem('lockedWallpaper');
+    if (locked) {
+        lockedWallpaper = true;
+        lockedWallpaperUrl = locked;
+        
+        // Apply locked wallpaper
+        const video = document.getElementById('backgroundVideo');
+        const bgImage = document.getElementById('backgroundImage');
+        bgImage.style.display = 'none';
+        video.style.display = 'block';
+        video.src = locked;
+        video.load();
+        video.play();
+    }
+}
+
 window.openCharacterDetail = openCharacterDetail;
+window.toggleWallpaperLock = toggleWallpaperLock;
