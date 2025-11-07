@@ -1598,31 +1598,145 @@ function renderCategoryApps(data) {
     });
 }
 
-// Anim'Connect (WhatsApp-like avec accordéon)
+// Anim'Connect - Affiche les sous-catégories (niveau 3)
 function renderAnimConnect(category) {
     const container = document.getElementById('chatList');
-    container.innerHTML = category.items.map((item, index) => `
-        <div class="project-accordion-item" id="anim-${index}">
-            <div class="project-accordion-header" onclick="toggleProjectAccordion('anim-${index}')">
-                <div class="chat-avatar">${item.icon || '🎭'}</div>
-                <div class="chat-info">
-                    <div class="chat-name">${item.title}</div>
-                    <div class="chat-message">${item.description.substring(0, 50)}...</div>
+    
+    // Load new hierarchical data
+    fetch('data/projects-new.json')
+        .then(res => res.json())
+        .then(data => {
+            const cat = data.categories.find(c => c.id === 'animConnect');
+            if (!cat || !cat.subcategories) return;
+            
+            container.innerHTML = cat.subcategories.map((subcat, index) => `
+                <div class="project-accordion-item">
+                    <div class="project-accordion-header" onclick="openSubcategory('animConnect', ${index})">
+                        <div class="chat-avatar">${subcat.icon}</div>
+                        <div class="chat-info">
+                            <div class="chat-name">${subcat.name}</div>
+                            <div class="chat-message">${subcat.description}</div>
+                        </div>
+                        <span class="project-accordion-icon">→</span>
+                    </div>
                 </div>
-                <span class="project-accordion-icon">▼</span>
-            </div>
-            <div class="project-accordion-content">
-                <div class="project-accordion-body">
-                    <p class="project-full-desc">${item.description}</p>
-                    <div class="project-date">📅 ${item.date || 'Récent'}</div>
-                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('animConnect', ${index})">
-                        Entrer →
-                    </button>
-                </div>
-            </div>
-        </div>
-    `).join('');
+            `).join('');
+        });
 }
+
+// Open Subcategory (niveau 3 → affiche les projets niveau 4)
+function openSubcategory(categoryId, subcatIndex) {
+    fetch('data/projects-new.json')
+        .then(res => res.json())
+        .then(data => {
+            const cat = data.categories.find(c => c.id === categoryId);
+            const subcat = cat?.subcategories[subcatIndex];
+            if (!subcat) return;
+            
+            document.getElementById('subcategoryName').textContent = subcat.name;
+            
+            const container = document.getElementById('subcategoryProjects');
+            container.innerHTML = subcat.projects.map((project, pIndex) => `
+                <div class="project-accordion-item">
+                    <div class="project-accordion-header" onclick="toggleProjectItemAccordion('proj-${subcatIndex}-${pIndex}')">
+                        <div class="chat-avatar">${project.icon}</div>
+                        <div class="chat-info">
+                            <div class="chat-name">${project.title}</div>
+                            <div class="chat-message">${project.shortDesc}</div>
+                        </div>
+                        <span class="project-accordion-icon" id="icon-proj-${subcatIndex}-${pIndex}">▼</span>
+                    </div>
+                    <div class="project-accordion-content" id="content-proj-${subcatIndex}-${pIndex}">
+                        <div class="project-accordion-body">
+                            <p class="project-full-desc">${project.fullDescription}</p>
+                            <button class="project-detail-btn" onclick="event.stopPropagation(); openFinalProjectDetail('${categoryId}', ${subcatIndex}, ${pIndex})">
+                                Entrer →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            currentCategoryId = categoryId;
+            openApp('subcategoryPage');
+        });
+}
+
+function toggleProjectItemAccordion(itemId) {
+    const content = document.getElementById('content-' + itemId);
+    const icon = document.getElementById('icon-' + itemId);
+    
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+        if (icon) icon.textContent = '▼';
+    } else {
+        // Close all others
+        document.querySelectorAll('.project-accordion-content').forEach(el => {
+            el.style.maxHeight = '0px';
+        });
+        document.querySelectorAll('.project-accordion-icon').forEach(el => {
+            if (el.id.startsWith('icon-proj')) el.textContent = '▼';
+        });
+        
+        content.style.maxHeight = '500px';
+        if (icon) icon.textContent = '▲';
+    }
+}
+
+function openFinalProjectDetail(categoryId, subcatIndex, projectIndex) {
+    fetch('data/projects-new.json')
+        .then(res => res.json())
+        .then(data => {
+            const cat = data.categories.find(c => c.id === categoryId);
+            const subcat = cat?.subcategories[subcatIndex];
+            const project = subcat?.projects[projectIndex];
+            if (!project) return;
+            
+            document.getElementById('projectDetailTitle').textContent = project.title;
+            
+            const content = document.getElementById('projectDetailContent');
+            content.innerHTML = `
+                <div class="project-detail-header">
+                    <div class="project-detail-icon">${project.icon}</div>
+                    <h3>${project.title}</h3>
+                    <p class="project-detail-category">${subcat.name}</p>
+                </div>
+                
+                <div class="project-detail-description">
+                    ${project.fullDescription}
+                </div>
+                
+                <div class="project-detail-info">
+                    <h3>📋 Informations</h3>
+                    ${Object.entries(project.details).map(([key, value]) => `
+                        <div class="info-row">
+                            <span class="info-label">${key}</span>
+                            <span class="info-value">${value}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                ${project.externalLink ? `
+                    <a href="${project.externalLink}" target="_blank" class="external-link-btn">
+                        🔗 Accéder au site du projet
+                    </a>
+                ` : ''}
+            `;
+            
+            openApp('projectDetail');
+        });
+}
+
+function goBackToMainCategory() {
+    if (currentCategoryId) {
+        openCategoryApp(currentCategoryId);
+    }
+}
+
+window.openSubcategory = openSubcategory;
+window.toggleProjectItemAccordion = toggleProjectItemAccordion;
+window.openFinalProjectDetail = openFinalProjectDetail;
+window.goBackToMainCategory = goBackToMainCategory;
 
 // Echo-Sphere (Style uniforme comme ANIM'CONNECT)
 function renderEchoSphere(category) {
