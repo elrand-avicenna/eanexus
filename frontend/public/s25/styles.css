@@ -388,6 +388,62 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 }
 
 .message-timestamp {
+
+.calendar-flash-section {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.flash-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #667eea;
+}
+
+.flash-mini-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.flash-mini-item {
+    background: rgba(0,0,0,0.3);
+    border-left: 3px solid #667eea;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.flash-mini-item.urgent {
+    border-left-color: #ff4444;
+}
+
+.flash-mini-icon {
+    font-size: 24px;
+}
+
+.flash-mini-content {
+    flex: 1;
+}
+
+.flash-mini-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.flash-mini-time {
+    font-size: 11px;
+    color: #888;
+}
+
     font-size: 11px;
     color: #888;
     margin-bottom: 15px;
