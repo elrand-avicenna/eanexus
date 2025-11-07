@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Voyage Spatial",
+    "artist": "EA Compositions",
+    "url": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/bx6uroob_Musique%201.wav",
+    "cover": ""
+  },
+  {
+    "id": 2,
+    "title": "Ambiance Cyberpunk",
+    "artist": "EA Créations",
+    "url": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/f1jlazwh_Musique%202.wav",
+    "cover": ""
+  },
+  {
+    "id": 3,
+    "title": "Epic Fantasy Theme",
+    "artist": "EA Orchestra",
+    "url": "https://cdn.pixabay.com/download/audio/2022/03/10/audio_4037555cc6.mp3",
+    "cover": ""
+  },
+  {
+    "id": 4,
+    "title": "Aventure Héroïque",
+    "artist": "EA Symphonique",
+    "url": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3",
+    "cover": ""
+  },
+  {
+    "id": 5,
+    "title": "Exploration Mystique",
+    "artist": "EA Ambiance",
+    "url": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_e9046d19e8.mp3",
+    "cover": ""
+  },
+  {
+    "id": 6,
+    "title": "Combat Épique",
+    "artist": "EA Battle",
+    "url": "https://cdn.pixabay.com/download/audio/2022/08/02/audio_363c1d3c23.mp3",
+    "cover": ""
+  },
+  {
+    "id": 7,
+    "title": "Voyage dans le Temps",
+    "artist": "EA Dimensions",
+    "url": "https://cdn.pixabay.com/download/audio/2022/03/24/audio_c3f379ebf5.mp3",
+    "cover": ""
+  },
+  {
+    "id": 8,
+    "title": "Royaume des Ombres",
+    "artist": "EA Dark",
+    "url": "https://cdn.pixabay.com/download/audio/2022/05/13/audio_da0f715d10.mp3",
+    "cover": ""
+  }
+]

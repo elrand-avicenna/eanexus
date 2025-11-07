@@ -1,0 +1,22 @@
+{
+  "name": "Commandant Omega",
+  "avatar": "🕵️",
+  "rank": "Chef des Opérations Secrètes",
+  "status": "Profil Classifié",
+  "messages": [
+    {
+      "id": 1,
+      "title": "Briefing d'infiltration",
+      "audioUrl": "https://cdn.pixabay.com/download/audio/2022/03/15/audio_d1718ab41b.mp3",
+      "timestamp": "2205-01-04 08:00",
+      "transcript": "Agent, votre mission est critique. Infiltrez Hourglass Society, gagnez leur confiance et découvrez leurs véritables intentions. Soyez prudent, une erreur pourrait compromettre l'opération. Bonne chance."
+    },
+    {
+      "id": 2,
+      "title": "Mise à jour urgente",
+      "audioUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3",
+      "timestamp": "2205-01-10 14:30",
+      "transcript": "Des activités suspectes ont été détectées. Restez vigilant et recueillez un maximum d'informations sur leurs projets. Rapport attendu sous 48h."
+    }
+  ]
+}

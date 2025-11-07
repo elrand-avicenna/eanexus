@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "id": "animConnect",
+      "name": "EA ANIM'CONNECT",
+      "icon": "🎭",
+      "summary": "Projets d'animation ludique pour événements et team building",
+      "items": [
+        {
+          "title": "Escape Game Entreprise",
+          "description": "Animation immersive pour renforcer la cohésion d'équipe",
+          "fullDescription": "Plongez vos équipes dans une expérience d'escape game sur mesure. Scénarios personnalisables, énigmes adaptées à votre secteur d'activité, et débriefing pour renforcer la cohésion. Durée : 2-3h, groupes de 6-10 personnes. Matériel fourni, installation sur site possible.",
+          "date": "Aujourd'hui",
+          "icon": "🔐",
+          "details": {
+            "duration": "2-3 heures",
+            "participants": "6-10 personnes",
+            "difficulty": "Adaptable",
+            "price": "Sur devis"
+          }
+        },
+        {
+          "title": "Quiz Interactif Géant",
+          "description": "Jeu de questions-réponses avec buzzer connecté",
+          "fullDescription": "Animation dynamique avec système de buzzers connectés. Questions personnalisables par thème, classement en temps réel sur grand écran, ambiance compétitive et conviviale. Idéal pour événements d'entreprise, séminaires ou soirées festives. Animation complète assurée.",
+          "date": "Hier",
+          "icon": "❓",
+          "details": {
+            "duration": "1-2 heures",
+            "participants": "20-100 personnes",
+            "difficulty": "Facile à Difficile",
+            "price": "À partir de 500€"
+          }
+        }
+      ]
+    },
+    {
+      "id": "echoSphere",
+      "name": "EA JOURNEY",
+      "icon": "📖",
+      "summary": "Histoires originales et univers narratifs immersifs",
+      "items": [
+        {
+          "title": "Le Royaume des Ombres",
+          "description": "Une épopée fantasy où un jeune héros doit affronter les forces obscures qui menacent son royaume.",
+          "fullDescription": "Épopée fantasy en 12 chapitres suivant Aldric, jeune prince déchu qui doit reconquérir son trône face aux Seigneurs des Ombres. Univers riche avec système de magie élémentaire, intrigues politiques, et personnages complexes. Destiné à un public jeune adulte, mêlant action, mystère et développement de personnages profond.",
+          "date": "Il y a 2 jours",
+          "icon": "👑",
+          "details": {
+            "genre": "Fantasy Épique",
+            "chapitres": "12",
+            "statut": "En cours",
+            "cible": "Jeunes adultes"
+          }
+        },
+        {
+          "title": "Chroniques Cyberpunk",
+          "description": "Dans une mégalopole futuriste, une hackeuse rebelle découvre un complot qui pourrait changer le destin de l'humanité.",
+          "fullDescription": "Série cyberpunk en 8 épisodes se déroulant en 2087 dans Neo-Tokyo. Nova, hackeuse d'élite, découvre un complot impliquant les plus grandes corporations. Atmosphère sombre, technologie avancée, questionnements sur l'IA et la conscience. Influences : Blade Runner, Ghost in the Shell.",
+          "date": "Il y a 5 jours",
+          "icon": "🤖",
+          "details": {
+            "genre": "Science-Fiction Cyberpunk",
+            "épisodes": "8",
+            "statut": "Terminé",
+            "cible": "Adultes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arena",
+      "name": "EA ARENA",
+      "icon": "⚔️",
+      "summary": "Jeux d'affrontement compétitifs et stratégiques",
+      "items": [
+        {
+          "title": "Battle Royale Legends",
+          "description": "Affrontement stratégique en équipe",
+          "fullDescription": "Jeu de bataille royale tactique 4v4. Choisissez votre classe (Guerrier, Mage, Archer, Support), maîtrisez vos compétences et dominez l'arène. Système de progression, équipements personnalisables, cartes dynamiques avec événements aléatoires. Matchmaking équilibré, ranked et modes casual.",
+          "tag": "Action • Multijoueur",
+          "icon": "🎯",
+          "details": {
+            "genre": "Battle Royale Tactique",
+            "joueurs": "4v4",
+            "plateforme": "PC, Mobile",
+            "statut": "Beta ouverte"
+          }
+        },
+        {
+          "title": "Duel des Mages",
+          "description": "Combat de sorts en 1v1",
+          "fullDescription": "Affrontement magique 1v1 en temps réel. 20 sorts différents, combos stratégiques, gestion de mana. Arènes variées avec effets environnementaux. Système de deck de sorts personnalisable, tournois hebdomadaires, classement global. Gameplay accessible mais avec une profondeur stratégique.",
+          "tag": "Magie • PvP",
+          "icon": "✨",
+          "details": {
+            "genre": "Combat Magique PvP",
+            "joueurs": "1v1",
+            "plateforme": "PC, Console",
+            "statut": "Version 1.2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "adventures",
+      "name": "EA ECHO-SPHERE",
+      "icon": "🗺️",
+      "summary": "Jeux d'aventure et d'exploration narrative",
+      "items": [
+        {
+          "title": "Quête du Dragon Ancestral",
+          "description": "Exploration d'un monde fantasy épique",
+          "fullDescription": "RPG d'aventure solo narratif. Incarnez un jeune chercheur de vérité à la recherche du Dragon Ancestral. Monde ouvert de 30km², système de choix moraux impactant l'histoire, crafting, combats au tour par tour, énigmes environnementales. 40h de jeu principal, +20h de quêtes secondaires.",
+          "progress": "7/10",
+          "icon": "🐉",
+          "details": {
+            "genre": "RPG Aventure",
+            "durée": "40-60 heures",
+            "plateforme": "PC, Console",
+            "statut": "Chapitre 7/10"
+          }
+        },
+        {
+          "title": "Voyage dans les Étoiles",
+          "description": "Découverte de planètes inexplorées",
+          "fullDescription": "Jeu d'exploration spatiale procédurale. Pilotez votre vaisseau, découvrez des systèmes solaires générés aléatoirement, rencontrez des civilisations aliens, commercez ou combattez. Gestion de ressources, upgrades de vaisseau, équipage à recruter. Univers infini à explorer.",
+          "progress": "5/10",
+          "icon": "🌟",
+          "details": {
+            "genre": "Exploration Spatiale",
+            "durée": "Infinie",
+            "plateforme": "PC",
+            "statut": "Early Access"
+          }
+        }
+      ]
+    },
+    {
+      "id": "medias",
+      "name": "EA THEATER",
+      "icon": "🎬",
+      "summary": "Vidéos et créations musicales originales",
+      "items": [
+        {
+          "title": "Making-of Royaume des Ombres",
+          "description": "Coulisses de la création d'une épopée fantasy",
+          "fullDescription": "Documentaire de 45 minutes montrant le processus créatif complet : de l'idée initiale au manuscrit final. Interviews des créateurs, évolution des personnages, construction du monde, choix narratifs. Bonus : scènes coupées, planches de concept art, et analyse littéraire approfondie.",
+          "views": "2.4k",
+          "date": "Il y a 3 jours",
+          "icon": "🎥",
+          "details": {
+            "type": "Documentaire",
+            "durée": "45 minutes",
+            "format": "4K HDR",
+            "langue": "Français, Anglais"
+          }
+        },
+        {
+          "title": "Compilation Musiques Épiques",
+          "description": "1 heure de compositions orchestrales originales",
+          "fullDescription": "Album de musiques épiques orchestrales composées par Thorin Soundsmith. 12 morceaux incluant thèmes de bataille, mélodies émotionnelles, et ambiances mystiques. Enregistré avec orchestre symphonique de 60 musiciens. Disponible en streaming et téléchargement.",
+          "views": "5.8k",
+          "date": "Il y a 1 semaine",
+          "icon": "🎵",
+          "details": {
+            "type": "Album Musical",
+            "durée": "62 minutes",
+            "pistes": "12 morceaux",
+            "format": "FLAC, MP3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eaCenter",
+      "name": "EA CENTER",
+      "icon": "📚",
+      "summary": "Tutoriels et guides pour créateurs",
+      "items": [
+        {
+          "title": "Guide du Game Design",
+          "description": "Les fondamentaux pour créer un jeu équilibré",
+          "fullDescription": "Formation complète en game design couvrant : mécanique de jeu, équilibrage, level design, économie de jeu, et motivation du joueur. 15 modules vidéo, exercices pratiques, templates et outils inclus. Parfait pour débutants et intermédiaires. Certificat à la fin.",
+          "views": "3.2k",
+          "date": "Il y a 1 semaine",
+          "icon": "🎮",
+          "details": {
+            "type": "Formation Vidéo",
+            "durée": "8 heures",
+            "modules": "15",
+            "niveau": "Débutant à Intermédiaire"
+          }
+        },
+        {
+          "title": "Animation d'Événements",
+          "description": "Conseils pour réussir vos animations ludiques",
+          "fullDescription": "Masterclass complète sur l'animation ludique : gestion de groupe, dynamique d'événement, adaptation au public, improvisation, matériel nécessaire. Études de cas réels, checklist d'organisation, et templates réutilisables. Bonus : scripts d'animation prêts à l'emploi.",
+          "views": "1.8k",
+          "date": "Il y a 2 semaines",
+          "icon": "🎭",
+          "details": {
+            "type": "Masterclass",
+            "durée": "5 heures",
+            "modules": "10",
+            "niveau": "Tous niveaux"
+          }
+        }
+      ]
+    }
+  ]
+}

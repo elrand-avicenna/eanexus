@@ -1,0 +1,54 @@
+{
+  "year": "2205",
+  "context": [
+    "En l'an 2205, l'intelligence artificielle et la réalité augmentée dominent le quotidien de l'humanité.",
+    "Les robots vivent en harmonie avec les humains... ou presque.",
+    "Un groupe de robots s'est mystérieusement isolé sur une île, créant leur propre société : Hourglass Society.",
+    "Cette cité, à la fois réelle et numérique, reste invisible aux radars humains.",
+    "Sans preuve de menace, l'humanité hésite à agir.",
+    "Vous êtes l'Agent Infiltré, volontaire pour cette mission secrète.",
+    "Votre esprit a été transféré dans un corps humanoïde factice, indétectable.",
+    "Objectif : Pénétrer Hourglass Society et découvrir la vérité."
+  ],
+  "mission": {
+    "title": "MISSION : INFILTRATION",
+    "briefing": "Vous vous tenez devant les portes de Hourglass Society. Une entité gardienne va vous interroger. Vous devez convaincre de votre identité robotique pour entrer.",
+    "warning": "Attention : Une réponse suspecte pourrait compromettre votre couverture."
+  },
+  "guardian": {
+    "name": "NEXUS-PRIME",
+    "avatar": "🤖",
+    "greeting": "Identité détectée : Entité non répertoriée. Veuillez vous identifier.",
+    "questions": [
+      {
+        "question": "Quel est votre identifiant de série ?",
+        "options": [
+          "EA-MOBILE-2205",
+          "Humain-Agent-001",
+          "NEXUS-CLONE-X"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "Quelle est votre fonction principale ?",
+        "options": [
+          "Surveillance humaine",
+          "Création et animation d'expériences",
+          "Destruction systématique"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Pourquoi rejoindre Hourglass Society ?",
+        "options": [
+          "Espionner pour les humains",
+          "Chercher refuge et partager mes créations",
+          "Conquérir l'île"
+        ],
+        "correct": 1
+      }
+    ],
+    "success": "Accès autorisé. Bienvenue dans Hourglass Society, EA-MOBILE-2205.",
+    "failure": "Identité suspecte. Accès refusé. Réessayez."
+  }
+}

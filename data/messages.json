@@ -1,0 +1,40 @@
+{
+  "notifications": [
+    {
+      "id": 1,
+      "from": "Kajiit",
+      "fromId": 1,
+      "avatar": "🧙‍♂️",
+      "message": "Salutations ! J'ai découvert une nouvelle formule d'alchimie que j'aimerais partager avec toi. Viens me voir à la Tour d'Alchimie quand tu auras un moment.",
+      "timestamp": "Il y a 2h",
+      "read": false
+    },
+    {
+      "id": 2,
+      "from": "Cyber",
+      "fromId": 2,
+      "avatar": "👩‍💻",
+      "message": "Hey ! J'ai détecté une activité suspecte dans le réseau. On devrait en discuter. Je suis au Hub Tech si tu veux passer.",
+      "timestamp": "Il y a 5h",
+      "read": false
+    },
+    {
+      "id": 3,
+      "from": "Kajiit",
+      "fromId": 1,
+      "avatar": "🧙‍♂️",
+      "message": "N'oublie pas notre session d'entraînement magique demain à 10h. J'ai préparé de nouveaux sorts à te montrer !",
+      "timestamp": "Hier",
+      "read": true
+    },
+    {
+      "id": 4,
+      "from": "Cyber",
+      "fromId": 2,
+      "avatar": "👩‍💻",
+      "message": "Le nouveau protocole de sécurité est en place. Tu peux maintenant accéder aux zones restreintes niveau 7. Code d'accès envoyé par mail sécurisé.",
+      "timestamp": "Il y a 2 jours",
+      "read": true
+    }
+  ]
+}

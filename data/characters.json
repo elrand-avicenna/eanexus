@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "name": "Kajiit - Mage Alchimiste",
+    "title": "Maître des Élixirs & Arcanes",
+    "avatar": "🧙‍♂️",
+    "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    "videoWallpaper": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/2kjb2jdl_Kajiit%20Mage%20Alchimiste.mp4",
+    "bio": "Alchimiste légendaire et mage érudit, Kajiit maîtrise l'art ancestral de la transmutation et des sorts élémentaires. Sa connaissance des potions et des enchantements est inégalée dans tout Hourglass Society. Il recherche constamment de nouvelles formules magiques et partage son savoir avec ceux qui sont dignes.",
+    "role": "Créateur de systèmes magiques et concepteur de gameplay",
+    "specialites": ["Alchimie Avancée", "Magie Élémentaire", "Enchantements", "Transmutation"],
+    "stats": {
+      "Sagesse": 98,
+      "Puissance Magique": 95,
+      "Créativité": 92,
+      "Intelligence": 97
+    },
+    "skills": [
+      "Création de potions et élixirs rares",
+      "Invocation d'éléments (feu, glace, foudre)",
+      "Enchantement d'objets et armes",
+      "Transmutation de matériaux",
+      "Lecture des runes anciennes",
+      "Conception de systèmes de magie pour jeux"
+    ],
+    "achievements": [
+      "🏆 Découverte de l'Élixir d'Immortalité",
+      "⭐ Maître des 7 Éléments",
+      "📜 Auteur du Codex Alchimique",
+      "✨ Créateur de 100+ sorts uniques"
+    ],
+    "quote": "La magie n'est que science que nous ne comprenons pas encore.",
+    "availability": "En ligne",
+    "location": "Tour d'Alchimie, Zone Créative"
+  },
+  {
+    "id": 2,
+    "name": "Cyber - Haqueuse Élite",
+    "title": "Architecte des Systèmes & Infiltratrice Digitale",
+    "avatar": "👩‍💻",
+    "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    "videoWallpaper": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/4nbhhpd3_Cyber%20Haqueuse.mp4",
+    "bio": "Génie de l'informatique et hackeuse de renommée mondiale, Cyber est la gardienne de l'infrastructure digitale de Hourglass Society. Elle navigue dans les réseaux les plus sécurisés avec une aisance déconcertante. Spécialiste en intelligence artificielle et sécurité informatique, elle crée des systèmes impénétrables tout en trouvant les failles des autres.",
+    "role": "Architecte technique et responsable cybersécurité",
+    "specialites": ["Hacking Éthique", "Intelligence Artificielle", "Cryptographie", "Sécurité Réseau"],
+    "stats": {
+      "Intelligence": 99,
+      "Technique": 97,
+      "Rapidité": 94,
+      "Stratégie": 96
+    },
+    "skills": [
+      "Penetration testing et audit de sécurité",
+      "Développement d'IA avancées",
+      "Cryptographie quantique",
+      "Architecture de systèmes distribués",
+      "Forensics digitale",
+      "Programmation multi-langages (Python, C++, Rust)"
+    ],
+    "achievements": [
+      "🔐 Créatrice du protocole de sécurité Nexus",
+      "💻 Hackathon Champion 5 années consécutives",
+      "🤖 Développeuse de l'IA NEXUS-PRIME",
+      "🛡️ Jamais piratée en 10 ans de carrière"
+    ],
+    "quote": "Dans le cyberespace, je ne suis pas seulement un utilisateur. Je suis l'architecte.",
+    "availability": "En mission",
+    "location": "Hub Technologique, Niveau -7"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "🎮 Lancement du tournoi Arena",
+    "date": "2025-01-05",
+    "time": "14:00",
+    "characterId": 6,
+    "characterName": "Zephyr Playtest",
+    "description": "Grand tournoi de jeux d'affrontement ! Rejoignez-nous pour des batailles épiques et des récompenses exclusives. Inscription ouverte à tous les niveaux.",
+    "category": "arena",
+    "fullDescription": "Le tournoi Arena commence avec Battle Royale Legends ! Équipes de 4 joueurs, matchs en best-of-3. Récompenses : skins exclusifs, titres de champion et accès VIP aux prochains événements. Inscription jusqu'au 4 janvier."
+  },
+  {
+    "id": 2,
+    "title": "📖 Atelier d'écriture créative",
+    "date": "2025-01-08",
+    "time": "10:00",
+    "characterId": 3,
+    "characterName": "Kael Storyforge",
+    "description": "Apprenez à créer des histoires captivantes avec Kael. Techniques de narration, développement de personnages et world building au programme.",
+    "category": "echoSphere",
+    "fullDescription": "Atelier de 3 heures pour maîtriser l'art du storytelling. Nous aborderons la structure narrative, les arcs de personnages, la création de tension et les twists efficaces. Exercices pratiques inclus. Limité à 20 participants."
+  },
+  {
+    "id": 3,
+    "title": "🎨 Expo Design Interactif",
+    "date": "2025-01-12",
+    "time": "16:00",
+    "characterId": 4,
+    "characterName": "Luna Artisan",
+    "description": "Découvrez les nouvelles interfaces et concepts visuels créés par Luna. Exposition interactive avec démonstrations en direct.",
+    "category": "eaCenter",
+    "fullDescription": "Exposition exclusive des derniers designs UI/UX. Luna présentera ses concepts de design system, animations micro-interactions et palettes de couleurs innovantes. Session Q&A et démonstrations live. Vernissage avec cocktail."
+  },
+  {
+    "id": 4,
+    "title": "🎵 Concert symphonique EA",
+    "date": "2025-01-15",
+    "time": "20:00",
+    "characterId": 5,
+    "characterName": "Thorin Soundsmith",
+    "description": "Concert exceptionnel de musiques épiques composées par Thorin. Orchestration en direct avec surprises musicales.",
+    "category": "medias",
+    "fullDescription": "Soirée musicale inoubliable avec les compositions originales de Thorin Soundsmith. Programme : Voyage Spatial, Combat Épique, Royaume des Ombres et premières exclusives. Orchestre symphonique de 40 musiciens. Billets disponibles."
+  },
+  {
+    "id": 5,
+    "title": "🗺️ Quête collaborative: Dragon Ancestral",
+    "date": "2025-01-18",
+    "time": "15:00",
+    "characterId": 2,
+    "characterName": "Aria CodeWeaver",
+    "description": "Nouvelle quête multijoueur dans Adventures ! Aria a codé un système de coopération révolutionnaire pour cette aventure épique.",
+    "category": "adventures",
+    "fullDescription": "Embarquez dans une quête coopérative de 4 heures. Système de collaboration en temps réel permettant jusqu'à 10 joueurs simultanés. Résolvez des énigmes, combattez des boss et découvrez des trésors légendaires. Progression sauvegardée."
+  },
+  {
+    "id": 6,
+    "title": "🎭 Animation ludique entreprise",
+    "date": "2025-01-20",
+    "time": "09:00",
+    "characterId": 1,
+    "characterName": "Expert Auteur",
+    "description": "Journée team building avec escape game, quiz interactif et murder party. Animation complète pour renforcer la cohésion d'équipe.",
+    "category": "animConnect",
+    "fullDescription": "Programme complet : 9h-12h Escape Game Entreprise, 14h-16h Quiz Interactif Géant, 16h30-19h Murder Party. Adaptable selon vos besoins. Devis sur demande. Perfect pour 20-100 participants."
+  },
+  {
+    "id": 7,
+    "title": "🛡️ Audit sécurité gratuit",
+    "date": "2025-01-22",
+    "time": "11:00",
+    "characterId": 10,
+    "characterName": "Titan Guardian",
+    "description": "Titan propose un audit de sécurité gratuit pour vos projets. Analysez les vulnérabilités et renforcez votre protection.",
+    "category": "eaCenter",
+    "fullDescription": "Session d'audit de 2 heures incluant : scan de vulnérabilités, analyse du code, test de pénétration basique, et rapport détaillé avec recommandations. Conseils personnalisés pour sécuriser vos applications."
+  },
+  {
+    "id": 8,
+    "title": "🎬 Making-of exclusif",
+    "date": "2025-01-25",
+    "time": "18:00",
+    "characterId": 8,
+    "characterName": "Blaze Animator",
+    "description": "Découvrez les coulisses de la création des cinématiques avec Blaze. Techniques d'animation 3D et motion design révélées.",
+    "category": "medias",
+    "fullDescription": "Masterclass exclusive sur l'animation 3D. Blaze dévoile son workflow complet : modeling, rigging, animation, lighting et rendering. Démos en direct sur Blender et After Effects. Fichiers de projet fournis."
+  },
+  {
+    "id": 9,
+    "title": "📊 Webinar Analytics",
+    "date": "2025-01-28",
+    "time": "14:30",
+    "characterId": 9,
+    "characterName": "Iris DataMage",
+    "description": "Iris présente les dernières métriques et insights du projet. Apprenez à analyser vos données pour optimiser vos créations.",
+    "category": "eaCenter",
+    "fullDescription": "Webinar de 90 minutes sur l'analyse de données créatives. Tableaux de bord interactifs, KPIs essentiels, A/B testing et prédictions par ML. Outils recommandés et templates fournis."
+  },
+  {
+    "id": 10,
+    "title": "🗺️ Roadmap 2025 révélée",
+    "date": "2025-01-30",
+    "time": "17:00",
+    "characterId": 7,
+    "characterName": "Raven Strategist",
+    "description": "Raven dévoile la feuille de route complète pour 2025. Nouveaux projets, fonctionnalités et surprises à découvrir !",
+    "category": "eaNexus",
+    "fullDescription": "Présentation stratégique de la roadmap annuelle. Nouveaux jeux, histoires inédites, animations événementielles, tutoriels avancés et collaborations surprises. Session interactive avec vote de la communauté sur les priorités."
+  }
+]

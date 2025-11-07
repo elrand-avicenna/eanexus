@@ -1,0 +1,172 @@
+{
+  "categories": [
+    {
+      "id": "animConnect",
+      "name": "EA ANIM'CONNECT",
+      "icon": "🎭",
+      "summary": "Projets d'animation ludique pour événements et team building",
+      "subcategories": [
+        {
+          "id": "escapeGames",
+          "name": "ESCAPE GAME ENTREPRISE",
+          "icon": "🔐",
+          "description": "Escape games sur mesure pour team building",
+          "projects": [
+            {"id": "eg1", "title": "Escape Game 1", "shortDesc": "Thème Investigation", "fullDescription": "Escape game investigation policière dans labo secret high-tech. Énigmes logiques, codes, teamwork essentiel.", "icon": "🔍", "details": {"Durée": "2h30", "Prix": "800€"}, "externalLink": "#"},
+            {"id": "eg2", "title": "Escape Game 2", "shortDesc": "Thème Spatial", "fullDescription": "Mission spatiale immersive. Réparez le vaisseau avant le compte à rebours. Ambiance futuriste.", "icon": "🚀", "details": {"Durée": "2h", "Prix": "750€"}, "externalLink": "#"}
+          ]
+        },
+        {
+          "id": "quizInteractifs",
+          "name": "QUIZ INTERACTIF",
+          "icon": "❓",
+          "description": "Quiz avec buzzers et écran géant",
+          "projects": [
+            {"id": "quiz1", "title": "Quiz 1", "shortDesc": "Culture Générale", "fullDescription": "Quiz personnalisé culture générale + entreprise. Buzzers, écran, podium.", "icon": "🎯", "details": {"Durée": "1h30", "Prix": "500€"}, "externalLink": "#"},
+            {"id": "quiz2", "title": "Quiz 2", "shortDesc": "Tech & Innovation", "fullDescription": "Quiz tech : IA, robotique, coding. Format compétitif avec classement live.", "icon": "💻", "details": {"Durée": "2h", "Prix": "650€"}, "externalLink": "#"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "echoSphere",
+      "name": "EA JOURNEY",
+      "icon": "📖",
+      "summary": "Histoires originales et univers narratifs",
+      "subcategories": [
+        {
+          "id": "fantasy",
+          "name": "FANTASY ÉPIQUE",
+          "icon": "👑",
+          "description": "Univers fantasy et magie",
+          "projects": [
+            {"id": "f1", "title": "Royaume des Ombres 1", "shortDesc": "Chapitre Prince déchu", "fullDescription": "Aldric, prince déchu doit reconquérir son trône face aux Seigneurs des Ombres. Magie élémentaire, intrigues politiques.", "icon": "⚔️", "details": {"Chapitres": "12", "Statut": "En cours"}, "externalLink": "#"},
+            {"id": "f2", "title": "Royaume des Ombres 2", "shortDesc": "Chapitre Guerre finale", "fullDescription": "La guerre finale approche. Aldric doit unir les royaumes pour affronter les ténèbres.", "icon": "🛡️", "details": {"Chapitres": "8", "Statut": "Planifié"}, "externalLink": "#"}
+          ]
+        },
+        {
+          "id": "cyberpunk",
+          "name": "CYBERPUNK",
+          "icon": "🤖",
+          "description": "Futur dystopique et hackers",
+          "projects": [
+            {"id": "c1", "title": "Chroniques Cyberpunk 1", "shortDesc": "Neo-Tokyo 2087", "fullDescription": "Nova découvre un complot dans Neo-Tokyo. Atmosphère sombre, tech avancée, IA et conscience.", "icon": "💾", "details": {"Épisodes": "8", "Statut": "Terminé"}, "externalLink": "#"},
+            {"id": "c2", "title": "Chroniques Cyberpunk 2", "shortDesc": "La Rébellion", "fullDescription": "Nova mène la rébellion contre les corporations. Action, hacking, révolution digitale.", "icon": "⚡", "details": {"Épisodes": "10", "Statut": "En production"}, "externalLink": "#"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arena",
+      "name": "EA ARENA",
+      "icon": "⚔️",
+      "summary": "Jeux d'affrontement compétitifs",
+      "subcategories": [
+        {
+          "id": "battleRoyale",
+          "name": "BATTLE ROYALE",
+          "icon": "🎯",
+          "description": "Batailles royales tactiques",
+          "projects": [
+            {"id": "br1", "title": "Battle Royale Legends 1", "shortDesc": "Mode 4v4 Tactique", "fullDescription": "Bataille royale 4v4. Classes : Guerrier, Mage, Archer, Support. Progression, équipements, matchmaking équilibré.", "icon": "🏹", "details": {"Joueurs": "4v4", "Statut": "Beta"}, "externalLink": "#"},
+            {"id": "br2", "title": "Battle Royale Legends 2", "shortDesc": "Mode Solo 100 joueurs", "fullDescription": "Mode solo classique 100 joueurs. Carte immense, loot aléatoire, zone qui rétrécit.", "icon": "🎮", "details": {"Joueurs": "100", "Statut": "Planifié"}, "externalLink": "#"}
+          ]
+        },
+        {
+          "id": "duelMages",
+          "name": "DUEL DES MAGES",
+          "icon": "✨",
+          "description": "Combats magiques 1v1",
+          "projects": [
+            {"id": "dm1", "title": "Duel des Mages 1", "shortDesc": "Mode Ranked", "fullDescription": "Affrontement magique 1v1 ranked. 20 sorts, combos, gestion mana. Tournois hebdomadaires.", "icon": "🔮", "details": {"Joueurs": "1v1", "Statut": "v1.2"}, "externalLink": "#"},
+            {"id": "dm2", "title": "Duel des Mages 2", "shortDesc": "Mode Tournoi", "fullDescription": "Mode tournoi 8 joueurs bracket elimination. Sorts légendaires déblocables, arènes spéciales.", "icon": "🏆", "details": {"Joueurs": "Tournoi 8", "Statut": "Beta"}, "externalLink": "#"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adventures",
+      "name": "EA ECHO-SPHERE",
+      "icon": "🗺️",
+      "summary": "Jeux d'aventure et exploration",
+      "subcategories": [
+        {
+          "id": "rpgFantasy",
+          "name": "RPG FANTASY",
+          "icon": "🐉",
+          "description": "Aventures RPG monde ouvert",
+          "projects": [
+            {"id": "rpg1", "title": "Quête du Dragon 1", "shortDesc": "Acte I : L'Éveil", "fullDescription": "RPG aventure solo. Monde ouvert 30km², choix moraux, crafting, combats tour par tour. 40h de jeu.", "icon": "🗡️", "details": {"Durée": "40h", "Statut": "Ch 7/10"}, "externalLink": "#"},
+            {"id": "rpg2", "title": "Quête du Dragon 2", "shortDesc": "Acte II : Ascension", "fullDescription": "Suite directe. Nouvelles zones, boss légendaires, système de compagnons. Extension 25h.", "icon": "🛡️", "details": {"Durée": "25h", "Statut": "Dev"}, "externalLink": "#"}
+          ]
+        },
+        {
+          "id": "spatial",
+          "name": "EXPLORATION SPATIALE",
+          "icon": "🌟",
+          "description": "Voyages interstellaires",
+          "projects": [
+            {"id": "sp1", "title": "Voyage Étoiles 1", "shortDesc": "Galaxie Alpha", "fullDescription": "Exploration spatiale procédurale. Pilotez, découvrez, commercez. Univers infini généré.", "icon": "🚀", "details": {"Type": "Procédural", "Statut": "Early Access"}, "externalLink": "#"},
+            {"id": "sp2", "title": "Voyage Étoiles 2", "shortDesc": "Extension Multijoueur", "fullDescription": "Extension multi : flottes, commerce inter-joueurs, guerres de factions, construction de bases.", "icon": "🛸", "details": {"Type": "MMO", "Statut": "2025"}, "externalLink": "#"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medias",
+      "name": "EA THEATER",
+      "icon": "🎬",
+      "summary": "Vidéos et créations musicales",
+      "subcategories": [
+        {
+          "id": "documentaires",
+          "name": "DOCUMENTAIRES",
+          "icon": "🎥",
+          "description": "Making-of et coulisses",
+          "projects": [
+            {"id": "doc1", "title": "Making-of Royaume 1", "shortDesc": "Partie Écriture", "fullDescription": "45min montrant le processus d'écriture complet : idée, personnages, monde. Interviews créateurs.", "icon": "✍️", "details": {"Durée": "45min", "Format": "4K"}, "externalLink": "#"},
+            {"id": "doc2", "title": "Making-of Royaume 2", "shortDesc": "Partie Production", "fullDescription": "Processus de production : illustrations, design, marketing. Bonus : scènes coupées, concept art.", "icon": "🎨", "details": {"Durée": "38min", "Format": "4K"}, "externalLink": "#"}
+          ]
+        },
+        {
+          "id": "musique",
+          "name": "MUSIQUES ORIGINALES",
+          "icon": "🎵",
+          "description": "Compositions orchestrales",
+          "projects": [
+            {"id": "mus1", "title": "Album Épique Vol.1", "shortDesc": "Thèmes de bataille", "fullDescription": "12 morceaux orchestraux épiques. Thèmes bataille, victoire, sacrifice. Orchestre 60 musiciens.", "icon": "🎺", "details": {"Durée": "62min", "Pistes": "12"}, "externalLink": "#"},
+            {"id": "mus2", "title": "Album Épique Vol.2", "shortDesc": "Thèmes émotionnels", "fullDescription": "10 morceaux émotionnels : espoir, perte, amour, nostalgie. Piano, cordes, choeurs.", "icon": "🎻", "details": {"Durée": "48min", "Pistes": "10"}, "externalLink": "#"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eaCenter",
+      "name": "EA CENTER",
+      "icon": "📚",
+      "summary": "Tutoriels et guides créateurs",
+      "subcategories": [
+        {
+          "id": "gameDesign",
+          "name": "GAME DESIGN",
+          "icon": "🎮",
+          "description": "Formation création de jeux",
+          "projects": [
+            {"id": "gd1", "title": "Game Design Fondamentaux", "shortDesc": "Niveau Débutant", "fullDescription": "Formation complète game design : mécanique, équilibrage, level design. 15 modules vidéo, exercices pratiques.", "icon": "📐", "details": {"Durée": "8h", "Modules": "15"}, "externalLink": "#"},
+            {"id": "gd2", "title": "Game Design Avancé", "shortDesc": "Niveau Expert", "fullDescription": "Techniques avancées : économie jeu, systèmes complexes, monétisation, analytics. Pour professionnels.", "icon": "🎯", "details": {"Durée": "12h", "Modules": "20"}, "externalLink": "#"}
+          ]
+        },
+        {
+          "id": "animation",
+          "name": "ANIMATION ÉVÉNEMENTS",
+          "icon": "🎪",
+          "description": "Masterclass animation ludique",
+          "projects": [
+            {"id": "anim1", "title": "Animation Débutant", "shortDesc": "Les Bases", "fullDescription": "Masterclass animation : gestion groupe, dynamique événement, adaptation public. Checklist et templates fournis.", "icon": "📋", "details": {"Durée": "5h", "Niveau": "Débutant"}, "externalLink": "#"},
+            {"id": "anim2", "title": "Animation Pro", "shortDesc": "Techniques Avancées", "fullDescription": "Techniques pro : improvisation, gestion conflits, animations sur-mesure. Scripts prêts à l'emploi.", "icon": "⭐", "details": {"Durée": "8h", "Niveau": "Expert"}, "externalLink": "#"}
+          ]
+        }
+      ]
+    }
+  ]
+}
