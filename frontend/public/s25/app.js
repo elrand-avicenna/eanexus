@@ -313,6 +313,9 @@ async function loadData() {
         // Load Member Messages
         await loadMemberMessages();
         
+        // Load Locations
+        await loadLocations();
+        
         // Load Portal Data
         const portalResponse = await fetch('data/portal.json');
         const portalData = await portalResponse.json();
