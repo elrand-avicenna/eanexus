@@ -414,6 +414,9 @@ function openApp(appId) {
             renderMemberMessages();
         }
     }
+    
+    // Update floating buttons state
+    updateFloatingButtons(appId);
 }
 
 function closeApp() {
