@@ -2905,23 +2905,43 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 .music-player-full {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .album-art-settings {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin: 0 auto;
-    border-radius: 15px;
+    border-radius: 20px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.album-art-settings::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
 }
 
 .album-placeholder-settings {
-    font-size: 60px;
+    font-size: 70px;
+    position: relative;
+    z-index: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
 .current-track-info-full {
@@ -2929,30 +2949,31 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 }
 
 .track-title-full {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
 .track-artist-full {
-    font-size: 14px;
-    color: #888;
+    font-size: 15px;
+    color: #aaa;
 }
 
 .music-controls-full {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
 }
 
 .control-btn-music {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    border: none;
     color: #fff;
-    font-size: 18px;
+    font-size: 24px;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
@@ -2961,44 +2982,93 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
 }
 
 .control-btn-music:hover {
-    background: rgba(102, 126, 234, 0.5);
-    transform: scale(1.1);
+    color: #667eea;
+    transform: scale(1.2);
+}
+
+.control-btn-music:active {
+    transform: scale(0.9);
 }
 
 .play-btn-music {
-    width: 60px;
-    height: 60px;
-    background: #667eea;
-    font-size: 22px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-size: 28px;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.play-btn-music:hover {
+    color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
+}
+
+.playback-mode-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.mode-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+    transform: scale(1.1);
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 .playlist-settings-full {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-height: 250px;
+    gap: 10px;
+    max-height: 280px;
     overflow-y: auto;
 }
 
 .playlist-settings-full .playlist-item-settings {
-    padding: 12px;
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.2);
+    padding: 15px;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    border-left: 3px solid transparent;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
 .playlist-settings-full .playlist-item-settings:hover {
-    background: rgba(102, 126, 234, 0.2);
+    background: rgba(255,255,255,0.08);
+    border-left-color: #667eea;
+    transform: translateX(5px);
 }
 
 .playlist-settings-full .playlist-item-settings.active {
-    background: rgba(102, 126, 234, 0.3);
-    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.2);
+    border-left-color: #667eea;
 }
 
 /* Home Page */
