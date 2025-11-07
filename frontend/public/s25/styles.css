@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     opacity: 0.8;
 }
 
-.settings-icon, .notifications-icon, .home-icon {
+.settings-icon, .notifications-icon, .home-icon, .urgent-message-btn, .membres-icon {
     background: none;
     border: none;
     cursor: pointer;
@@ -150,18 +150,19 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     justify-content: center;
     border-radius: 50%;
     transition: all 0.3s;
+    position: relative;
 }
 
-.settings-icon:hover, .notifications-icon:hover, .home-icon:hover {
+.settings-icon:hover, .notifications-icon:hover, .home-icon:hover, .membres-icon:hover {
     background: rgba(255,255,255,0.2);
     transform: scale(1.1);
 }
 
-.settings-icon.active, .notifications-icon.active, .home-icon.active {
+.settings-icon.active, .notifications-icon.active, .home-icon.active, .membres-icon.active {
     background: rgba(255,255,255,0.3);
 }
 
-.settings-icon svg, .notifications-icon svg, .home-icon svg {
+.settings-icon svg, .notifications-icon svg, .home-icon svg, .membres-icon svg {
     display: block;
 }
 
