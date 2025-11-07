@@ -1654,7 +1654,7 @@ function openSubcategory(categoryId, subcatIndex) {
                         </div>
                         <span class="project-accordion-icon" id="icon-proj-${subcatIndex}-${pIndex}">▼</span>
                     </div>
-                    <div class="project-accordion-content" id="content-proj-${subcatIndex}-${pIndex}">
+                    <div class="project-accordion-content" id="content-proj-${subcatIndex}-${pIndex}" style="max-height: 0px;">
                         <div class="project-accordion-body">
                             <p class="project-full-desc">${project.fullDescription}</p>
                             <button class="project-detail-btn" onclick="event.stopPropagation(); openFinalProjectDetail('${categoryId}', ${subcatIndex}, ${pIndex})">
