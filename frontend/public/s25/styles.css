@@ -3548,6 +3548,97 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+/* Project Detail Button */
+.project-detail-btn {
+    width: 100%;
+    padding: 12px;
+    background: rgba(102, 126, 234, 0.3);
+    border: 1px solid #667eea;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+}
+
+.project-detail-btn:hover {
+    background: #667eea;
+    transform: translateY(-2px);
+}
+
+/* Project Detail Page */
+.project-detail-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+}
+
+.project-detail-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.project-detail-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.project-detail-category {
+    font-size: 13px;
+    color: #888;
+}
+
+.project-detail-description {
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid #667eea;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.project-detail-info {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.project-detail-info h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #888;
+    font-weight: 600;
+}
+
+.info-value {
+    font-size: 14px;
+    color: #fff;
+}
+
 }
 
 .equalizer-icon {
