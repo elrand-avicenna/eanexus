@@ -1564,16 +1564,16 @@ function renderAnimConnect(category) {
     `).join('');
 }
 
-// Echo-Sphere (LinkedIn-like avec accordéon)
+// Echo-Sphere (Style uniforme comme ANIM'CONNECT)
 function renderEchoSphere(category) {
     const container = document.getElementById('socialFeed');
     container.innerHTML = category.items.map((item, index) => `
         <div class="project-accordion-item" id="echo-${index}">
             <div class="project-accordion-header" onclick="toggleProjectAccordion('echo-${index}')">
-                <div class="post-avatar">${item.icon || '📖'}</div>
-                <div class="post-author">
-                    <div class="post-name">${item.title}</div>
-                    <div class="post-time">${item.date || 'Il y a 2 jours'}</div>
+                <div class="chat-avatar">${item.icon || '📖'}</div>
+                <div class="chat-info">
+                    <div class="chat-name">${item.title}</div>
+                    <div class="chat-message">${item.description.substring(0, 50)}...</div>
                 </div>
                 <span class="project-accordion-icon">▼</span>
             </div>
@@ -1591,16 +1591,16 @@ function renderEchoSphere(category) {
     `).join('');
 }
 
-// Arena (Gaming Hub avec accordéon)
+// Arena (Style uniforme comme ANIM'CONNECT)
 function renderArena(category) {
     const container = document.getElementById('gamingHub');
     container.innerHTML = category.items.map((item, index) => `
         <div class="project-accordion-item" id="arena-${index}">
             <div class="project-accordion-header" onclick="toggleProjectAccordion('arena-${index}')">
-                <div class="game-cover-small">${item.icon || '⚔️'}</div>
-                <div class="game-info-compact">
-                    <div class="game-title">${item.title}</div>
-                    <div class="game-tag">${item.tag || 'Action'}</div>
+                <div class="chat-avatar">${item.icon || '⚔️'}</div>
+                <div class="chat-info">
+                    <div class="chat-name">${item.title}</div>
+                    <div class="chat-message">${item.tag || item.description.substring(0, 50)}</div>
                 </div>
                 <span class="project-accordion-icon">▼</span>
             </div>
@@ -1613,23 +1613,23 @@ function renderArena(category) {
     `).join('');
 }
 
-// Adventures (Habit Tracker avec accordéon)
+// Adventures (Style uniforme comme ANIM'CONNECT)
 function renderAdventures(category) {
     const container = document.getElementById('habitTracker');
     container.innerHTML = category.items.map((item, index) => `
         <div class="project-accordion-item" id="adv-${index}">
             <div class="project-accordion-header" onclick="toggleProjectAccordion('adv-${index}')">
-                <div class="habit-checkbox" onclick="event.stopPropagation(); toggleHabit(this)"></div>
-                <div class="habit-details">
-                    <div class="habit-name">${item.title}</div>
-                    <div class="habit-desc">${item.description.substring(0, 40)}...</div>
+                <div class="chat-avatar">${item.icon || '🗺️'}</div>
+                <div class="chat-info">
+                    <div class="chat-name">${item.title}</div>
+                    <div class="chat-message">${item.description.substring(0, 40)}... • ${item.progress || '0/10'}</div>
                 </div>
-                <div class="habit-progress">${item.progress || '0/10'}</div>
                 <span class="project-accordion-icon">▼</span>
             </div>
             <div class="project-accordion-content">
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
+                    <div class="habit-checkbox" onclick="event.stopPropagation(); toggleHabit(this)" style="margin-top: 15px;"></div>
                 </div>
             </div>
         </div>
@@ -1642,52 +1642,44 @@ function toggleHabit(element) {
 
 window.toggleHabit = toggleHabit;
 
-// Medias (YouTube-like avec accordéon)
+// Medias (Style uniforme comme ANIM'CONNECT)
 function renderMedias(category) {
     const container = document.getElementById('youtubeLayout');
     container.innerHTML = category.items.map((item, index) => `
         <div class="project-accordion-item" id="media-${index}">
             <div class="project-accordion-header" onclick="toggleProjectAccordion('media-${index}')">
-                <div class="video-thumbnail-small">
-                    ${item.icon || '🎬'}
-                    <div class="play-overlay-small">▶</div>
-                </div>
-                <div class="video-details-compact">
-                    <div class="video-title">${item.title}</div>
-                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues</div>
+                <div class="chat-avatar">${item.icon || '🎬'}</div>
+                <div class="chat-info">
+                    <div class="chat-name">${item.title}</div>
+                    <div class="chat-message">${item.views || '1.2k'} vues • ${item.date || 'Récent'}</div>
                 </div>
                 <span class="project-accordion-icon">▼</span>
             </div>
             <div class="project-accordion-content">
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
-                    <div class="project-date">📅 ${item.date || 'Il y a 1 semaine'}</div>
                 </div>
             </div>
         </div>
     `).join('');
 }
 
-// EA Center (Tutoriels avec accordéon)
+// EA Center (Style uniforme comme ANIM'CONNECT)
 function renderEaCenter(category) {
     const container = document.getElementById('eaCenterLayout');
     container.innerHTML = category.items.map((item, index) => `
         <div class="project-accordion-item" id="center-${index}">
             <div class="project-accordion-header" onclick="toggleProjectAccordion('center-${index}')">
-                <div class="video-thumbnail-small">
-                    ${item.icon || '📚'}
-                    <div class="play-overlay-small">▶</div>
-                </div>
-                <div class="video-details-compact">
-                    <div class="video-title">${item.title}</div>
-                    <div class="video-meta">Expert Auteur • ${item.views || '1.2k'} vues</div>
+                <div class="chat-avatar">${item.icon || '📚'}</div>
+                <div class="chat-info">
+                    <div class="chat-name">${item.title}</div>
+                    <div class="chat-message">${item.views || '1.2k'} vues • ${item.date || 'Récent'}</div>
                 </div>
                 <span class="project-accordion-icon">▼</span>
             </div>
             <div class="project-accordion-content">
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
-                    <div class="project-date">📅 ${item.date || 'Il y a 1 semaine'}</div>
                 </div>
             </div>
         </div>
