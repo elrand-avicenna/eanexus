@@ -1558,6 +1558,9 @@ function renderAnimConnect(category) {
                 <div class="project-accordion-body">
                     <p class="project-full-desc">${item.description}</p>
                     <div class="project-date">📅 ${item.date || 'Récent'}</div>
+                    <button class="project-detail-btn" onclick="event.stopPropagation(); openProjectDetail('animConnect', ${index})">
+                        Entrer →
+                    </button>
                 </div>
             </div>
         </div>
