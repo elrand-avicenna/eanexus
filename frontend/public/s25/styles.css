@@ -3313,6 +3313,46 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     text-overflow: ellipsis;
 }
 
+
+/* Floating Lieux Button */
+.floating-lieux-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-lieux-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(240, 147, 251, 0.6);
+}
+
+.floating-lieux-btn:active {
+    transform: scale(0.95);
+}
+
+/* Lieux Content */
+.lieux-content {
+    padding: 20px;
+}
+
+.lieux-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .equalizer-icon {
     flex-shrink: 0;
 }
