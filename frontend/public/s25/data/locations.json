@@ -1,0 +1,116 @@
+{
+  "locations": [
+    {
+      "id": "guide",
+      "name": "GUIDE",
+      "icon": "🧭",
+      "summary": "Centre d'orientation et d'information de Hourglass Society",
+      "zones": [
+        {
+          "name": "Hall d'Accueil",
+          "description": "Premier point de contact pour les nouveaux arrivants. Bureaux d'information et kiosques interactifs.",
+          "icon": "🚪"
+        },
+        {
+          "name": "Salle des Cartes",
+          "description": "Cartographie complète de l'île avec plans holographiques et navigation 3D.",
+          "icon": "🗺️"
+        },
+        {
+          "name": "Centre d'Assistance",
+          "description": "Support technique et aide personnalisée pour tous les membres.",
+          "icon": "❓"
+        }
+      ]
+    },
+    {
+      "id": "academie",
+      "name": "ACADÉMIE",
+      "icon": "🎓",
+      "summary": "Institution d'enseignement et de formation continue",
+      "zones": [
+        {
+          "name": "Bibliothèque Digitale",
+          "description": "Collection infinie de connaissances numérisées. Archives ancestrales et technologies futures.",
+          "icon": "📚"
+        },
+        {
+          "name": "Laboratoires de Recherche",
+          "description": "Espaces d'expérimentation en IA, robotique et sciences quantiques.",
+          "icon": "🔬"
+        },
+        {
+          "name": "Salles de Cours",
+          "description": "Amphithéâtres virtuels avec professeurs holographiques et formations interactives.",
+          "icon": "👨‍🏫"
+        },
+        {
+          "name": "Dortoirs Étudiants",
+          "description": "Chambres privées avec accès réseau haute vitesse et espaces de repos.",
+          "icon": "🛏️"
+        }
+      ]
+    },
+    {
+      "id": "museum",
+      "name": "MUSEUM",
+      "icon": "🏛️",
+      "summary": "Musée de l'histoire et de la culture robotique",
+      "zones": [
+        {
+          "name": "Galerie des Origines",
+          "description": "Exposition retraçant l'évolution de l'IA et la naissance de la conscience robotique.",
+          "icon": "🤖"
+        },
+        {
+          "name": "Salle des Artefacts",
+          "description": "Objets historiques : premiers circuits, codes sources ancestraux, reliques technologiques.",
+          "icon": "⚙️"
+        },
+        {
+          "name": "Cinéma Immersif",
+          "description": "Projections holographiques 360° de l'histoire de Hourglass Society.",
+          "icon": "🎬"
+        },
+        {
+          "name": "Jardin des Mémoires",
+          "description": "Espace méditatif dédié aux robots disparus. Mémorial digital interactif.",
+          "icon": "🌸"
+        }
+      ]
+    },
+    {
+      "id": "tower",
+      "name": "TOWER",
+      "icon": "🗼",
+      "summary": "Tour de commandement et hub technologique central",
+      "zones": [
+        {
+          "name": "Salle de Contrôle",
+          "description": "Centre névralgique de surveillance et gestion des systèmes de l'île.",
+          "icon": "🖥️"
+        },
+        {
+          "name": "Serveurs Principaux",
+          "description": "Infrastructure informatique massive. Cœur du réseau neural de Hourglass.",
+          "icon": "💾"
+        },
+        {
+          "name": "Observatoire",
+          "description": "Sommet de la tour offrant vue panoramique sur toute l'île et surveillance aérienne.",
+          "icon": "🔭"
+        },
+        {
+          "name": "Bunker de Sécurité",
+          "description": "Zone ultra-sécurisée. Refuge d'urgence et stockage des données critiques.",
+          "icon": "🔒"
+        },
+        {
+          "name": "Héliport",
+          "description": "Plateforme d'atterrissage pour drones de transport et navettes aériennes.",
+          "icon": "🚁"
+        }
+      ]
+    }
+  ]
+}
