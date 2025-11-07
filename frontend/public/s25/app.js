@@ -15,6 +15,8 @@ let characters = [];
 let prologueData = null;
 let currentQuestion = 0;
 let selectedAnswers = [];
+let lockedWallpaper = false;
+let lockedWallpaperUrl = null;
 
 // DOM Elements
 const audio = document.getElementById('globalAudio');
