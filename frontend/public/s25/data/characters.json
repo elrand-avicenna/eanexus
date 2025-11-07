@@ -1,142 +1,70 @@
 [
   {
     "id": 1,
-    "name": "Expert Auteur",
-    "title": "Concepteur, Scénariste & Animateur",
-    "avatar": "👑",
+    "name": "Kajiit - Mage Alchimiste",
+    "title": "Maître des Élixirs & Arcanes",
+    "avatar": "🧙‍♂️",
     "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    "bio": "Créateur principal de cet univers créatif. Je conçois des expériences interactives, écris des histoires captivantes et anime des événements ludiques pour créer des moments inoubliables.",
+    "videoWallpaper": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/2kjb2jdl_Kajiit%20Mage%20Alchimiste.mp4",
+    "bio": "Alchimiste légendaire et mage érudit, Kajiit maîtrise l'art ancestral de la transmutation et des sorts élémentaires. Sa connaissance des potions et des enchantements est inégalée dans tout Hourglass Society. Il recherche constamment de nouvelles formules magiques et partage son savoir avec ceux qui sont dignes.",
+    "role": "Créateur de systèmes magiques et concepteur de gameplay",
+    "specialites": ["Alchimie Avancée", "Magie Élémentaire", "Enchantements", "Transmutation"],
     "stats": {
-      "Créativité": 98,
-      "Technique": 85,
-      "Vision": 95
+      "Sagesse": 98,
+      "Puissance Magique": 95,
+      "Créativité": 92,
+      "Intelligence": 97
     },
-    "skills": ["Conception de Jeux", "Écriture Narrative", "Animation d'Événements"]
+    "skills": [
+      "Création de potions et élixirs rares",
+      "Invocation d'éléments (feu, glace, foudre)",
+      "Enchantement d'objets et armes",
+      "Transmutation de matériaux",
+      "Lecture des runes anciennes",
+      "Conception de systèmes de magie pour jeux"
+    ],
+    "achievements": [
+      "🏆 Découverte de l'Élixir d'Immortalité",
+      "⭐ Maître des 7 Éléments",
+      "📜 Auteur du Codex Alchimique",
+      "✨ Créateur de 100+ sorts uniques"
+    ],
+    "quote": "La magie n'est que science que nous ne comprenons pas encore.",
+    "availability": "En ligne",
+    "location": "Tour d'Alchimie, Zone Créative"
   },
   {
     "id": 2,
-    "name": "Aria CodeWeaver",
-    "title": "Développeuse Lead",
-    "avatar": "⚡",
-    "background": "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-    "bio": "Architecte technique du projet, Aria transforme les visions créatives en code élégant. Elle maîtrise les frameworks modernes et garantit la performance des applications.",
-    "stats": {
-      "Créativité": 82,
-      "Technique": 96,
-      "Vision": 88
-    },
-    "skills": ["React & JavaScript", "Architecture Système", "Optimisation Performance"]
-  },
-  {
-    "id": 3,
-    "name": "Kael Storyforge",
-    "title": "Scénariste en Chef",
-    "avatar": "📖",
+    "name": "Cyber - Haqueuse Élite",
+    "title": "Architecte des Systèmes & Infiltratrice Digitale",
+    "avatar": "👩‍💻",
     "background": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    "bio": "Maître conteur et créateur d'univers narratifs, Kael tisse des intrigues captivantes et développe des personnages mémorables qui donnent vie aux histoires du projet.",
+    "videoWallpaper": "https://customer-assets.emergentagent.com/job_mobile-hub-13/artifacts/4nbhhpd3_Cyber%20Haqueuse.mp4",
+    "bio": "Génie de l'informatique et hackeuse de renommée mondiale, Cyber est la gardienne de l'infrastructure digitale de Hourglass Society. Elle navigue dans les réseaux les plus sécurisés avec une aisance déconcertante. Spécialiste en intelligence artificielle et sécurité informatique, elle crée des systèmes impénétrables tout en trouvant les failles des autres.",
+    "role": "Architecte technique et responsable cybersécurité",
+    "specialites": ["Hacking Éthique", "Intelligence Artificielle", "Cryptographie", "Sécurité Réseau"],
     "stats": {
-      "Créativité": 97,
-      "Technique": 70,
-      "Vision": 92
-    },
-    "skills": ["Écriture Créative", "Développement de Personnages", "World Building"]
-  },
-  {
-    "id": 4,
-    "name": "Luna Artisan",
-    "title": "Directrice Artistique",
-    "avatar": "🎨",
-    "background": "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-    "bio": "Visionnaire du design visuel, Luna crée l'identité graphique du projet. Son sens artistique transforme chaque interface en une œuvre d'art interactive.",
-    "stats": {
-      "Créativité": 99,
-      "Technique": 88,
-      "Vision": 94
-    },
-    "skills": ["Design UI/UX", "Direction Artistique", "Branding Créatif"]
-  },
-  {
-    "id": 5,
-    "name": "Thorin Soundsmith",
-    "title": "Compositeur & Sound Designer",
-    "avatar": "🎵",
-    "background": "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
-    "bio": "Créateur d'ambiances sonores immersives, Thorin compose des musiques épiques et des effets sonores qui enrichissent l'expérience et transportent dans l'univers.",
-    "stats": {
-      "Créativité": 95,
-      "Technique": 84,
-      "Vision": 87
-    },
-    "skills": ["Composition Musicale", "Sound Design", "Audio Engineering"]
-  },
-  {
-    "id": 6,
-    "name": "Zephyr Playtest",
-    "title": "Chef Testeur QA",
-    "avatar": "🎮",
-    "background": "linear-gradient(135deg, #ff6b6b 0%, #c92a2a 100%)",
-    "bio": "Gardien de la qualité, Zephyr teste rigoureusement chaque fonctionnalité pour garantir une expérience utilisateur parfaite. Aucun bug n'échappe à sa vigilance.",
-    "stats": {
-      "Créativité": 75,
-      "Technique": 90,
-      "Vision": 85
-    },
-    "skills": ["Tests Fonctionnels", "Débogage Expert", "Assurance Qualité"]
-  },
-  {
-    "id": 7,
-    "name": "Raven Strategist",
-    "title": "Chef de Projet",
-    "avatar": "🗺️",
-    "background": "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-    "bio": "Stratège et coordinateur, Raven orchestre toutes les phases du projet. Elle synchronise les équipes, définit les priorités et assure que chaque deadline soit respectée.",
-    "stats": {
-      "Créativité": 80,
-      "Technique": 78,
-      "Vision": 96
-    },
-    "skills": ["Gestion de Projet", "Méthodologie Agile", "Coordination d'Équipes"]
-  },
-  {
-    "id": 8,
-    "name": "Blaze Animator",
-    "title": "Animateur 3D",
-    "avatar": "🎬",
-    "background": "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)",
-    "bio": "Spécialiste en animation et motion design, Blaze donne vie aux personnages et crée des cinématiques épiques qui rendent chaque projet visuellement spectaculaire.",
-    "stats": {
-      "Créativité": 94,
-      "Technique": 87,
-      "Vision": 85
-    },
-    "skills": ["Animation 3D", "Motion Design", "Cinématiques"]
-  },
-  {
-    "id": 9,
-    "name": "Iris DataMage",
-    "title": "Analyste de Données",
-    "avatar": "📊",
-    "background": "linear-gradient(135deg, #868f96 0%, #596164 100%)",
-    "bio": "Magicienne des données, Iris analyse les métriques utilisateurs et transforme les chiffres en insights actionnables pour améliorer continuellement l'expérience.",
-    "stats": {
-      "Créativité": 72,
-      "Technique": 93,
-      "Vision": 89
-    },
-    "skills": ["Analytics", "Data Mining", "Reporting Stratégique"]
-  },
-  {
-    "id": 10,
-    "name": "Titan Guardian",
-    "title": "Responsable Sécurité",
-    "avatar": "🛡️",
-    "background": "linear-gradient(135deg, #2d3436 0%, #636e72 100%)",
-    "bio": "Protecteur inébranlable des systèmes, Titan sécurise l'infrastructure, protège les données sensibles et garantit la conformité aux standards de sécurité les plus élevés.",
-    "stats": {
-      "Créativité": 65,
+      "Intelligence": 99,
       "Technique": 97,
-      "Vision": 82
+      "Rapidité": 94,
+      "Stratégie": 96
     },
-    "skills": ["Sécurité Système", "Cryptographie", "Audit de Code"]
+    "skills": [
+      "Penetration testing et audit de sécurité",
+      "Développement d'IA avancées",
+      "Cryptographie quantique",
+      "Architecture de systèmes distribués",
+      "Forensics digitale",
+      "Programmation multi-langages (Python, C++, Rust)"
+    ],
+    "achievements": [
+      "🔐 Créatrice du protocole de sécurité Nexus",
+      "💻 Hackathon Champion 5 années consécutives",
+      "🤖 Développeuse de l'IA NEXUS-PRIME",
+      "🛡️ Jamais piratée en 10 ans de carrière"
+    ],
+    "quote": "Dans le cyberespace, je ne suis pas seulement un utilisateur. Je suis l'architecte.",
+    "availability": "En mission",
+    "location": "Hub Technologique, Niveau -7"
   }
 ]
