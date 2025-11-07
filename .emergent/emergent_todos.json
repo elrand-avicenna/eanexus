@@ -1,0 +1,30 @@
+[
+  {
+    "content": "Supprimer le prologue et démarrer directement sur Home",
+    "status": "in_progress"
+  },
+  {
+    "content": "Simplifier le dock : Membres, Calendrier, Projets (enlever Flash et Carte)",
+    "status": "pending"
+  },
+  {
+    "content": "Créer 2 personnages détaillés avec vidéos associées (Kajiit & Cyber)",
+    "status": "pending"
+  },
+  {
+    "content": "Modifier wallpaper : image par défaut, vidéo au clic sur personnage",
+    "status": "pending"
+  },
+  {
+    "content": "Modifier paramètres : enlever wallpaper, remettre lecteur musique complet",
+    "status": "pending"
+  },
+  {
+    "content": "Intégrer Flash dans le calendrier",
+    "status": "pending"
+  },
+  {
+    "content": "Tester toutes les fonctionnalités",
+    "status": "pending"
+  }
+]
