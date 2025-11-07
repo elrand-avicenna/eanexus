@@ -343,10 +343,11 @@ async function loadData() {
 
         // Load Projects
         const projectsResponse = await fetch('data/projects.json');
-        const projectsData = await projectsResponse.json();
-        renderProjects(projectsData);
-        renderNexusApps(projectsData);
-        renderCategoryApps(projectsData);
+        const projectsDataTemp = await projectsResponse.json();
+        projectsData = projectsDataTemp; // Store globally
+        renderProjects(projectsDataTemp);
+        renderNexusApps(projectsDataTemp);
+        renderCategoryApps(projectsDataTemp);
         
         // Initialize calendar after events are loaded
         initializeCalendar();
