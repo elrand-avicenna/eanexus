@@ -368,6 +368,26 @@
                 </div>
             </div>
 
+            <!-- Lieux -->
+            <div class="app-window" id="lieux">
+                <div class="app-header">
+                    <button class="back-btn" onclick="closeApp()">←</button>
+                    <h2>Lieux</h2>
+                </div>
+                <div class="app-content lieux-content">
+                    <div class="lieux-grid" id="lieuxGrid"></div>
+                </div>
+            </div>
+
+            <!-- Location Detail (Zones) -->
+            <div class="app-window" id="locationDetail">
+                <div class="app-header">
+                    <button class="back-btn" onclick="openApp('lieux')">←</button>
+                    <h2 id="locationDetailName">Lieu</h2>
+                </div>
+                <div class="app-content location-zones" id="locationZones"></div>
+            </div>
+
             <!-- EA NEXUS (App Launcher) -->
             <div class="app-window" id="eaNexus">
                 <div class="app-header">
