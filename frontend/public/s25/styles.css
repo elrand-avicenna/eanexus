@@ -3634,6 +3634,29 @@ h1, h2, h3, h4, h5, h6, p, span, a, button, div, label {
     font-weight: 600;
 }
 
+.external-link-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.external-link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+}
+
+
 .info-value {
     font-size: 14px;
     color: #fff;
